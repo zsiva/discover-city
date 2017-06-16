@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Intro from '../Intro';
 
 import './style.css';
 
@@ -8,7 +9,7 @@ class Root extends Component {
 
     return (
       <div className={["App", className].join(' ')}>
-        <h2>Select a city</h2>
+        <Intro />
         {this.props.children}
 
       </div>
