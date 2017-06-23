@@ -4,12 +4,7 @@ import {
   ADD_CITY
 } from '../actions';
 
-const initialState = {
-    cities : [],
-    currentCity: 'Dublin'
-};
-
-const gameState = (state = initialState, action) => {
+const gameState = (state = [], action) => {
   switch (action.type) {
     case ADD_CITY:
       return Object.assign({}, state, {
