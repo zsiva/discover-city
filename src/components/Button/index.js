@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './style.css';
 
-class Button extends Component {
-  render() {
-    const {handleClick, label} = this.props;
-
-    return (
-      <button
-        className="btn"
-        onClick={handleClick}>{label}</button>
-    );
-  }
-}
+const Button = (props) => {
+  return (
+    <button
+      type={ props.type || 'button' }
+      disabled={ props.disabled || false }
+      onClick={ props.onClick }
+      style={ props.style }
+      className={[
+        'btn',
+        props.className,
+        props.size ? `${props.size}` : 'medium'
+      ].join( ' ' )}
+    >{props.label}</button>
+  );
+};
 
 export default Button;
