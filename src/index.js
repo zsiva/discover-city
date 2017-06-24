@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 
 import Root from './components/Root';
 import './index.css';
-import './simple-grid.min.css';
 
 import configureStore from './configure-store';
 
