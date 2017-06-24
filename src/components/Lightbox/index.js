@@ -20,7 +20,7 @@ class Lightbox extends Component {
    }
 
   render() {
-    const { header, body, buttonLabel = 'Close' } = this.props;
+    const { header, body, img, buttonLabel = 'Close' } = this.props;
 
     return (
       <Modal show={this.state.showModal} onHide={this.close}>
@@ -28,7 +28,15 @@ class Lightbox extends Component {
             <Modal.Title>{header}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {body}
+            <div className="row">
+                {img &&
+                  <div className="col-xs-6 text-center">
+                    <img src={img} />
+                  </div>}
+                <div className={[img ? "col-xs-6" : "col-xs-12", "text-center"].join(' ')}>
+                  <p>{body}</p>
+                </div>
+              </div>
             </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close} label={buttonLabel} />

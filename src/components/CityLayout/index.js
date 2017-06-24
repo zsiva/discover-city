@@ -52,6 +52,7 @@ class CityLayout extends Component {
     const {cities} = this.props;
     const hints = ['Buying a beer in a Späti near Kottbuser Tor', 'Chilling at TierGarten', 'Going up the Fernsehturm']
 
+    const bodyText = "You earn some extra time! But he is on the run again. Follow the hints to see where he went next!"
     return (
       <div>
         <Header />
@@ -76,7 +77,7 @@ class CityLayout extends Component {
             </div>
           </div>
         </section>
-        <Lightbox header={this.state.header} ref="lightbox" body="You got some extra time!"/>
+        <Lightbox img='./images/thief.png' header={this.state.header} ref="lightbox" body={bodyText}/>
       </div>
     );
   }
