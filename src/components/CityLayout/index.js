@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import Button from '../Button';
+import Header from '../Header';
+import Lightbox from '../Lightbox';
+
+import {ListGroupItem, ListGroup} from 'react-bootstrap'
 import './style.css';
 
 const CityRow = (props) =>
-  <div className="col-4 text-center">
+  <div className="col-xs-4 text-center">
     <Button label={props.label} onClick={props.handleClick}/>
   </div>
 
@@ -20,10 +24,10 @@ class HintRow extends Component {
       }, this.props.wait);
   }
   render(){
-    const {label} = this.props;
+    const {label, num} = this.props;
 
     return (
-        <p style={{"visibility": this.state.hidden}}>{label}</p>
+    <ListGroupItem style={{"visibility": this.state.hidden}} header={'Hint ' + num}>{label}</ListGroupItem>
     )
   }
 };
@@ -31,36 +35,48 @@ class HintRow extends Component {
 class CityLayout extends Component {
   constructor(props) {
     super(props);
-
+    this.state = { header: '' }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event){
     if ( event.currentTarget.innerText === 'Berlin') {
-      console.log('FOUND');
+      this.setState({...this.state, header: "Yes! He was in Berlin"})
+    } else {
+      this.setState({...this.state, header: "No, sorry! You missed him!"})
     }
+    this.refs.lightbox.open();
   }
 
   render() {
     const {cities} = this.props;
-    const hints = ['Buying a beer in a Späti near Kottbuser Tor', 'Second', 'Third']
+    const hints = ['Buying a beer in a Späti near Kottbuser Tor', 'Chilling at TierGarten', 'Going up the Fernsehturm']
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-12 hints-container">
-            <p>The thief was last seen ...</p>
-            {hints.map((hint, i) => <HintRow key={i} label={hint} wait={(i+1) * 1000}/>)}
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-12">
-            <h3>Where is he?</h3>
+      <div>
+        <Header />
+        <section className="container">
+          <div className="row">
+            <div className="col-xs-12 hints-container">
+              <h3>The thief was last seen ...</h3>
+              <ListGroup>
+                {hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
+              </ListGroup>
+            </div>
           </div>
           <div className="row">
-            { cities.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
+            <div className="col-xs-12">
+              <h3>Where is he?</h3>
+            </div>
+            <div className="col-xs-12">
+
+              <div className="row">
+                { cities.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
+        <Lightbox header={this.state.header} ref="lightbox" body="You got some extra time!"/>
       </div>
     );
   }
