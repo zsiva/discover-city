@@ -39,14 +39,15 @@ class CityLayout extends Component {
   }
 
   handleClick(event){
-    if ( event.currentTarget.innerText === 'Berlin') {
+    const {nextCity} = this.props;
+    if ( event.currentTarget.innerText === nextCity.name) {
       this.setState({...this.state,
-        header: "Yes! He was in Berlin",
+        header: "Yes! He was in " + nextCity.name,
         body: "Well done, you earn some extra time!. But he is on the run again. Follow the hints to see where he went next!"
       })
     } else {
       this.setState({...this.state,
-        header: "No, sorry! He was in Berlin",
+        header: "No, sorry! He was in " +nextCity.name,
         body: "You missed him!. Get some more hints to see where he went next!"
       })
     }
@@ -54,8 +55,7 @@ class CityLayout extends Component {
   }
 
   render() {
-    const {cities} = this.props;
-    const hints = ['Buying a beer in a Späti near Kottbuser Tor', 'Chilling at TierGarten', 'Going up the Fernsehturm']
+    const { nextCity } = this.props;
 
     return (
       <div>
@@ -68,7 +68,7 @@ class CityLayout extends Component {
             </div>
             <div className="col-xs-8">
               <ListGroup>
-                {hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
+                {nextCity.hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
               </ListGroup>
             </div>
           </div>
@@ -78,7 +78,7 @@ class CityLayout extends Component {
             </div>
             <div className="col-xs-12">
               <div className="row">
-                { cities.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
+                { nextCity.cityOptions.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
               </div>
             </div>
           </div>
@@ -95,8 +95,9 @@ class CityLayout extends Component {
 
 const mapStateToProps = (state, ownProps = {}) => {
   return {
-    cities: state.gameState.cities,
-    currentCity: state.gameState.currentCity
+    allCities: state.gameState.allCities,
+    nextCity: state.gameState.nextCity,
+    thiefCities: state.gameState.thiefCities
   }
 }
 

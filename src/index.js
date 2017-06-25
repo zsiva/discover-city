@@ -7,19 +7,19 @@ import './index.css';
 
 import configureStore from './configure-store';
 
-import {selectCity, createCityList, addCity} from './actions';
+import {CITIES} from './data/cities.js';
 
 const initialState = {
   gameState:
     {
-      cities : ['Berlin', 'London', 'Paris'],
-      currentCity: 'Dublin'
+      allCities : CITIES,
+      nextCity: CITIES.find(city => city.name === 'Berlin'),
+      thiefCities: ['Berlin', 'Paris']
     }
 };
 
 const store = configureStore(initialState);
 
-console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <Root />
