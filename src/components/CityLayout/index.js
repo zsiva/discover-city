@@ -6,7 +6,6 @@ import Header from '../Header';
 import Lightbox from '../Lightbox';
 
 import {ListGroupItem, ListGroup} from 'react-bootstrap'
-import './style.css';
 
 const CityRow = (props) =>
   <div className="col-xs-4 text-center">
@@ -35,15 +34,21 @@ class HintRow extends Component {
 class CityLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = { header: '' }
+    this.state = { header: '', body:'' }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event){
     if ( event.currentTarget.innerText === 'Berlin') {
-      this.setState({...this.state, header: "Yes! He was in Berlin"})
+      this.setState({...this.state,
+        header: "Yes! He was in Berlin",
+        body: "Well done, you earn some extra time!. But he is on the run again. Follow the hints to see where he went next!"
+      })
     } else {
-      this.setState({...this.state, header: "No, sorry! You missed him!"})
+      this.setState({...this.state,
+        header: "No, sorry! He was in Berlin",
+        body: "You missed him!. Get some more hints to see where he went next!"
+      })
     }
     this.refs.lightbox.open();
   }
@@ -52,14 +57,16 @@ class CityLayout extends Component {
     const {cities} = this.props;
     const hints = ['Buying a beer in a Späti near Kottbuser Tor', 'Chilling at TierGarten', 'Going up the Fernsehturm']
 
-    const bodyText = "You earn some extra time! But he is on the run again. Follow the hints to see where he went next!"
     return (
       <div>
         <Header />
         <section className="container">
           <div className="row">
-            <div className="col-xs-12 hints-container">
-              <h3>The thief was last seen ...</h3>
+            <div className="col-xs-4 text-center">
+              <h5>The thief was last seen ...</h5>
+              <img src="./images/thief-hidden.png" alt="thief hidden"/>
+            </div>
+            <div className="col-xs-8">
               <ListGroup>
                 {hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
               </ListGroup>
@@ -70,14 +77,17 @@ class CityLayout extends Component {
               <h3>Where is he?</h3>
             </div>
             <div className="col-xs-12">
-
               <div className="row">
                 { cities.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
               </div>
             </div>
           </div>
         </section>
-        <Lightbox img='./images/thief.png' header={this.state.header} ref="lightbox" body={bodyText}/>
+        <Lightbox
+          img='./images/thief.png'
+          header={this.state.header} ref="lightbox"
+          body={this.state.body}
+          buttonLabel="Find him!"/>
       </div>
     );
   }

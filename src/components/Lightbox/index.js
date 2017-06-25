@@ -25,20 +25,20 @@ class Lightbox extends Component {
     return (
       <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>{header}</Modal.Title>
+            <Modal.Title className="text-center">{header}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="row">
                 {img &&
                   <div className="col-xs-6 text-center">
-                    <img src={img} />
+                    <img src={img} alt={header}/>
                   </div>}
                 <div className={[img ? "col-xs-6" : "col-xs-12", "text-center"].join(' ')}>
-                  <p>{body}</p>
+                  {body.split('.').map((p, i) => <p key={i}>{p}</p>)}
                 </div>
               </div>
             </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer className="text-center">
             <Button onClick={this.close} label={buttonLabel} />
           </Modal.Footer>
         </Modal>
