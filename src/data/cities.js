@@ -2,7 +2,7 @@ export const CITIES = [
    {
     name: 'Berlin',
     hints: ['Buying a beer in a Späti near Kottbuser Tor', 'Chilling at TierGarten', 'Going up the Fernsehturm'],
-    cityOptions: ['Berlin', 'Paris', 'Budapest']
+    cityOptions: ['Berlin', 'London', 'Budapest']
     },
     {
       name: 'Paris',

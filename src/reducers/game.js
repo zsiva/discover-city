@@ -4,6 +4,8 @@ import {
   ADD_CITY
 } from '../actions';
 
+import {CITIES} from '../data/cities.js';
+
 const gameState = (state = [], action) => {
   switch (action.type) {
     case ADD_CITY:
@@ -15,7 +17,7 @@ const gameState = (state = [], action) => {
       })
     case SELECT_CITY:
       return Object.assign({}, state, {
-        currentCity: action.currentCity
+        nextCity: CITIES.find(city => city.name === action.nextCity)
       })
     default:
       return state;
