@@ -4,12 +4,16 @@ import { connect } from 'react-redux'
 import Button from '../Button';
 import Header from '../Header';
 import Lightbox from '../Lightbox';
+import Spinner from '../Spinner';
 
 import {ListGroupItem, ListGroup} from 'react-bootstrap'
+import './style.css';
+
+import {selectCity} from '../../actions';
 
 const CityRow = (props) =>
-  <div className="col-xs-4 text-center">
-    <Button label={props.label} onClick={props.handleClick}/>
+  <div className="col-xs-12 col-sm-4 text-center">
+    <Button className="option-btn" label={props.label} onClick={props.handleClick}/>
   </div>
 
 class HintRow extends Component {
@@ -34,8 +38,13 @@ class HintRow extends Component {
 class CityLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = { header: '', body:'' }
+    this.state = { header: '', body:'', spinner:false }
     this.handleClick = this.handleClick.bind(this);
+    this.handleExit = this.handleExit.bind(this);
+  }
+
+  async handleExit(event){
+    await this.props.dispatch(selectCity('Paris'));
   }
 
   handleClick(event){
@@ -47,7 +56,7 @@ class CityLayout extends Component {
       })
     } else {
       this.setState({...this.state,
-        header: "No, sorry! He was in " +nextCity.name,
+        header: "No, sorry! He was in " + nextCity.name,
         body: "You missed him!. Get some more hints to see where he went next!"
       })
     }
@@ -60,6 +69,7 @@ class CityLayout extends Component {
     return (
       <div>
         <Header />
+        {this.state.spinner && <Spinner text="Loading data"/>}
         <section className="container">
           <div className="row">
             <div className="col-xs-4 text-center">
@@ -72,22 +82,18 @@ class CityLayout extends Component {
               </ListGroup>
             </div>
           </div>
+          <h3 className="text-center">Where is he?</h3>
           <div className="row">
-            <div className="col-xs-12">
-              <h3>Where is he?</h3>
-            </div>
-            <div className="col-xs-12">
-              <div className="row">
-                { nextCity.cityOptions.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
-              </div>
-            </div>
+            { nextCity.cityOptions.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
           </div>
         </section>
         <Lightbox
           img='./images/thief.png'
           header={this.state.header} ref="lightbox"
           body={this.state.body}
-          buttonLabel="Find him!"/>
+          buttonLabel="Find him!"
+          onExiting={this.handleExit}
+          />
       </div>
     );
   }

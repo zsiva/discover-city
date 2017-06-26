@@ -20,10 +20,10 @@ class Lightbox extends Component {
    }
 
   render() {
-    const { header, body, img, buttonLabel = 'Close' } = this.props;
+    const { header, body, img, buttonLabel = 'Close', onExiting } = this.props;
 
     return (
-      <Modal show={this.state.showModal} onHide={this.close}>
+      <Modal show={this.state.showModal} onHide={this.close} onExiting={onExiting}>
           <Modal.Header closeButton>
             <Modal.Title className="text-center">{header}</Modal.Title>
           </Modal.Header>
