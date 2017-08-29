@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import Button from '../Button';
-import CountdownTimer from '../CountdownTimer';
+
+import { connect } from 'react-redux'
+import {startTimer} from '../../actions/timer';
 
 import './style.css';
 
 class Header extends Component {
+  componentWillMount(){
+    this.props.dispatch(startTimer());
+  }
   render() {
-    const {handleClick} = this.props;
+    const {handleClick, timeRemaining} = this.props;
     return (
       <header className="header">
         <div className="container">
           <div className="row">
             <div className="col-xs-6">
-              <CountdownTimer secondsRemaining={30}/>
+              <div>Time: {timeRemaining} seconds</div>
             </div>
             <div className="col-xs-6 text-right">
               <Button label="Restart game" size="small"/>
@@ -24,4 +29,12 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state, ownProps = {}) => {
+  return {
+    timeRemaining: state.timer.time
+  }
+}
+
+export default connect(
+  mapStateToProps,
+)(Header)

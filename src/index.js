@@ -15,7 +15,12 @@ const initialState = {
       allCities : CITIES,
       nextCity: CITIES.find(city => city.name === 'Berlin'),
       thiefCities: ['Berlin', 'Paris']
-    }
+    },
+    timer: {
+       isOn: false,
+       time: 30,
+       interval: null
+     }
 };
 
 const store = configureStore(initialState);
