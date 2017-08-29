@@ -5,35 +5,19 @@ import Button from '../Button';
 import Header from '../Header';
 import Lightbox from '../Lightbox';
 import Spinner from '../Spinner';
+import HintRow from '../HintRow';
 
 import {ListGroupItem, ListGroup} from 'react-bootstrap'
 import './style.css';
 
 import {selectCity} from '../../actions';
+import {stopTimer, startTimer} from '../../actions/timer';
 
 const CityRow = (props) =>
   <div className="col-xs-12 col-sm-4 text-center">
     <Button className="option-btn" label={props.label} onClick={props.handleClick}/>
   </div>
 
-class HintRow extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {hidden: 'hidden'}
-  }
-  componentWillMount () {
-      setTimeout(() => {
-        this.setState({hidden : ""});
-      }, this.props.wait);
-  }
-  render(){
-    const {label, num} = this.props;
-
-    return (
-    <ListGroupItem style={{"visibility": this.state.hidden}} header={'Hint ' + num}>{label}</ListGroupItem>
-    )
-  }
-};
 
 class CityLayout extends Component {
   constructor(props) {
@@ -44,11 +28,15 @@ class CityLayout extends Component {
   }
 
   async handleExit(event){
-    await this.props.dispatch(selectCity('Paris'));
+    const {dispatch, currentTime} = this.props;
+    await dispatch(selectCity('Paris'));
+    dispatch(startTimer(currentTime));
   }
 
   handleClick(event){
-    const {nextCity} = this.props;
+    const {nextCity, dispatch} = this.props;
+    dispatch(stopTimer());
+
     if ( event.currentTarget.innerText === nextCity.name) {
       this.setState({...this.state,
         header: "Yes! He was in " + nextCity.name,
@@ -64,7 +52,7 @@ class CityLayout extends Component {
   }
 
   render() {
-    const { nextCity } = this.props;
+    const { nextCity, isOn } = this.props;
 
     return (
       <div>
@@ -78,7 +66,7 @@ class CityLayout extends Component {
             </div>
             <div className="col-xs-8">
               <ListGroup>
-                {nextCity.hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
+                {isOn && nextCity.hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
               </ListGroup>
             </div>
           </div>
@@ -103,7 +91,9 @@ const mapStateToProps = (state, ownProps = {}) => {
   return {
     allCities: state.gameState.allCities,
     nextCity: state.gameState.nextCity,
-    thiefCities: state.gameState.thiefCities
+    thiefCities: state.gameState.thiefCities,
+    currentTime: state.timer.time,
+    isOn: state.timer.isOn
   }
 }
 
