@@ -7,10 +7,10 @@ import Lightbox from '../Lightbox';
 import Spinner from '../Spinner';
 import HintRow from '../HintRow';
 
-import {ListGroupItem, ListGroup} from 'react-bootstrap'
+import {ListGroup} from 'react-bootstrap'
 import './style.css';
 
-import {selectCity} from '../../actions';
+import {selectCity} from '../../actions/cities';
 import {stopTimer, startTimer} from '../../actions/timer';
 
 const CityRow = (props) =>
@@ -28,7 +28,7 @@ class CityLayout extends Component {
   }
 
   async handleExit(event){
-    const {dispatch, currentTime} = this.props;
+    const {dispatch, currentTime, nextCity} = this.props;
     await dispatch(selectCity('Paris'));
     dispatch(startTimer(currentTime));
   }
