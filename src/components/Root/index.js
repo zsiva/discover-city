@@ -2,36 +2,44 @@ import React, { Component } from 'react';
 import Intro from '../Intro';
 import CityLayout from '../CityLayout';
 import Spinner from '../Spinner';
-
+import { loadGameData } from '../../actions/game';
+import { connect } from 'react-redux'
 import './style.css';
 
-class Root extends Component {
+export class Root extends Component {
   constructor(props) {
     super(props);
-    this.state = { intro: true, spinner: false}
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(){
-    this.setState({...this.state, spinner: true})
-    //Fake laoding data
-    setTimeout(() => {
-        this.setState({...this.state, intro: false, spinner: false});
-    }, 2000);
-
+    this.props.loadGameData()
   }
   render() {
-    const {className} = this.props;
+    const {className, isLoading = false, intro = true} = this.props;
 
     return (
       <div className={["App", className].join(' ')}>
-        {this.state.spinner && <Spinner text="Loading game"/>}
-        {this.state.intro && !this.state.spinner && <Intro handleClick={this.handleClick}/>}
-        {!this.state.intro && <CityLayout />}
+        {isLoading && <Spinner text="Loading game"/>}
+        {intro && <Intro handleClick={this.handleClick}/>}
+        {!intro && !isLoading && <CityLayout />}
         {this.props.children}
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+    return {
+      isLoading: state.gameState.isLoading,
+      errors: state.gameState.hasErrors,
+      intro: state.gameState.intro
+    };
+};
 
-export default Root;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadGameData: () => dispatch(loadGameData())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

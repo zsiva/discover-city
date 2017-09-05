@@ -4,10 +4,14 @@ import {
   ADD_CITY
 } from '../actions/cities';
 
+import {ITEMS_LOADING} from '../actions/game';
+
 import {CITIES} from '../data/cities.js';
 
 const gameState = (state = [], action) => {
   switch (action.type) {
+    case ITEMS_LOADING:
+      return {...state, isLoading: action.isLoading, intro: action.intro}
     case ADD_CITY:
       return Object.assign({}, state, {
         cities: [
