@@ -10,17 +10,15 @@ import configureStore from './configure-store';
 import {CITIES} from './data/cities.js';
 
 const initialState = {
-  gameState:
-    {
-      allCities : CITIES,
-      nextCity: CITIES.find(city => city.name === 'Berlin'),
-      thiefCities: ['Berlin', 'Paris']
-    },
-    timer: {
-       isOn: false,
-       time: 30,
-       interval: null
-     }
+  timer: {
+     isOn: false,
+     time: 30,
+     interval: null
+   },
+   gameState: {
+     currentCityID: 0,
+     gameEnded: false
+   }
 };
 
 const store = configureStore(initialState);

@@ -26,6 +26,11 @@ import {START_TIMER, STOP_TIMER, RESUME_TIMER, TICK } from '../actions/timer';
        };
 
      case TICK:
+      if(state.time > 0) {
+        return {...state, time: state.time - 1}
+      } else {
+        return {...state, time: 0, gameEnded: true}
+      }
       return {
          ...state,
          time: state.time - 1
