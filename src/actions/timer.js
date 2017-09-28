@@ -1,11 +1,19 @@
-export const START_TIMER = 'START_TIMER';
-export const STOP_TIMER = 'STOP_TIMER';
-export const RESUME_TIMER = 'RESUME_TIMER';
-export const TICK = 'TICK';
+const START_TIMER = 'START_TIMER';
+const STOP_TIMER = 'STOP_TIMER';
+const TICK = 'TICK';
+const ADD_TIME = 'ADD_TIME';
 
-
-// action creators
-export const startTimer = (time) => ({ type: START_TIMER, time });
-export const stopTimer = () => ({ type: STOP_TIMER });
-export const resumeTimer = () => ({ type: RESUME_TIMER });
-export const tick = () => ({ type: TICK });
+const startTimer = (time) => ({ type: START_TIMER, time });
+const stopTimer = () => ({ type: STOP_TIMER });
+const tick = () => ({ type: TICK });
+const addTime = (sec) => ({ type: ADD_TIME, sec })
+export{
+  startTimer,
+  stopTimer,
+  tick,
+  addTime,
+  START_TIMER,
+  STOP_TIMER,
+  TICK,
+  ADD_TIME
+}
