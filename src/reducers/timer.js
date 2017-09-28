@@ -1,4 +1,4 @@
-import {START_TIMER, STOP_TIMER, RESUME_TIMER, TICK } from '../actions/timer';
+import {START_TIMER, STOP_TIMER, TICK } from '../actions/timer';
 
  const timer = (state = [], action) => {
    switch (action.type) {
@@ -6,7 +6,7 @@ import {START_TIMER, STOP_TIMER, RESUME_TIMER, TICK } from '../actions/timer';
        return {
          ...state,
          isOn: true,
-         time: action.time ? action.time : 30,
+         time: action.time ? action.time : state.time,
          interval: action.interval
        };
 
@@ -16,13 +16,6 @@ import {START_TIMER, STOP_TIMER, RESUME_TIMER, TICK } from '../actions/timer';
          isOn: false,
          time: state.time,
          interval: null
-       };
-
-     case RESUME_TIMER:
-       return {
-         ...state,
-         isOn: true,
-         time: state.time
        };
 
      case TICK:

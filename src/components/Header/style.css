@@ -1,7 +1,10 @@
 .header{
   background-color: black;
+  padding: 10px 0;
+  color: white;
 }
 
 .header p{
-   color: white;
+  line-height: 30px;
+   font-size: 20px;
  }

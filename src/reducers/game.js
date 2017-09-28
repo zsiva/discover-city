@@ -11,13 +11,11 @@ const gameState = (state = [], action) => {
       return {...state, isLoading: action.isLoading, intro: action.intro }
     case CREATE_LIST:
       let list = selectRandom(action.num);
-      return {...state, selectedCities : list, currentCity: list[0], maxCities: action.num }
+      return {...state, selectedCities : list, currentCity: list[0], maxCities: action.num, currentCityID: 0 }
     case LOAD_CITY:
       if(state.currentCityID < state.maxCities - 1){
         state.currentCityID++;
-      console.log('loading next', state.currentCityID, state.maxCities);
       }
-
       return {...state, currentCity: state.selectedCities[state.currentCityID], currentCityID: state.currentCityID}
     default:
       return state;

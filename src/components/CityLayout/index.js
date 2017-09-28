@@ -10,8 +10,8 @@ import HintRow from '../HintRow';
 import {ListGroup} from 'react-bootstrap'
 import './style.css';
 
-import {selectCity} from '../../actions/cities';
-import {stopTimer, startTimer} from '../../actions/timer';
+import { loadNextCity } from '../../actions/cities';
+import { stopTimer, startTimer } from '../../actions/timer';
 
 const CityRow = (props) =>
   <div className="col-xs-12 col-sm-4 text-center">
@@ -28,9 +28,9 @@ class CityLayout extends Component {
   }
 
   async handleExit(event){
-    const {dispatch, currentTime, nextCity} = this.props;
-    await dispatch(selectCity('Paris'));
-    dispatch(startTimer(currentTime));
+    const {dispatch, nextCity} = this.props;
+    await dispatch(loadNextCity());
+    dispatch(startTimer());
   }
 
   handleClick(event){
@@ -89,11 +89,7 @@ class CityLayout extends Component {
 
 const mapStateToProps = (state, ownProps = {}) => {
   return {
-    allCities: state.gameState.allCities,
     currentCity: state.gameState.currentCity,
-    nextCity: state.gameState.nextCity,
-    thiefCities: state.gameState.thiefCities,
-    currentTime: state.timer.time,
     isOn: state.timer.isOn
   }
 }

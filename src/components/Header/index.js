@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '../Button';
 
 import { connect } from 'react-redux'
-import {startTimer} from '../../actions/timer';
+import { startTimer } from '../../actions/timer';
 
 import './style.css';
 
@@ -17,7 +17,7 @@ class Header extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-6">
-              <div>Time: {timeRemaining} seconds</div>
+              <p>Time: {timeRemaining} seconds</p>
             </div>
             <div className="col-xs-6 text-right">
               <Button label="Restart game" size="small"/>
