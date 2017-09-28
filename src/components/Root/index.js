@@ -25,9 +25,7 @@ export class Root extends Component {
         {!intro && !isLoading && <CityLayout />}
         {this.props.children}
         <footer className="container">
-          <h4>Images</h4>
-          <a href='http://www.freepik.com/free-vector/st-patrick-s-background-design_1064485.htm'>Designed by Freepik</a>
-          <a href='http://fr.freepik.com/vecteurs-libre/bonne-st-le-jour-de-patrick-de-fond-elf_1047111.htm'>Designed by Freepik</a>
+          <small>Images:<a target="_blank" href='http://www.freepik.com/free-vector/st-patrick-s-background-design_1064485.htm'>Designed by Freepik</a></small>
         </footer>
       </div>
     );

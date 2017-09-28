@@ -28,7 +28,7 @@ class CityLayout extends Component {
   }
 
   async handleExit(event){
-    const {dispatch, nextCity} = this.props;
+    const {dispatch} = this.props;
     await dispatch(loadNextCity());
     dispatch(startTimer());
   }

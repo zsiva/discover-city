@@ -1,5 +1,3 @@
-import {fetchJson} from '../utils/fetch';
-
 const LOAD_DATA = 'LOAD_DATA';
 const ITEMS_LOADING = 'ITEMS_LOADING';
 const CREATE_LIST = 'CREATE_LIST';
@@ -13,7 +11,7 @@ const loadGameData = (url) => dispatch => {
   return setTimeout(() => {
       dispatch(createCityList(5));
       dispatch(itemsAreLoading(false));
-      
+
   }, 2000);
 };
 

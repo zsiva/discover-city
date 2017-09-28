@@ -8,7 +8,7 @@ import {START_TIMER, STOP_TIMER, TICK } from '../actions/timer';
          isOn: true,
          time: action.time ? action.time : state.time,
          interval: action.interval
-       };
+       }
 
      case STOP_TIMER:
        return {
@@ -16,7 +16,7 @@ import {START_TIMER, STOP_TIMER, TICK } from '../actions/timer';
          isOn: false,
          time: state.time,
          interval: null
-       };
+       }
 
      case TICK:
       if(state.time > 0) {
@@ -24,10 +24,6 @@ import {START_TIMER, STOP_TIMER, TICK } from '../actions/timer';
       } else {
         return {...state, time: 0, gameEnded: true}
       }
-      return {
-         ...state,
-         time: state.time - 1
-       };
 
      default:
        return state;

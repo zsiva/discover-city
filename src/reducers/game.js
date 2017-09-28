@@ -1,4 +1,4 @@
-import { SELECT_CITY, LOAD_CITY} from '../actions/cities';
+import { LOAD_CITY } from '../actions/cities';
 import {ITEMS_LOADING, CREATE_LIST} from '../actions/game';
 
 import { CITIES } from '../data/cities.js';

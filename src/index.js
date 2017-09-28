@@ -7,8 +7,6 @@ import './index.css';
 
 import configureStore from './configure-store';
 
-import {CITIES} from './data/cities.js';
-
 const initialState = {
   timer: {
      isOn: false,
