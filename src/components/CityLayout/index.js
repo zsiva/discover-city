@@ -11,7 +11,7 @@ import {ListGroup} from 'react-bootstrap'
 import './style.css';
 
 import { loadNextCity } from '../../actions/cities';
-import { stopTimer, startTimer } from '../../actions/timer';
+import { stopTimer, startTimer, addTime } from '../../actions/timer';
 
 const CityRow = (props) =>
   <div className="col-xs-12 col-sm-4 text-center">
@@ -41,7 +41,8 @@ class CityLayout extends Component {
       this.setState({...this.state,
         header: "Yes! He was in " + currentCity.name,
         body: "Well done, you earn some extra time!. But he is on the run again. Follow the hints to see where he went next!"
-      })
+      });
+      dispatch(addTime(5))
     } else {
       this.setState({...this.state,
         header: "No, sorry! He was in " + currentCity.name,
@@ -52,8 +53,7 @@ class CityLayout extends Component {
   }
 
   render() {
-    const { currentCity, isOn } = this.props;
-
+    const { currentCity, isOn,gameEnded } = this.props;
     return (
       <div>
         <Header />
@@ -82,7 +82,13 @@ class CityLayout extends Component {
           buttonLabel="Find him!"
           onExiting={this.handleExit}
           />
-      </div>
+          <Lightbox
+            img='./images/timeup.jpg'
+            header="Your time is up!"
+            body="Unfortunately the thief got away with O&apos;Greeny&apos;s gold"
+             />
+        </div>
+
     );
   }
 }
@@ -90,7 +96,8 @@ class CityLayout extends Component {
 const mapStateToProps = (state, ownProps = {}) => {
   return {
     currentCity: state.gameState.currentCity,
-    isOn: state.timer.isOn
+    isOn: state.timer.isOn,
+    gameEnded: state.timer.gameEnded
   }
 }
 
