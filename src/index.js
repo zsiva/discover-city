@@ -10,7 +10,7 @@ import configureStore from './configure-store';
 const initialState = {
   timer: {
      isOn: false,
-     time: 30,
+     time: 15,
      interval: null
    },
    gameState: {
