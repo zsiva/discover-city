@@ -12,4 +12,6 @@ section{
 .App{
   background-color: #BADB94;
   height: 100vh;
+  position: relative;
+overflow: scroll;
 }

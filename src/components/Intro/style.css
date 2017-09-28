@@ -1,3 +1,14 @@
 .leprechaun{
   max-height: 150px;
 }
+.intro{
+  background: url(/images/banner.png) repeat-x;
+  padding: 60px 30px 30px;
+  border: 2px solid white;
+  position: absolute;
+  top: 10%;
+  z-index: 2;
+  width: 80%;
+  margin-left: -40%;
+  left: 50%;
+}

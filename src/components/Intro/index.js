@@ -7,7 +7,8 @@ class Intro extends Component {
   render() {
     const {handleClick} = this.props;
     return (
-      <section className="container">
+      <section className="container intro">
+        
         <h1 className="text-center visible-xs">Help O&apos;Greeny</h1>
         <div className="row">
           <div className="col-sm-4 text-center">
