@@ -6,11 +6,10 @@
   height: 60px;
 }
 
-.leprechaun{
-  float: left;
-  margin-top: 30px;
-}
-
 section{
   padding: 20px 0;
+}
+.App{
+  background-color: #BADB94;
+  height: 100vh;
 }
