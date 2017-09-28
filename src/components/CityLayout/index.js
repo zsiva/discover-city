@@ -34,17 +34,17 @@ class CityLayout extends Component {
   }
 
   handleClick(event){
-    const {nextCity, dispatch} = this.props;
+    const {currentCity, dispatch} = this.props;
     dispatch(stopTimer());
 
-    if ( event.currentTarget.innerText === nextCity.name) {
+    if ( event.currentTarget.innerText === currentCity.name) {
       this.setState({...this.state,
-        header: "Yes! He was in " + nextCity.name,
+        header: "Yes! He was in " + currentCity.name,
         body: "Well done, you earn some extra time!. But he is on the run again. Follow the hints to see where he went next!"
       })
     } else {
       this.setState({...this.state,
-        header: "No, sorry! He was in " + nextCity.name,
+        header: "No, sorry! He was in " + currentCity.name,
         body: "You missed him!. Get some more hints to see where he went next!"
       })
     }
@@ -52,7 +52,7 @@ class CityLayout extends Component {
   }
 
   render() {
-    const { nextCity, isOn } = this.props;
+    const { currentCity, isOn } = this.props;
 
     return (
       <div>
@@ -66,13 +66,13 @@ class CityLayout extends Component {
             </div>
             <div className="col-xs-8">
               <ListGroup>
-                {isOn && nextCity.hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
+                {isOn && currentCity.hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
               </ListGroup>
             </div>
           </div>
           <h3 className="text-center">Where is he?</h3>
           <div className="row">
-            { nextCity.cityOptions.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
+            { currentCity && currentCity.cityOptions.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
           </div>
         </section>
         <Lightbox
@@ -90,6 +90,7 @@ class CityLayout extends Component {
 const mapStateToProps = (state, ownProps = {}) => {
   return {
     allCities: state.gameState.allCities,
+    currentCity: state.gameState.currentCity,
     nextCity: state.gameState.nextCity,
     thiefCities: state.gameState.thiefCities,
     currentTime: state.timer.time,

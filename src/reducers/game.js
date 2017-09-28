@@ -11,7 +11,7 @@ const gameState = (state = [], action) => {
       return {...state, isLoading: action.isLoading, intro: action.intro }
     case CREATE_LIST:
       let list = selectRandom(action.num);
-      return {...state, selectedCities : list, currentCity:list[0], maxCities: action.num }
+      return {...state, selectedCities : list, currentCity: list[0], maxCities: action.num }
     case LOAD_CITY:
       if(state.currentCityID < state.maxCities - 1){
         state.currentCityID++;
