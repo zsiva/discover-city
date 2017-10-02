@@ -8,15 +8,15 @@ export const CITIES = [
       },
       {
         label: 'Chilling at TierGarten',
-        img: 'images/cities/retiro.jpg'
+        img: 'images/cities/tiergarten.jpg'
       },
       {
         label: 'Crossing the Oberbaumbrücke',
-        img: 'images/cities/retiro.jpg'
+        img: 'images/cities/oberbaum.jpg'
       },
       {
         label: 'Going up the Fernsehturm',
-        img: 'images/cities/retiro.jpg'
+        img: 'images/cities/fernsehturm.jpg'
       }
     ],
     cityOptions: ['Berlin', 'London', 'Budapest']
@@ -25,7 +25,7 @@ export const CITIES = [
       name: 'Paris',
       hints: [
         {
-          label: 'Buying a croissant in a bakery near Notre Dame',
+          label: 'In a shop near Notre Dame',
           img: 'images/cities/notre-dame.jpg'
         },
         {
@@ -51,12 +51,12 @@ export const CITIES = [
           img: 'images/cities/retiro.jpg'
         },
         {
-          label: 'Enjoying some paintings in the Vatican',
+          label: 'Around the Vatican',
           img: 'images/cities/vatican.jpg'
         },
         {
           label: 'Making pictures at the Colosseum',
-          img: 'images/cities/retiro.jpg'
+          img: 'images/cities/colosseum.jpg'
         }
       ],
       cityOptions: ['Helsinki', 'Nantes', 'Rome']
@@ -84,7 +84,7 @@ export const CITIES = [
       hints: [
         {
           label: 'Riding a bike along the canals and Vondelpark',
-          img: 'images/cities/retiro.jpg'
+          img: 'images/cities/vondelpark.jpg'
         },
         {
           label: 'Visiting Anne Frank House',
