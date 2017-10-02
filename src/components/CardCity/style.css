@@ -10,6 +10,7 @@
   margin: 0 auto;
   transform-style: preserve-3d;
   transition: transform 1s;
+  cursor: pointer;
 }
 
 .cityImage .front, .cityImage .back{
