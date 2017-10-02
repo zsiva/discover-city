@@ -15,7 +15,7 @@ class CardCity extends Component {
     const { img, label } = this.props;
     return(
       <Col xs={6} sm={3} className="cityCol">
-        <div className={["cityImage", this.state.classes].join(' ')} onClick={this.handleClick} >
+        <div className={["cityImage", this.state.classes].join(' ')} onMouseDown={this.handleClick} >
           <div className="front"></div>
           <div className="back" style={{backgroundImage: 'url('+ img +')'}}><span className="cityLabel">{label}</span></div>
         </div>

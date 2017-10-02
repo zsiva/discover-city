@@ -17,6 +17,9 @@ section{
 }
 
 /*Overwrite bootstrap*/
+.modal-dialog{
+  transform: translate(0, 20%)!important;
+}
 @media only screen and (max-width : 480px) {
   h1, h2{
     font-size: 26px;
