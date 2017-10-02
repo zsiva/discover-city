@@ -6,6 +6,7 @@ import Header from '../Header';
 import Lightbox from '../Lightbox';
 import Spinner from '../Spinner';
 import HintRow from '../HintRow';
+import Hints from './Hints';
 
 import {ListGroup} from 'react-bootstrap'
 import './style.css';
@@ -53,26 +54,15 @@ class CityLayout extends Component {
   }
 
   render() {
-    const { currentCity, isOn,gameEnded } = this.props;
+    const { currentCity, isOn, gameEnded } = this.props;
     return (
       <div>
         <Header />
         {this.state.spinner && <Spinner text="Loading data"/>}
         <section className="container">
+          <Hints currentCity={currentCity} isOn={isOn} />
           <div className="row">
-            <h5 className="visible-xs text-center">The thief was last seen ...</h5>
-            <div className="col-xs-4 text-center">
-              <h5 className="hidden-xs">The thief was last seen ...</h5>
-              <img src="./images/thief-hidden.png" alt="thief hidden"/>
-            </div>
-            <div className="col-xs-8">
-              <ListGroup>
-                {isOn && currentCity.hints.map((hint, i) => <HintRow key={i} label={hint} wait={i * 2000}/>)}
-              </ListGroup>
-            </div>
-          </div>
-          <h3 className="text-center">Where is he?</h3>
-          <div className="row">
+            <h5 className="text-center">Where is he?</h5>
             { currentCity && currentCity.cityOptions.map((city, index) => <CityRow key={index} label={city} handleClick={this.handleClick} />)}
           </div>
         </section>
