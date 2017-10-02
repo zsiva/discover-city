@@ -1,6 +1,9 @@
+.option-btn .btn{
+  padding: 15px;
+  width: 100%;
+  max-width: 200px;
+  margin: 10px 0;
+}
 .option-btn{
-  padding: 15px 20px;
-    width: 100%;
-    max-width: 300px;
-    margin: 10px;
+  padding: 5px;
 }

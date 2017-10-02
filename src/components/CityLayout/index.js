@@ -14,8 +14,8 @@ import { loadNextCity } from '../../actions/cities';
 import { stopTimer, startTimer, addTime } from '../../actions/timer';
 
 const CityRow = (props) =>
-  <div className="col-xs-12 col-sm-4 text-center">
-    <Button className="option-btn" label={props.label} onClick={props.handleClick}/>
+  <div className="col-xs-4 text-center option-btn">
+    <Button label={props.label} onClick={props.handleClick}/>
   </div>
 
 
@@ -60,13 +60,14 @@ class CityLayout extends Component {
         {this.state.spinner && <Spinner text="Loading data"/>}
         <section className="container">
           <div className="row">
+            <h5 className="visible-xs text-center">The thief was last seen ...</h5>
             <div className="col-xs-4 text-center">
-              <h5>The thief was last seen ...</h5>
+              <h5 className="hidden-xs">The thief was last seen ...</h5>
               <img src="./images/thief-hidden.png" alt="thief hidden"/>
             </div>
             <div className="col-xs-8">
               <ListGroup>
-                {isOn && currentCity.hints.map((hint, i) => <HintRow key={i} num={i +1} label={hint} wait={(i+1) * 2000}/>)}
+                {isOn && currentCity.hints.map((hint, i) => <HintRow key={i} label={hint} wait={i * 2000}/>)}
               </ListGroup>
             </div>
           </div>

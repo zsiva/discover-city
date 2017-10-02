@@ -12,9 +12,9 @@ export const CITIES = [
     {
       name: 'Rome',
       hints: [
-        'Watching a chariot race in the Circus Maximus',
+        'Walking around the Circus Maximus',
         'Visiting the Temple of Jupiter',
-        'Picturing a gladiatior battle in the Colosseum'
+        'Making pictures at the Colosseum'
         ],
       cityOptions: ['Helsinki', 'Nantes', 'Rome']
     },
@@ -32,7 +32,7 @@ export const CITIES = [
       hints: [
         'Riding a bike along the canals and Vondelpark',
         'Visiting Anne Frank House',
-        'Eating some tapas in `La Latina`'
+        'Relaxing in some Coffee Shops'
         ],
       cityOptions: ['London', 'Amsterdam', 'Venice']
     }

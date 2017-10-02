@@ -25,8 +25,11 @@ export class Root extends Component {
         {!intro && !isLoading && <CityLayout />}
         {this.props.children}
         <footer className="container">
-<a href="http://www.freepik.com/free-vector/alarm-clock_796418.htm">Designed by Freepik</a>
-          <small>Images:<a target="_blank" href='http://www.freepik.com/free-vector/st-patrick-s-background-design_1064485.htm'>Designed by Freepik</a></small>
+          {intro && <small> Images by Freepik: &nbsp;
+              <a href="http://www.freepik.com/free-vector/alarm-clock_796418.htm">Clock</a>&nbsp;
+              <a target="_blank" href='http://www.freepik.com/free-vector/st-patrick-s-background-design_1064485.htm'>Leprechaun</a>
+            </small>
+          }
         </footer>
       </div>
     );

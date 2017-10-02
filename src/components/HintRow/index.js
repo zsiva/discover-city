@@ -12,10 +12,10 @@ class HintRow extends Component {
       }, this.props.wait);
   }
   render(){
-    const {label, num} = this.props;
+    const {label} = this.props;
 
     return (
-    <ListGroupItem style={{"visibility": this.state.hidden}} header={'Hint ' + num}>{label}</ListGroupItem>
+    <ListGroupItem style={{"visibility": this.state.hidden}}>{label}</ListGroupItem>
     )
   }
 };
