@@ -70,11 +70,15 @@ export const CITIES = [
         },
         {
           label: 'Admiring the paintings in the Prado Museum',
-          img: 'images/cities/retiro.jpg'
+          img: 'images/cities/prado.jpg'
         },
         {
           label: 'Eating some tapas in `La Latina`',
-          img: 'images/cities/retiro.jpg'
+          img: 'images/cities/latina.jpg'
+        },
+        {
+          label: 'Eating some tapas in `La Latina`',
+          img: 'images/cities/latina.jpg'
         }
       ],
       cityOptions: ['Madrid', 'Bucharest', 'Lisbon']
