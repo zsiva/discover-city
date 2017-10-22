@@ -1,4 +1,4 @@
-.menu{
+.menu {
   margin-bottom: 10px;
   padding: 10px;
   color: white;
@@ -6,22 +6,26 @@
   height: 60px;
 }
 
-section{
+section {
   padding: 20px 0;
 }
-.App{
-  background-color: #BADB94;
+.App {
+  background-color: #badb94;
   height: 100vh;
   position: relative;
   overflow: scroll;
 }
 
-/*Overwrite bootstrap*/
-.modal-dialog{
-  transform: translate(0, 20%)!important;
+.centered {
+  margin: 0 auto;
 }
-@media only screen and (max-width : 480px) {
-  h1, h2{
+/*Overwrite bootstrap*/
+.modal-body {
+  overflow: auto;
+}
+@media only screen and (max-width: 480px) {
+  h1,
+  h2 {
     font-size: 26px;
   }
 }

@@ -1,8 +1,8 @@
-.leprechaun{
+.leprechaun {
   max-height: 200px;
 }
 
-.intro{
+.intro {
   background: url(/images/banner.png) repeat-x;
   padding: 60px 30px 30px;
   border: 2px solid white;
@@ -14,11 +14,11 @@
   left: 50%;
 }
 
-@media only screen and (max-width : 480px) {
-  .leprechaun{
+@media only screen and (max-width: 480px) {
+  .leprechaun {
     max-height: 130px;
   }
-  .intro{
+  .intro {
     top: 3%;
     padding: 40px 20px 20px;
   }

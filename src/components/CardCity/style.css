@@ -1,19 +1,23 @@
-.cityCol{
+.cityCol {
   padding: 0 5px;
   margin: 5px 0;
 }
 
-.cityImage{
-  height: 150px;
+.cityImage {
+  height: 120px;
   position: relative;
-  max-width: 150px;
+  width: 120px;
   margin: 0 auto;
   transform-style: preserve-3d;
   transition: transform 1s;
   cursor: pointer;
 }
-
-.cityImage .front, .cityImage .back{
+.smallCard {
+  height: 60px;
+  width: 60px;
+}
+.cityImage .front,
+.cityImage .back {
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -24,17 +28,14 @@
 }
 .cityImage .front {
   background-image: url(./bg-card.jpg);
-
-
 }
 .cityImage .back {
-  transform: rotateY( 180deg );
+  transform: rotateY(180deg);
 }
-.cityImage.flipped{
+.cityImage.flipped {
   transform: rotate3d(0, 1, 0, 180deg);
-
 }
-.cityLabel{
+.cityLabel {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -43,12 +44,4 @@
   border-radius: 0 0 10px 10px;
   text-align: center;
   color: #fff;
-}
-
-@media only screen and (max-width : 480px) {
-  .cityImage{
-    height: 130px;
-    max-width: 130px;
-    font-size: 13px;
-  }
 }
