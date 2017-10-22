@@ -1,11 +1,13 @@
-.header{
+.header {
   background-color: black;
   padding: 10px 0;
   color: white;
 }
 
-.header p{
-  line-height: 35px;
+.header p {
   font-size: 15px;
+  margin-right: 10px;
+}
+.header .progress {
   margin: 0;
- }
+}

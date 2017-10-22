@@ -64,8 +64,8 @@ class CityLayout extends Component {
         {this.state.spinner && <Spinner text="Loading data" />}
         <section className="container">
           <Hints currentCity={currentCity} isOn={isOn} />
-          <div className="row">
-            <h5 className="text-center">Where is he?</h5>
+          <div className="row text-center">
+            <h5>Where is he?</h5>
             {currentCity &&
               currentCity.cityOptions.map((city, index) => (
                 <CityRow

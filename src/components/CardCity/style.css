@@ -1,6 +1,7 @@
 .cityCol {
   padding: 0 5px;
   margin: 5px 0;
+  perspective: 500px;
 }
 
 .cityImage {

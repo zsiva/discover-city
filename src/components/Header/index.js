@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import Button from '../Button';
+import React, { Component } from "react";
+import Button from "../Button";
+import { ProgressBar } from "react-bootstrap";
+import { connect } from "react-redux";
+import { startTimer } from "../../actions/timer";
 
-import { connect } from 'react-redux'
-import { startTimer } from '../../actions/timer';
-
-import './style.css';
+import "./style.css";
 
 class Header extends Component {
-  componentWillMount(){
+  componentWillMount() {
     this.props.dispatch(startTimer());
   }
   render() {
-    const {handleClick, timeRemaining} = this.props;
+    const { handleClick, timeRemaining } = this.props;
+    let perc = timeRemaining * 100 / 15;
     return (
       <header className="header">
         <div className="container">
-          <p>Time: {timeRemaining} seconds</p>
+          <p className="hidden-xs pull-left">
+            <strong>Time:</strong> {timeRemaining} sec
+          </p>
+          <ProgressBar striped bsStyle="success" now={perc} />
         </div>
       </header>
     );
@@ -25,9 +29,7 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps = {}) => {
   return {
     timeRemaining: state.timer.time
-  }
-}
+  };
+};
 
-export default connect(
-  mapStateToProps,
-)(Header)
+export default connect(mapStateToProps)(Header);
