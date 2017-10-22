@@ -4,14 +4,14 @@ import { Provider } from "react-redux";
 
 import Root from "./components/Root";
 import "./index.css";
-
+import { INITIAL_TIME } from "./data/constants";
 import configureStore from "./configure-store";
 import registerServiceWorker from "./registerServiceWorker";
 
 const initialState = {
   timer: {
     isOn: false,
-    time: 15,
+    time: INITIAL_TIME,
     interval: null
   },
   gameState: {

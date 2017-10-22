@@ -3,7 +3,7 @@ import Button from "../Button";
 import Lightbox from "../Lightbox";
 
 import "./style.css";
-
+import { INITIAL_TIME } from "../../data/constants";
 class Intro extends Component {
   constructor(props) {
     super(props);
@@ -75,9 +75,9 @@ class Intro extends Component {
             options below
           </p>
           <p>
-            You have 30 seconds to complete the find the thief. If you answer
-            correctly 5 seconds will added to your timer, a wrong answer will
-            substract 5 seconds.
+            You have {INITIAL_TIME} seconds to complete the find the thief. If
+            you answer correctly 5 seconds will added to your timer, a wrong
+            answer will substract 5 seconds.
           </p>
         </Lightbox>
       </section>

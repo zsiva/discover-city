@@ -10,7 +10,12 @@ import Hints from "./Hints";
 import "./style.css";
 
 import { loadNextCity } from "../../actions/cities";
-import { stopTimer, startTimer, addTime } from "../../actions/timer";
+import {
+  stopTimer,
+  startTimer,
+  addTime,
+  substractTime
+} from "../../actions/timer";
 
 const CityRow = props => (
   <div className="col-xs-4 text-center option-btn">
@@ -50,6 +55,7 @@ class CityLayout extends Component {
         header: "No, sorry! He was in " + currentCity.name,
         body: "You missed him!. Get some more hints to see where he went next!"
       });
+      dispatch(substractTime(5));
     }
     this.refs.thiefLightbox.open();
   }

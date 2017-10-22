@@ -10,7 +10,8 @@ class Header extends Component {
     this.props.dispatch(startTimer());
   }
   render() {
-    const { timeRemaining } = this.props;
+    let { timeRemaining } = this.props;
+    timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
     let perc = timeRemaining * 100 / 15;
     return (
       <header className="header">
