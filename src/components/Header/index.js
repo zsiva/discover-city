@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Button from "../Button";
 import { ProgressBar } from "react-bootstrap";
 import { connect } from "react-redux";
 import { startTimer } from "../../actions/timer";
@@ -11,7 +10,7 @@ class Header extends Component {
     this.props.dispatch(startTimer());
   }
   render() {
-    const { handleClick, timeRemaining } = this.props;
+    const { timeRemaining } = this.props;
     let perc = timeRemaining * 100 / 15;
     return (
       <header className="header">

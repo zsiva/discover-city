@@ -58,7 +58,7 @@ class Lightbox extends Component {
             </div>
           )}
         </Modal.Body>
-        <Modal.Footer className="text-center">
+        <Modal.Footer>
           <Button onClick={this.close} label={buttonLabel} />
         </Modal.Footer>
       </Modal>

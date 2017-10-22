@@ -5,10 +5,8 @@ import Button from "../Button";
 import Header from "../Header";
 import Lightbox from "../Lightbox";
 import Spinner from "../Spinner";
-import HintRow from "../HintRow";
 import Hints from "./Hints";
 
-import { ListGroup } from "react-bootstrap";
 import "./style.css";
 
 import { loadNextCity } from "../../actions/cities";
@@ -85,6 +83,7 @@ class CityLayout extends Component {
           onExiting={this.handleExit}
         />
         <Lightbox
+          show={gameEnded}
           img="./images/timeup.jpg"
           header="Your time is up!"
           body="Unfortunately the thief got away with O&apos;Greeny&apos;s gold"

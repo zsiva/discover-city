@@ -3,7 +3,6 @@ import Button from "../Button";
 import Lightbox from "../Lightbox";
 
 import "./style.css";
-import cardStyle from "../CardCity/style.css";
 
 class Intro extends Component {
   constructor(props) {

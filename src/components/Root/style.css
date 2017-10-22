@@ -23,9 +23,16 @@ section {
 .modal-body {
   overflow: auto;
 }
+.modal-footer .btn {
+  margin: 0 auto;
+  display: block;
+}
 @media only screen and (max-width: 480px) {
   h1,
   h2 {
     font-size: 26px;
+  }
+  .modal-body img {
+    max-width: 100px;
   }
 }
