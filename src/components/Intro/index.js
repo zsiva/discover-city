@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Button, Responsive } from 'semantic-ui-react';
 
 import Lightbox from '../Lightbox';
@@ -14,29 +14,31 @@ class Intro extends Component {
     };
   }
 
-  handleOpen = () => this.setState({ isOpen: true });
+  handleOpen = () => this.refs.lightbox.open();
 
   render() {
     return (
-      <section className="container intro">
-        <Responsive as="h1" maxWidth={480}>
-          Help O&apos;Greeny
-        </Responsive>
-        <img className="leprechaun" src="./images/ogreeny2.png" alt="ogreeny" />
-        <Responsive as="h1" minWidth={481}>
-          Help O&apos;Greeny
-        </Responsive>
-        <p className="text-left">
-          Our little lepprechaun O&apos;Greeny was chilling, having a cold Guiness while his money
-          was stolen.
-        </p>
-        <p className="text-left">
-          He has been looking all over the world for it but cannot find it. Help him!
-        </p>
-        <br />
-        <Button color="green" content="Rules" onClick={this.handleOpen} />
-        <Button onClick={this.props.handleClick} content="Start game" color="green" />
-        <Lightbox open={this.state.isOpen} header="Rules">
+      <Fragment>
+        <section className="container intro">
+          <Responsive as="h1" maxWidth={480}>
+            Help O&apos;Greeny
+          </Responsive>
+          <img className="leprechaun" src="./images/ogreeny2.png" alt="ogreeny" />
+          <Responsive as="h1" minWidth={481}>
+            Help O&apos;Greeny
+          </Responsive>
+          <p className="text-left">
+            Our little lepprechaun O&apos;Greeny was chilling, having a cold Guiness while his money
+            was stolen.
+          </p>
+          <p className="text-left">
+            He has been looking all over the world for it but cannot find it. Help him!
+          </p>
+          <br />
+          <Button color="green" content="Rules" onClick={this.handleOpen} />
+          <Button onClick={this.props.handleClick} content="Start game" color="green" />
+        </section>
+        <Lightbox ref="lightbox" open={this.state.isOpen} header="Rules">
           <p>
             <strong>Summary:</strong>
             <br />You are now a detective. You need to extract clues from the cards to find out the
@@ -62,7 +64,7 @@ class Intro extends Component {
             5 seconds will added to your timer, a wrong answer will substract 5 seconds.
           </p>
         </Lightbox>
-      </section>
+      </Fragment>
     );
   }
 }

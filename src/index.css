@@ -4,7 +4,16 @@ body {
   font-family: sans-serif;
 }
 
-footer{
+footer {
   position: absolute;
   bottom: 0;
+}
+
+/* FIXME: Overwrite modal, it displays offscreen */
+.modal {
+  margin-top: 0 !important;
+}
+
+.pull-right {
+  float: right;
 }

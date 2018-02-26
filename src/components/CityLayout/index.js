@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 //import Button from '../Button';
 import Header from '../Header';
 import Lightbox from '../Lightbox';
 import Spinner from '../Spinner';
 import Hints from './Hints';
-
-import './style.css';
 
 import { loadNextCity } from '../../actions/cities';
 import { stopTimer, startTimer, addTime, substractTime } from '../../actions/timer';
@@ -15,12 +13,12 @@ import { stopTimer, startTimer, addTime, substractTime } from '../../actions/tim
 class CityLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = { header: '', body: '', spinner: false };
+    this.state = { header: '', body: '', spinner: false, openModal: false };
     this.handleClick = this.handleClick.bind(this);
-    this.handleExit = this.handleExit.bind(this);
+    this.getNextCity = this.getNextCity.bind(this);
   }
 
-  async handleExit(event) {
+  async getNextCity() {
     const { dispatch } = this.props;
     await dispatch(loadNextCity());
     dispatch(startTimer());
@@ -46,43 +44,56 @@ class CityLayout extends Component {
       });
       dispatch(substractTime(5));
     }
-    this.refs.thiefLightbox.open();
+    this.refs.hintsLightbox.open();
+    this.getNextCity();
   }
 
   render() {
     const { currentCity, isOn, gameEnded } = this.props;
+    if (gameEnded) {
+      this.refs.hintsLightbox.open();
+    }
     return (
-      <div>
+      <Fragment>
         <Header />
         {this.state.spinner && <Spinner text="Loading data" />}
-        <section className="container">
+        <section className="ui container">
           <Hints currentCity={currentCity} isOn={isOn} />
-          <div className="row text-center">
-            <h5>Where is he?</h5>
 
-            <Button.Group color="green">
-              {currentCity &&
-                currentCity.cityOptions.map((city, index) => (
+          <Button.Group color="green" widths="5" size="large">
+            {currentCity &&
+              currentCity.cityOptions.map((city, index) => (
+                <Fragment>
                   <Button key={index} content={city} onClick={this.handleClick} />
-                ))}
-            </Button.Group>
-          </div>
+                  {index < 2 && <Button.Or />}
+                </Fragment>
+              ))}
+          </Button.Group>
         </section>
         <Lightbox
-          img="./images/thief.png"
-          header={this.state.header}
-          ref="thiefLightbox"
-          body={this.state.body}
-          buttonLabel="Find him!"
-          onExiting={this.handleExit}
-        />
-        <Lightbox
-          show={gameEnded}
-          img="./images/timeup.jpg"
-          header="Your time is up!"
-          body="Unfortunately the thief got away with O&apos;Greeny&apos;s gold"
-        />
-      </div>
+          ref="hintsLightbox"
+          open={gameEnded}
+          buttonLabel={gameEnded ? 'Finish game' : 'Find him!'}
+          onHide={this.getNextCity}
+          header={gameEnded ? 'Your time is up!' : this.state.header}
+        >
+          <Grid>
+            <Grid.Column width={8}>
+              <img
+                src={gameEnded ? './images/timeup.jpg' : './images/thief.png'}
+                alt={this.state.header}
+              />
+            </Grid.Column>
+            <Grid.Column width={8}>
+              {gameEnded ? (
+                <p>Unfortunately the thief got away with O&apos;Greeny&apos;s gold</p>
+              ) : (
+                this.state.body.split('.').map((p, i) => <p key={i}>{p}</p>)
+              )}
+            </Grid.Column>
+          </Grid>
+        </Lightbox>
+      </Fragment>
     );
   }
 }

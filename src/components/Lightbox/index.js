@@ -10,31 +10,18 @@ class Lightbox extends Component {
     };
   }
 
-  handleClose = () => this.setState({ isOpen: false });
+  open = () => this.setState({ isOpen: true });
+  close = () => this.setState({ isOpen: false });
 
   render() {
-    const { header, body, img, buttonLabel = 'Close', open, children } = this.props;
+    const { header, buttonLabel = 'Close', trigger, children } = this.props;
 
     return (
-      <Modal open={this.state.isOpen || open} onClose={this.handleClose} size="small">
+      <Modal trigger={trigger} open={this.state.isOpen} onClose={this.close}>
         <Modal.Header>{header}</Modal.Header>
-        <Modal.Content>
-          {children}
-          {!children && (
-            <div className="row">
-              {img && (
-                <div className="col-xs-6 text-center">
-                  <img src={img} alt={header} />
-                </div>
-              )}
-              <div className={[img ? 'col-xs-6' : 'col-xs-12', 'text-center'].join(' ')}>
-                {body && body.split('.').map((p, i) => <p key={i}>{p}</p>)}
-              </div>
-            </div>
-          )}
-        </Modal.Content>
+        <Modal.Content>{children}</Modal.Content>
         <Modal.Actions>
-          <Button content={buttonLabel} color="green" onClick={this.handleClose} />
+          <Button content={buttonLabel} color="green" onClick={this.close} />
         </Modal.Actions>
       </Modal>
     );

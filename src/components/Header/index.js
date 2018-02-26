@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Progress } from 'semantic-ui-react';
+import { Statistic } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { startTimer } from '../../actions/timer';
 
@@ -12,15 +12,19 @@ class Header extends Component {
   render() {
     let { timeRemaining } = this.props;
     timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
-    let perc = timeRemaining * 100 / 15;
+
     return (
       <header className="header">
-        <div className="container">
-          <p className="hidden-xs pull-left">
-            <strong>Time:</strong> {timeRemaining} sec
-          </p>
-          <Progress percent={perc} color="green" />
-        </div>
+        <Statistic.Group widths="two" color="green" inverted size="small">
+          <Statistic>
+            <Statistic.Value text>Where is he?</Statistic.Value>
+            <Statistic.Label>Check the cards!</Statistic.Label>
+          </Statistic>
+          <Statistic>
+            <Statistic.Value>{timeRemaining}</Statistic.Value>
+            <Statistic.Label>sec</Statistic.Label>
+          </Statistic>
+        </Statistic.Group>
       </header>
     );
   }
