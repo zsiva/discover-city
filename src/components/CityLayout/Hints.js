@@ -7,8 +7,8 @@ const Hints = props => (
     {props.isOn &&
       props.currentCity &&
       props.currentCity.hints.map((hint, i) => (
-        <Grid.Column mobile={8} tablet={4} computer={4}>
-          <CardCity key={i} {...hint} />
+        <Grid.Column key={i} mobile={8} tablet={4} computer={4}>
+          <CardCity {...hint} />
         </Grid.Column>
       ))}
   </Grid>

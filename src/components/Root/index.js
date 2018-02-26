@@ -28,11 +28,20 @@ export class Root extends Component {
           {intro && (
             <small>
               Images by Freepik: &nbsp;
-              <a href="http://www.freepik.com/free-vector/four-leaf-clover-background_765853.htm">
+              <a
+                rel="noopener noreferrer"
+                href="http://www.freepik.com/free-vector/four-leaf-clover-background_765853.htm"
+              >
                 cards
               </a>&nbsp;
-              <a href="http://www.freepik.com/free-vector/alarm-clock_796418.htm">Clock</a>&nbsp;
               <a
+                rel="noopener noreferrer"
+                href="http://www.freepik.com/free-vector/alarm-clock_796418.htm"
+              >
+                Clock
+              </a>&nbsp;
+              <a
+                rel="noopener noreferrer"
                 target="_blank"
                 href="http://www.freepik.com/free-vector/st-patrick-s-background-design_1064485.htm"
               >

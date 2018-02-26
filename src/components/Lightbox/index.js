@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import { Modal, Header, Button } from 'semantic-ui-react';
-import { Button as CustomButton } from '../Button';
+import { Modal, Button } from 'semantic-ui-react';
 
 class Lightbox extends Component {
   constructor(props) {

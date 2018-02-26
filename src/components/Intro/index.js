@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Button, Responsive, Grid, Modal } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Button, Responsive } from 'semantic-ui-react';
 
 import Lightbox from '../Lightbox';
 
