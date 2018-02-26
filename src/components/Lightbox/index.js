@@ -1,45 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { Modal } from "react-bootstrap";
-import Button from "../Button";
+import { Modal, Header, Button } from 'semantic-ui-react';
+import { Button as CustomButton } from '../Button';
 
 class Lightbox extends Component {
   constructor(props) {
     super(props);
-    this.state = { showModal: false };
-    this.close = this.close.bind(this);
-    this.open = this.open.bind(this);
+    this.state = {
+      isOpen: false,
+    };
   }
 
-  close() {
-    this.setState({ showModal: false });
-  }
-
-  open() {
-    this.setState({ showModal: true });
-  }
+  handleClose = () => this.setState({ isOpen: false });
 
   render() {
-    const {
-      header,
-      body,
-      img,
-      buttonLabel = "Close",
-      onExiting,
-      show,
-      children
-    } = this.props;
+    const { header, body, img, buttonLabel = 'Close', open, children } = this.props;
 
     return (
-      <Modal
-        show={this.state.showModal || show}
-        onHide={this.close}
-        onExiting={onExiting}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title className="text-center">{header}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      <Modal open={this.state.isOpen || open} onClose={this.handleClose} size="small">
+        <Modal.Header>{header}</Modal.Header>
+        <Modal.Content>
           {children}
           {!children && (
             <div className="row">
@@ -48,19 +28,15 @@ class Lightbox extends Component {
                   <img src={img} alt={header} />
                 </div>
               )}
-              <div
-                className={[img ? "col-xs-6" : "col-xs-12", "text-center"].join(
-                  " "
-                )}
-              >
-                {body && body.split(".").map((p, i) => <p key={i}>{p}</p>)}
+              <div className={[img ? 'col-xs-6' : 'col-xs-12', 'text-center'].join(' ')}>
+                {body && body.split('.').map((p, i) => <p key={i}>{p}</p>)}
               </div>
             </div>
           )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.close} label={buttonLabel} />
-        </Modal.Footer>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button content={buttonLabel} color="green" onClick={this.handleClose} />
+        </Modal.Actions>
       </Modal>
     );
   }

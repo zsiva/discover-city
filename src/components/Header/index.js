@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { ProgressBar } from "react-bootstrap";
-import { connect } from "react-redux";
-import { startTimer } from "../../actions/timer";
+import React, { Component } from 'react';
+import { Progress } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { startTimer } from '../../actions/timer';
 
-import "./style.css";
+import './style.css';
 
 class Header extends Component {
   componentWillMount() {
@@ -19,7 +19,7 @@ class Header extends Component {
           <p className="hidden-xs pull-left">
             <strong>Time:</strong> {timeRemaining} sec
           </p>
-          <ProgressBar striped bsStyle="success" now={perc} />
+          <Progress percent={perc} color="green" />
         </div>
       </header>
     );
@@ -28,7 +28,7 @@ class Header extends Component {
 
 const mapStateToProps = (state, ownProps = {}) => {
   return {
-    timeRemaining: state.timer.time
+    timeRemaining: state.timer.time,
   };
 };
 
