@@ -9,11 +9,11 @@
 section {
   padding: 20px 0;
 }
-.App {
+
+.app {
   background-color: #badb94;
   height: 100vh;
   position: relative;
-  overflow: scroll;
 }
 
 .centered {

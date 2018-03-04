@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Responsive } from 'semantic-ui-react';
-
 import Lightbox from '../Lightbox';
 
 import './style.css';
@@ -19,24 +18,26 @@ class Intro extends Component {
   render() {
     return (
       <Fragment>
-        <section className="container intro">
-          <Responsive as="h1" maxWidth={480}>
-            Help O&apos;Greeny
-          </Responsive>
-          <img className="leprechaun" src="./images/ogreeny2.png" alt="ogreeny" />
-          <Responsive as="h1" minWidth={481}>
-            Help O&apos;Greeny
-          </Responsive>
-          <p className="text-left">
-            Our little lepprechaun O&apos;Greeny was chilling, having a cold Guiness while his money
-            was stolen.
-          </p>
-          <p className="text-left">
-            He has been looking all over the world for it but cannot find it. Help him!
-          </p>
-          <br />
-          <Button color="green" content="Rules" onClick={this.handleOpen} />
-          <Button onClick={this.props.handleClick} content="Start game" color="green" />
+        <section className="ui container">
+          <div className="intro">
+            <Responsive as="h1" maxWidth={480}>
+              Help O&apos;Greeny
+            </Responsive>
+            <img className="leprechaun" src="./images/ogreeny2.png" alt="ogreeny" />
+            <Responsive as="h1" minWidth={481}>
+              Help O&apos;Greeny
+            </Responsive>
+            <p className="text-left">
+              Our little lepprechaun O&apos;Greeny was chilling, having a cold Guiness while his
+              money was stolen.
+            </p>
+            <p className="text-left">
+              He has been looking all over the world for it but cannot find it. Help him!
+            </p>
+            <br />
+            <Button color="green" content="Rules" onClick={this.handleOpen} />
+            <Button onClick={this.props.handleClick} content="Start game" color="green" />
+          </div>
         </section>
         <Lightbox ref="lightbox" open={this.state.isOpen} header="Rules">
           <p>

@@ -16,10 +16,10 @@ export class Root extends Component {
     this.props.loadGameData();
   }
   render() {
-    const { className, isLoading = false, intro = true } = this.props;
+    const { isLoading = false, intro = true } = this.props;
 
     return (
-      <div className={['App', className].join(' ')}>
+      <div className="app">
         {isLoading && <Spinner text="Loading game" />}
         {intro && <Intro handleClick={this.handleClick} />}
         {!intro && !isLoading && <CityLayout />}
