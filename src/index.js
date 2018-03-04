@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Root from './components/Root';
 import './index.css';
@@ -19,13 +20,18 @@ const initialState = {
     currentCityID: 0,
     gameEnded: false,
   },
+  player: {
+    money: 100,
+  },
 };
 
 const store = configureStore(initialState);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Root />
+    <Router>
+      <Route path="/" component={Root} />
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );
