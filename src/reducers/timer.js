@@ -11,14 +11,14 @@ const timer = (state = [], action) => {
     case START_TIMER:
       return {
         ...state,
-        isOn: true,
+        timerIsOn: true,
         time: action.time ? action.time : state.time,
         interval: action.interval
       };
     case STOP_TIMER:
       return {
         ...state,
-        isOn: false,
+        timerIsOn: false,
         time: state.time,
         interval: null
       };
