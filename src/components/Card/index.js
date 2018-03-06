@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import './style.css';
 
-class CardCity extends Component {
+class Card extends Component {
   constructor(props) {
     super(props);
     this.state = { classes: '' };
     this.handleClick = this.handleClick.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps, this.props);
+  }
+
   handleClick() {
     this.setState({ ...this.state, classes: 'flipped' });
   }
+
   render() {
     const { img, label } = this.props;
     return (
@@ -25,4 +31,4 @@ class CardCity extends Component {
   }
 }
 
-export default CardCity;
+export default Card;
