@@ -12,7 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const initialState = {
   timer: {
-    isOn: false,
+    timerIsOn: false,
     time: INITIAL_TIME,
     interval: null,
   },

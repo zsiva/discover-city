@@ -1,18 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Responsive } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+
 import Lightbox from '../Lightbox';
 
 import './style.css';
 import { INITIAL_TIME } from '../../data/constants';
 
 class Intro extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
-
   handleOpen = () => this.refs.lightbox.open();
 
   render() {
@@ -36,10 +31,12 @@ class Intro extends Component {
             </p>
             <br />
             <Button color="green" content="Rules" onClick={this.handleOpen} />
-            <Button onClick={this.props.handleClick} content="Start game" color="green" />
+            <Link to="/user">
+              <Button content="Start game" color="green" />
+            </Link>
           </div>
         </section>
-        <Lightbox ref="lightbox" open={this.state.isOpen} header="Rules">
+        <Lightbox ref="lightbox" header="Rules">
           <p>
             <strong>Summary:</strong>
             <br />You are now a detective. You need to extract clues from the cards to find out the
@@ -65,6 +62,30 @@ class Intro extends Component {
             5 seconds will added to your timer, a wrong answer will substract 5 seconds.
           </p>
         </Lightbox>
+        <footer className="container">
+          <small>
+            Images by Freepik: &nbsp;
+            <a
+              rel="noopener noreferrer"
+              href="http://www.freepik.com/free-vector/four-leaf-clover-background_765853.htm"
+            >
+              cards
+            </a>&nbsp;
+            <a
+              rel="noopener noreferrer"
+              href="http://www.freepik.com/free-vector/alarm-clock_796418.htm"
+            >
+              Clock
+            </a>&nbsp;
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="http://www.freepik.com/free-vector/st-patrick-s-background-design_1064485.htm"
+            >
+              Leprechaun
+            </a>
+          </small>
+        </footer>
       </Fragment>
     );
   }
