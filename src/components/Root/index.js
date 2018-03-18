@@ -7,6 +7,7 @@ import { Redirect } from 'react-router';
 import Intro from '../Pages/Intro';
 import PlayerHome from '../Pages/PlayerHome';
 import GetMoney from '../Pages/GetMoney';
+import City from '../Pages/City';
 
 import './style.css';
 
@@ -20,6 +21,7 @@ export function Root(props: RootPropType) {
       <Switch>
         <Route exact path="/" component={Intro} />} />
         <Route path="/user" component={PlayerHome} />
+        <Route path="/city" component={City} />
         <Route
           path="/get-money"
           render={() => {
