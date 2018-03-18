@@ -39,8 +39,14 @@ class City extends Component {
             <Grid.Column>
  
 		<Container textAlign='left'>
+		         <img height="128" width="180"
+                src={`./images/${currentCity.policeimg}`}
+				alt={'./images/${currentCity.policeimg}'}
+				
+              />
+     
 				<Button animated color="blue" size="huge">
-				<Button.Content visible size="huge" content="POLIZEI"></Button.Content>
+				<Button.Content visible size="huge" content={currentCity.police}></Button.Content>
 				<Button.Content hidden onClick={this.handleOpen}>
 				    <Icon name='taxi' />
 				</Button.Content>
@@ -79,13 +85,13 @@ class City extends Component {
 		</Container>
 		
 		
-		 <Lightbox ref="lightbox" header="POLIZEI">
+		 <Lightbox ref="lightbox" header={currentCity.police}>
           <p>
             <strong>Welcome to the police department of {currentCity.name} </strong><br />
             <br />I heard you are looking for the thief who stole O'Greeny's money
           </p>
           <p>
-              This is the information we have so far.<br /><br />
+              The  information we have so far is that he has been seen :<br /><br />
 			 {selectedCities[1].hints[0].label}<br />
 			 {selectedCities[1].hints[1].label}<br />
 			 {selectedCities[1].hints[2].label}<br />	 
