@@ -18,23 +18,18 @@ class City extends Component {
     this.props.dispatch(loadGameData());
   }
 
-  async getNextCity() {
-    const { dispatch } = this.props;
-    await dispatch(loadNextCity());
-    console.log('getting next city');
-  }
-
-  handleClick(event) {
+   handleClick(event) {
     const { currentCity } = this.props;
     console.log(this.props);
-
 	}
+
 
   render() {
     const { currentCity,selectedCities  } = this.props;
 	console.log(this.props);
 	 // const nextCity = selectedCities[currentCityID + 1]
 	   console.log(selectedCities[2]);
+
     return (
       <Fragment>
         <Header />

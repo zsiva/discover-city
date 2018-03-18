@@ -23,6 +23,12 @@ export function Root(props: RootPropType) {
         <Route path="/user" component={PlayerHome} />
         <Route path="/city" component={City} />
         <Route
+          path="/city"
+          render={() => {
+            return props.currentCity ? <City /> : <Redirect to="/user" />;
+          }}
+        />
+        <Route
           path="/get-money"
           render={() => {
             return props.currentCity ? <GetMoney /> : <Redirect to="/user" />;
