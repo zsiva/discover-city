@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { Button, Responsive } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import Lightbox from '../Lightbox';
+import Lightbox from '../../Lightbox';
 
 import './style.css';
-import { INITIAL_TIME } from '../../data/constants';
+import { INITIAL_TIME } from '../../../data/constants';
 
 class Intro extends Component {
   handleOpen = () => this.refs.lightbox.open();

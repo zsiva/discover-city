@@ -1,20 +1,27 @@
+//@flow
 import React, { Component, Fragment } from 'react';
 import { Button, List, Label, Segment, Grid } from 'semantic-ui-react';
-import { connect } from 'react-redux';
+import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { startPlayer } from '../../actions/player';
-import { loadGameData } from '../../actions/game';
+import { startPlayer } from '../../../actions/player';
+import { loadGameData } from '../../../actions/game';
 
 import './style.css';
+export type PlayerHomePropType = {
+  dispatch: Dispatch,
+  timeRemaining: number,
+  moneyLeft: number,
+};
 
-class PlayerHome extends Component {
+class PlayerHome extends Component<PlayerHomePropType> {
   componentDidMount() {
     this.props.dispatch(loadGameData());
     this.props.dispatch(startPlayer());
   }
 
   handleOpen = () => this.refs.lightbox.open();
+  handleClick = () => console.log('clicked');
 
   render() {
     let { timeRemaining, moneyLeft } = this.props;
@@ -68,7 +75,7 @@ class PlayerHome extends Component {
             </Link>
             <Button
               size="large"
-              onClick={this.props.handleClick}
+              onClick={this.handleClick}
               content="Find him"
               color="green"
               floated="right"

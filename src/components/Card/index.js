@@ -1,14 +1,24 @@
+//@flow
 import React, { Component } from 'react';
 import './style.css';
 
-class Card extends Component {
-  constructor(props) {
+export type CardPropType = {
+  label: string,
+  img: string,
+};
+
+export type CardStateType = {
+  classes: string,
+};
+
+class Card extends Component<CardPropType, CardStateType> {
+  constructor(props: CardPropType) {
     super(props);
     this.state = { classes: '' };
-    this.handleClick = this.handleClick.bind(this);
+    (this: any).handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: CardPropType) {
     console.log(nextProps, this.props);
   }
 

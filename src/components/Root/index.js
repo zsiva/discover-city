@@ -1,15 +1,20 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
-import Intro from '../Intro';
-import PlayerHome from '../PlayerHome';
-import GetMoney from '../GetMoney';
+import Intro from '../Pages/Intro';
+import PlayerHome from '../Pages/PlayerHome';
+import GetMoney from '../Pages/GetMoney';
 
 import './style.css';
 
-export function Root(props) {
+export type RootPropType = {
+  currentCity: string,
+};
+
+export function Root(props: RootPropType) {
   return (
     <div className="app">
       <Switch>

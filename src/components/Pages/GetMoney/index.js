@@ -1,18 +1,32 @@
+//@flow
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import { connect, type Dispatch } from 'react-redux';
 import { Button, Grid, Responsive, Statistic } from 'semantic-ui-react';
-import Lightbox from '../Lightbox';
+import Lightbox from '../../Lightbox';
 import Cards from './Cards';
-import { loadNextCity } from '../../actions/cities';
-import { startTimer } from '../../actions/timer';
-import Header from '../Header';
+import { loadNextCity } from '../../../actions/cities';
+import { startTimer } from '../../../actions/timer';
+import Header from '../../Header';
+import { type CityPropType } from './Cards';
 
-class GetMoney extends Component {
-  constructor(props) {
+export type GetMoneyPropType = {
+  currentCity: CityPropType,
+  gameEnded: boolean,
+  timerIsOn: boolean,
+  dispatch: Dispatch,
+};
+
+export type GetMoneyStateType = {
+  openModal: boolean,
+  correctAnswers: number,
+};
+
+class GetMoney extends Component<GetMoneyPropType, GetMoneyStateType> {
+  constructor(props: GetMoneyPropType) {
     super(props);
     this.state = { openModal: false, correctAnswers: 0 };
-    this.handleClick = this.handleClick.bind(this);
-    this.getNextCity = this.getNextCity.bind(this);
+    (this: any).handleClick = this.handleClick.bind(this);
+    (this: any).getNextCity = this.getNextCity.bind(this);
   }
 
   componentDidMount() {

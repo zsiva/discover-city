@@ -1,8 +1,19 @@
+//@flow
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import Card from '../Card';
+import Card, { type CardPropType } from '../../Card';
 
-const Cards = props => {
+export type CityPropType = {
+  name: string,
+  hints: CardPropType[],
+  cityOptions: string[],
+};
+
+export type CardsPropType = {
+  currentCity: CityPropType,
+};
+
+const Cards = (props: CardsPropType) => {
   return (
     <Grid>
       {props.currentCity.hints.map((hint, i) => (
