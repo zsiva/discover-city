@@ -4,9 +4,6 @@ import { Button, List, Label, Segment, Grid } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { startPlayer } from '../../../actions/player';
-import { loadGameData } from '../../../actions/game';
-
 import './style.css';
 export type PlayerHomePropType = {
   dispatch: Dispatch,
@@ -15,11 +12,6 @@ export type PlayerHomePropType = {
 };
 
 class PlayerHome extends Component<PlayerHomePropType> {
-  componentDidMount() {
-    this.props.dispatch(loadGameData());
-    this.props.dispatch(startPlayer());
-  }
-
   handleOpen = () => this.refs.lightbox.open();
   handleClick = () => console.log('clicked');
 

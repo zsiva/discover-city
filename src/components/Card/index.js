@@ -29,8 +29,11 @@ class Card extends Component<CardPropType, CardStateType> {
   render() {
     const { img, label } = this.props;
     return (
-      <div className="cityCol">
-        <div className={['cityImage', this.state.classes].join(' ')} onMouseDown={this.handleClick}>
+      <div className="card">
+        <div
+          className={['cardContent', this.state.classes].join(' ')}
+          onMouseDown={this.handleClick}
+        >
           <div className="front" />
           <div className="back" style={{ backgroundImage: 'url(' + img + ')' }}>
             <span className="cityLabel">{label}</span>

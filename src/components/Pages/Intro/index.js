@@ -49,7 +49,7 @@ class Intro extends Component {
 
           <strong>Rules:</strong>
           <br />
-          <div role="img" aria-label="Clickable card" className="cityImage smallCard pull-right">
+          <div role="img" aria-label="Clickable card" className="cardContent smallCard pull-right">
             <div className="front" />
           </div>
           <p>
