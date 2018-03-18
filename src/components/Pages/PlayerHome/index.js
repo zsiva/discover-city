@@ -73,13 +73,15 @@ class PlayerHome extends Component<PlayerHomePropType> {
             <Link to="/get-time">
               <Button size="large" color="green" content="Get extra time" />
             </Link>
-            <Button
-              size="large"
-              onClick={this.handleClick}
-              content="Find him"
-              color="green"
-              floated="right"
-            />
+            <Link to="/city">
+              <Button
+                size="large"
+                onClick={this.handleClick}
+                content="Find him"
+                color="green"
+                floated="right"
+              />
+            </Link>
           </div>
         </section>
       </Fragment>
