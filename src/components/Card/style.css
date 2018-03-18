@@ -1,24 +1,24 @@
-.cityCol {
+.card {
   padding: 0 5px;
   margin: 5px 0;
   perspective: 500px;
 }
 
-.cityImage {
-  height: 120px;
+.cardContent {
+  height: 8rem;
   position: relative;
-  width: 120px;
+  width: 8rem;
   margin: 0 auto;
   transform-style: preserve-3d;
   transition: transform 1s;
   cursor: pointer;
 }
 .smallCard {
-  height: 60px;
-  width: 60px;
+  height: 4rem;
+  width: 4rem;
 }
-.cityImage .front,
-.cityImage .back {
+.cardContent .front,
+.cardContent .back {
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -27,13 +27,20 @@
   border-radius: 10px;
   position: absolute;
 }
-.cityImage .front {
+.cardContent .front {
   background-image: url(./bg-card.jpg);
 }
-.cityImage .back {
+.cardContent .back {
   transform: rotateY(180deg);
 }
-.cityImage.flipped {
+.cardContent .icon {
+  background-color: white;
+  text-align: center;
+}
+.cardContent .icon i {
+  margin-top: 2rem;
+}
+.cardContent.flipped {
   transform: rotate3d(0, 1, 0, 180deg);
 }
 .cityLabel {

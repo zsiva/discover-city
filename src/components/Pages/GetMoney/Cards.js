@@ -1,28 +1,47 @@
 //@flow
-import React from 'react';
+import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import Card, { type CardPropType } from '../../Card';
+import CardIcon from '../../Card/CardIcon';
+import { shuffleArray } from '../../../utils/operations';
 
-export type CityPropType = {
-  name: string,
-  hints: CardPropType[],
-  cityOptions: string[],
+const cardIcons = ['birthday', 'alarm', 'bug', 'paint brush', 'unhide', 'pin'];
+
+const cardList = shuffleArray([...cardIcons, ...cardIcons]);
+
+export type CardsStateType = {
+  cards: string[],
+  previousAnswer: string,
+  flipped: boolean,
 };
 
-export type CardsPropType = {
-  currentCity: CityPropType,
-};
+export default class Cards extends Component<string, CardsStateType> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      previousAnswer: '',
+      flipped: false,
+    };
+    (this: any).handleClick = this.handleClick.bind(this);
+  }
 
-const Cards = (props: CardsPropType) => {
-  return (
-    <Grid>
-      {props.currentCity.hints.map((hint, i) => (
-        <Grid.Column key={i} mobile={8} tablet={4} computer={4}>
-          <Card {...hint} />
-        </Grid.Column>
-      ))}
-    </Grid>
-  );
-};
+  handleClick(iconName: string) {
+    if (this.state.previousAnswer === iconName) {
+      this.setState({ previousAnswer: '', flipped: true });
+    } else {
+      this.setState({ previousAnswer: iconName });
+    }
+  }
 
-export default Cards;
+  render() {
+    return (
+      <Grid>
+        {cardList.map(card => (
+          <Grid.Column mobile={8} tablet={4} computer={4} onClick={() => this.handleClick(card)}>
+            <CardIcon icon={card} flipped={this.state.flipped} />
+          </Grid.Column>
+        ))}
+        <br />
+      </Grid>
+    );
+  }
+}

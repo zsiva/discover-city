@@ -1,8 +1,10 @@
 // @flow
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router';
+import { startPlayer } from '../../actions/player';
+import { loadGameData } from '../../actions/game';
 
 import Intro from '../Pages/Intro';
 import PlayerHome from '../Pages/PlayerHome';
@@ -13,9 +15,13 @@ import './style.css';
 
 export type RootPropType = {
   currentCity: string,
+  dispatch: Dispatch,
 };
 
 export function Root(props: RootPropType) {
+  props.dispatch(loadGameData());
+  props.dispatch(startPlayer());
+
   return (
     <div className="app">
       <Switch>
