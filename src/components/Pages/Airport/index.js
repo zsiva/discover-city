@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Divider } from 'semantic-ui-react';
+import { Button, Container, Grid, Card, Divider } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
@@ -76,16 +76,49 @@ class Airport extends Component {
         <Container textAlign="center">
         <Grid columns={2}>
         <Grid.Column>
-          <Button  color="green" size="huge">
-                 <Button.Content size="huge" onClick={this.handleOpen}>Have a {currentCity.food}</Button.Content>
-          </Button>
+          <Card centered>
+            <Card.Content textAlign="center">
+              <Card.Header>
+              <img height="128" width="180"
+              src={`./images/shop.png`}
+              alt={`./images/shop.png`}
+              background-color="white"/>
+              </Card.Header>
+              <Card.Meta>
+              </Card.Meta>
+              <Card.Description>
+                Visit the airport shop
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+            <Button  color="green" size="huge">
+                   <Button.Content size="huge" onClick={this.handleOpen}>Have a {currentCity.food}</Button.Content>
+            </Button>
+            </Card.Content>
+          </Card>
         </Grid.Column>
         <Grid.Column>
-        <Link to="/city">
-          <Button  color="green" size="huge">
-                 <Button.Content size="huge" content="Back to the city"></Button.Content>
-          </Button>
-        </Link>
+          <Card centered>
+            <Card.Content textAlign="center">
+              <Card.Header>
+              <img height="128" width="180"
+              src={`./${currentCity.hints[0].img}`}
+              alt={`./${currentCity.hints[0].img}`}/>
+              </Card.Header>
+              <Card.Meta>
+              </Card.Meta>
+              <Card.Description>
+                You forgot to spend time {currentCity.hints[0].label} ?
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+            <Link to="/city">
+              <Button  color="green" size="huge">
+                     <Button.Content size="huge" content="Back to the city"></Button.Content>
+              </Button>
+            </Link>
+            </Card.Content>
+          </Card>
         </Grid.Column>
         </Grid>
         </Container>
