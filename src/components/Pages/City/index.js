@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Icon, Card } from 'semantic-ui-react';
+import { Button, Container, Grid, Icon, Card , Divider} from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
@@ -100,6 +100,14 @@ class City extends Component {
 				      </Card>
             </Grid.Column>
           </Grid>
+        </Container>
+        <Divider horizontal>OR</Divider>
+        <Container textAlign="center">
+        <Link to="/user">
+          <Button  color="green" size="huge">
+                 <Button.Content size="huge" content="Back to previous menu"></Button.Content>
+          </Button>
+        </Link>
         </Container>
 
 		 <Lightbox ref="lightbox" header={currentCity.police}>

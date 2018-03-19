@@ -1,14 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Icon } from 'semantic-ui-react';
+import { Button, Container, Grid, Divider } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import Lightbox from '../../Lightbox';
 import './style.css';
 
-class City extends Component {
+class Airport extends Component {
   handleOpen = () => this.refs.lightbox.open();
+
+  handleClick() {console.log(this.props.currentCity.name);
+    this.setState({
+      ...this.state,
+      header: 'Yes! He was in ' + this.props.currentCity.name,
+      body:
+        'Well done, you earn some extra time!. But he is on the run again. Follow the hints to see where he went next!',
+    });
+    console.log(this.state);
+
+   }
 
   render() {
     const { currentCity, selectedCities, isLoading } = this.props;
@@ -33,13 +44,14 @@ class City extends Component {
             <br />
           </div>
         </section>
-
         <section className="ui container" />
+
+      <Divider horizontal>Destinations</Divider>
         <Container>
           <Grid columns={3}>
-            <Grid.Column>
+            <Grid.Column onClick={() => this.handleClick()}>
               <Container textAlign="left">
-			            <Button  color="green" size="huge">
+			            <Button id="toto" color="green" size="huge">
 				               <Button.Content size="huge" content={selectedCities[1].cityOptions[0]}></Button.Content>
                 </Button>
               </Container>
@@ -60,25 +72,33 @@ class City extends Component {
             </Grid.Column>
           </Grid>
         </Container>
+        <Divider horizontal>Activities</Divider>
+        <Container textAlign="center">
+        <Grid columns={2}>
+        <Grid.Column>
+          <Button  color="green" size="huge">
+                 <Button.Content size="huge" onClick={this.handleOpen}>Have a {currentCity.food}</Button.Content>
+          </Button>
+        </Grid.Column>
+        <Grid.Column>
+        <Link to="/city">
+          <Button  color="green" size="huge">
+                 <Button.Content size="huge" content="Back to the city"></Button.Content>
+          </Button>
+        </Link>
+        </Grid.Column>
+        </Grid>
+        </Container>
 
-		 <Lightbox ref="lightbox" header={currentCity.police}>
-          <p>
-            <strong>Welcome to the police department of {currentCity.name} </strong>
-            <br />
-            <br />I heard you are looking for the thief who stole O'Greeny's money
-          </p>
-          <p>This is the information we have so far.</p>
-          <ul>
-            <li>{selectedCities[1].hints[0].label}</li>
-            <li>{selectedCities[1].hints[1].label}</li>
-            <li>{selectedCities[1].hints[2].label}</li>
-          </ul>
+        <Lightbox ref="lightbox" header={currentCity.name}>
+             <p>
+               <strong>That {currentCity.food} was delicious and you feel recovered</strong>
+               <br />
+               <br />Now, get back to work! You are a detective, not a tourist!
+             </p>
+           </Lightbox>
 
-          <p>
-            <br /> Good luck <br />
-          </p>
-        </Lightbox>
-      </Fragment>
+	    </Fragment>
     );
   }
 }
@@ -92,4 +112,4 @@ const mapStateToProps = (state, ownProps = {}) => {
   };
 };
 
-export default connect(mapStateToProps)(City);
+export default connect(mapStateToProps)(Airport);

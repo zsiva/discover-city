@@ -2,7 +2,8 @@ export const CITIES = [
    {
     name: 'Berlin',
     police: 'POLIZEI',
-	policeimg: 'policeDE.png',
+	  policeimg: 'policeDE.png',
+    food:'Bratwurst',
     hints: [
       {
         label: 'Walking around the Cathedral',
@@ -26,7 +27,8 @@ export const CITIES = [
     {
       name: 'Paris',
       police: 'GENDARMERIE',
-	  policeimg: 'policeFR.png',
+	    policeimg: 'policeFR.png',
+      food:'Croissant',
       hints: [
         {
           label: 'In a shop near Notre Dame',
@@ -46,7 +48,8 @@ export const CITIES = [
     {
       name: 'Rome',
       police: 'CARABINIERI',
-	  policeimg: 'policeIT.png',
+	    policeimg: 'policeIT.png',
+      food:'Pizza',
       hints: [
         {
           label: 'Walking around the Circus Maximus',
@@ -70,7 +73,8 @@ export const CITIES = [
     {
       name: 'Madrid',
       police: 'GUARDIA CIVIL',
-	  policeimg: 'policeES.png',
+	    policeimg: 'policeES.png',
+      food:'Paella',
       hints: [
         {
           label: 'Making a picnic in the Retiro Park',
@@ -94,7 +98,8 @@ export const CITIES = [
     {
       name: 'Amsterdam',
       police: 'POLITIE',
-	  policeimg: 'policeNL.png',
+	    policeimg: 'policeNL.png',
+      food:'Heineken',
       hints: [
         {
           label: 'Riding a bike along the canals and Vondelpark',
