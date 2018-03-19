@@ -22,7 +22,7 @@ class Airport extends Component {
    }
 
   render() {
-    const { currentCity, selectedCities, isLoading } = this.props;
+    const { currentCity, selectedCities, isLoading, moneyLeft} = this.props;
     //console.log(this.props);
     // const nextCity = selectedCities[currentCityID + 1]
 
@@ -82,7 +82,7 @@ class Airport extends Component {
               <img height="128" width="180"
               src={`./images/shop.png`}
               alt={`./images/shop.png`}
-              background-color="white"/>
+              />
               </Card.Header>
               <Card.Meta>
               </Card.Meta>
@@ -127,6 +127,8 @@ class Airport extends Component {
              <p>
                <strong>That {currentCity.food} was delicious and you feel recovered</strong>
                <br />
+               <br />You have now {moneyLeft-10} euros.
+               <br />
                <br />Now, get back to work! You are a detective, not a tourist!
              </p>
            </Lightbox>
@@ -142,6 +144,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     selectedCities: state.gameState.selectedCities,
     currentCityID: state.gameState.currentCityID,
     isLoading: state.gameState.isLoading,
+    moneyLeft: state.player.money,
   };
 };
 

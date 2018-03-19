@@ -52,6 +52,10 @@ export const CITIES = [
       food:'Pizza',
       hints: [
         {
+          label: 'Making pictures at the Colosseum',
+          img: 'images/cities/colosseum.jpg'
+        },
+        {
           label: 'Walking around the Circus Maximus',
           img: 'images/cities/retiro.jpg'
         },
@@ -62,10 +66,6 @@ export const CITIES = [
         {
           label: 'Around the Vatican',
           img: 'images/cities/vatican.jpg'
-        },
-        {
-          label: 'Making pictures at the Colosseum',
-          img: 'images/cities/colosseum.jpg'
         }
       ],
       cityOptions: ['Helsinki', 'Nantes', 'Rome']

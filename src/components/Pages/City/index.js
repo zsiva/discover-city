@@ -138,6 +138,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     selectedCities: state.gameState.selectedCities,
     currentCityID: state.gameState.currentCityID,
     isLoading: state.gameState.isLoading,
+    //moneyLeft: state.player.money,
   };
 };
 
