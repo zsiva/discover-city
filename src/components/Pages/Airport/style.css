@@ -1,0 +1,25 @@
+.leprechaun {
+  max-height: 130px;
+}
+
+.airport {
+  background: url(/images/airportbanner.png) ;
+  background-repeat: no-repeat;
+  background-position: top;
+  padding: 40px 20px 20px;
+  border: 2px solid white;
+  margin-top: 30px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 481px) {
+  .leprechaun {
+    max-height: 220px;
+    float: left;
+  }
+  .intro {
+    padding: 60px 30px 30px;
+    max-width: 650px;
+    margin: 40px auto;
+  }
+}

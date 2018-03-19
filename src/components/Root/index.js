@@ -10,6 +10,7 @@ import Intro from '../Pages/Intro';
 import PlayerHome from '../Pages/PlayerHome';
 import GetMoney from '../Pages/GetMoney';
 import City from '../Pages/City';
+import Airport from '../Pages/Airport';
 
 import './style.css';
 
@@ -26,6 +27,7 @@ export function Root(props: RootPropType) {
     <div className="app">
       <Switch>
         <Route exact path="/" component={Intro} />} />
+        <Route path="/airport" component={Airport} />
         <Route path="/user" component={PlayerHome} />
         <Route path="/city" component={City} />
         <Route

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Icon } from 'semantic-ui-react';
+import { Button, Container, Grid, Icon, Card } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
@@ -24,42 +24,80 @@ class City extends Component {
         <Container>
           <Grid columns={3}>
             <Grid.Column>
-              <Container textAlign="left">
-		         <img height="128" width="180"
-                src={`./images/${currentCity.policeimg}`}
-				alt={'./images/${currentCity.policeimg}'}
-				
-              />
-
-			  <Button animated color="blue" size="huge">
-				<Button.Content visible size="huge" content={currentCity.police}></Button.Content>
-                  <Button.Content hidden onClick={this.handleOpen}>
-                    <Icon name="taxi" />
-                  </Button.Content>
-                </Button>
-              </Container>
+				   <Card centered>
+					<Card.Content textAlign="center">
+					<Card.Header>
+						<img height="128" width="180"
+						src={`./images/${currentCity.policeimg}`}
+						alt={`./images/${currentCity.policeimg}`}/>
+					</Card.Header>
+					<Card.Meta>
+					</Card.Meta>
+					<Card.Description>
+						Visit the police station to get some hints
+					</Card.Description>
+					</Card.Content>
+					<Card.Content extra>
+						<Button animated color="blue" size="huge" fluid>
+						<Button.Content visible size="huge" content={currentCity.police}></Button.Content>
+						<Button.Content hidden onClick={this.handleOpen}>
+							<Icon name="taxi" />
+						</Button.Content>
+						</Button>
+					</Card.Content>
+				</Card>
             </Grid.Column>
             <Grid.Column>
-              <Container textAlign="center">
-                <Link to="/get-money">
-                  <Button animated color="green" size="huge">
+				<Card centered>
+					<Card.Content textAlign="center">
+					<Card.Header>
+						<img height="128" width="180"
+						src="./images/airport.png"
+						alt="./images/airport.png"/>
+					</Card.Header>
+					<Card.Meta>
+					</Card.Meta>
+					<Card.Description>
+						Visit the airport to change city
+					</Card.Description>
+					</Card.Content>
+					<Card.Content extra>
+                <Link to="/airport">
+                  <Button animated color="green" size="huge" fluid>
                     <Button.Content visible>Airport</Button.Content>
                     <Button.Content hidden>
                       <Icon name="plane" />
                     </Button.Content>
                   </Button>
                 </Link>
-              </Container>
+				  </Card.Content>
+				</Card>
             </Grid.Column>
             <Grid.Column>
-              <Container textAlign="right">
-                <Button animated color="green" size="huge">
+				<Card centered>
+					<Card.Content textAlign="center">
+					<Card.Header>
+						<img height="128" width="180"
+						src="./images/money.jpg"
+						alt="./images/money.jpg"/>
+					</Card.Header>
+					<Card.Meta>
+					</Card.Meta>
+					<Card.Description>
+						Earn some money to pay expenses
+					</Card.Description>
+					</Card.Content>
+					<Card.Content extra>
+                <Link to="/get-money">
+                  <Button animated color="green" size="huge" fluid>
                   <Button.Content visible size="huge" content="Earn money" />
                   <Button.Content hidden>
                     <Icon name="money" />
                   </Button.Content>
-                </Button>
-              </Container>
+                  </Button>
+                </Link>
+				  </Card.Content>
+				      </Card>
             </Grid.Column>
           </Grid>
         </Container>
