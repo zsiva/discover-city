@@ -9,8 +9,8 @@ import './style.css';
 
 class Airport extends Component {
   handleOpen = () => this.refs.lightbox.open();
-
-  handleClick() {console.log(this.props.currentCity.name);
+      handleOpen2 = () => this.refs.lightbox2.open();
+  handleClick() {
     this.setState({
       ...this.state,
       header: 'Yes! He was in ' + this.props.currentCity.name,
@@ -18,7 +18,17 @@ class Airport extends Component {
         'Well done, you earn some extra time!. But he is on the run again. Follow the hints to see where he went next!',
     });
     console.log(this.state);
+    console.log('Ciudad del Boton');
+    console.log(this.props.selectedCities[1].cityOptions[0]);
+    console.log('Ciudad siguiente');
+    console.log(this.props.selectedCities[1].name);
 
+    if (this.props.selectedCities[1].cityOptions[0] === this.props.selectedCities[1].name) {
+		console.log('YES! you guessed');
+    } else {
+		console.log('No,sorry ');
+    }
+	
    }
 
   render() {
@@ -51,7 +61,7 @@ class Airport extends Component {
           <Grid columns={3}>
             <Grid.Column onClick={() => this.handleClick()}>
               <Container textAlign="left">
-			            <Button id="toto" color="green" size="huge">
+			            <Button id="toto" color="green" size="huge" onClick={this.handleOpen2}>
 				               <Button.Content size="huge" content={selectedCities[1].cityOptions[0]}></Button.Content>
                 </Button>
               </Container>
@@ -92,7 +102,7 @@ class Airport extends Component {
             </Card.Content>
             <Card.Content extra>
             <Button  color="green" size="huge">
-                   <Button.Content size="huge" onClick={this.handleOpen}>Have a {currentCity.food}</Button.Content>
+				<Button.Content size="huge" onClick={this.handleOpen}>Have a {currentCity.food}</Button.Content>
             </Button>
             </Card.Content>
           </Card>
@@ -114,7 +124,7 @@ class Airport extends Component {
             <Card.Content extra>
             <Link to="/city">
               <Button  color="green" size="huge">
-                     <Button.Content size="huge" content="Back to the city"></Button.Content>
+				<Button.Content size="huge" content="Back to the city"></Button.Content>
               </Button>
             </Link>
             </Card.Content>
@@ -132,7 +142,15 @@ class Airport extends Component {
                <br />Now, get back to work! You are a detective, not a tourist!
              </p>
            </Lightbox>
-
+        <Lightbox ref="lightbox2" header={currentCity.name}>
+			You clicked on {this.props.selectedCities[1].cityOptions[0]} and the city was {this.props.selectedCities[1].name}
+				<br/>
+				<strong>Did you discover?</strong>
+				<ul>
+					<li> Yes? Have a {this.props.selectedCities[1].food}, you deserved it </li>
+					<li> No? Sorry.... keep tring </li>
+				</ul>			
+           </Lightbox>
 	    </Fragment>
     );
   }
