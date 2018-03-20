@@ -1,6 +1,6 @@
 //@flow
 import React, { Component } from 'react';
-import { Icon, Button } from 'semantic-ui-react';
+import { Icon, Button, Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -16,19 +16,28 @@ const defaultProps = {
 
 export default function Header(props: HeaderPropType) {
   return (
-    <header className="header">
-      <div className="ui container">
-        <p>Hello detective</p>
-        {props.displayUser && (
+    <Menu inverted>
+      <Menu.Item>
+        <Link to="/city">
+          <Icon name="home" />
+          City
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/airport">
+          <Icon name="plane" />
+          Airport
+        </Link>
+      </Menu.Item>
+      {props.displayUser && (
+        <Menu.Item position="right">
           <Link to="/user">
-            <Button color="white">
-              <Icon name="user" />
-              Profile
-            </Button>
+            <Icon name="user" />
+            Profile
           </Link>
-        )}
-      </div>
-    </header>
+        </Menu.Item>
+      )}
+    </Menu>
   );
 }
 
