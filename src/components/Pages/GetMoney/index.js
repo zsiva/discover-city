@@ -11,6 +11,7 @@ export type GetMoneyPropType = {
   gameEnded: boolean,
   dispatch: Dispatch,
   timeRemaining: number,
+  isLoading: boolean,
 };
 
 export type GetMoneyStateType = {
