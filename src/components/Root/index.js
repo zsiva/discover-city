@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 import { connect, Dispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router';
@@ -19,32 +19,26 @@ export type RootPropType = {
   dispatch: Dispatch,
 };
 
-export function Root(props: RootPropType) {
-  props.dispatch(loadGameData());
-  props.dispatch(startPlayer());
+class Root extends Component<RootPropType> {
+  constructor(props: RootPropType) {
+    super(props);
+    this.props.dispatch(loadGameData());
+    this.props.dispatch(startPlayer());
+  }
 
-  return (
-    <div className="app">
-      <Switch>
-        <Route exact path="/" component={Intro} />} />
-        <Route path="/airport" component={Airport} />
-        <Route path="/user" component={PlayerHome} />
-        <Route path="/city" component={City} />
-        <Route
-          path="/city"
-          render={() => {
-            return props.currentCity ? <City /> : <Redirect to="/user" />;
-          }}
-        />
-        <Route
-          path="/get-money"
-          render={() => {
-            return props.currentCity ? <GetMoney /> : <Redirect to="/user" />;
-          }}
-        />
-      </Switch>
-    </div>
-  );
+  render() {
+    return (
+      <div className="app">
+        <Switch>
+          <Route exact path="/" component={Intro} />} />
+          <Route path="/airport" component={Airport} />
+          <Route path="/user" component={PlayerHome} />
+          <Route path="/city" component={City} />
+          <Route path="/get-money" component={GetMoney} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
