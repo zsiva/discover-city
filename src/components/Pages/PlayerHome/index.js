@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { Button, List, Label, Segment, Grid } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Header from '../../Header';
 
 import './style.css';
 export type PlayerHomePropType = {
@@ -13,7 +14,6 @@ export type PlayerHomePropType = {
 
 class PlayerHome extends Component<PlayerHomePropType> {
   handleOpen = () => this.refs.lightbox.open();
-  handleClick = () => console.log('clicked');
 
   render() {
     let { timeRemaining, moneyLeft } = this.props;
@@ -21,9 +21,7 @@ class PlayerHome extends Component<PlayerHomePropType> {
 
     return (
       <Fragment>
-        <header className="header">
-          <div className="ui container">Hello detective</div>
-        </header>
+        <Header displayUser={false} />
         <section className="ui container">
           <Grid columns={2}>
             <Grid.Column>
@@ -66,13 +64,7 @@ class PlayerHome extends Component<PlayerHomePropType> {
               <Button size="large" color="green" content="Get extra time" />
             </Link>
             <Link to="/city">
-              <Button
-                size="large"
-                onClick={this.handleClick}
-                content="Find him"
-                color="green"
-                floated="right"
-              />
+              <Button size="large" content="Find him" color="green" floated="right" />
             </Link>
           </div>
         </section>

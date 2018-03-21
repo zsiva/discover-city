@@ -1,5 +1,6 @@
-.header {
+.ui.pointing.secondary.menu {
   background-color: black;
-  padding: 10px 0;
+}
+.ui.pointing.secondary.menu .item {
   color: white;
 }

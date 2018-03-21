@@ -1,11 +1,3 @@
-.menu {
-  margin-bottom: 10px;
-  padding: 10px;
-  color: white;
-  background-color: black;
-  height: 60px;
-}
-
 section {
   padding: 20px 0;
 }
@@ -19,13 +11,19 @@ section {
 .centered {
   margin: 0 auto;
 }
-/*Overwrite bootstrap*/
+/*Overwrite semantic*/
 .modal-body {
   overflow: auto;
 }
 .modal-footer .btn {
   margin: 0 auto;
   display: block;
+}
+.ui.centered.card {
+  min-height: 300px;
+}
+img {
+  max-width: 100%;
 }
 @media only screen and (max-width: 480px) {
   h1,
