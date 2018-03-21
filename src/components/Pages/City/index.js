@@ -116,7 +116,7 @@ class City extends Component {
             <br />
             <br />I heard you are looking for the thief who stole O'Greeny's money
           </p>
-          <p>This is the information we have so far.</p>
+          <p>This is the information we have so far. He has been seen:</p>
           <ul>
             <li>{selectedCities[1].hints[0].label}</li>
             <li>{selectedCities[1].hints[1].label}</li>

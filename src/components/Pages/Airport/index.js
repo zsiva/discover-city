@@ -5,30 +5,34 @@ import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import Lightbox from '../../Lightbox';
+import { substractMoney } from '../../../actions/player';
 import './style.css';
 
 class Airport extends Component {
-  handleOpen = () => this.refs.lightbox.open();
-      handleOpen2 = () => this.refs.lightbox2.open();
-  handleClick() {
-    this.setState({
-      ...this.state,
-      header: 'Yes! He was in ' + this.props.currentCity.name,
-      body:
-        'Well done, you earn some extra time!. But he is on the run again. Follow the hints to see where he went next!',
-    });
-    console.log(this.state);
-    console.log('Ciudad del Boton');
-    console.log(this.props.selectedCities[1].cityOptions[0]);
-    console.log('Ciudad siguiente');
-    console.log(this.props.selectedCities[1].name);
+constructor(props) {
+  super(props);
+  this.handleClick = this.handleClick.bind(this);
+  this.handleOpen = this.handleOpen.bind(this);
 
+}
+  handleOpen() {if (this.props.moneyLeft > 0) {
+    this.props.dispatch(substractMoney(50));
+    this.refs.lightbox.open();
+  }
+  else {
+    this.refs.lightbox3.open();
+  }
+
+  }
+  handleOpenSouv = () => this.refs.lightboxsouv.open();
+  handleOpen2 = () => this.refs.lightbox2.open();
+  handleClick() {
     if (this.props.selectedCities[1].cityOptions[0] === this.props.selectedCities[1].name) {
 		console.log('YES! you guessed');
     } else {
 		console.log('No,sorry ');
     }
-	
+
    }
 
   render() {
@@ -101,9 +105,15 @@ class Airport extends Component {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
+
             <Button  color="green" size="huge">
-				<Button.Content size="huge" onClick={this.handleOpen}>Have a {currentCity.food}</Button.Content>
+				        <Button.Content size="huge" onClick={this.handleOpen}>Have a {currentCity.food}</Button.Content>
             </Button>
+            <Divider horizontal></Divider>
+            <Button  color="green" size="huge" >
+				        <Button.Content size="huge"  onClick={this.handleOpenSouv}>Have a Souvenir</Button.Content>
+            </Button>
+
             </Card.Content>
           </Card>
         </Grid.Column>
@@ -137,7 +147,7 @@ class Airport extends Component {
              <p>
                <strong>That {currentCity.food} was delicious and you feel recovered</strong>
                <br />
-               <br />You have now {moneyLeft-10} euros.
+               <br />You have now {moneyLeft} euros.
                <br />
                <br />Now, get back to work! You are a detective, not a tourist!
              </p>
@@ -149,8 +159,22 @@ class Airport extends Component {
 				<ul>
 					<li> Yes? Have a {this.props.selectedCities[1].food}, you deserved it </li>
 					<li> No? Sorry.... keep tring </li>
-				</ul>			
+				</ul>
            </Lightbox>
+           <Lightbox ref="lightbox3" header={currentCity.name}>
+               I am afraid you have no money left to pay for that {currentCity.food}
+   				      <br/>
+                 <br/>
+   				<strong>Come back when you have some money!</strong>
+              </Lightbox>
+              <Lightbox ref="lightboxsouv" header={currentCity.name}>
+                  You have this nice postcard from {currentCity.name}
+      				      <br/>
+                    <img height="614" width="462"
+                    src={"./images/Souvenir.gif"}
+                    alt={"./images/Souvenir.gif"}/>
+                 </Lightbox>
+
 	    </Fragment>
     );
   }
