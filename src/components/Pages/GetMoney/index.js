@@ -1,11 +1,14 @@
 //@flow
 import React, { Component, Fragment } from 'react';
 import { connect, type Dispatch } from 'react-redux';
-import { Grid, Container, Statistic } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Grid, Container, Statistic, Button } from 'semantic-ui-react';
 import Lightbox from '../../Lightbox';
 import { startTimer } from '../../../actions/timer';
-import Cards from './Cards';
+import Cards from '../../Card/Cards';
+import Game from '../../Card/Game';
 import Spinner from '../../Spinner';
+import Header from '../../Header';
 
 export type GetMoneyPropType = {
   gameEnded: boolean,
@@ -32,22 +35,22 @@ class GetMoney extends Component<GetMoneyPropType, GetMoneyStateType> {
 
   componentDidMount() {
     const { dispatch } = this.props;
-
     dispatch(startTimer());
   }
 
   render() {
-    const { timeRemaining, isLoading } = this.props;
+    const { timeRemaining, isLoading, gameEnded } = this.props;
 
-    // if (gameEnded) {
-    //   this.refs.hintsLightbox.open();
-    // }
+    if (gameEnded) {
+      this.refs.hintsLightbox.open();
+    }
     if (isLoading) {
       return <Spinner text="Loading data" />;
     }
 
     return (
       <Fragment>
+        <Header />
         <header className="header">
           <Statistic.Group widths="three" color="green" inverted size="small">
             <Statistic>
@@ -61,9 +64,9 @@ class GetMoney extends Component<GetMoneyPropType, GetMoneyStateType> {
           </Statistic.Group>
         </header>
         <Container>
-          <Cards />
+          <Game />
         </Container>
-        <Lightbox ref="hintsLightbox" buttonLabel="Back to profile" header="Your time is up!">
+        <Lightbox ref="hintsLightbox" header="Your time is up!">
           <Grid>
             <Grid.Column width={8}>
               <img src="./images/timeup.jpg" alt="time up" />
@@ -71,6 +74,11 @@ class GetMoney extends Component<GetMoneyPropType, GetMoneyStateType> {
             <Grid.Column width={8}>
               <p>Your time is up, you got {this.state.correctAnswers} correct answers.</p>
               <p>{this.state.correctAnswers * 5} extra seconds</p>
+              <Link to="/user">
+                <Button color="green">
+                  <Button.Content content="Back to the profile" />
+                </Button>
+              </Link>
             </Grid.Column>
           </Grid>
         </Lightbox>

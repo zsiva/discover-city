@@ -7,6 +7,7 @@ import './style.css';
 export type CardIconPropType = {
   icon: string,
   flipped: boolean,
+  handleClick: () => any,
 };
 
 export type CardIconStateType = {
@@ -31,7 +32,7 @@ class CardIcon extends Component<CardIconPropType, CardIconStateType> {
           className={
             this.state.flipped || this.props.flipped ? 'cardContent flipped' : ' cardContent'
           }
-          onMouseDown={this.handleClick}
+          onMouseDown={this.props.handleClick}
         >
           <div className="front" />
           <div className="back icon">

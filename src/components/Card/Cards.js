@@ -1,8 +1,7 @@
-//@flow
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import CardIcon from '../../Card/CardIcon';
-import { shuffleArray } from '../../../utils/operations';
+import CardIcon from './CardIcon';
+import { shuffleArray } from '../../utils/operations';
 
 const cardIcons = ['birthday', 'alarm', 'bug', 'paint brush', 'unhide', 'pin'];
 
@@ -14,7 +13,7 @@ export type CardsStateType = {
   flipped: boolean,
 };
 
-export default class Cards extends Component<string, CardsStateType> {
+export default class Cards extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +24,7 @@ export default class Cards extends Component<string, CardsStateType> {
   }
 
   handleClick(iconName: string) {
+    console.log(iconName, this.state.previousAnswer);
     if (this.state.previousAnswer === iconName) {
       this.setState({ previousAnswer: '', flipped: true });
     } else {
