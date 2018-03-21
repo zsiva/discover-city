@@ -9,7 +9,7 @@ const loadGameData = (url) => dispatch => {
   dispatch(itemsAreLoading(true));
 
   return setTimeout(() => {
-      dispatch(createCityList(5));
+      dispatch(createCityList(6));
       dispatch(itemsAreLoading(false));
   }, 1000);
 };

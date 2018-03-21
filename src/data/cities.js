@@ -96,6 +96,27 @@ export const CITIES = [
       cityOptions: ['Madrid', 'Bucharest', 'Lisbon']
     },
     {
+      name: 'Athens',
+      police: 'Ελληνική Αστυνομία',
+	    policeimg: 'policeGR.png',
+      food:'Glass of Ouzo',
+      hints: [
+        {
+          label: 'Walking around the Parthenon',
+          img: 'images/cities/ath_part.jpg'
+        },
+        {
+          label: 'Having a coffe at Plaka',
+          img: 'images/cities/ath_plaka.jpg'
+        },
+        {
+          label: 'Eating Souvlaki at Mikropolitiko',
+          img: 'images/cities/ath_souvlaki'
+        }
+      ],
+      cityOptions: ['Oslo', 'Athens', 'Dublin']
+    },
+    {
       name: 'Amsterdam',
       police: 'POLITIE',
 	    policeimg: 'policeNL.png',
@@ -115,5 +136,26 @@ export const CITIES = [
         }
       ],
       cityOptions: ['London', 'Amsterdam', 'Venice']
+    },
+    {
+      name: 'Athens',
+      police: 'GENDARMERIE',
+	    policeimg: 'policeGR.png',
+      food:'Souvlaki',
+      hints: [
+        {
+          label: 'Walking around the Parthenon',
+          img: 'images/cities/notre-dame.jpg'
+        },
+        {
+          label: 'Having a coffe at Plaka',
+          img: 'images/cities/retiro.jpg'
+        },
+        {
+          label: 'Eating moussaka in a restaurant',
+          img: 'images/cities/tour-eiffel.jpg'
+        }
+      ],
+      cityOptions: ['Oslo', 'Athens', 'Dublin']
     }
 ];
