@@ -2,7 +2,8 @@ export const CITIES = [
    {
     name: 'Berlin',
     police: 'POLIZEI',
-	  policeimg: 'policeDE.png',
+    policeimg: 'policeDE.png',
+	flag: 'GERM0001.GIF',
     food:'Bratwurst',
     hints: [
       {
@@ -25,11 +26,12 @@ export const CITIES = [
     cityOptions: ['Berlin', 'London', 'Budapest']
     },
     {
-      name: 'Paris',
-      police: 'GENDARMERIE',
-	    policeimg: 'policeFR.png',
-      food:'Croissant',
-      hints: [
+    name: 'Paris',
+    police: 'GENDARMERIE',
+    policeimg: 'policeFR.png',
+	flag: 'FRAN0001.GIF',	  
+    food:'Croissant',
+    hints: [
         {
           label: 'In a shop near Notre Dame',
           img: 'images/cities/notre-dame.jpg'
@@ -46,10 +48,11 @@ export const CITIES = [
       cityOptions: ['Viena', 'Paris', 'Luxemburg']
     },
     {
-      name: 'Rome',
-      police: 'CARABINIERI',
-	    policeimg: 'policeIT.png',
-      food:'Pizza',
+    name: 'Rome',
+    police: 'CARABINIERI',
+    policeimg: 'policeIT.png',
+	flag: 'ITAL0001.GIF',  		
+    food:'Pizza',
       hints: [
         {
           label: 'Making pictures at the Colosseum',
@@ -71,11 +74,12 @@ export const CITIES = [
       cityOptions: ['Helsinki', 'Nantes', 'Rome']
     },
     {
-      name: 'Madrid',
-      police: 'GUARDIA CIVIL',
-	    policeimg: 'policeES.png',
-      food:'Paella',
-      hints: [
+    name: 'Madrid',
+    police: 'GUARDIA CIVIL',
+    policeimg: 'policeES.png',
+	flag: 'SPAN0001.GIF',	  		
+    food:'Paella',
+    hints: [
         {
           label: 'Making a picnic in the Retiro Park',
           img: 'images/cities/retiro.jpg'
@@ -96,10 +100,11 @@ export const CITIES = [
       cityOptions: ['Madrid', 'Bucharest', 'Lisbon']
     },
     {
-      name: 'Athens',
-      police: 'Ελληνική Αστυνομία',
-	    policeimg: 'policeGR.png',
-      food:'Glass of Ouzo',
+    name: 'Athens',
+    police: 'Ελληνική Αστυνομία',
+    policeimg: 'policeGR.png',
+	flag: 'GREC0001.GIF',	  		
+    food:'Glass of Ouzo',
       hints: [
         {
           label: 'Walking around the Parthenon',
@@ -117,10 +122,11 @@ export const CITIES = [
       cityOptions: ['Oslo', 'Athens', 'Dublin']
     },
     {
-      name: 'Amsterdam',
-      police: 'POLITIE',
-	    policeimg: 'policeNL.png',
-      food:'Heineken',
+    name: 'Amsterdam',
+    police: 'POLITIE',
+    policeimg: 'policeNL.png',
+	flag: 'NETH0001.GIF',	  		
+    food:'Heineken',
       hints: [
         {
           label: 'Riding a bike along the canals and Vondelpark',
@@ -136,26 +142,5 @@ export const CITIES = [
         }
       ],
       cityOptions: ['London', 'Amsterdam', 'Venice']
-    },
-    {
-      name: 'Athens',
-      police: 'GENDARMERIE',
-	    policeimg: 'policeGR.png',
-      food:'Souvlaki',
-      hints: [
-        {
-          label: 'Walking around the Parthenon',
-          img: 'images/cities/notre-dame.jpg'
-        },
-        {
-          label: 'Having a coffe at Plaka',
-          img: 'images/cities/retiro.jpg'
-        },
-        {
-          label: 'Eating moussaka in a restaurant',
-          img: 'images/cities/tour-eiffel.jpg'
-        }
-      ],
-      cityOptions: ['Oslo', 'Athens', 'Dublin']
     }
 ];

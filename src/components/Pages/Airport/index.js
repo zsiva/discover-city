@@ -1,21 +1,29 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Button, Container, Grid, Card, Divider } from 'semantic-ui-react';
-import Spinner from '../../Spinner';
-import { Link } from 'react-router-dom';
-import Header from '../../Header';
-import Lightbox from '../../Lightbox';
-import { substractMoney } from '../../../actions/player';
-import './style.css';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Button, Container, Grid, Card, Divider } from "semantic-ui-react";
+import Spinner from "../../Spinner";
+import { Link } from "react-router-dom";
+import Header from "../../Header";
+import Lightbox from "../../Lightbox";
+import { substractMoney } from "../../../actions/player";
+import { loadNextCity } from "../../../actions/cities";
+import "./style.css";
 
 class Airport extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.getNextCity = this.getNextCity.bind(this);
   }
+  async getNextCity() {
+    const { dispatch } = this.props;
+    await dispatch(loadNextCity());
+    console.log("getting next city");
+  }
+
   handleOpen() {
-    if (this.props.moneyLeft > 0) {
+    if (this.props.moneyLeft - 50 > 0) {
       this.props.dispatch(substractMoney(50));
       this.refs.lightbox.open();
     } else {
@@ -24,16 +32,66 @@ class Airport extends Component {
   }
   handleOpenSouv = () => this.refs.lightboxsouv.open();
   handleOpen2 = () => this.refs.lightbox2.open();
+  handleOpenfound = () => this.refs.lightboxfound.open();
   handleClick() {
-    if (this.props.selectedCities[1].cityOptions[0] === this.props.selectedCities[1].name) {
-      console.log('YES! you guessed');
+    if (
+      this.props.selectedCities[this.props.currentCityID + 1].cityOptions[0] ===
+      this.props.selectedCities[this.props.currentCityID + 1].name
+    ) {
+      if (this.props.currentCityID === this.props.selectedCities.length - 2) {
+        console.log("YES! You found him");
+        this.handleOpenfound();
+      } else {
+        console.log("YES! you guessed");
+        this.getNextCity();
+        this.props.dispatch(substractMoney(10));
+        this.handleOpen2();
+      }
     } else {
-      console.log('No,sorry ');
+      console.log("No,sorry ");
     }
   }
 
+  handleClick1() {
+    if (
+      this.props.selectedCities[this.props.currentCityID + 1].cityOptions[1] ===
+      this.props.selectedCities[this.props.currentCityID + 1].name
+    ) {
+      if (this.props.currentCityID === this.props.selectedCities.length - 2) {
+        console.log("YES! You found him");
+        this.handleOpenfound();
+      } else {
+        console.log("YES! you guessed");
+        this.getNextCity();
+        this.props.dispatch(substractMoney(10));
+        this.handleOpen2();
+      }
+    } else {
+      console.log("No,sorry ");
+    }
+  }
+  handleClick2() {
+    if (
+      this.props.selectedCities[this.props.currentCityID + 1].cityOptions[2] ===
+      this.props.selectedCities[this.props.currentCityID + 1].name
+    ) {
+      if (this.props.currentCityID === this.props.selectedCities.length - 2) {
+        console.log("YES! You found him");
+        this.handleOpenfound();
+      } else {
+        console.log("YES! you guessed");
+        this.getNextCity();
+        this.props.dispatch(substractMoney(10));
+        this.handleOpen2();
+      }
+    } else {
+      console.log("No,sorry ");
+    }
+  }
   render() {
     const { currentCity, selectedCities, isLoading, moneyLeft } = this.props;
+    console.log(this.props);
+    // const nextCity = selectedCities[currentCityID + 1]
 
     if (isLoading) {
       return <Spinner text="Loading city info" />;
@@ -43,7 +101,9 @@ class Airport extends Component {
         <Header />
         <section className="ui container">
           <div className="airport">
-            <h1 className="text-left">Welcome to the airport of {currentCity.name}</h1>
+            <h1 className="text-left">
+              Welcome to the airport of {currentCity.name}
+            </h1>
             <h2 className="text-left">Where do you want to go?</h2>
             <br />
           </div>
@@ -55,22 +115,40 @@ class Airport extends Component {
           <Grid columns={3}>
             <Grid.Column onClick={() => this.handleClick()}>
               <Container textAlign="left">
-                <Button id="toto" color="green" size="huge" onClick={this.handleOpen2}>
-                  <Button.Content size="huge" content={selectedCities[1].cityOptions[0]} />
+                <Button color="green" size="huge">
+                  <Button.Content
+                    size="huge"
+                    content={
+                      selectedCities[this.props.currentCityID + 1]
+                        .cityOptions[0]
+                    }
+                  />
                 </Button>
               </Container>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column onClick={() => this.handleClick1()}>
               <Container textAlign="center">
                 <Button color="green" size="huge">
-                  <Button.Content size="huge" content={selectedCities[1].cityOptions[1]} />
+                  <Button.Content
+                    size="huge"
+                    content={
+                      selectedCities[this.props.currentCityID + 1]
+                        .cityOptions[1]
+                    }
+                  />
                 </Button>
               </Container>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column onClick={() => this.handleClick2()}>
               <Container textAlign="right">
                 <Button color="green" size="huge">
-                  <Button.Content size="huge" content={selectedCities[1].cityOptions[2]} />
+                  <Button.Content
+                    size="huge"
+                    content={
+                      selectedCities[this.props.currentCityID + 1]
+                        .cityOptions[2]
+                    }
+                  />
                 </Button>
               </Container>
             </Grid.Column>
@@ -121,13 +199,13 @@ class Airport extends Component {
                   </Card.Header>
                   <Card.Meta />
                   <Card.Description>
-                    You forgot to spend time {currentCity.hints[0].label} ?
+                    You feel like {currentCity.hints[0].label} ?
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Link to="/city">
                     <Button color="green" size="huge">
-                      <Button.Content size="huge" content="Back to the city" />
+                      <Button.Content size="huge" content="Go to the city" />
                     </Button>
                   </Link>
                 </Card.Content>
@@ -138,7 +216,9 @@ class Airport extends Component {
 
         <Lightbox ref="lightbox" header={currentCity.name}>
           <p>
-            <strong>That {currentCity.food} was delicious and you feel recovered</strong>
+            <strong>
+              That {currentCity.food} was delicious and you feel recovered
+            </strong>
             <br />
             <br />You have now {moneyLeft} euros.
             <br />
@@ -146,14 +226,11 @@ class Airport extends Component {
           </p>
         </Lightbox>
         <Lightbox ref="lightbox2" header={currentCity.name}>
-          You clicked on {this.props.selectedCities[1].cityOptions[0]} and the city was{' '}
-          {this.props.selectedCities[1].name}
+          <strong>Yes !! He was here but he left already </strong>
           <br />
-          <strong>Did you discover?</strong>
-          <ul>
-            <li> Yes? Have a {this.props.selectedCities[1].food}, you deserved it </li>
-            <li> No? Sorry.... keep tring </li>
-          </ul>
+          <strong>Have a {currentCity.food}, you deserved it</strong>
+          <br />
+          <p>You have now {moneyLeft} euros</p>
         </Lightbox>
         <Lightbox ref="lightbox3" header={currentCity.name}>
           I am afraid you have no money left to pay for that {currentCity.food}
@@ -161,14 +238,27 @@ class Airport extends Component {
           <br />
           <strong>Come back when you have some money!</strong>
         </Lightbox>
+        <Lightbox
+          ref="lightboxfound"
+          header={selectedCities[this.props.currentCityID + 1].name}
+        >
+          You found him!! He was hiding in{" "}
+          {selectedCities[this.props.currentCityID + 1].name}
+          <br />
+          <br />
+          <strong>O Greeny is really happy to have his gold back!</strong>
+          <br />
+          <br />
+          <img src={"./images/Minions.gif"} alt={"./images/Minions.gif"} />
+        </Lightbox>
         <Lightbox ref="lightboxsouv" header={currentCity.name}>
           You have this nice postcard from {currentCity.name}
           <br />
           <img
             height="614"
             width="462"
-            src={'./images/Souvenir.gif'}
-            alt={'./images/Souvenir.gif'}
+            src={"./images/Souvenir.gif"}
+            alt={"./images/Souvenir.gif"}
           />
         </Lightbox>
       </Fragment>
@@ -182,7 +272,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     selectedCities: state.gameState.selectedCities,
     currentCityID: state.gameState.currentCityID,
     isLoading: state.gameState.isLoading,
-    moneyLeft: state.player.money,
+    moneyLeft: state.player.money
   };
 };
 
