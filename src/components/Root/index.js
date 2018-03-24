@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect, Dispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import { Redirect } from 'react-router';
 import { startPlayer } from '../../actions/player';
 import { loadGameData } from '../../actions/game';
 

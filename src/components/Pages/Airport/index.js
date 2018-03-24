@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { Button, Container, Grid, Card, Divider } from "semantic-ui-react";
-import Spinner from "../../Spinner";
-import { Link } from "react-router-dom";
-import Header from "../../Header";
-import Lightbox from "../../Lightbox";
-import { substractMoney } from "../../../actions/player";
-import { loadNextCity } from "../../../actions/cities";
-import "./style.css";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { Button, Container, Grid, Card, Divider } from 'semantic-ui-react';
+import Spinner from '../../Spinner';
+import { Link } from 'react-router-dom';
+import Header from '../../Header';
+import Lightbox from '../../Lightbox';
+import { substractMoney } from '../../../actions/player';
+import { loadNextCity } from '../../../actions/cities';
+import './style.css';
 
 class Airport extends Component {
   constructor(props) {
@@ -18,8 +18,8 @@ class Airport extends Component {
   }
   async getNextCity() {
     const { dispatch } = this.props;
+
     await dispatch(loadNextCity());
-    console.log("getting next city");
   }
 
   handleOpen() {
@@ -39,16 +39,16 @@ class Airport extends Component {
       this.props.selectedCities[this.props.currentCityID + 1].name
     ) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        console.log("YES! You found him");
+        console.log('YES! You found him');
         this.handleOpenfound();
       } else {
-        console.log("YES! you guessed");
+        console.log('YES! you guessed');
         this.getNextCity();
         this.props.dispatch(substractMoney(10));
         this.handleOpen2();
       }
     } else {
-      console.log("No,sorry ");
+      console.log('No,sorry ');
     }
   }
 
@@ -58,16 +58,16 @@ class Airport extends Component {
       this.props.selectedCities[this.props.currentCityID + 1].name
     ) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        console.log("YES! You found him");
+        console.log('YES! You found him');
         this.handleOpenfound();
       } else {
-        console.log("YES! you guessed");
+        console.log('YES! you guessed');
         this.getNextCity();
         this.props.dispatch(substractMoney(10));
         this.handleOpen2();
       }
     } else {
-      console.log("No,sorry ");
+      console.log('No,sorry ');
     }
   }
   handleClick2() {
@@ -76,78 +76,63 @@ class Airport extends Component {
       this.props.selectedCities[this.props.currentCityID + 1].name
     ) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        console.log("YES! You found him");
+        console.log('YES! You found him');
         this.handleOpenfound();
       } else {
-        console.log("YES! you guessed");
+        console.log('YES! you guessed');
         this.getNextCity();
         this.props.dispatch(substractMoney(10));
         this.handleOpen2();
       }
     } else {
-      console.log("No,sorry ");
+      console.log('No,sorry ');
     }
   }
   render() {
     const { currentCity, selectedCities, isLoading, moneyLeft } = this.props;
-    console.log(this.props);
-    // const nextCity = selectedCities[currentCityID + 1]
 
     if (isLoading) {
       return <Spinner text="Loading city info" />;
     }
+
     return (
       <Fragment>
         <Header />
         <section className="ui container">
           <div className="airport">
-            <h1 className="text-left">
-              Welcome to the airport of {currentCity.name}
-            </h1>
+            <h1 className="text-left">Welcome to the airport of {currentCity.name}</h1>
             <h2 className="text-left">Where do you want to go?</h2>
             <br />
           </div>
         </section>
-        <section className="ui container" />
 
         <Divider horizontal>Destinations</Divider>
         <Container>
           <Grid columns={3}>
-            <Grid.Column onClick={() => this.handleClick()}>
+            <Grid.Column>
               <Container textAlign="left">
-                <Button color="green" size="huge">
-                  <Button.Content
-                    size="huge"
-                    content={
-                      selectedCities[this.props.currentCityID + 1]
-                        .cityOptions[0]
-                    }
-                  />
-                </Button>
+                <DestinationButton
+                  onClick={this.handleClick}
+                  content={selectedCities[this.props.currentCityID + 1].cityOptions[0]}
+                />
               </Container>
             </Grid.Column>
-            <Grid.Column onClick={() => this.handleClick1()}>
+            <Grid.Column onClick={this.handleClick1}>
               <Container textAlign="center">
-                <Button color="green" size="huge">
+                <Button color="green" size="large">
                   <Button.Content
-                    size="huge"
-                    content={
-                      selectedCities[this.props.currentCityID + 1]
-                        .cityOptions[1]
-                    }
+                    size="large"
+                    content={selectedCities[this.props.currentCityID + 1].cityOptions[1]}
                   />
                 </Button>
               </Container>
             </Grid.Column>
-            <Grid.Column onClick={() => this.handleClick2()}>
+            <Grid.Column onClick={this.handleClick2}>
               <Container textAlign="right">
-                <Button color="green" size="huge">
+                <Button color="green" size="large">
                   <Button.Content
-                    size="huge"
-                    content={
-                      selectedCities[this.props.currentCityID + 1]
-                        .cityOptions[2]
-                    }
+                    size="large"
+                    content={selectedCities[this.props.currentCityID + 1].cityOptions[2]}
                   />
                 </Button>
               </Container>
@@ -161,25 +146,20 @@ class Airport extends Component {
               <Card centered>
                 <Card.Content textAlign="center">
                   <Card.Header>
-                    <img
-                      height="128"
-                      width="180"
-                      src={`./images/shop.png`}
-                      alt={`./images/shop.png`}
-                    />
+                    <img height="128" width="180" src="./images/shop.png" alt="./images/shop.png" />
                   </Card.Header>
                   <Card.Meta />
                   <Card.Description>Visit the airport shop</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Button color="green" size="huge">
-                    <Button.Content size="huge" onClick={this.handleOpen}>
+                  <Button color="green" size="large">
+                    <Button.Content size="large" onClick={this.handleOpen}>
                       Have a {currentCity.food}
                     </Button.Content>
                   </Button>
                   <Divider horizontal />
-                  <Button color="green" size="huge">
-                    <Button.Content size="huge" onClick={this.handleOpenSouv}>
+                  <Button color="green" size="large">
+                    <Button.Content size="large" onClick={this.handleOpenSouv}>
                       Have a Souvenir
                     </Button.Content>
                   </Button>
@@ -198,14 +178,12 @@ class Airport extends Component {
                     />
                   </Card.Header>
                   <Card.Meta />
-                  <Card.Description>
-                    You feel like {currentCity.hints[0].label} ?
-                  </Card.Description>
+                  <Card.Description>You feel like {currentCity.hints[0].label} ?</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Link to="/city">
-                    <Button color="green" size="huge">
-                      <Button.Content size="huge" content="Go to the city" />
+                    <Button color="green" size="large">
+                      <Button.Content size="large" content="Go to the city" />
                     </Button>
                   </Link>
                 </Card.Content>
@@ -216,9 +194,7 @@ class Airport extends Component {
 
         <Lightbox ref="lightbox" header={currentCity.name}>
           <p>
-            <strong>
-              That {currentCity.food} was delicious and you feel recovered
-            </strong>
+            <strong>That {currentCity.food} was delicious and you feel recovered</strong>
             <br />
             <br />You have now {moneyLeft} euros.
             <br />
@@ -226,7 +202,7 @@ class Airport extends Component {
           </p>
         </Lightbox>
         <Lightbox ref="lightbox2" header={currentCity.name}>
-          <strong>Yes !! He was here but he left already </strong>
+          <strong>Yes!! He was here but he left already </strong>
           <br />
           <strong>Have a {currentCity.food}, you deserved it</strong>
           <br />
@@ -238,28 +214,19 @@ class Airport extends Component {
           <br />
           <strong>Come back when you have some money!</strong>
         </Lightbox>
-        <Lightbox
-          ref="lightboxfound"
-          header={selectedCities[this.props.currentCityID + 1].name}
-        >
-          You found him!! He was hiding in{" "}
-          {selectedCities[this.props.currentCityID + 1].name}
+        <Lightbox ref="lightboxfound" header={selectedCities[this.props.currentCityID + 1].name}>
+          You found him!! He was hiding in {selectedCities[this.props.currentCityID + 1].name}
           <br />
           <br />
           <strong>O Greeny is really happy to have his gold back!</strong>
           <br />
           <br />
-          <img src={"./images/Minions.gif"} alt={"./images/Minions.gif"} />
+          <img src="./images/Minions.gif" alt="minions success" />
         </Lightbox>
         <Lightbox ref="lightboxsouv" header={currentCity.name}>
           You have this nice postcard from {currentCity.name}
           <br />
-          <img
-            height="614"
-            width="462"
-            src={"./images/Souvenir.gif"}
-            alt={"./images/Souvenir.gif"}
-          />
+          <img src="./images/Souvenir.gif" alt="souvenir shop" />
         </Lightbox>
       </Fragment>
     );
@@ -272,7 +239,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     selectedCities: state.gameState.selectedCities,
     currentCityID: state.gameState.currentCityID,
     isLoading: state.gameState.isLoading,
-    moneyLeft: state.player.money
+    moneyLeft: state.player.money,
   };
 };
 

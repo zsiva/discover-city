@@ -1,7 +1,6 @@
 //@flow
-import React, { Component } from 'react';
-import { Icon, Button, Menu } from 'semantic-ui-react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { Icon, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import './style.css';

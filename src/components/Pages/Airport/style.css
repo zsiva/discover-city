@@ -3,12 +3,11 @@
 }
 
 .airport {
-  background: url(/images/airportbanner.png) ;
+  background: url(/images/airportbanner.png);
   background-repeat: no-repeat;
   background-position: top;
   padding: 40px 20px 20px;
   border: 2px solid white;
-  margin-top: 30px;
   text-align: center;
 }
 
