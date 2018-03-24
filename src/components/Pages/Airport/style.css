@@ -5,8 +5,8 @@
 .airport {
   background: url(/images/airportbanner.png);
   background-repeat: no-repeat;
-  background-position: top;
-  padding: 40px 20px 20px;
+  background-position: 50% 10px;
+  padding: 60px 20px 0px;
   border: 2px solid white;
   text-align: center;
 }

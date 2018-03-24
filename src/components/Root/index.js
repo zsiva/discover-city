@@ -6,7 +6,7 @@ import { startPlayer } from '../../actions/player';
 import { loadGameData } from '../../actions/game';
 
 import Intro from '../Pages/Intro';
-import PlayerHome from '../Pages/PlayerHome';
+import Profile from '../Pages/Profile';
 import GetMoney from '../Pages/GetMoney';
 import City from '../Pages/City';
 import Airport from '../Pages/Airport';
@@ -31,7 +31,7 @@ class Root extends Component<RootPropType> {
         <Switch>
           <Route exact path="/" component={Intro} />} />
           <Route path="/airport" component={Airport} />
-          <Route path="/user" component={PlayerHome} />
+          <Route path="/user" component={Profile} />
           <Route path="/city" component={City} />
           <Route path="/get-money" component={GetMoney} />
         </Switch>

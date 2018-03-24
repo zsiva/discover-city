@@ -24,7 +24,7 @@ export default class NewCard extends Component {
         >
           <div className="front" />
           <div className="back icon">
-            <Icon size="large" color="green" name={this.props.value} />
+            <Icon size="huge" color="green" name={this.props.value} />
           </div>
         </div>
       </div>

@@ -67,7 +67,7 @@ class Airport extends Component {
 
         <Divider horizontal>Destinations</Divider>
         <Container>
-          <Grid columns={3}>
+          <Grid columns={3} doubling centered>
             {nextCity.cityOptions.map((cityOption, it) => (
               <Grid.Column key={it} className="text-center">
                 <Button color="green" size="large" onClick={this.handleClick}>

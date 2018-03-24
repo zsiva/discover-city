@@ -2,12 +2,6 @@ section {
   padding: 20px 0;
 }
 
-.app {
-  background-color: #badb94;
-  height: 100vh;
-  position: relative;
-}
-
 .centered {
   margin: 0 auto;
 }

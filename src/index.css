@@ -9,6 +9,9 @@ footer {
   color: white;
 }
 
+body {
+  background-color: #badb94;
+}
 /* FIXME: Overwrite modal, it displays offscreen */
 .modal {
   margin-top: 0 !important;

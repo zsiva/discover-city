@@ -22,7 +22,7 @@ class City extends Component {
         <Header />
         <Container>
           <Divider horizontal>Welcome to {currentCity.name}</Divider>
-          <Grid columns={3}>
+          <Grid columns={3} doubling>
             <Grid.Column>
               <Card centered>
                 <Card.Content textAlign="center">
@@ -88,7 +88,6 @@ class City extends Component {
         </Container>
 
         <h3 className="text-center">
-          {' '}
           <img src={`./images/${currentCity.flag}`} alt="country flag" />
         </h3>
         <Container textAlign="center">
