@@ -16,9 +16,9 @@ class Airport extends Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.getNextCity = this.getNextCity.bind(this);
   }
+
   async getNextCity() {
     const { dispatch } = this.props;
-
     await dispatch(loadNextCity());
   }
 
@@ -30,66 +30,25 @@ class Airport extends Component {
       this.refs.lightbox3.open();
     }
   }
+
   handleOpenSouv = () => this.refs.lightboxsouv.open();
-  handleOpen2 = () => this.refs.lightbox2.open();
-  handleOpenfound = () => this.refs.lightboxfound.open();
-  handleClick() {
-    if (
-      this.props.selectedCities[this.props.currentCityID + 1].cityOptions[0] ===
-      this.props.selectedCities[this.props.currentCityID + 1].name
-    ) {
+
+  handleClick(e) {
+    if (e.target.innerText === this.props.nextCity.name) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        console.log('YES! You found him');
-        this.handleOpenfound();
+        this.refs.lightboxfound.open();
       } else {
-        console.log('YES! you guessed');
         this.getNextCity();
         this.props.dispatch(substractMoney(10));
-        this.handleOpen2();
+        this.refs.lightbox2.open();
       }
     } else {
       console.log('No,sorry ');
     }
   }
 
-  handleClick1() {
-    if (
-      this.props.selectedCities[this.props.currentCityID + 1].cityOptions[1] ===
-      this.props.selectedCities[this.props.currentCityID + 1].name
-    ) {
-      if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        console.log('YES! You found him');
-        this.handleOpenfound();
-      } else {
-        console.log('YES! you guessed');
-        this.getNextCity();
-        this.props.dispatch(substractMoney(10));
-        this.handleOpen2();
-      }
-    } else {
-      console.log('No,sorry ');
-    }
-  }
-  handleClick2() {
-    if (
-      this.props.selectedCities[this.props.currentCityID + 1].cityOptions[2] ===
-      this.props.selectedCities[this.props.currentCityID + 1].name
-    ) {
-      if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        console.log('YES! You found him');
-        this.handleOpenfound();
-      } else {
-        console.log('YES! you guessed');
-        this.getNextCity();
-        this.props.dispatch(substractMoney(10));
-        this.handleOpen2();
-      }
-    } else {
-      console.log('No,sorry ');
-    }
-  }
   render() {
-    const { currentCity, selectedCities, isLoading, moneyLeft } = this.props;
+    const { currentCity, selectedCities, isLoading, moneyLeft, nextCity } = this.props;
 
     if (isLoading) {
       return <Spinner text="Loading city info" />;
@@ -109,34 +68,13 @@ class Airport extends Component {
         <Divider horizontal>Destinations</Divider>
         <Container>
           <Grid columns={3}>
-            <Grid.Column>
-              <Container textAlign="left">
-                <DestinationButton
-                  onClick={this.handleClick}
-                  content={selectedCities[this.props.currentCityID + 1].cityOptions[0]}
-                />
-              </Container>
-            </Grid.Column>
-            <Grid.Column onClick={this.handleClick1}>
-              <Container textAlign="center">
-                <Button color="green" size="large">
-                  <Button.Content
-                    size="large"
-                    content={selectedCities[this.props.currentCityID + 1].cityOptions[1]}
-                  />
+            {nextCity.cityOptions.map((cityOption, it) => (
+              <Grid.Column key={it} className="text-center">
+                <Button color="green" size="large" onClick={this.handleClick}>
+                  <Button.Content size="large" content={cityOption} />
                 </Button>
-              </Container>
-            </Grid.Column>
-            <Grid.Column onClick={this.handleClick2}>
-              <Container textAlign="right">
-                <Button color="green" size="large">
-                  <Button.Content
-                    size="large"
-                    content={selectedCities[this.props.currentCityID + 1].cityOptions[2]}
-                  />
-                </Button>
-              </Container>
-            </Grid.Column>
+              </Grid.Column>
+            ))}
           </Grid>
         </Container>
         <Divider horizontal>Activities</Divider>
@@ -240,6 +178,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     currentCityID: state.gameState.currentCityID,
     isLoading: state.gameState.isLoading,
     moneyLeft: state.player.money,
+    nextCity: state.gameState.nextCity,
   };
 };
 
