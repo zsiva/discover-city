@@ -31,8 +31,6 @@ class Airport extends Component {
     }
   }
 
-  handleOpenSouv = () => this.refs.lightboxsouv.open();
-
   handleClick(e) {
     if (e.target.innerText === this.props.nextCity.name) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
@@ -98,12 +96,6 @@ class Airport extends Component {
                       Have a {currentCity.food}
                     </Button.Content>
                   </Button>
-                  <Divider horizontal />
-                  <Button color="green" size="large">
-                    <Button.Content size="large" onClick={this.handleOpenSouv}>
-                      Have a Souvenir
-                    </Button.Content>
-                  </Button>
                 </Card.Content>
               </Card>
             </Grid.Column>
@@ -163,11 +155,6 @@ class Airport extends Component {
           <br />
           <br />
           <img src="./images/Minions.gif" alt="minions success" />
-        </Lightbox>
-        <Lightbox ref="lightboxsouv" header={currentCity.name}>
-          You have this nice postcard from {currentCity.name}
-          <br />
-          <img src="./images/Souvenir.gif" alt="souvenir shop" />
         </Lightbox>
       </Fragment>
     );
