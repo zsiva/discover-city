@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addMoney } from '../../actions/player';
 
 import Card from './Card';
 import { shuffleArray } from '../../utils/operations';
@@ -18,7 +20,7 @@ const initiateCards = () => {
   }));
 };
 
-export default class MemoryGame extends Component {
+class MemoryGame extends Component {
   constructor(props) {
     super(props);
     this.renderCards = this.renderCards.bind(this);
@@ -109,8 +111,9 @@ export default class MemoryGame extends Component {
   render() {
     const numPairs = this.state.cards.filter(card => card.matched).length / 2;
     if (this.state.counter === 0 || numPairs === this.state.cards.length / 2) {
-      this.refs.hintsLightbox.open();
       clearInterval(this.state.timer);
+
+      this.refs.hintsLightbox.open();
     }
 
     return (
@@ -130,7 +133,9 @@ export default class MemoryGame extends Component {
             </Grid.Column>
             <Grid.Column width={8}>
               <p>Your time is up, you got {numPairs} correct answers.</p>
-              <p>{numPairs * 5} extra seconds</p>
+              <p>
+                You earned {numPairs * 10} €. You now have {this.props.moneyLeft}
+              </p>
               <Link to="/user">
                 <Button color="green">
                   <Button.Content content="Back to the profile" />
@@ -143,3 +148,10 @@ export default class MemoryGame extends Component {
     );
   }
 }
+
+const mapStateToProps = (state, ownProps = {}) => {
+  return {
+    moneyLeft: state.player.money,
+  };
+};
+export default connect(mapStateToProps)(MemoryGame);

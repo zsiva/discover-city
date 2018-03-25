@@ -59,20 +59,23 @@ class Airport extends Component {
         <Header />
         <section className="ui container">
           <div className="airport">
-            <h1 className="text-left">Welcome to the airport of {currentCity.name}</h1>
-            <h2 className="text-left">Where do you want to go?</h2>
+            <h1>Welcome to the airport of {currentCity.name}</h1>
+            <h2>Where do you want to go?</h2>
             <br />
           </div>
         </section>
 
         <Divider horizontal>Destinations</Divider>
         <Container>
-          <Grid columns={3} doubling centered>
+          <Grid columns={3} doubling>
             {nextCity.cityOptions.map((cityOption, it) => (
               <Grid.Column key={it} className="text-center">
-                <Button color="green" size="large" onClick={this.handleClick}>
-                  <Button.Content size="large" content={cityOption} />
-                </Button>
+                <Button
+                  color="green"
+                  size="large"
+                  onClick={this.handleClick}
+                  content={cityOption}
+                />
               </Grid.Column>
             ))}
           </Grid>
