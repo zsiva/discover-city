@@ -7,12 +7,13 @@ import Header from '../../Header';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
-  state = { visible: false }
+  state = { visible: false, visible2: false }
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
+  toggleVisibility2 = () => this.setState({ visible2: !this.state.visible2 })
 
   render() {
     const { currentCity, selectedCities, isLoading, currentCityID } = this.props;
-    const { visible } = this.state
+    const { visible, visible2 } = this.state
     //console.log(this.state);
     //const nextCity = selectedCities[currentCityID + 1]
     if (isLoading) {
@@ -23,6 +24,29 @@ class Police extends Component {
         <Header/>
         <Container>
         <Divider horizontal>Welcome to the {currentCity.name} police department</Divider>
+        <Grid columns={3} doubling>
+          <Grid.Column>
+          <Transition visible={visible}  duration={500}>
+
+        <Card centered color='green'>
+          <Card.Content textAlign="center">
+          <img
+          src="./images/policecorr.png"
+          alt={"Police Officer"}/>
+            <Card.Header/>
+            <Card.Meta/>
+            <Card.Description><b>PSS PSS
+            <br/>I might have some information for you if you pay me</b></Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+          <Button color="green" size="large" fluid onClick={this.toggleVisibility2} >
+          <Button.Content size="large" content={this.state.visible2 ? 'PAY FOR THE INFO' : 'PAY FOR THE INFO'}/>
+          </Button>
+          </Card.Content>
+        </Card>
+</Transition>
+        </Grid.Column>
+        <Grid.Column>
         <Card centered color='green'>
           <Card.Content textAlign="center">
           <img
@@ -35,10 +59,12 @@ class Police extends Component {
           </Card.Content>
           <Card.Content extra>
           <Button color="green" size="large" fluid onClick={this.toggleVisibility} >
-            <Button.Content size="large" content={this.state.visible ? 'HIDE HINTS' : 'REVEAL HINTS'}/>
+          <Button.Content size="large" content={this.state.visible ? 'HIDE HINTS' : 'REVEAL HINTS'}/>
           </Button>
           </Card.Content>
         </Card>
+        </Grid.Column>
+</Grid>
           <Grid columns={3} doubling>
             <Grid.Column>
               <Card centered>
@@ -51,7 +77,10 @@ class Police extends Component {
                   </Card.Header>
                   </Transition>
                   <Card.Meta />
-                  </Card.Content>
+                  <Transition visible={visible2}  duration={500}>
+                  <Card.Description>{selectedCities[currentCityID + 1].hints[0].label}</Card.Description>
+                  </Transition>
+              </Card.Content>
               </Card>
             </Grid.Column>
             <Grid.Column>
@@ -65,6 +94,9 @@ class Police extends Component {
                   </Card.Header>
                   </Transition>
                   <Card.Meta />
+                  <Transition visible={visible2}  duration={500}>
+                  <Card.Description>{selectedCities[currentCityID + 1].hints[1].label}</Card.Description>
+                  </Transition>
                 </Card.Content>
               </Card>
             </Grid.Column>
@@ -79,7 +111,10 @@ class Police extends Component {
                   </Card.Header>
                   </Transition>
                   <Card.Meta />
-                </Card.Content>
+                  <Transition visible={visible2}  duration={500}>
+                  <Card.Description>{selectedCities[currentCityID + 1].hints[2].label}</Card.Description>
+                  </Transition>
+                  </Card.Content>
               </Card>
             </Grid.Column>
           </Grid>
