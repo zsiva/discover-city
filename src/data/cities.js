@@ -2,7 +2,6 @@ export const CITIES = [
   {
     name: 'Berlin',
     police: 'POLIZEI',
-    policeimg: 'policeDE.png',
     flag: 'countryFlags/GERM0001.GIF',
     food: 'Bratwurst',
     hints: [
@@ -28,21 +27,20 @@ export const CITIES = [
   {
     name: 'Paris',
     police: 'GENDARMERIE',
-    policeimg: 'policeFR.png',
     flag: 'countryFlags/FRAN0001.GIF',
     food: 'Croissant',
     hints: [
+      {
+        label: 'Looking at the view from Montmartre',
+        img: 'images/cities/par_montmartre.jpg',
+      },
       {
         label: 'Going up the Eiffel Tower',
         img: 'images/cities/tour-eiffel.jpg',
       },
       {
         label: 'In a shop near Notre Dame',
-        img: 'images/cities/notre-dame.jpg',
-      },
-      {
-        label: 'Looking at the view from Montmartre',
-        img: 'images/cities/retiro.jpg',
+        img: 'images/cities/par_notredame.jpg',
       },
     ],
     cityOptions: ['Viena', 'Paris', 'Luxemburg'],
@@ -50,7 +48,6 @@ export const CITIES = [
   {
     name: 'Rome',
     police: 'CARABINIERI',
-    policeimg: 'policeIT.png',
     flag: 'countryFlags/ITAL0001.GIF',
     food: 'Pizza',
     hints: [
@@ -76,7 +73,6 @@ export const CITIES = [
   {
     name: 'Madrid',
     police: 'GUARDIA CIVIL',
-    policeimg: 'policeES.png',
     flag: 'countryFlags/SPAN0001.GIF',
     food: 'Paella',
     hints: [
@@ -102,7 +98,6 @@ export const CITIES = [
   {
     name: 'Athens',
     police: 'Ελληνική Αστυνομία',
-    policeimg: 'policeGR.png',
     flag: 'countryFlags/GREC0001.GIF',
     food: 'Glass of Ouzo',
     hints: [
@@ -115,8 +110,8 @@ export const CITIES = [
         img: 'images/cities/ath_plaka.jpg',
       },
       {
-        label: 'Eating Souvlaki at Mikropolitiko',
-        img: 'images/cities/ath_souvlaki.jpg',
+        label: 'Watching the change of guard',
+        img: 'images/cities/ath_sintagma.jpg',
       },
     ],
     cityOptions: ['Oslo', 'Athens', 'Dublin'],
@@ -124,7 +119,6 @@ export const CITIES = [
   {
     name: 'Amsterdam',
     police: 'POLITIE',
-    policeimg: 'policeNL.png',
     flag: 'countryFlags/NETH0001.GIF',
     food: 'Heineken',
     hints: [
@@ -142,5 +136,26 @@ export const CITIES = [
       },
     ],
     cityOptions: ['London', 'Amsterdam', 'Venice'],
+  },
+  {
+    name: 'Oslo',
+    police: 'POLITI',
+    flag: 'countryFlags/NORW0001.GIF',
+    food: 'Smoked Salmon',
+    hints: [
+      {
+        label: 'Walking around Vigeland Park',
+        img: 'images/cities/osl_vigeland.jpg',
+      },
+      {
+        label: 'Visiting Viking Boat Museum',
+        img: 'images/cities/osl_viking.jpg',
+      },
+      {
+        label: 'Island Hopping in the fjord',
+        img: 'images/cities/osl_fjord.jpg',
+      },
+    ],
+    cityOptions: ['Madrid', 'Amsterdam', 'Oslo'],
   },
 ];

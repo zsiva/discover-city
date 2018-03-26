@@ -5,7 +5,6 @@ import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import Lightbox from '../../Lightbox';
-import Transport from '../../Transport';
 import { substractMoney } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import './style.css';
@@ -87,7 +86,7 @@ class Airport extends Component {
               <Card centered>
                 <Card.Content textAlign="center">
                   <Card.Header>
-                    <img height="128" width="180" src="./images/shop.png" alt="./images/shop.png" />
+                    <img src="./images/shop.png" alt="./images/shop.png" />
                   </Card.Header>
                   <Card.Meta />
                   <Card.Description>Visit the airport shop</Card.Description>
@@ -106,10 +105,8 @@ class Airport extends Component {
                 <Card.Content textAlign="center">
                   <Card.Header>
                     <img
-                      height="128"
-                      width="180"
                       src={`./${currentCity.hints[0].img}`}
-                      alt={`./${currentCity.hints[0].img}`}
+                      alt="Ciudad"
                     />
                   </Card.Header>
                   <Card.Meta />
