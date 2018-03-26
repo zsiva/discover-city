@@ -10,6 +10,7 @@ import Profile from '../Pages/Profile';
 import GetMoney from '../Pages/GetMoney';
 import City from '../Pages/City';
 import Airport from '../Pages/Airport';
+import Police from '../Pages/Police';
 
 import './style.css';
 
@@ -33,6 +34,7 @@ class Root extends Component<RootPropType> {
           <Route path="/airport" component={Airport} />
           <Route path="/user" component={Profile} />
           <Route path="/city" component={City} />
+          <Route path="/police" component={Police} />
           <Route path="/get-money" component={GetMoney} />
         </Switch>
       </div>

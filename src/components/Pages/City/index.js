@@ -27,18 +27,20 @@ class City extends Component {
               <Card centered>
                 <Card.Content textAlign="center">
                   <Card.Header>
-                    <img src={`./images/${currentCity.policeimg}`} alt="police department" />
+                    <img src="./images/police.png" alt="police department" />
                   </Card.Header>
                   <Card.Meta />
                   <Card.Description>Visit the police station to get some hints</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
+                <Link to="/police">
                   <Button animated color="blue" size="large" fluid>
                     <Button.Content visible size="large" content={currentCity.police} />
-                    <Button.Content hidden onClick={this.handleOpen}>
+                    <Button.Content hidden>
                       <Icon name="taxi" />
                     </Button.Content>
                   </Button>
+                  </Link>
                 </Card.Content>
               </Card>
             </Grid.Column>
@@ -49,7 +51,7 @@ class City extends Component {
                     <img src="./images/airport.png" alt="Airport" />
                   </Card.Header>
                   <Card.Meta />
-                  <Card.Description>Visit the airport to change city</Card.Description>
+                  <Card.Description>Visit the airport to go to a different city</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Link to="/airport">
@@ -67,7 +69,7 @@ class City extends Component {
               <Card centered>
                 <Card.Content textAlign="center">
                   <Card.Header>
-                    <img src="./images/money.jpg" alt="money jar" />
+                    <img src="./images/casino.png" alt="casino" />
                   </Card.Header>
                   <Card.Meta />
                   <Card.Description>Earn some money to pay expenses</Card.Description>

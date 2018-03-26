@@ -5,6 +5,7 @@ import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import Lightbox from '../../Lightbox';
+import Transport from '../../Transport';
 import { substractMoney } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import './style.css';
@@ -23,8 +24,8 @@ class Airport extends Component {
   }
 
   handleOpen() {
-    if (this.props.moneyLeft - 50 > 0) {
-      this.props.dispatch(substractMoney(50));
+    if (this.props.moneyLeft - 5 > 0) {
+      this.props.dispatch(substractMoney(5));
       this.refs.lightbox.open();
     } else {
       this.refs.lightbox3.open();
@@ -41,7 +42,8 @@ class Airport extends Component {
         this.refs.lightbox2.open();
       }
     } else {
-      console.log('No,sorry ');
+      this.props.dispatch(substractMoney(10));
+      this.refs.lightboxNo.open();
     }
   }
 
@@ -137,7 +139,14 @@ class Airport extends Component {
         <Lightbox ref="lightbox2" header={currentCity.name}>
           <strong>Yes!! He was here but he left already </strong>
           <br />
-          <strong>Have a {currentCity.food}, you deserved it</strong>
+          <strong>You spent 10 € on the ticket</strong>
+          <br />
+          <p>You have now {moneyLeft} euros</p>
+        </Lightbox>
+        <Lightbox ref="lightboxNo" header={currentCity.name}>
+          <strong>Sorry, he was not there </strong>
+          <br />
+          <strong>You spent 10 € on tickets</strong>
           <br />
           <p>You have now {moneyLeft} euros</p>
         </Lightbox>

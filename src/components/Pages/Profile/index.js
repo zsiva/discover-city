@@ -73,7 +73,6 @@ class Profile extends Component<ProfilePropType> {
             </Grid.Column>
           </Grid>
         </section>
-        <Transport/>
       </Fragment>
     );
   }

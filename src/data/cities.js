@@ -33,16 +33,16 @@ export const CITIES = [
     food: 'Croissant',
     hints: [
       {
+        label: 'Going up the Eiffel Tower',
+        img: 'images/cities/tour-eiffel.jpg',
+      },
+      {
         label: 'In a shop near Notre Dame',
         img: 'images/cities/notre-dame.jpg',
       },
       {
         label: 'Looking at the view from Montmartre',
         img: 'images/cities/retiro.jpg',
-      },
-      {
-        label: 'Going up the Eiffel Tower',
-        img: 'images/cities/tour-eiffel.jpg',
       },
     ],
     cityOptions: ['Viena', 'Paris', 'Luxemburg'],
@@ -56,19 +56,19 @@ export const CITIES = [
     hints: [
       {
         label: 'Making pictures at the Colosseum',
-        img: 'images/cities/colosseum.jpg',
+        img: 'images/cities/rom_colosseum.jpg',
       },
       {
         label: 'Walking around the Circus Maximus',
-        img: 'images/cities/retiro.jpg',
+        img: 'images/cities/rom_circus.jpg',
+      },
+      {
+        label: 'Around the Vatican',
+        img: 'images/cities/rom_vatican.jpg',
       },
       {
         label: 'Visiting the Temple of Jupiter',
         img: 'images/cities/retiro.jpg',
-      },
-      {
-        label: 'Around the Vatican',
-        img: 'images/cities/vatican.jpg',
       },
     ],
     cityOptions: ['Helsinki', 'Nantes', 'Rome'],
@@ -116,7 +116,7 @@ export const CITIES = [
       },
       {
         label: 'Eating Souvlaki at Mikropolitiko',
-        img: 'images/cities/ath_souvlaki',
+        img: 'images/cities/ath_souvlaki.jpg',
       },
     ],
     cityOptions: ['Oslo', 'Athens', 'Dublin'],
@@ -130,15 +130,15 @@ export const CITIES = [
     hints: [
       {
         label: 'Riding a bike along the canals and Vondelpark',
-        img: 'images/cities/vondelpark.jpg',
+        img: 'images/cities/ams_vondelpark.jpg',
       },
       {
         label: 'Visiting Anne Frank House',
-        img: 'images/cities/retiro.jpg',
+        img: 'images/cities/ams_annefrank.jpg',
       },
       {
         label: 'Relaxing in some Coffee Shops',
-        img: 'images/cities/retiro.jpg',
+        img: 'images/cities/ams_canal.jpg',
       },
     ],
     cityOptions: ['London', 'Amsterdam', 'Venice'],
