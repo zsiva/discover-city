@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Root from './components/Root';
 import './index.css';
-import { INITIAL_TIME } from './data/constants';
+import { INITIAL_TIME, INITIAL_MONEY } from './data/constants';
 import configureStore from './configure-store';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -21,7 +21,7 @@ const initialState = {
     gameEnded: false,
   },
   player: {
-    money: 100,
+    money: INITIAL_MONEY,
   },
 };
 
