@@ -48,9 +48,15 @@ class MemoryGame extends Component {
   }
 
   tick() {
-    this.setState({
-      counter: this.state.counter - 1,
-    });
+    if (this.state.counter === 0) {
+      clearInterval(this.state.timer);
+      this.props.dispatch(addMoney(this.state.matches * 10));
+      this.refs.hintsLightbox.open();
+    } else {
+      this.setState({
+        counter: this.state.counter - 1,
+      });
+    }
   }
 
   checkMatch(value, id) {
@@ -109,17 +115,10 @@ class MemoryGame extends Component {
   }
 
   render() {
-    const numPairs = this.state.cards.filter(card => card.matched).length / 2;
-    if (this.state.counter === 0 || numPairs === this.state.cards.length / 2) {
-      clearInterval(this.state.timer);
-
-      this.refs.hintsLightbox.open();
-    }
-
     return (
       <Fragment>
         <h5>
-          Number of pairs found: {numPairs}
+          Number of pairs found: {this.state.matches}
           <div className="pull-right">Time Left: {this.state.counter}</div>
         </h5>
         <Grid>{this.renderCards(this.state.cards)}</Grid>
@@ -132,9 +131,9 @@ class MemoryGame extends Component {
               <img src="./images/timeup.jpg" alt="time up" />
             </Grid.Column>
             <Grid.Column width={8}>
-              <p>Your time is up, you got {numPairs} correct answers.</p>
+              <p>Your time is up, you got {this.state.matches} correct answers.</p>
               <p>
-                You earned {numPairs * 10} €. You now have {this.props.moneyLeft}
+                You earned {this.state.matches * 10} €. You now have {this.props.moneyLeft}
               </p>
               <Link to="/user">
                 <Button color="green">

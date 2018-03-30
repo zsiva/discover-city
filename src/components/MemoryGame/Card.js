@@ -1,15 +1,24 @@
+//@flow
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
 
 import './style.css';
 
-export default class NewCard extends Component {
-  constructor(props) {
+export type CardProptype = {
+  flipped: boolean,
+  matched: boolean,
+  value: string,
+  id: number,
+  checkMatch: (value: string, id: number) => void,
+};
+
+export default class Card extends Component<CardProptype> {
+  constructor(props: CardProptype) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    (this: any).handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
+  handleClick(e: SyntheticEvent<HTMLButtonElement>) {
     if (!this.props.flipped) {
       this.props.checkMatch(this.props.value, this.props.id);
     }

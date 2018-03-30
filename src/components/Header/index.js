@@ -7,39 +7,31 @@ import './style.css';
 
 export default function Header() {
   return (
-    <Menu inverted>
-      {window.location.pathname !== '/city' && (
-        <Menu.Item>
-          <Link to="/city">
-            <Icon name="home" />
-            City
-          </Link>
+    <Menu inverted icon="labeled">
+      <Link to="/city">
+        <Menu.Item active={window.location.pathname === '/city'}>
+          <Icon name="home" />
+          City
         </Menu.Item>
-      )}
-      {window.location.pathname !== '/airport' && (
-        <Menu.Item>
-          <Link to="/airport">
-            <Icon name="plane" />
-            Airport
-          </Link>
+      </Link>
+      <Link to="/airport">
+        <Menu.Item active={window.location.pathname === '/airport'}>
+          <Icon name="plane" />
+          Airport
         </Menu.Item>
-      )}
-      {window.location.pathname !== '/get-money' && (
-        <Menu.Item>
-          <Link to="/get-money">
-            <Icon name="money" />
-            Earn money
-          </Link>
+      </Link>
+      <Link to="/get-money">
+        <Menu.Item active={window.location.pathname === '/get-money'}>
+          <Icon name="money" />
+          Casino
         </Menu.Item>
-      )}
-      {window.location.pathname !== '/user' && (
-        <Menu.Item position="right">
-          <Link to="/user">
-            <Icon name="user" />
-            Profile
-          </Link>
+      </Link>
+      <Link to="/user">
+        <Menu.Item active={window.location.pathname === '/user'}>
+          <Icon name="user" />
+          Profile
         </Menu.Item>
-      )}
+      </Link>
     </Menu>
   );
 }

@@ -27,3 +27,7 @@ body {
 .ui.modal img {
   max-width: 100%;
 }
+
+.ui.labeled.icon.menu .item {
+  min-width: 5em;
+}
