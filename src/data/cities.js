@@ -22,7 +22,6 @@ export const CITIES = [
         img: 'images/cities/fernsehturm.jpg',
       },
     ],
-    cityOptions: ['Berlin', 'London', 'Budapest'],
   },
   {
     name: 'Paris',
@@ -43,7 +42,6 @@ export const CITIES = [
         img: 'images/cities/par_notredame.jpg',
       },
     ],
-    cityOptions: ['Viena', 'Paris', 'Luxemburg'],
   },
   {
     name: 'Rome',
@@ -68,7 +66,6 @@ export const CITIES = [
         img: 'images/cities/retiro.jpg',
       },
     ],
-    cityOptions: ['Helsinki', 'Nantes', 'Rome'],
   },
   {
     name: 'Madrid',
@@ -93,7 +90,6 @@ export const CITIES = [
         img: 'images/cities/latina.jpg',
       },
     ],
-    cityOptions: ['Madrid', 'Bucharest', 'Lisbon'],
   },
   {
     name: 'Athens',
@@ -114,7 +110,6 @@ export const CITIES = [
         img: 'images/cities/ath_sintagma.jpg',
       },
     ],
-    cityOptions: ['Oslo', 'Athens', 'Dublin'],
   },
   {
     name: 'Amsterdam',
@@ -135,7 +130,6 @@ export const CITIES = [
         img: 'images/cities/ams_canal.jpg',
       },
     ],
-    cityOptions: ['London', 'Amsterdam', 'Venice'],
   },
   {
     name: 'Oslo',
@@ -156,6 +150,5 @@ export const CITIES = [
         img: 'images/cities/osl_fjord.jpg',
       },
     ],
-    cityOptions: ['Madrid', 'Amsterdam', 'Oslo'],
   },
 ];

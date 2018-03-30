@@ -62,9 +62,6 @@ class Profile extends Component<ProfilePropType> {
               <Link to="/get-money">
                 <Button color="green" content="Earn money" fluid />
               </Link>
-              {/* <Link to="/get-time">
-                <Button color="green" content="Get extra time" />
-              </Link> */}
             </Grid.Column>
             <Grid.Column width={8}>
               <Link to="/city">
