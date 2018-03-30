@@ -16,7 +16,7 @@ export const trainAnimation = () => (
     <div className="cloud cloud-2" />
     <div className="cloudBig" />
     <div className="cloudBig cloud2" />
-    <img className="trainAnimation" src="./images/transport/train.png" />
+    <img className="trainAnimation" alt="trainAnimation" src="./images/transport/train.png" />
     <div className="tree">
       <div className="tronco" />
     </div>
@@ -27,17 +27,17 @@ export const trainAnimation = () => (
 
 export const planeAnimation = () => (
   <div className="animation">
-    <div class="cloud cloud-3" />
-    <div class="cloud cloud-4" />
-    <div class="cloud cloud-2" />
-    <div class="cloudBig" />
-    <div class="cloudBig cloud2" />
-    <img class="planeAnimation" src="./images/transport/plane.png" />
+    <div className="cloud cloud-3" />
+    <div className="cloud cloud-4" />
+    <div className="cloud cloud-2" />
+    <div className="cloudBig" />
+    <div className="cloudBig cloud2" />
+    <img className="planeAnimation" alt="planeAnimation" src="./images/transport/plane.png" />
 
-    <div class="mountain">
+    <div className="mountain">
       <MountainTop />
     </div>
-    <div class="mountain mountain-two">
+    <div className="mountain mountain-two">
       <MountainTop />
     </div>
   </div>
@@ -45,17 +45,23 @@ export const planeAnimation = () => (
 
 export const carAnimation = () => (
   <div className="animation">
-    <div class="cloud cloud-3" />
-    <div class="cloud cloud-4" />
-    <div class="cloud cloud-2" />
-    <div class="cloudBig" />
-    <div class="cloudBig cloud2" />
-    <img class="carAnimation" src="./images/transport/car.png" width="70" height="36" />
+    <div className="cloud cloud-3" />
+    <div className="cloud cloud-4" />
+    <div className="cloud cloud-2" />
+    <div className="cloudBig" />
+    <div className="cloudBig cloud2" />
+    <img
+      className="carAnimation"
+      src="./images/transport/car.png"
+      alt="car"
+      width="70"
+      height="36"
+    />
 
-    <div class="mountain">
+    <div className="mountain">
       <MountainTop />
     </div>
-    <div class="mountain mountain-two">
+    <div className="mountain mountain-two">
       <MountainTop />
     </div>
   </div>

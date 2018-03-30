@@ -4,7 +4,6 @@ import { Button, List, Label, Segment, Grid } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
-import Transport from '../../Transport';
 
 import './style.css';
 export type ProfilePropType = {

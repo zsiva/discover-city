@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { Button, Container, Grid, Card, Divider } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
-import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import Lightbox from '../../Lightbox';
 import { substractMoney } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
+import { planeAnimation } from '../../Transport/animations';
 import './style.css';
 
 class Airport extends Component {
@@ -15,6 +17,7 @@ class Airport extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.getNextCity = this.getNextCity.bind(this);
+    this.state = { found: false };
   }
 
   async getNextCity() {
@@ -32,17 +35,21 @@ class Airport extends Component {
   }
 
   handleClick(e) {
-    if (e.target.innerText === this.props.nextCity.name) {
-      if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        this.refs.lightboxfound.open();
-      } else {
-        this.getNextCity();
-        this.props.dispatch(substractMoney(10));
-        this.refs.lightbox2.open();
-      }
+    if (this.props.currentCityID === this.props.selectedCities.length - 2) {
+      this.refs.lightboxfound.open();
     } else {
       this.props.dispatch(substractMoney(10));
-      this.refs.lightboxNo.open();
+      if (e.target.innerText === this.props.nextCity.name) {
+        this.getNextCity();
+        this.setState({ found: true });
+      } else {
+        this.setState({ found: false });
+      }
+      this.refs.lightboxCity.open();
+      setTimeout(() => {
+        this.refs.lightboxCity.close();
+        this.props.history.push('/city');
+      }, 4000);
     }
   }
 
@@ -104,10 +111,7 @@ class Airport extends Component {
               <Card centered>
                 <Card.Content textAlign="center">
                   <Card.Header>
-                    <img
-                      src={`./${currentCity.hints[0].img}`}
-                      alt="Ciudad"
-                    />
+                    <img src={`./${currentCity.hints[0].img}`} alt="Ciudad" />
                   </Card.Header>
                   <Card.Meta />
                   <Card.Description>You feel like {currentCity.hints[0].label} ?</Card.Description>
@@ -133,19 +137,17 @@ class Airport extends Component {
             <br />Now, get back to work! You are a detective, not a tourist!
           </p>
         </Lightbox>
-        <Lightbox ref="lightbox2" header={currentCity.name}>
-          <strong>Yes!! He was here but he left already </strong>
-          <br />
-          <strong>You spent 10 € on the ticket</strong>
-          <br />
+
+        <Lightbox ref="lightboxCity" header={this.state.found ? 'Correct' : 'Incorrect'}>
+          {this.state.found ? (
+            <p>Yes!! He was in {currentCity.name} but he left already </p>
+          ) : (
+            <p>Sorry, he was not there </p>
+          )}
+
+          <p>You spent 10 € on tickets</p>
           <p>You have now {moneyLeft} euros</p>
-        </Lightbox>
-        <Lightbox ref="lightboxNo" header={currentCity.name}>
-          <strong>Sorry, he was not there </strong>
-          <br />
-          <strong>You spent 10 € on tickets</strong>
-          <br />
-          <p>You have now {moneyLeft} euros</p>
+          {planeAnimation()}
         </Lightbox>
         <Lightbox ref="lightbox3" header={currentCity.name}>
           I am afraid you have no money left to pay for that {currentCity.food}
@@ -178,4 +180,4 @@ const mapStateToProps = (state, ownProps = {}) => {
   };
 };
 
-export default connect(mapStateToProps)(Airport);
+export default withRouter(connect(mapStateToProps)(Airport));

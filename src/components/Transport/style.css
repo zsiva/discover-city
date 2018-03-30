@@ -6,7 +6,7 @@
   position: relative;
   overflow: hidden;
   background: #0099ff;
-  background: linear-gradient(top, #0099ff, #00ccff);
+  background: linear-gradient(to bottom, #0099ff, #00ccff);
 }
 
 .cloud {
@@ -17,7 +17,7 @@
 .planeAnimation {
   position: absolute;
   animation: planeDrift linear infinite;
-  animation-duration: 10s;
+  animation-duration: 5s;
   width: 100px;
 }
 
@@ -186,7 +186,7 @@
   border-bottom: 180px solid saddlebrown;
   z-index: 1;
   animation: mountain linear infinite;
-  animation-duration: 60s;
+  animation-duration: 10s;
 }
 
 .mountain-two {
