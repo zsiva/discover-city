@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Card, Divider, Transition } from 'semantic-ui-react';
+import { Button, Container, Grid, Card, Divider, Transition,Message } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
@@ -9,15 +9,18 @@ import { substractMoney } from '../../../actions/player';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
-  state = { visible: false, visible2: false }
-  showHints = () => this.setState({ visible: true })
+  state = { visible: false, visible2: false, message: '' }
+  showHints = () => {
+  this.setState({ visible: true })
+  this.setState({ message: 'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!'})}
   showHintsPlus = () => {
     if (this.state.visible2 === false) {
     if (this.props.moneyLeft - 30 >= 0) {
       this.setState({ visible2: true })
       this.props.dispatch(substractMoney(10));
+      this.setState({ message: 'You paid 10 € and you got the name of the pictures. It should help you You have now ' + (this.props.moneyLeft - 10 ) + ' €'})
       } else {
-    this.refs.lightbox3.open();
+      this.setState({ message: 'Corrupt Police Officer: You need 10 € and your account has ' + (this.props.moneyLeft ) + ' €. This information is not free!' })
     }
   }
 }
@@ -34,6 +37,13 @@ class Police extends Component {
         <Header/>
         <Container>
         <Divider horizontal>Welcome to the {currentCity.name} police department</Divider>
+        <Transition visible={visible}  duration={500}>
+          <Message size='large'>
+            <p>
+            {this.state.message}
+            </p>
+          </Message>
+        </Transition>
         <Grid columns={3} doubling>
           <Grid.Column>
           <Transition visible={visible}  duration={500}>
