@@ -151,4 +151,24 @@ export const CITIES = [
       },
     ],
   },
+   {
+    name: 'Krakow',
+    police: 'POLICJA',
+    flag: 'countryFlags/POLA0001.GIF',
+    food: 'Pierogi',
+    hints: [
+      {
+        label: 'Old Towm',
+        img: 'images/cities/kra_oldtown.jpg',
+      },
+      {
+        label: 'Wawel Castle',
+        img: 'images/cities/kra_wawel.jpg',
+      },
+      {
+        label: 'Basilica of Saint Mary',
+        img: 'images/cities/kra_basilica.jpg',
+      },
+    ],
+  },
 ];
