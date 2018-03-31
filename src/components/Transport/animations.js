@@ -11,9 +11,7 @@ export const MountainTop = () => (
 
 export const trainAnimation = () => (
   <div className="animation">
-    <div className="cloud cloud-3" />
-    <div className="cloud cloud-4" />
-    <div className="cloud cloud-2" />
+    <div className="cloudSmall" />
     <div className="cloudBig" />
     <div className="cloudBig cloud2" />
     <img className="trainAnimation" alt="trainAnimation" src="./images/transport/train.png" />
@@ -27,9 +25,7 @@ export const trainAnimation = () => (
 
 export const planeAnimation = () => (
   <div className="animation">
-    <div className="cloud cloud-3" />
-    <div className="cloud cloud-4" />
-    <div className="cloud cloud-2" />
+    <div className="cloudSmall" />
     <div className="cloudBig" />
     <div className="cloudBig cloud2" />
     <img className="planeAnimation" alt="planeAnimation" src="./images/transport/plane.png" />
@@ -45,9 +41,6 @@ export const planeAnimation = () => (
 
 export const carAnimation = () => (
   <div className="animation">
-    <div className="cloud cloud-3" />
-    <div className="cloud cloud-4" />
-    <div className="cloud cloud-2" />
     <div className="cloudBig" />
     <div className="cloudBig cloud2" />
     <img

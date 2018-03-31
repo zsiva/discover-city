@@ -61,86 +61,6 @@
     2400px 0 0 0 black, 2450px 0 0 0 black, 2500px 0 0 0 black, 2550px 0 0 0 black;
 }
 
-.cloud {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50% 50% 0px 0px;
-}
-.cloud:before {
-  content: '';
-  position: absolute;
-  background: white;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  margin: 5px 12px;
-}
-.cloud:after {
-  content: '';
-  position: absolute;
-  background: white;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  margin: 5px -7px;
-}
-
-.cloud-1 {
-  margin: 20px;
-  animation: cloudDrift 10s linear infinite both;
-}
-.cloud-2 {
-  margin-top: 35px;
-  transform: scale(1.8, 1.8);
-  animation: cloudDrift 15s 2s linear infinite both;
-}
-.cloud-3 {
-  margin-top: 50px;
-  transform: scale(0.4, 0.4);
-  animation: cloudDrift 25s linear infinite both;
-}
-.cloud-4 {
-  margin-top: 100px;
-  transform: scale(0.5, 0.5);
-  animation: cloudDrift 20s linear infinite both;
-}
-
-@keyframes cloud {
-  from {
-    transform: translateX(540px);
-  }
-  to {
-    transform: translateX(0px);
-  }
-}
-
-@keyframes cloud-2 {
-  from {
-    transform: scale(0.8, 0.8) translateX(540px);
-  }
-  to {
-    transform: scale(0.8, 0.8) translateX(0px);
-  }
-}
-@keyframes cloud-3 {
-  0% {
-    transform: scale(0.4, 0.4) translateX(540px);
-  }
-  100% {
-    transform: scale(0.4, 0.4) translateX(0px);
-  }
-}
-@keyframes cloud-4 {
-  0% {
-    transform: scale(0.5, 0.5) translateX(540px);
-  }
-  100% {
-    transform: scale(0.5, 0.5) translateX(0px);
-  }
-}
-
 @keyframes cloudDrift {
   from {
     transform: translateX(540px);
@@ -239,6 +159,41 @@
   animation: cloudDrift 20s linear infinite both;
 }
 
+.cloudSmall {
+  background: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+  height: 15px;
+  position: absolute;
+  top: 40px;
+  width: 55px;
+  animation: cloudDrift 10s linear infinite both;
+}
+
+.cloudSmall:after,
+.cloudSmall:before {
+  background: #f5f5f5;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.cloudSmall:after {
+  border-radius: 30px;
+  height: 20px;
+  left: 12px;
+  top: -12px;
+  width: 20px;
+}
+
+.cloudSmall:before {
+  border-radius: 50px;
+  width: 15px;
+  height: 20px;
+  right: 10px;
+  top: -12px;
+}
+
 .cloud2 {
   top: 125px;
   animation: cloudDrift 10s linear infinite both;
@@ -253,7 +208,6 @@
 
 .cloudBig:after {
   border-radius: 25px;
-
   height: 25px;
   left: 12px;
   top: -12px;
@@ -262,7 +216,6 @@
 
 .cloudBig:before {
   border-radius: 50px;
-
   width: 45px;
   height: 45px;
   right: 12px;
