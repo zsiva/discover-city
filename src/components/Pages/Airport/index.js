@@ -26,7 +26,7 @@ class Airport extends Component {
   }
 
   handleOpen() {
-    if (this.props.moneyLeft - 5 > 0) {
+    if (this.props.moneyLeft - 5 >= 0) {
       this.props.dispatch(substractMoney(5));
       this.refs.lightbox.open();
     } else {
@@ -35,6 +35,7 @@ class Airport extends Component {
   }
 
   handleClick(e) {
+    if (this.props.moneyLeft - 30 >= 0) {
     if (this.props.currentCityID === this.props.selectedCities.length - 2) {
       this.refs.lightboxfound.open();
     } else {
@@ -51,8 +52,10 @@ class Airport extends Component {
         this.props.history.push('/city');
       }, 4000);
     }
+  } else {
+    this.refs.lightbox3.open();
   }
-
+}
   render() {
     const { currentCity, selectedCities, isLoading, moneyLeft, nextCity } = this.props;
 
@@ -114,7 +117,7 @@ class Airport extends Component {
                     <img src={`./${currentCity.hints[0].img}`} alt="Ciudad" />
                   </Card.Header>
                   <Card.Meta />
-                  <Card.Description>You feel like {currentCity.hints[0].label} ?</Card.Description>
+                  <Card.Description>You feel like visiting {currentCity.hints[0].label} ?</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Link to="/city">
@@ -155,7 +158,7 @@ class Airport extends Component {
           </div>
         </Lightbox>
         <Lightbox ref="lightbox3" header={currentCity.name}>
-          I am afraid you have no money left to pay for that {currentCity.food}
+          I am afraid you have no money left to pay for that.
           <br />
           <br />
           <strong>Come back when you have some money!</strong>

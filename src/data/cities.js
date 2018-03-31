@@ -6,19 +6,19 @@ export const CITIES = [
     food: 'Bratwurst',
     hints: [
       {
-        label: 'Walking around the Cathedral',
+        label: 'Cathedral',
         img: 'images/cities/berliner-dom.jpg',
       },
       {
-        label: 'Chilling at TierGarten',
+        label: 'TierGarten',
         img: 'images/cities/tiergarten.jpg',
       },
       {
-        label: 'Crossing the Oberbaumbrücke',
+        label: 'Oberbaumbrücke',
         img: 'images/cities/oberbaum.jpg',
       },
       {
-        label: 'Going up the Fernsehturm',
+        label: 'Fernsehturm',
         img: 'images/cities/fernsehturm.jpg',
       },
     ],
@@ -30,15 +30,15 @@ export const CITIES = [
     food: 'Croissant',
     hints: [
       {
-        label: 'Looking at the view from Montmartre',
+        label: 'Montmartre',
         img: 'images/cities/par_montmartre.jpg',
       },
       {
-        label: 'Going up the Eiffel Tower',
+        label: 'Eiffel Tower',
         img: 'images/cities/tour-eiffel.jpg',
       },
       {
-        label: 'In a shop near Notre Dame',
+        label: 'Notre Dame',
         img: 'images/cities/par_notredame.jpg',
       },
     ],
@@ -50,19 +50,19 @@ export const CITIES = [
     food: 'Pizza',
     hints: [
       {
-        label: 'Making pictures at the Colosseum',
+        label: 'Colosseum',
         img: 'images/cities/rom_colosseum.jpg',
       },
       {
-        label: 'Walking around the Circus Maximus',
+        label: 'Circus Maximus',
         img: 'images/cities/rom_circus.jpg',
       },
       {
-        label: 'Around the Vatican',
+        label: 'Vatican',
         img: 'images/cities/rom_vatican.jpg',
       },
       {
-        label: 'Visiting the Temple of Jupiter',
+        label: 'Temple of Jupiter',
         img: 'images/cities/retiro.jpg',
       },
     ],
@@ -74,19 +74,15 @@ export const CITIES = [
     food: 'Paella',
     hints: [
       {
-        label: 'Making a picnic in the Retiro Park',
+        label: 'Retiro Park',
         img: 'images/cities/retiro.jpg',
       },
       {
-        label: 'Admiring the paintings in the Prado Museum',
+        label: 'Prado Museum',
         img: 'images/cities/prado.jpg',
       },
       {
-        label: 'Eating some tapas in `La Latina`',
-        img: 'images/cities/latina.jpg',
-      },
-      {
-        label: 'Eating some tapas in `La Latina`',
+        label: '`La Latina`',
         img: 'images/cities/latina.jpg',
       },
     ],
@@ -98,15 +94,15 @@ export const CITIES = [
     food: 'Glass of Ouzo',
     hints: [
       {
-        label: 'Walking around the Parthenon',
+        label: 'Parthenon',
         img: 'images/cities/ath_part.jpg',
       },
       {
-        label: 'Having a coffe at Plaka',
+        label: 'Plaka',
         img: 'images/cities/ath_plaka.jpg',
       },
       {
-        label: 'Watching the change of guard',
+        label: 'Change of guard',
         img: 'images/cities/ath_sintagma.jpg',
       },
     ],
@@ -118,15 +114,15 @@ export const CITIES = [
     food: 'Heineken',
     hints: [
       {
-        label: 'Riding a bike along the canals and Vondelpark',
+        label: 'Vondelpark',
         img: 'images/cities/ams_vondelpark.jpg',
       },
       {
-        label: 'Visiting Anne Frank House',
+        label: 'Anne Frank House',
         img: 'images/cities/ams_annefrank.jpg',
       },
       {
-        label: 'Relaxing in some Coffee Shops',
+        label: 'Coffee Shops',
         img: 'images/cities/ams_canal.jpg',
       },
     ],
@@ -138,15 +134,15 @@ export const CITIES = [
     food: 'Smoked Salmon',
     hints: [
       {
-        label: 'Walking around Vigeland Park',
+        label: 'Vigeland Park',
         img: 'images/cities/osl_vigeland.jpg',
       },
       {
-        label: 'Visiting Viking Boat Museum',
+        label: 'Viking Boat Museum',
         img: 'images/cities/osl_viking.jpg',
       },
       {
-        label: 'Island Hopping in the fjord',
+        label: 'Fjord',
         img: 'images/cities/osl_fjord.jpg',
       },
     ],
