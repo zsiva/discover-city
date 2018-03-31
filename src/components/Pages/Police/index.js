@@ -4,15 +4,25 @@ import { Button, Container, Grid, Card, Divider, Transition } from 'semantic-ui-
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
+import Lightbox from '../../Lightbox';
+import { substractMoney } from '../../../actions/player';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
   state = { visible: false, visible2: false }
-  toggleVisibility = () => this.setState({ visible: !this.state.visible })
-  toggleVisibility2 = () => this.setState({ visible2: !this.state.visible2 })
-
+  showHints = () => this.setState({ visible: true })
+  showHintsPlus = () => {
+    if (this.state.visible2 === false) {
+    if (this.props.moneyLeft - 30 >= 0) {
+      this.setState({ visible2: true })
+      this.props.dispatch(substractMoney(10));
+      } else {
+    this.refs.lightbox3.open();
+    }
+  }
+}
   render() {
-    const { currentCity, selectedCities, isLoading, currentCityID } = this.props;
+    const { currentCity, selectedCities, moneyLeft, isLoading, currentCityID } = this.props;
     const { visible, visible2 } = this.state
     //console.log(this.state);
     //const nextCity = selectedCities[currentCityID + 1]
@@ -39,8 +49,8 @@ class Police extends Component {
             <br/>I might have some information for you if you pay me</b></Card.Description>
           </Card.Content>
           <Card.Content extra>
-          <Button color="green" size="large" fluid onClick={this.toggleVisibility2} >
-          <Button.Content size="large" content={this.state.visible2 ? 'PAY FOR THE INFO' : 'PAY FOR THE INFO'}/>
+          <Button color="green" size="large" fluid onClick={this.showHintsPlus} >
+          <Button.Content size="large" content={this.state.visible2 ? 'GOOD LUCK !' : 'PAY 10€ FOR THE INFO'}/>
           </Button>
           </Card.Content>
         </Card>
@@ -58,8 +68,8 @@ class Police extends Component {
             <br/>Interpol sent us these 3 pictures. It might be his next destination.</b></Card.Description>
           </Card.Content>
           <Card.Content extra>
-          <Button color="green" size="large" fluid onClick={this.toggleVisibility} >
-          <Button.Content size="large" content={this.state.visible ? 'HIDE HINTS' : 'REVEAL HINTS'}/>
+          <Button color="green" size="large" fluid onClick={this.showHints} >
+          <Button.Content size="large" content={this.state.visible ? 'GOOD LUCK' : 'REVEAL HINTS'}/>
           </Button>
           </Card.Content>
         </Card>
@@ -134,8 +144,15 @@ class Police extends Component {
           </Button>
         </Link>
         </Container>
+        <Lightbox ref="lightbox3" header={currentCity.name}>
+          Sorry, this information is not free
+          <br />
+          <br />
+          <strong>Come back when you have some money!</strong>
+        </Lightbox>
       </Fragment>
     );
+
   }
 }
 
@@ -144,6 +161,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     currentCity: state.gameState.currentCity,
     selectedCities: state.gameState.selectedCities,
     currentCityID: state.gameState.currentCityID,
+    moneyLeft: state.player.money,
     isLoading: state.gameState.isLoading,
   };
 };
