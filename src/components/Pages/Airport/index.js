@@ -38,7 +38,7 @@ class Airport extends Component {
     if (this.props.currentCityID === this.props.selectedCities.length - 2) {
       this.refs.lightboxfound.open();
     } else {
-      this.props.dispatch(substractMoney(10));
+      this.props.dispatch(substractMoney(30));
       if (e.target.innerText === this.props.nextCity.name) {
         this.getNextCity();
         this.setState({ found: true });
@@ -67,20 +67,20 @@ class Airport extends Component {
           <div className="airport">
             <h1>Welcome to the airport of {currentCity.name}</h1>
             <h2>Where do you want to go?</h2>
-            <br />
           </div>
         </section>
 
         <Divider horizontal>Destinations</Divider>
         <Container>
-          <Grid columns={3} doubling>
+          <Grid centered>
             {nextCity.cityOptions.map((cityOption, it) => (
-              <Grid.Column key={it} className="text-center">
+              <Grid.Column key={it} className="text-center" mobile={10} tablet={5} computer={4}>
                 <Button
                   color="green"
                   size="large"
                   onClick={this.handleClick}
                   content={cityOption}
+                  fluid
                 />
               </Grid.Column>
             ))}
@@ -138,16 +138,21 @@ class Airport extends Component {
           </p>
         </Lightbox>
 
-        <Lightbox ref="lightboxCity" header={this.state.found ? 'Correct' : 'Incorrect'}>
-          {this.state.found ? (
-            <p>Yes!! He was in {currentCity.name} but he left already </p>
-          ) : (
-            <p>Sorry, he was not there </p>
-          )}
+        <Lightbox
+          ref="lightboxCity"
+          header={this.state.found ? 'Correct' : 'Incorrect'}
+          displayButton={false}
+        >
+          <div className="text-center">
+            {this.state.found ? (
+              <p>Yes!! He was in {currentCity.name} but he left already.</p>
+            ) : (
+              <p>Sorry, he was not there.</p>
+            )}
 
-          <p>You spent 10 € on tickets</p>
-          <p>You have now {moneyLeft} euros</p>
-          {planeAnimation()}
+            <p>You spent 30 € on tickets. You now have {moneyLeft} euros.</p>
+            {planeAnimation()}
+          </div>
         </Lightbox>
         <Lightbox ref="lightbox3" header={currentCity.name}>
           I am afraid you have no money left to pay for that {currentCity.food}

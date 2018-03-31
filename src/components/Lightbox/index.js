@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 import { Modal, Button } from 'semantic-ui-react';
 
+const defaultProps = {
+  buttonLabel: 'Close',
+  displayButton: true,
+};
+
 class Lightbox extends Component {
   constructor(props) {
     super(props);
@@ -14,18 +19,22 @@ class Lightbox extends Component {
   close = () => this.setState({ isOpen: false });
 
   render() {
-    const { header, buttonLabel = 'Close', trigger, children } = this.props;
+    const { header, buttonLabel, trigger, children, displayButton } = this.props;
 
     return (
       <Modal trigger={trigger} open={this.state.isOpen} onClose={this.close}>
         <Modal.Header>{header}</Modal.Header>
         <Modal.Content>{children}</Modal.Content>
-        <Modal.Actions>
-          <Button content={buttonLabel} color="green" onClick={this.close} />
-        </Modal.Actions>
+        {displayButton && (
+          <Modal.Actions>
+            <Button content={buttonLabel} color="green" onClick={this.close} />
+          </Modal.Actions>
+        )}
       </Modal>
     );
   }
 }
+
+Lightbox.defaultProps = defaultProps;
 
 export default Lightbox;
