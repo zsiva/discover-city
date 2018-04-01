@@ -12,11 +12,11 @@ class Police extends Component {
   showHints = () => {
     if (this.state.visible === false) {
   this.setState({ visible: true });
-  this.setState({ messvisible: true });
+  this.setState({ messvisible: !this.state.messvisible });
   this.setState({ message: 'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!'})}
 }
   showHintsPlus = () => {
-    this.setState({ messvisible: false })
+    this.setState({ messvisible: !this.state.messvisible });
     if (this.state.visible2 === false) {
     if (this.props.moneyLeft - 10 >= 0) {
       this.setState({ visible2: true })

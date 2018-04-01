@@ -28,11 +28,12 @@ class Airport extends Component {
   handleOpen() {
     if (this.props.moneyLeft - 5 >= 0) {
       this.props.dispatch(substractMoney(5));
-      this.setState({ messvisible: true });
+      this.setState({ messvisible: !this.state.messvisible });
       this.setState({ message: 'That ' + this.props.currentCity.food + ' was delicious and you feel recovered. You have now ' + (this.props.moneyLeft - 5 ) + ' €. Now, get back to work! You are a detective, not a tourist!'});
     } else {
+      this.setState({ messvisible: !this.state.messvisible });
       this.setState({ messcolor: 'red' });
-      this.setState({ message: 'I am afraid you have no money left to pay for that. You have  ' + (this.props.moneyLeft) + ' € in your account'});
+      this.setState({ message: 'I am afraid you have no money left to pay for that ' + this.props.currentCity.food + '. You have  ' + (this.props.moneyLeft) + ' € in your account'});
     }
   }
 
@@ -55,9 +56,9 @@ class Airport extends Component {
       }, 4000);
     }
   } else {
-    this.setState({ messvisible: true });
+    this.setState({ messvisible: !this.state.messvisible });
     this.setState({ messcolor: 'red' });
-    this.setState({ message: 'I am afraid you have no money left to pay for that. You have  ' + (this.props.moneyLeft) + ' € in your account'});
+    this.setState({ message: 'I am afraid you have no money left to pay for that flight. You have  ' + (this.props.moneyLeft) + ' € in your account'});
   }
 }
   render() {
