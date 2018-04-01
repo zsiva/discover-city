@@ -9,13 +9,17 @@ import { substractMoney } from '../../../actions/player';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
-  state = { visible: false, visible2: false, message: '' }
+  state = { visible: false, visible2: false, message: '', messvisible: false }
   showHints = () => {
-  this.setState({ visible: true })
+    if (this.state.visible === false) {
+  this.setState({ visible: true });
+  this.setState({ messvisible: true });
   this.setState({ message: 'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!'})}
+}
   showHintsPlus = () => {
+    this.setState({ messvisible: false })
     if (this.state.visible2 === false) {
-    if (this.props.moneyLeft - 30 >= 0) {
+    if (this.props.moneyLeft - 10 >= 0) {
       this.setState({ visible2: true })
       this.props.dispatch(substractMoney(10));
       this.setState({ message: 'You paid 10 € and you got the name of the pictures. It should help you You have now ' + (this.props.moneyLeft - 10 ) + ' €'})
@@ -26,7 +30,7 @@ class Police extends Component {
 }
   render() {
     const { currentCity, selectedCities, moneyLeft, isLoading, currentCityID } = this.props;
-    const { visible, visible2 } = this.state
+    const { visible, visible2, messvisible } = this.state
     //console.log(this.state);
     //const nextCity = selectedCities[currentCityID + 1]
     if (isLoading) {
@@ -37,7 +41,7 @@ class Police extends Component {
         <Header/>
         <Container>
         <Divider horizontal>Welcome to the {currentCity.name} police department</Divider>
-        <Transition visible={visible}  duration={500}>
+        <Transition animation="pulse" visible={messvisible}  duration={500}>
           <Message size='large'>
             <p>
             {this.state.message}
