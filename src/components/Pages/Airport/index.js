@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import { Button, Container, Grid, Card, Divider } from 'semantic-ui-react';
+import { Button, Container, Grid, Card, Divider, Transition, Message  } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import Header from '../../Header';
 import Lightbox from '../../Lightbox';
@@ -17,7 +17,7 @@ class Airport extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.getNextCity = this.getNextCity.bind(this);
-    this.state = { found: false };
+    this.state = { found: false, messvisible: false, messcolor: 'blue' };
   }
 
   async getNextCity() {
@@ -28,9 +28,11 @@ class Airport extends Component {
   handleOpen() {
     if (this.props.moneyLeft - 5 >= 0) {
       this.props.dispatch(substractMoney(5));
-      this.refs.lightbox.open();
+      this.setState({ messvisible: true });
+      this.setState({ message: 'That ' + this.props.currentCity.food + ' was delicious and you feel recovered. You have now ' + (this.props.moneyLeft - 5 ) + ' €. Now, get back to work! You are a detective, not a tourist!'});
     } else {
-      this.refs.lightbox3.open();
+      this.setState({ messcolor: 'red' });
+      this.setState({ message: 'I am afraid you have no money left to pay for that. You have  ' + (this.props.moneyLeft) + ' € in your account'});
     }
   }
 
@@ -53,11 +55,14 @@ class Airport extends Component {
       }, 4000);
     }
   } else {
-    this.refs.lightbox3.open();
+    this.setState({ messvisible: true });
+    this.setState({ messcolor: 'red' });
+    this.setState({ message: 'I am afraid you have no money left to pay for that. You have  ' + (this.props.moneyLeft) + ' € in your account'});
   }
 }
   render() {
     const { currentCity, selectedCities, isLoading, moneyLeft, nextCity } = this.props;
+    const { message, messvisible, messcolor } = this.state;
 
     if (isLoading) {
       return <Spinner text="Loading city info" />;
@@ -66,13 +71,14 @@ class Airport extends Component {
     return (
       <Fragment>
         <Header />
-        <section className="ui container">
+      <section className="ui container">
           <div className="airport">
             <h1>Welcome to the airport of {currentCity.name}</h1>
             <h2>Where do you want to go?</h2>
           </div>
         </section>
 
+        <Container>
         <Divider horizontal>Destinations</Divider>
         <Container>
           <Grid centered>
@@ -90,6 +96,13 @@ class Airport extends Component {
           </Grid>
         </Container>
         <Divider horizontal>Activities</Divider>
+        <Transition animation="pulse" visible={messvisible}  duration={500}>
+          <Message size='large' color={this.state.messcolor}>
+            <p>
+            {this.state.message}
+            </p>
+          </Message>
+        </Transition>
         <Container textAlign="center">
           <Grid columns={2}>
             <Grid.Column>
@@ -129,19 +142,10 @@ class Airport extends Component {
               </Card>
             </Grid.Column>
           </Grid>
-        </Container>
+          </Container>
+          </Container>
 
-        <Lightbox ref="lightbox" header={currentCity.name}>
-          <p>
-            <strong>That {currentCity.food} was delicious and you feel recovered</strong>
-            <br />
-            <br />You have now {moneyLeft} euros.
-            <br />
-            <br />Now, get back to work! You are a detective, not a tourist!
-          </p>
-        </Lightbox>
-
-        <Lightbox
+          <Lightbox
           ref="lightboxCity"
           header={this.state.found ? 'Correct' : 'Incorrect'}
           displayButton={false}
@@ -156,12 +160,6 @@ class Airport extends Component {
             <p>You spent 30 € on tickets. You now have {moneyLeft} euros.</p>
             {planeAnimation()}
           </div>
-        </Lightbox>
-        <Lightbox ref="lightbox3" header={currentCity.name}>
-          I am afraid you have no money left to pay for that.
-          <br />
-          <br />
-          <strong>Come back when you have some money!</strong>
         </Lightbox>
         <Lightbox ref="lightboxfound" header={selectedCities[this.props.currentCityID + 1].name}>
           You found him!! He was hiding in {selectedCities[this.props.currentCityID + 1].name}

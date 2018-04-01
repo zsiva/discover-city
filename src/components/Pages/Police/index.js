@@ -1,15 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Card, Divider, Transition,Message } from 'semantic-ui-react';
+import { Button, Container, Grid, Card, Divider, Transition, Message } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
-import Lightbox from '../../Lightbox';
 import { substractMoney } from '../../../actions/player';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
-  state = { visible: false, visible2: false, message: '', messvisible: false }
+  state = { visible: false, visible2: false, message: '', messvisible: false, messcolor: 'blue' }
   showHints = () => {
     if (this.state.visible === false) {
   this.setState({ visible: true });
@@ -24,13 +23,14 @@ class Police extends Component {
       this.props.dispatch(substractMoney(10));
       this.setState({ message: 'You paid 10 € and you got the name of the pictures. It should help you You have now ' + (this.props.moneyLeft - 10 ) + ' €'})
       } else {
+        this.setState({ messcolor: 'red' })
       this.setState({ message: 'Corrupt Police Officer: You need 10 € and your account has ' + (this.props.moneyLeft ) + ' €. This information is not free!' })
     }
   }
 }
   render() {
     const { currentCity, selectedCities, moneyLeft, isLoading, currentCityID } = this.props;
-    const { visible, visible2, messvisible } = this.state
+    const { visible, visible2, messvisible, messcolor } = this.state
     //console.log(this.state);
     //const nextCity = selectedCities[currentCityID + 1]
     if (isLoading) {
@@ -42,7 +42,7 @@ class Police extends Component {
         <Container>
         <Divider horizontal>Welcome to the {currentCity.name} police department</Divider>
         <Transition animation="pulse" visible={messvisible}  duration={500}>
-          <Message size='large'>
+          <Message size='large' color={this.state.messcolor}>
             <p>
             {this.state.message}
             </p>
@@ -101,7 +101,7 @@ class Police extends Component {
                   </Card.Header>
                   </Transition>
                   <Card.Meta />
-                  <Transition visible={visible2}  duration={500}>
+                  <Transition visible={visible2} animation="jiggle" duration={500}>
                   <Card.Description>{selectedCities[currentCityID + 1].hints[0].label}</Card.Description>
                   </Transition>
               </Card.Content>
@@ -118,7 +118,7 @@ class Police extends Component {
                   </Card.Header>
                   </Transition>
                   <Card.Meta />
-                  <Transition visible={visible2}  duration={500}>
+                  <Transition visible={visible2} animation="jiggle" duration={500}>
                   <Card.Description>{selectedCities[currentCityID + 1].hints[1].label}</Card.Description>
                   </Transition>
                 </Card.Content>
@@ -135,7 +135,7 @@ class Police extends Component {
                   </Card.Header>
                   </Transition>
                   <Card.Meta />
-                  <Transition visible={visible2}  duration={500}>
+                  <Transition visible={visible2} animation="jiggle" duration={500}>
                   <Card.Description>{selectedCities[currentCityID + 1].hints[2].label}</Card.Description>
                   </Transition>
                   </Card.Content>
@@ -158,12 +158,6 @@ class Police extends Component {
           </Button>
         </Link>
         </Container>
-        <Lightbox ref="lightbox3" header={currentCity.name}>
-          Sorry, this information is not free
-          <br />
-          <br />
-          <strong>Come back when you have some money!</strong>
-        </Lightbox>
       </Fragment>
     );
 
