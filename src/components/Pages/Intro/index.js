@@ -23,9 +23,6 @@ export default function Intro() {
             He has been looking all over the world for it but cannot find it. Help him!
           </p>
           <br />
-          <Link to="/rules">
-            <Button color="green" content="Rules" />
-          </Link>
           <Link to="/user">
             <Button content="Start game" color="green" />
           </Link>

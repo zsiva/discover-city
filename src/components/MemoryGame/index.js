@@ -10,9 +10,9 @@ import Lightbox from '../Lightbox';
 
 const cardIcons = ['birthday', 'alarm', 'bug', 'paint brush', 'unhide', 'pin'];
 
-const cardList = shuffleArray([...cardIcons, ...cardIcons]);
-
 const initiateCards = () => {
+  const cardList = shuffleArray([...cardIcons, ...cardIcons]);
+
   return cardList.map(card => ({
     value: card,
     matched: false,

@@ -57,12 +57,17 @@ class Profile extends Component<ProfilePropType> {
           </Grid>
 
           <Grid className="actions">
-            <Grid.Column width={8}>
+            <Grid.Column mobile={8} tablet={4} computer={4}>
               <Link to="/get-money">
                 <Button color="green" content="Earn money" fluid />
               </Link>
             </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column mobile={8} tablet={4} computer={4}>
+              <Link to="/rules">
+                <Button color="green" content="Rules" fluid />
+              </Link>
+            </Grid.Column>
+            <Grid.Column mobile={8} tablet={4} computer={4}>
               <Link to="/city">
                 <Button content="Find him" color="green" fluid />
               </Link>

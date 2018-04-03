@@ -12,6 +12,7 @@ import City from '../Pages/City';
 import Airport from '../Pages/Airport';
 import Police from '../Pages/Police';
 import Rules from '../Pages/Rules';
+import CityRoad from '../Pages/CityRoad';
 
 import './style.css';
 
@@ -34,7 +35,8 @@ class Root extends Component<RootPropType> {
           <Route exact path="/" component={Intro} />} />
           <Route path="/airport" component={Airport} />
           <Route path="/user" component={Profile} />
-          <Route path="/city" component={City} />
+          <Route path="/cityOLD" component={City} />
+          <Route path="/city" component={CityRoad} />
           <Route path="/police" component={Police} />
           <Route path="/get-money" component={GetMoney} />
           <Route path="/rules" component={Rules} />
