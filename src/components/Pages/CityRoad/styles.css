@@ -31,10 +31,33 @@
   transform-style: preserve-3d;
   transform: rotateX(45deg);
 }
-
+.mobileContainer {
+  position: relative;
+}
+.roadVertical {
+  height: 100%;
+  width: 90px;
+  background: rgba(100, 100, 100, 0.8);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.verticalDivider {
+  width: 45px;
+  border-right: 2px dashed #fff;
+  height: 100%;
+  z-index: 1;
+}
+.verticalImg {
+  margin-left: 100px;
+}
 #taxiCity {
   position: absolute;
-  top: -10px;
+  top: 0;
   z-index: 2;
+  width: 70px;
   transition: transform 2s ease-out;
+}
+.taxiMob {
+  transform: rotate(90deg);
 }
