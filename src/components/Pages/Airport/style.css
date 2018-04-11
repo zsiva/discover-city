@@ -10,7 +10,11 @@
   border: 2px solid white;
   text-align: center;
 }
-
+@media only screen and (max-width: 480px) {
+  .destButton {
+    padding: 1rem 0.5rem !important;
+  }
+}
 @media only screen and (min-width: 481px) {
   .leprechaun {
     max-height: 220px;

@@ -91,7 +91,7 @@ class MemoryGame extends Component {
   renderCards(cards) {
     return cards.map((card, index) => {
       return (
-        <Grid.Column key={index} mobile={8} tablet={4} computer={4}>
+        <Grid.Column key={index} mobile={5} tablet={4} computer={4}>
           <Card
             key={index}
             value={card.value}

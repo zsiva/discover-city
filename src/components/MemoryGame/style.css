@@ -13,6 +13,7 @@
   transition: transform 1s;
   cursor: pointer;
 }
+
 .smallCard {
   height: 4rem;
   width: 4rem;
@@ -32,6 +33,7 @@
 }
 .cardContent .back {
   transform: rotateY(180deg);
+  border: 1px solid green;
 }
 .cardContent .icon {
   background-color: white;
@@ -52,4 +54,14 @@
   border-radius: 0 0 10px 10px;
   text-align: center;
   color: #fff;
+}
+
+@media only screen and (max-width: 480px) {
+  .cardContent {
+    height: 5.5rem;
+    width: 5.5rem;
+  }
+  .cardContent .icon i {
+    margin-top: 0.7rem;
+  }
 }

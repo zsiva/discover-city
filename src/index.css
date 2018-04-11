@@ -31,3 +31,16 @@ body {
 .ui.labeled.icon.menu .item {
   min-width: 5em;
 }
+
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 18px;
+  }
+  h2 {
+    font-size: 17px;
+  }
+  button {
+    padding: 0.8rem 0.5rem !important;
+    font-size: 13px !important;
+  }
+}
