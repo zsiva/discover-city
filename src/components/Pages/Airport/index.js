@@ -54,7 +54,17 @@ class Airport extends Component {
   handleClick(e) {
     if (this.props.moneyLeft - 30 >= 0) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        this.refs.lightboxfound.open();
+        if (e.target.innerText === this.props.nextCity.name) {
+          this.refs.lightboxfound.open();
+        } else {
+          this.props.dispatch(substractMoney(30));
+          this.setState({ found: false });
+          this.refs.lightboxCity.open();
+          setTimeout(() => {
+            this.refs.lightboxCity.close();
+            this.props.history.push('/city');
+          }, 4000);
+        }
       } else {
         this.props.dispatch(substractMoney(30));
         if (e.target.innerText === this.props.nextCity.name) {
