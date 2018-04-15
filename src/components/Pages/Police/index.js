@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, Grid, Card, Divider, Transition, Message } from 'semantic-ui-react';
+import { Button, Container, Grid, Card, Transition, Message } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
@@ -8,11 +8,17 @@ import { substractMoney } from '../../../actions/player';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
-  state = { visible: false, visible2: false, message: '', messvisible: false, messcolor: 'blue' };
+  state = {
+    visible: false,
+    visible2: false,
+    message: '',
+    messageVisible: false,
+    messageColor: 'blue',
+  };
   showHints = () => {
     if (this.state.visible === false) {
       this.setState({ visible: true });
-      this.setState({ messvisible: !this.state.messvisible });
+      this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({
         message:
           'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
@@ -20,7 +26,7 @@ class Police extends Component {
     }
   };
   showHintsPlus = () => {
-    this.setState({ messvisible: !this.state.messvisible });
+    this.setState({ messageVisible: !this.state.messageVisible });
     if (this.state.visible2 === false) {
       if (this.props.moneyLeft - 10 >= 0) {
         this.setState({ visible2: true });
@@ -32,7 +38,7 @@ class Police extends Component {
             ' €',
         });
       } else {
-        this.setState({ messcolor: 'red' });
+        this.setState({ messageColor: 'red' });
         this.setState({
           message:
             'Corrupt Police Officer: You need 10 € and your account has ' +
@@ -43,24 +49,23 @@ class Police extends Component {
     }
   };
   render() {
-    const { currentCity, selectedCities, moneyLeft, isLoading, currentCityID } = this.props;
-    const { visible, visible2, messvisible, messcolor } = this.state;
+    const { currentCity, isLoading, nextCity } = this.props;
+    const { visible, visible2, messageVisible } = this.state;
     if (isLoading) {
       return <Spinner text="Loading city info" />;
     }
-
     return (
       <Fragment>
         <Header />
         <Container>
           <h1 className="text-center">Welcome to the {currentCity.name} police department</h1>
-          <Transition animation="pulse" visible={messvisible} duration={500}>
-            <Message size="large" color={this.state.messcolor}>
+          <Transition animation="pulse" visible={messageVisible} duration={500}>
+            <Message size="large" color={this.state.messageColor}>
               <p>{this.state.message}</p>
             </Message>
           </Transition>
           <Grid centered>
-            <Grid.Column mobile={16} tablet={5} computer={4}>
+            <Grid.Column mobile={16} tablet={8} computer={5}>
               <Card centered color="green">
                 <Card.Content textAlign="center">
                   <img src="./images/policeoff.png" alt={'Police Officer'} />
@@ -83,7 +88,7 @@ class Police extends Component {
                 </Card.Content>
               </Card>
             </Grid.Column>
-            <Grid.Column mobile={16} tablet={5} computer={4}>
+            <Grid.Column mobile={16} tablet={8} computer={5}>
               <Transition visible={visible} duration={500}>
                 <Card centered color="green">
                   <Card.Content textAlign="center">
@@ -91,10 +96,12 @@ class Police extends Component {
                     <Card.Header />
                     <Card.Meta />
                     <Card.Description>
-                      <b>
-                        PSS PSS
-                        <br />I might have some information for you if you pay me
-                      </b>
+                      <p>
+                        <b>PSS PSS</b>
+                      </p>
+                      <p>
+                        <b>I might have some information for you if you pay me</b>
+                      </p>
                     </Card.Description>
                   </Card.Content>
                   <Card.Content extra>
@@ -109,67 +116,21 @@ class Police extends Component {
               </Transition>
             </Grid.Column>
           </Grid>
-          <Grid>
-            <Grid.Column mobile={16} tablet={5} computer={4}>
-              <Card centered>
-                <Card.Content textAlign="center">
-                  <Transition visible={visible} duration={500}>
-                    <Card.Header>
-                      <img
-                        src={`./${selectedCities[currentCityID + 1].hints[0].img}`}
-                        alt={'Hint1'}
-                      />
-                    </Card.Header>
-                  </Transition>
-                  <Card.Meta />
-                  <Transition visible={visible2} animation="jiggle" duration={500}>
-                    <Card.Description>
-                      {selectedCities[currentCityID + 1].hints[0].label}
-                    </Card.Description>
-                  </Transition>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            <Grid.Column mobile={16} tablet={5} computer={4}>
-              <Card centered>
-                <Card.Content textAlign="center">
-                  <Transition visible={visible} duration={500}>
-                    <Card.Header>
-                      <img
-                        src={`./${selectedCities[currentCityID + 1].hints[1].img}`}
-                        alt={'Hint1'}
-                      />
-                    </Card.Header>
-                  </Transition>
-                  <Card.Meta />
-                  <Transition visible={visible2} animation="jiggle" duration={500}>
-                    <Card.Description>
-                      {selectedCities[currentCityID + 1].hints[1].label}
-                    </Card.Description>
-                  </Transition>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            <Grid.Column mobile={16} tablet={5} computer={4}>
-              <Card centered>
-                <Card.Content textAlign="center">
-                  <Transition visible={visible} duration={500}>
-                    <Card.Header>
-                      <img
-                        src={`./${selectedCities[currentCityID + 1].hints[2].img}`}
-                        alt={'Hint1'}
-                      />
-                    </Card.Header>
-                  </Transition>
-                  <Card.Meta />
-                  <Transition visible={visible2} animation="jiggle" duration={500}>
-                    <Card.Description>
-                      {selectedCities[currentCityID + 1].hints[2].label}
-                    </Card.Description>
-                  </Transition>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
+          <Grid centered>
+            {nextCity.hints.map(hint => (
+              <Grid.Column mobile={16} tablet={5} computer={4} key={hint.label}>
+                <Card centered color="green">
+                  <Card.Content textAlign="center" color="green">
+                    <Transition visible={visible} duration={500}>
+                      <img src={`./${hint.img}`} alt="city hints" />
+                    </Transition>
+                    <Transition visible={visible2} animation="jiggle" duration={500}>
+                      <p>{hint.label}</p>
+                    </Transition>
+                  </Card.Content>
+                </Card>
+              </Grid.Column>
+            ))}
           </Grid>
         </Container>
         <h3 className="text-center">
@@ -196,9 +157,9 @@ const mapStateToProps = (state, ownProps = {}) => {
   return {
     currentCity: state.gameState.currentCity,
     selectedCities: state.gameState.selectedCities,
-    currentCityID: state.gameState.currentCityID,
     moneyLeft: state.player.money,
     isLoading: state.gameState.isLoading,
+    nextCity: state.gameState.nextCity,
   };
 };
 
