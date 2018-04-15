@@ -14,8 +14,6 @@ import Police from '../Pages/Police';
 import Rules from '../Pages/Rules';
 import CityRoad from '../Pages/CityRoad';
 
-import './style.css';
-
 export type RootPropType = {
   currentCity: string,
   dispatch: Dispatch,

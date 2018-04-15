@@ -10,10 +10,6 @@ export const CITIES = [
         img: 'images/cities/berliner-dom.jpg',
       },
       {
-        label: 'TierGarten',
-        img: 'images/cities/tiergarten.jpg',
-      },
-      {
         label: 'Oberbaumbrücke',
         img: 'images/cities/oberbaum.jpg',
       },
@@ -147,7 +143,7 @@ export const CITIES = [
       },
     ],
   },
-   {
+  {
     name: 'Krakow',
     police: 'POLICJA',
     flag: 'countryFlags/POLA0001.GIF',

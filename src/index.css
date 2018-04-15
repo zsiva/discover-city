@@ -44,3 +44,38 @@ body {
     font-size: 13px !important;
   }
 }
+
+section {
+  padding: 20px 0;
+}
+
+.centered {
+  margin: 0 auto;
+}
+/*Overwrite semantic*/
+.modal-body {
+  overflow: auto;
+}
+.modal-footer .btn {
+  margin: 0 auto;
+  display: block;
+}
+
+.ui.centered.card {
+  min-height: 230px;
+}
+.ui.centered.card img {
+  margin: 0 auto;
+}
+img {
+  max-width: 100%;
+}
+@media only screen and (max-width: 480px) {
+  h1,
+  h2 {
+    font-size: 26px;
+  }
+  .modal-body img {
+    max-width: 100px;
+  }
+}
