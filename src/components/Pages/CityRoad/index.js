@@ -42,19 +42,16 @@ class CityRoad extends Component {
             <Grid centered textAlign="center" verticalAlign="bottom">
               <Grid.Column mobile={10} tablet={5} computer={5}>
                 <div data-to="/police" onClick={this.moveCar} className="text-center">
-                  <div className="policeName">{currentCity.police}</div>
                   <img src="./images/police.png" alt="police department" />
                 </div>
               </Grid.Column>
               <Grid.Column mobile={10} tablet={5} computer={5}>
                 <div data-to="/airport" onClick={this.moveCar} className="text-center">
-                  <div className="policeName">Airport</div>
                   <img src="./images/airport.png" alt="Airport" />
                 </div>
               </Grid.Column>
               <Grid.Column mobile={10} tablet={5} computer={5}>
                 <div data-to="/get-money" onClick={this.moveCar} className="text-center">
-                  <div className="policeName">Casino</div>
                   <img src="./images/casino.png" alt="casino" />
                 </div>
               </Grid.Column>

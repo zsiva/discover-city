@@ -59,7 +59,7 @@ class Police extends Component {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">Welcome to the {currentCity.name} police department</h1>
+          <h1 className="text-center">Welcome to the {currentCity.police}</h1>
 
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>

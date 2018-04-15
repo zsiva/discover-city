@@ -57,10 +57,6 @@ export const CITIES = [
         label: 'Vatican',
         img: 'images/cities/rom_vatican.jpg',
       },
-      {
-        label: 'Temple of Jupiter',
-        img: 'images/cities/retiro.jpg',
-      },
     ],
   },
   {
