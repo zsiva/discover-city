@@ -11,20 +11,18 @@ class CityRoad extends Component {
   handleOpen = () => this.refs.lightbox.open();
   moveCar = e => {
     const location = e.currentTarget.dataset.to;
-    document.getElementById('taxiCity').style.transform = `translateX(${e.clientX}px)`;
+    if (document.getElementsByClassName('roadContainer').length > 0) {
+      document.getElementById('taxiCity').style.transform = `translateX(${e.clientX}px)`;
+    } else {
+      document.getElementById('taxiCity').style.transform = `translateY(${e.clientY -
+        150}px) rotate(90deg)`;
+    }
+
     setTimeout(() => {
       this.props.history.push(location);
     }, 2200);
   };
-  moveCarMob = e => {
-    const location = e.currentTarget.dataset.to;
-    document.getElementById('taxiCity').style.transform = `translateY(${
-      e.clientY
-    }px) rotate(90deg)`;
-    setTimeout(() => {
-      this.props.history.push(location);
-    }, 2200);
-  };
+
   render() {
     const { currentCity, isLoading } = this.props;
 
@@ -40,7 +38,7 @@ class CityRoad extends Component {
             Welcome to {currentCity.name}{' '}
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
           </h1>
-          <Responsive minWidth={768}>
+          <div className="cityWrapper">
             <Grid centered textAlign="center" verticalAlign="bottom">
               <Grid.Column mobile={10} tablet={5} computer={5} className="text-center">
                 <div data-to="/police" onClick={this.moveCar}>
@@ -61,35 +59,26 @@ class CityRoad extends Component {
                 </div>
               </Grid.Column>
             </Grid>
-          </Responsive>
-          <Responsive as={Container} maxWidth={767}>
-            <div className="mobileContainer">
-              <div className="verticalImg" data-to="/police" onClick={this.moveCarMob}>
-                <div className="policeName">{currentCity.police}</div>
-                <img src="./images/police.png" alt="police department" />
-              </div>
-              <div className="verticalImg" data-to="/airport" onClick={this.moveCarMob}>
-                <div className="policeName">{currentCity.police}</div>
-                <img src="./images/airport.png" alt="airport" />
-              </div>
-              <div className="verticalImg" data-to="/get-money" onClick={this.moveCarMob}>
-                <div className="policeName">{currentCity.police}</div>
-                <img src="./images/casino.png" alt="casino" />
-              </div>
+            <Responsive maxWidth={767}>
               <div className="roadVertical">
                 <div className="verticalDivider" />
-                <img id="taxiCity" src="./images/transport/car.png" alt="car" className="taxiMob" />
+                <img
+                  id="taxiCity"
+                  src="./images/transport/car.png"
+                  alt="car"
+                  className="taxiMobile"
+                />
               </div>
-            </div>
-          </Responsive>
-        </Container>
-        <Responsive minWidth={768}>
-          <div className="roadContainer">
-            <img id="taxiCity" src="./images/transport/car.png" alt="car" />
-            <div className="roadDivider" />
-            <div className="road" />
+            </Responsive>
+            <Responsive minWidth={768}>
+              <div className="roadContainer">
+                <img id="taxiCity" src="./images/transport/car.png" alt="car" />
+                <div className="roadDivider" />
+                <div className="road" />
+              </div>
+            </Responsive>
           </div>
-        </Responsive>
+        </Container>
       </Fragment>
     );
   }

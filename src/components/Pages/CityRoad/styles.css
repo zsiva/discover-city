@@ -31,19 +31,19 @@
   transform-style: preserve-3d;
   transform: rotateX(45deg);
 }
-.mobileContainer {
+.cityWrapper {
   position: relative;
 }
 .roadVertical {
-  height: 100%;
-  width: 90px;
+  height: 95%;
+  width: 60px;
   background: rgba(100, 100, 100, 0.8);
   position: absolute;
-  top: 0;
+  top: 20px;
   bottom: 0;
 }
 .verticalDivider {
-  width: 45px;
+  width: 30px;
   border-right: 2px dashed #fff;
   height: 100%;
   z-index: 1;
@@ -51,6 +51,7 @@
 .verticalImg {
   margin-left: 100px;
 }
+
 #taxiCity {
   position: absolute;
   top: 0;
@@ -58,6 +59,6 @@
   width: 70px;
   transition: transform 2s ease-out;
 }
-.taxiMob {
+.taxiMobile {
   transform: rotate(90deg);
 }
