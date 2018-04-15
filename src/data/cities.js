@@ -159,4 +159,24 @@ export const CITIES = [
       },
     ],
   },
+  {
+    name: 'Prague',
+    police: 'POLICIE',
+    flag: 'countryFlags/CZEC0001.GIF',
+    food: 'Trdelnik',
+    hints: [
+      {
+        label: 'Old Square',
+        img: 'images/cities/prg_oldsquare.jpg',
+      },
+      {
+        label: 'Castle',
+        img: 'images/cities/prg_castle.jpg',
+      },
+      {
+        label: 'Karlovy Most',
+        img: 'images/cities/prg_karlovy.jpg',
+      },
+    ],
+  },
 ];
