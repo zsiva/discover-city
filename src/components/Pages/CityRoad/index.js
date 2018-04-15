@@ -12,7 +12,7 @@ class CityRoad extends Component {
   moveCar = e => {
     const location = e.currentTarget.dataset.to;
     if (document.getElementsByClassName('roadContainer').length > 0) {
-      document.getElementById('taxiCity').style.transform = `translateX(${e.clientX}px)`;
+      document.getElementById('taxiCity').style.transform = `translateX(${e.clientX - 150}px)`;
     } else {
       document.getElementById('taxiCity').style.transform = `translateY(${e.clientY -
         150}px) rotate(90deg)`;
