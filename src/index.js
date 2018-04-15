@@ -22,6 +22,8 @@ const initialState = {
   },
   player: {
     money: INITIAL_MONEY,
+    name: '',
+    points: 0,
   },
 };
 
