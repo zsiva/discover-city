@@ -1,15 +1,16 @@
 //@flow
 import React, { Fragment } from 'react';
 import { Container } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import Header from '../../Header';
 import { INITIAL_TIME, INITIAL_MONEY } from '../../../data/constants';
 
-export default function Rules() {
+function Rules(props) {
   return (
     <Fragment>
       <Header />
       <Container>
-        <h3>Summary:</h3>
+        <h1>Hello {props.playerName}</h1>
         <p>
           You are now a detective and need to extract clues from the police departments on each city
           to find out the thief's whereabouts.
@@ -27,3 +28,11 @@ export default function Rules() {
     </Fragment>
   );
 }
+
+const mapStateToProps = (state, ownProps = {}) => {
+  return {
+    playerName: state.player.name,
+  };
+};
+
+export default connect(mapStateToProps)(Rules);
