@@ -1,0 +1,7 @@
+.blurImage {
+  filter: blur(8px);
+}
+
+.hintImage {
+  margin-bottom: 1rem !important;
+}

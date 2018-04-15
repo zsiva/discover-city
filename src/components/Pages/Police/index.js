@@ -5,6 +5,7 @@ import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import { substractMoney } from '../../../actions/player';
+import './styles.css';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
@@ -59,18 +60,13 @@ class Police extends Component {
         <Header />
         <Container>
           <h1 className="text-center">Welcome to the {currentCity.name} police department</h1>
-          <Transition animation="pulse" visible={messageVisible} duration={500}>
-            <Message size="large" color={this.state.messageColor}>
-              <p>{this.state.message}</p>
-            </Message>
-          </Transition>
+
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>
               <Card centered color="green">
                 <Card.Content textAlign="center">
-                  <img src="./images/policeoff.png" alt={'Police Officer'} />
-                  <Card.Header />
-                  <Card.Meta />
+                  <img src="./images/policeoff.png" alt="Police Officer" />
+
                   <Card.Description>
                     <b>
                       I heard you are looking for the thief who stole O'Greeny's money
@@ -92,9 +88,7 @@ class Police extends Component {
               <Transition visible={visible} duration={500}>
                 <Card centered color="green">
                   <Card.Content textAlign="center">
-                    <img src="./images/policecorr.png" alt={'Police Officer'} />
-                    <Card.Header />
-                    <Card.Meta />
+                    <img src="./images/policecorr.png" alt="Police Officer" />
                     <Card.Description>
                       <p>
                         <b>PSS PSS</b>
@@ -116,13 +110,22 @@ class Police extends Component {
               </Transition>
             </Grid.Column>
           </Grid>
+          <Transition animation="pulse" visible={messageVisible} duration={500}>
+            <Message size="large" color={this.state.messageColor}>
+              <p className="text-center">{this.state.message}</p>
+            </Message>
+          </Transition>
           <Grid centered>
             {nextCity.hints.map(hint => (
               <Grid.Column mobile={16} tablet={5} computer={4} key={hint.label}>
                 <Card centered color="green">
-                  <Card.Content textAlign="center" color="green">
+                  <Card.Content textAlign="center">
                     <Transition visible={visible} duration={500}>
-                      <img src={`./${hint.img}`} alt="city hints" />
+                      <img
+                        className={visible2 ? 'hintImage' : 'blurImage'}
+                        src={`./${hint.img}`}
+                        alt="city hints"
+                      />
                     </Transition>
                     <Transition visible={visible2} animation="jiggle" duration={500}>
                       <p>{hint.label}</p>
