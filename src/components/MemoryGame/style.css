@@ -1,67 +1,53 @@
-.card {
-  padding: 0 5px;
-  margin: 5px 0;
-  perspective: 500px;
-}
-
-.cardContent {
+.cardContainer {
+  width: 8rem;
   height: 8rem;
   position: relative;
-  width: 8rem;
-  margin: 0 auto;
+  perspective: 800px;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
   transform-style: preserve-3d;
-  transition: transform 1s;
-  cursor: pointer;
+  transition: transform 0.5s;
+  animation: flashflip 0.01s;
 }
-
-.smallCard {
-  height: 4rem;
-  width: 4rem;
+.card .front,
+.card .back {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
 }
-.cardContent .front,
-.cardContent .back {
+.card .front {
+  background-image: url(./bg-card.jpg);
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  position: absolute;
 }
-.cardContent .front {
-  background-image: url(./bg-card.jpg);
-}
-.cardContent .back {
+.card .back {
   transform: rotateY(180deg);
-  border: 1px solid green;
-}
-.cardContent .icon {
-  background-color: white;
+  background-color: #fff;
   text-align: center;
 }
-.cardContent .icon i {
+.card .back i {
   margin-top: 2rem;
 }
-.cardContent.flipped {
-  transform: rotate3d(0, 1, 0, 180deg);
-}
-.cityLabel {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(6, 100, 64, 0.8);
-  border-radius: 0 0 10px 10px;
-  text-align: center;
-  color: #fff;
+.card.flipped {
+  transform: rotateY(180deg);
 }
 
-@media only screen and (max-width: 480px) {
-  .cardContent {
-    height: 5.5rem;
-    width: 5.5rem;
+/*backface-visibility fix*/
+@-webkit-keyframes flashflip {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotatey(1deg);
   }
-  .cardContent .icon i {
-    margin-top: 0.7rem;
+  100% {
+    opacity: 1;
+    -webkit-transform: rotatey(0deg);
   }
 }

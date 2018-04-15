@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Button, Modal } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addMoney } from '../../actions/player';
 
 import Card from './Card';
 import { shuffleArray } from '../../utils/operations';
-import Lightbox from '../Lightbox';
+import Spinner from '../Spinner';
 
 const cardIcons = ['birthday', 'alarm', 'bug', 'paint brush', 'unhide', 'pin'];
 
@@ -34,7 +34,8 @@ class MemoryGame extends Component {
       locked: false,
       matches: 0,
       timer: null,
-      counter: 20,
+      counter: 21,
+      openModal: false,
     };
   }
 
@@ -51,7 +52,9 @@ class MemoryGame extends Component {
     if (this.state.counter === 0) {
       clearInterval(this.state.timer);
       this.props.dispatch(addMoney(this.state.matches * 10));
-      this.refs.hintsLightbox.open();
+      this.setState({
+        openModal: true,
+      });
     } else {
       this.setState({
         counter: this.state.counter - 1,
@@ -115,6 +118,9 @@ class MemoryGame extends Component {
   }
 
   render() {
+    if (this.state.counter === 21) {
+      return <Spinner text="Loading cards" />;
+    }
     return (
       <Fragment>
         <h5>
@@ -122,27 +128,29 @@ class MemoryGame extends Component {
           <div className="pull-right">Time Left: {this.state.counter}</div>
         </h5>
         <Grid>{this.renderCards(this.state.cards)}</Grid>
-        <Lightbox
-          ref="hintsLightbox"
-          header={this.state.counter === 0 ? 'Your time is up!' : 'Great you found all the pairs'}
-        >
-          <Grid>
-            <Grid.Column width={8}>
-              <img src="./images/timeup.jpg" alt="time up" />
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <p>Your time is up, you got {this.state.matches} correct answers.</p>
-              <p>
-                You earned {this.state.matches * 10} €. You now have {this.props.moneyLeft}
-              </p>
-              <Link to="/user">
-                <Button color="green">
-                  <Button.Content content="Back to the profile" />
-                </Button>
-              </Link>
-            </Grid.Column>
-          </Grid>
-        </Lightbox>
+        <Modal open={this.state.openModal} size="small">
+          <Modal.Header>
+            {this.state.counter === 0 ? 'Your time is up!' : 'Great you found all the pairs'}
+          </Modal.Header>
+          <Modal.Content>
+            <Grid>
+              <Grid.Column width={8}>
+                <img src="./images/timeup.jpg" alt="time up" />
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <p>Your time is up, you got {this.state.matches} correct answers.</p>
+                <p>
+                  You earned {this.state.matches * 10} €. You now have {this.props.moneyLeft}
+                </p>
+                <Link to="/user">
+                  <Button color="green">
+                    <Button.Content content="Back to the profile" />
+                  </Button>
+                </Link>
+              </Grid.Column>
+            </Grid>
+          </Modal.Content>
+        </Modal>
       </Fragment>
     );
   }

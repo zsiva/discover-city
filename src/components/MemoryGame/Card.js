@@ -26,13 +26,10 @@ export default class Card extends Component<CardProptype> {
 
   render() {
     return (
-      <div className="card">
-        <div
-          className={this.props.flipped ? 'cardContent flipped' : ' cardContent'}
-          onMouseDown={this.handleClick}
-        >
+      <div className="cardContainer" onMouseDown={this.handleClick}>
+        <div className={this.props.flipped ? ' flipped card' : ' card'}>
           <div className="front" />
-          <div className="back icon">
+          <div className="back">
             <Icon size="huge" color="green" name={this.props.value} />
           </div>
         </div>
