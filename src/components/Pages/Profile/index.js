@@ -15,7 +15,6 @@ export type ProfilePropType = {
 };
 
 export type ProfileStateType = {
-  displayIntro: boolean,
   name: string,
 };
 
@@ -23,7 +22,6 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
   constructor(props) {
     super(props);
     this.state = {
-      displayIntro: true,
       name: '',
     };
   }
@@ -31,19 +29,18 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
   handleChange = (e, { value }) => this.setState({ name: value });
 
   saveName = (e, { value }) => {
-    this.setState({ displayIntro: false });
     this.props.dispatch(setName(this.state.name));
   };
 
   render() {
     let { timeRemaining, moneyLeft, playerName } = this.props;
     timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
-
+    const displayIntro = this.props.playerName === '';
     return (
       <Fragment>
         <Header />
         <section className="ui container">
-          {this.state.displayIntro && (
+          {displayIntro && (
             <Fragment>
               <p>
                 You are now a detective and need to extract clues from the police departments on
@@ -66,7 +63,7 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
               </Form>
             </Fragment>
           )}
-          {!this.state.displayIntro && (
+          {!displayIntro && (
             <Fragment>
               <h1>Hello {playerName}</h1>
               <Grid>
