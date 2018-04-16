@@ -83,7 +83,7 @@ export const CITIES = [
     name: 'Athens',
     police: 'Ελληνική Αστυνομία',
     flag: 'countryFlags/GREC0001.GIF',
-    food: 'Glass of Ouzo',
+    food: 'Ouzo',
     hints: [
       {
         label: 'Parthenon',

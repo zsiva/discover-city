@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Container, Grid, Responsive } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { withRouter } from 'react-router';
+import { TEXTS } from '../../../data/texts.js';
+import { findTextLang } from '../../../utils/findTextLang';
 
 import Header from '../../Header';
 import './styles.css';
@@ -35,7 +37,7 @@ class CityRoad extends Component {
         <Container>
           <h1 className="text-center">
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
-            Welcome to {currentCity.name}{' '}
+            {findTextLang(TEXTS,this.props.playerLanguage,'city_1')} {currentCity.name}{' '}
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
           </h1>
           <div className="cityWrapper">
@@ -85,6 +87,7 @@ const mapStateToProps = (state, ownProps = {}) => {
   return {
     currentCity: state.gameState.currentCity,
     isLoading: state.gameState.isLoading,
+    playerLanguage: state.player.language,
   };
 };
 

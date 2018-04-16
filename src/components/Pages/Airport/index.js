@@ -9,6 +9,8 @@ import Lightbox from '../../Lightbox';
 import { substractMoney } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
+import { TEXTS } from '../../../data/texts.js';
+import { findTextLang } from '../../../utils/findTextLang';
 import './style.css';
 
 class Airport extends Component {
@@ -31,22 +33,19 @@ class Airport extends Component {
       this.setState({ messvisible: !this.state.messvisible });
       this.setState({
         message:
-          'That ' +
-          this.props.currentCity.food +
-          ' was delicious and you feel recovered. You have now ' +
-          (this.props.moneyLeft - 5) +
-          ' €. Now, get back to work! You are a detective, not a tourist!',
+          findTextLang(TEXTS,this.props.playerLanguage,'airport_9a')
+          + (this.props.moneyLeft - 5) +
+          findTextLang(TEXTS,this.props.playerLanguage,'airport_9b'),
       });
     } else {
       this.setState({ messvisible: !this.state.messvisible });
       this.setState({ messcolor: 'red' });
       this.setState({
         message:
-          'I am afraid you have no money left to pay for that ' +
-          this.props.currentCity.food +
-          '. You have  ' +
-          this.props.moneyLeft +
-          ' € in your account',
+        findTextLang(TEXTS,this.props.playerLanguage,'airport_10a') +
+        this.props.currentCity.food +
+        findTextLang(TEXTS,this.props.playerLanguage,'airport_10b')
+        + this.props.moneyLeft + '€'
       });
     }
   }
@@ -84,15 +83,14 @@ class Airport extends Component {
       this.setState({ messcolor: 'red' });
       this.setState({
         message:
-          'I am afraid you have no money left to pay for that flight. You have  ' +
-          this.props.moneyLeft +
-          ' € in your account',
+        findTextLang(TEXTS,this.props.playerLanguage,'airport_11') +
+         this.props.moneyLeft + '€',
       });
     }
   }
   render() {
-    const { currentCity, selectedCities, isLoading, moneyLeft, nextCity } = this.props;
-    const { message, messvisible, messcolor } = this.state;
+    const { currentCity, selectedCities, isLoading, moneyLeft, nextCity, playerLanguage } = this.props;
+    const { messvisible } = this.state;
 
     if (isLoading) {
       return <Spinner text="Loading city info" />;
@@ -103,13 +101,13 @@ class Airport extends Component {
         <Header />
         <section className="ui container">
           <div className="airport">
-            <h1>Welcome to the airport of {currentCity.name}</h1>
-            <h2>Where do you want to go?</h2>
+            <h1>{findTextLang(TEXTS,playerLanguage,'airport_1')} {currentCity.name}</h1>
+            <h2>{findTextLang(TEXTS,playerLanguage,'airport_2')}</h2>
           </div>
         </section>
 
         <Container>
-          <Divider horizontal>Destinations</Divider>
+          <Divider horizontal>{findTextLang(TEXTS,playerLanguage,'airport_3')}</Divider>
           <Grid centered>
             {nextCity.cityOptions.map((cityOption, it) => (
               <Grid.Column
@@ -129,7 +127,7 @@ class Airport extends Component {
               </Grid.Column>
             ))}
           </Grid>
-          <Divider horizontal>Activities</Divider>
+          <Divider horizontal>{findTextLang(TEXTS,playerLanguage,'airport_4')}</Divider>
           <Transition animation="pulse" visible={messvisible} duration={500}>
             <Message size="large" color={this.state.messcolor}>
               <p>{this.state.message}</p>
@@ -144,12 +142,12 @@ class Airport extends Component {
                       <img src="./images/shop.png" alt="./images/shop.png" />
                     </Card.Header>
                     <Card.Meta />
-                    <Card.Description>Visit the airport shop</Card.Description>
+                    <Card.Description>{findTextLang(TEXTS,playerLanguage,'airport_5')}</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <Button color="green" size="large">
                       <Button.Content size="large" onClick={this.handleOpen}>
-                        Have a {currentCity.food}
+                        {findTextLang(TEXTS,playerLanguage,'airport_7')} {currentCity.food}
                       </Button.Content>
                     </Button>
                   </Card.Content>
@@ -163,13 +161,13 @@ class Airport extends Component {
                     </Card.Header>
                     <Card.Meta />
                     <Card.Description>
-                      You feel like visiting {currentCity.hints[0].label} ?
+                      {findTextLang(TEXTS,playerLanguage,'airport_6')}
                     </Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <Link to="/city">
                       <Button color="green" size="large">
-                        <Button.Content size="large" content="Go to the city" />
+                        <Button.Content size="large" content={findTextLang(TEXTS,playerLanguage,'airport_8')} />
                       </Button>
                     </Link>
                   </Card.Content>
@@ -186,12 +184,12 @@ class Airport extends Component {
         >
           <div className="text-center">
             {this.state.found ? (
-              <p>Yes!! He was in {currentCity.name} but he left already.</p>
+              <p>{findTextLang(TEXTS,playerLanguage,'airport_12yes')} {currentCity.name} </p>
             ) : (
-              <p>Sorry, he was not there.</p>
+              <p>{findTextLang(TEXTS,playerLanguage,'airport_12no')}</p>
             )}
 
-            <p>You spent 30 € on tickets. You now have {moneyLeft} euros.</p>
+            <p>{findTextLang(TEXTS,playerLanguage,'airport_13')} {moneyLeft} €.</p>
             {planeAnimation()}
           </div>
         </Lightbox>
@@ -217,6 +215,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     isLoading: state.gameState.isLoading,
     moneyLeft: state.player.money,
     nextCity: state.gameState.nextCity,
+    playerLanguage: state.player.language,
   };
 };
 

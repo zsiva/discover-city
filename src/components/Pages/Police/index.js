@@ -4,6 +4,8 @@ import { Button, Container, Grid, Card, Transition, Message } from 'semantic-ui-
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
+import { TEXTS } from '../../../data/texts.js';
+import { findTextLang } from '../../../utils/findTextLang';
 import { substractMoney } from '../../../actions/player';
 import './styles.css';
 
@@ -22,7 +24,7 @@ class Police extends Component {
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({
         message:
-          'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
+          findTextLang(TEXTS,this.props.playerLanguage,'police_10'),
       });
     }
   };
@@ -34,7 +36,7 @@ class Police extends Component {
         this.props.dispatch(substractMoney(10));
         this.setState({
           message:
-            'You paid 10 € and you got the name of the pictures. It should help you You have now ' +
+            findTextLang(TEXTS,this.props.playerLanguage,'police_11') +
             (this.props.moneyLeft - 10) +
             ' €',
         });
@@ -42,15 +44,15 @@ class Police extends Component {
         this.setState({ messageColor: 'red' });
         this.setState({
           message:
-            'Corrupt Police Officer: You need 10 € and your account has ' +
+            findTextLang(TEXTS,this.props.playerLanguage,'police_12') +
             this.props.moneyLeft +
-            ' €. This information is not free!',
+            ' €.',
         });
       }
     }
   };
   render() {
-    const { currentCity, isLoading, nextCity } = this.props;
+    const { currentCity, isLoading, nextCity, playerLanguage } = this.props;
     const { visible, visible2, messageVisible } = this.state;
     if (isLoading) {
       return <Spinner text="Loading city info" />;
@@ -59,7 +61,7 @@ class Police extends Component {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">Welcome to the {currentCity.police}</h1>
+          <h1 className="text-center">{findTextLang(TEXTS,playerLanguage,'police_1')} {currentCity.police}</h1>
 
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>
@@ -69,8 +71,9 @@ class Police extends Component {
 
                   <Card.Description>
                     <b>
-                      I heard you are looking for the thief who stole O'Greeny's money
-                      <br />Interpol sent us these 3 pictures. It might be his next destination.
+                    {findTextLang(TEXTS,playerLanguage,'police_2')}
+                      <br />
+                    {findTextLang(TEXTS,playerLanguage,'police_3')}
                     </b>
                   </Card.Description>
                 </Card.Content>
@@ -78,7 +81,7 @@ class Police extends Component {
                   <Button color="green" size="large" fluid onClick={this.showHints}>
                     <Button.Content
                       size="large"
-                      content={this.state.visible ? 'GOOD LUCK' : 'REVEAL HINTS'}
+                      content={this.state.visible ? findTextLang(TEXTS,playerLanguage,'police_5') : findTextLang(TEXTS,playerLanguage,'police_4')}
                     />
                   </Button>
                 </Card.Content>
@@ -94,7 +97,7 @@ class Police extends Component {
                         <b>PSS PSS</b>
                       </p>
                       <p>
-                        <b>I might have some information for you if you pay me</b>
+                        <b>{findTextLang(TEXTS,playerLanguage,'police_6')}</b>
                       </p>
                     </Card.Description>
                   </Card.Content>
@@ -102,7 +105,7 @@ class Police extends Component {
                     <Button color="green" size="large" fluid onClick={this.showHintsPlus}>
                       <Button.Content
                         size="large"
-                        content={this.state.visible2 ? 'GOOD LUCK !' : 'PAY 10€ FOR THE INFO'}
+                        content={this.state.visible2 ? findTextLang(TEXTS,playerLanguage,'police_5') : findTextLang(TEXTS,playerLanguage,'police_7')}
                       />
                     </Button>
                   </Card.Content>
@@ -142,12 +145,12 @@ class Police extends Component {
         <Container textAlign="center">
           <Link to="/city">
             <Button color="green" size="large">
-              <Button.Content size="large" content="Go to the city" />
+              <Button.Content size="large" content= {findTextLang(TEXTS,playerLanguage,'police_8')} />
             </Button>
           </Link>
           <Link to="/airport">
             <Button color="green" size="large">
-              <Button.Content size="large" content="Go to the airport" />
+              <Button.Content size="large" content= {findTextLang(TEXTS,playerLanguage,'police_9')} />
             </Button>
           </Link>
         </Container>
@@ -163,6 +166,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     moneyLeft: state.player.money,
     isLoading: state.gameState.isLoading,
     nextCity: state.gameState.nextCity,
+    playerLanguage: state.player.language,
   };
 };
 
