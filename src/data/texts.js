@@ -201,7 +201,7 @@ export const TEXTS = [
       },
       {
         label: 'airport_7',
-        text: 'Tomar un',
+        text: 'Tomar un/a',
       },
       {
         label: 'airport_8',

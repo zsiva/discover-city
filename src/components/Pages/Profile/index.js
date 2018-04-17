@@ -1,12 +1,24 @@
 //@flow
 import React, { Component, Fragment } from 'react';
-import { Button, List, Label, Segment, Grid, Form } from 'semantic-ui-react';
+import { Button, List, Label, Segment, Grid, Form, Select } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setName } from '../../../actions/player';
+import { setName, setLanguage } from '../../../actions/player';
 import Header from '../../Header';
 import './style.css';
 
+const friendOptions = [
+   {
+     text: 'English',
+     value: 'en',
+	 image: { src: './images/countryFlags/UNKG0001.GIF' },
+	 },
+     {
+	 text: 'Español',
+     value: 'es',
+	 image: { src: './images/countryFlags/SPAN0001.GIF' },
+   }
+ ]
 export type ProfilePropType = {
   dispatch: Dispatch,
   timeRemaining: number,
@@ -23,19 +35,23 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
     super(props);
     this.state = {
       name: '',
+	  language: '',
     };
   }
 
   handleChange = (e, { value }) => this.setState({ name: value });
+  handleChangeL = (e, { value }) => this.setState({ language: value });
 
   saveName = (e, { value }) => {
-    this.props.dispatch(setName(this.state.name));
-  };
+	this.props.dispatch(setName(this.state.name));
+	this.props.dispatch(setLanguage(this.state.language)); 
+	};
 
   render() {
-    let { timeRemaining, moneyLeft, playerName } = this.props;
+    let { timeRemaining, moneyLeft, playerName, playerLanguage } = this.props;
     timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
     const displayIntro = this.props.playerName === '';
+	//const displayList = this.props.playerLanguage === '';
     return (
       <Fragment>
         <Header />
@@ -61,6 +77,13 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
                   <Form.Button content="Save" />
                 </Form.Group>
               </Form>
+
+			  
+			<Select placeholder='Select your language' options={friendOptions}
+			onChange={this.handleChangeL}
+			value={this.state.language}
+			/>
+
             </Fragment>
           )}
           {!displayIntro && (
@@ -129,6 +152,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     timeRemaining: state.timer.time,
     moneyLeft: state.player.money,
     playerName: state.player.name,
+    playerLanguage: state.player.language,	
   };
 };
 

@@ -1,4 +1,4 @@
-import { START_PLAYER, ADD_MONEY, SUBSTRACT_MONEY, SET_NAME } from '../actions/player';
+import { START_PLAYER, ADD_MONEY, SUBSTRACT_MONEY, SET_NAME, SET_LANGUAGE } from '../actions/player';
 
 const player = (state = [], action) => {
   switch (action.type) {
@@ -22,6 +22,11 @@ const player = (state = [], action) => {
       return {
         ...state,
         name: action.name,
+      };
+    case SET_LANGUAGE:
+      return {
+        ...state,
+        language: action.language,
       };
     default:
       return state;

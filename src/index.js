@@ -24,7 +24,7 @@ const initialState = {
     money: INITIAL_MONEY,
     name: '',
     points: 0,
-    language: 'es',
+    language: 'en',
   },
 };
 
