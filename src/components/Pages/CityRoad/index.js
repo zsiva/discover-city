@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Container, Grid, Responsive } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { withRouter } from 'react-router';
-import { TEXTS } from '../../../data/texts.js';
 import { findTextLang } from '../../../utils/findTextLang';
 
 import Header from '../../Header';
@@ -29,7 +28,7 @@ class CityRoad extends Component {
     const { currentCity, isLoading } = this.props;
 
     if (isLoading) {
-      return <Spinner text="Loading city info" />;
+      return <Spinner text={findTextLang(this.props.playerLanguage,'city_loading')} />;
     }
     return (
       <Fragment>
@@ -37,7 +36,7 @@ class CityRoad extends Component {
         <Container>
           <h1 className="text-center">
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
-            {findTextLang(TEXTS,this.props.playerLanguage,'city_1')} {currentCity.name}{' '}
+            {findTextLang(this.props.playerLanguage,'city_1')} {findTextLang(this.props.playerLanguage,currentCity.name)}{' '}
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
           </h1>
           <div className="cityWrapper">

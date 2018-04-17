@@ -4,6 +4,7 @@ import { Button, List, Label, Segment, Grid, Form, Select } from 'semantic-ui-re
 import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setName, setLanguage } from '../../../actions/player';
+import { findTextLang } from '../../../utils/findTextLang';
 import Header from '../../Header';
 import './style.css';
 
@@ -44,7 +45,7 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
 
   saveName = (e, { value }) => {
 	this.props.dispatch(setName(this.state.name));
-	this.props.dispatch(setLanguage(this.state.language)); 
+	this.props.dispatch(setLanguage(this.state.language));
 	};
 
   render() {
@@ -60,7 +61,7 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
             <Fragment>
               <p>
                 You are now a detective and need to extract clues from the police departments on
-                each city to find out the thief's whereabouts.
+                each city to find out the thief s whereabouts.
               </p>
               <p>Go to the rules page to checkout all the instructions.</p>
               <Form onSubmit={this.saveName}>
@@ -78,7 +79,7 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
                 </Form.Group>
               </Form>
 
-			  
+
 			<Select placeholder='Select your language' options={friendOptions}
 			onChange={this.handleChangeL}
 			value={this.state.language}
@@ -88,25 +89,25 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
           )}
           {!displayIntro && (
             <Fragment>
-              <h1>Hello {playerName}</h1>
+              <h1>{findTextLang(playerLanguage,'profile_hello')} {playerName}</h1>
               <Grid>
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                   <Segment raised>
                     <Label color="green" ribbon>
-                      Your Profile
+                      {findTextLang(playerLanguage,'profile_profile')}
                     </Label>
                     <List>
                       <List.Item>
                         <List.Icon name="star" color="green" />
-                        <List.Content>Points: 0</List.Content>
+                        <List.Content>{findTextLang(playerLanguage,'profile_points')}  0</List.Content>
                       </List.Item>
                       <List.Item>
                         <List.Icon color="green" name="clock" />
-                        <List.Content>Time remaining: {timeRemaining}</List.Content>
+                        <List.Content>{findTextLang(playerLanguage,'profile_time')} {timeRemaining}</List.Content>
                       </List.Item>
                       <List.Item>
                         <List.Icon color="green" name="money" />
-                        <List.Content>Money: {moneyLeft}</List.Content>
+                        <List.Content>{findTextLang(playerLanguage,'profile_money')} {moneyLeft}</List.Content>
                       </List.Item>
                     </List>
                   </Segment>
@@ -115,9 +116,9 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
                 <Grid.Column mobile={16} tablet={8} computer={8}>
                   <Segment>
                     <Label color="green" ribbon>
-                      Items
+                      {findTextLang(playerLanguage,'profile_items')}
                     </Label>
-                    Items
+
                   </Segment>
                 </Grid.Column>
               </Grid>
@@ -125,17 +126,17 @@ class Profile extends Component<ProfilePropType, ProfileStateType> {
               <Grid className="actions">
                 <Grid.Column mobile={8} tablet={4} computer={4}>
                   <Link to="/get-money">
-                    <Button color="green" content="Earn money" fluid />
+                    <Button color="green" content={findTextLang(playerLanguage,'profile_earnMoney')} fluid />
                   </Link>
                 </Grid.Column>
                 <Grid.Column mobile={8} tablet={4} computer={4}>
                   <Link to="/rules">
-                    <Button color="green" content="Rules" fluid />
+                    <Button color="green" content={findTextLang(playerLanguage,'profile_rules')} fluid />
                   </Link>
                 </Grid.Column>
                 <Grid.Column mobile={8} tablet={4} computer={4}>
                   <Link to="/city">
-                    <Button content="Find him" color="green" fluid />
+                    <Button content={findTextLang(playerLanguage,'profile_find')} color="green" fluid />
                   </Link>
                 </Grid.Column>
               </Grid>
@@ -152,7 +153,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     timeRemaining: state.timer.time,
     moneyLeft: state.player.money,
     playerName: state.player.name,
-    playerLanguage: state.player.language,	
+    playerLanguage: state.player.language,
   };
 };
 

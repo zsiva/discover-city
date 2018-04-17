@@ -3,6 +3,7 @@ import { Grid, Button, Modal } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addMoney } from '../../actions/player';
+import { findTextLang } from '../../utils/findTextLang';
 
 import Card from './Card';
 import { shuffleArray } from '../../utils/operations';
@@ -119,18 +120,18 @@ class MemoryGame extends Component {
 
   render() {
     if (this.state.counter === 21) {
-      return <Spinner text="Loading cards" />;
+      return <Spinner text={findTextLang(this.props.playerLanguage,'memory_loading')} />;
     }
     return (
       <Fragment>
         <h5>
-          Number of pairs found: {this.state.matches}
-          <div className="pull-right">Time Left: {this.state.counter}</div>
+          {findTextLang(this.props.playerLanguage,'memory_pairsfound')} {this.state.matches}
+          <div className="pull-right">{findTextLang(this.props.playerLanguage,'memory_timeleft')} {this.state.counter}</div>
         </h5>
         <Grid>{this.renderCards(this.state.cards)}</Grid>
         <Modal open={this.state.openModal} size="small">
           <Modal.Header>
-            {this.state.counter === 0 ? 'Your time is up!' : 'Great you found all the pairs'}
+            {this.state.counter === 0 ? findTextLang(this.props.playerLanguage,'memory_timeup') : findTextLang(this.props.playerLanguage,'memory_allpairs') }
           </Modal.Header>
           <Modal.Content>
             <Grid>
@@ -138,13 +139,12 @@ class MemoryGame extends Component {
                 <img src="./images/timeup.jpg" alt="time up" />
               </Grid.Column>
               <Grid.Column width={8}>
-                <p>Your time is up, you got {this.state.matches} correct answers.</p>
-                <p>
-                  You earned {this.state.matches * 10} €. You now have {this.props.moneyLeft}
+                <p>{findTextLang(this.props.playerLanguage,'memory_end1')} {this.state.matches}</p>
+                <p>{findTextLang(this.props.playerLanguage,'memory_end2a')} {this.state.matches * 10} {findTextLang(this.props.playerLanguage,'memory_end2b')} {this.props.moneyLeft} €.
                 </p>
                 <Link to="/user">
                   <Button color="green">
-                    <Button.Content content="Back to the profile" />
+                    <Button.Content content={findTextLang(this.props.playerLanguage,'memory_back')} />
                   </Button>
                 </Link>
               </Grid.Column>
@@ -159,6 +159,7 @@ class MemoryGame extends Component {
 const mapStateToProps = (state, ownProps = {}) => {
   return {
     moneyLeft: state.player.money,
+    playerLanguage: state.player.language,
   };
 };
 export default connect(mapStateToProps)(MemoryGame);

@@ -9,7 +9,6 @@ import Lightbox from '../../Lightbox';
 import { substractMoney } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
-import { TEXTS } from '../../../data/texts.js';
 import { findTextLang } from '../../../utils/findTextLang';
 import './style.css';
 
@@ -33,18 +32,18 @@ class Airport extends Component {
       this.setState({ messvisible: !this.state.messvisible });
       this.setState({
         message:
-          findTextLang(TEXTS,this.props.playerLanguage,'airport_9a')
+          findTextLang(this.props.playerLanguage,'airport_9a')
           + (this.props.moneyLeft - 5) +
-          findTextLang(TEXTS,this.props.playerLanguage,'airport_9b'),
+          findTextLang(this.props.playerLanguage,'airport_9b'),
       });
     } else {
       this.setState({ messvisible: !this.state.messvisible });
       this.setState({ messcolor: 'red' });
       this.setState({
         message:
-        findTextLang(TEXTS,this.props.playerLanguage,'airport_10a') +
+        findTextLang(this.props.playerLanguage,'airport_10a') +
         this.props.currentCity.food +
-        findTextLang(TEXTS,this.props.playerLanguage,'airport_10b')
+        findTextLang(this.props.playerLanguage,'airport_10b')
         + this.props.moneyLeft + '€'
       });
     }
@@ -53,7 +52,7 @@ class Airport extends Component {
   handleClick(e) {
     if (this.props.moneyLeft - 30 >= 0) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        if (e.target.innerText === this.props.nextCity.name) {
+        if (e.target.innerText === findTextLang(this.props.playerLanguage,this.props.nextCity.name)) {
           this.refs.lightboxfound.open();
         } else {
           this.props.dispatch(substractMoney(30));
@@ -66,7 +65,7 @@ class Airport extends Component {
         }
       } else {
         this.props.dispatch(substractMoney(30));
-        if (e.target.innerText === this.props.nextCity.name) {
+        if (e.target.innerText === findTextLang(this.props.playerLanguage,this.props.nextCity.name)) {
           this.getNextCity();
           this.setState({ found: true });
         } else {
@@ -83,7 +82,7 @@ class Airport extends Component {
       this.setState({ messcolor: 'red' });
       this.setState({
         message:
-        findTextLang(TEXTS,this.props.playerLanguage,'airport_11') +
+        findTextLang(this.props.playerLanguage,'airport_11') +
          this.props.moneyLeft + '€',
       });
     }
@@ -101,13 +100,13 @@ class Airport extends Component {
         <Header />
         <section className="ui container">
           <div className="airport">
-            <h1>{findTextLang(TEXTS,playerLanguage,'airport_1')} {currentCity.name}</h1>
-            <h2>{findTextLang(TEXTS,playerLanguage,'airport_2')}</h2>
+            <h1>{findTextLang(playerLanguage,'airport_1')} {findTextLang(this.props.playerLanguage,currentCity.name)}</h1>
+            <h2>{findTextLang(playerLanguage,'airport_2')}</h2>
           </div>
         </section>
 
         <Container>
-          <Divider horizontal>{findTextLang(TEXTS,playerLanguage,'airport_3')}</Divider>
+          <Divider horizontal>{findTextLang(playerLanguage,'airport_3')}</Divider>
           <Grid centered>
             {nextCity.cityOptions.map((cityOption, it) => (
               <Grid.Column
@@ -121,13 +120,13 @@ class Airport extends Component {
                   color="green"
                   size="large"
                   onClick={this.handleClick}
-                  content={cityOption}
+                  content={findTextLang(this.props.playerLanguage,cityOption)}
                   fluid
                 />
               </Grid.Column>
             ))}
           </Grid>
-          <Divider horizontal>{findTextLang(TEXTS,playerLanguage,'airport_4')}</Divider>
+          <Divider horizontal>{findTextLang(playerLanguage,'airport_4')}</Divider>
           <Transition animation="pulse" visible={messvisible} duration={500}>
             <Message size="large" color={this.state.messcolor}>
               <p>{this.state.message}</p>
@@ -142,12 +141,12 @@ class Airport extends Component {
                       <img src="./images/shop.png" alt="./images/shop.png" />
                     </Card.Header>
                     <Card.Meta />
-                    <Card.Description>{findTextLang(TEXTS,playerLanguage,'airport_5')}</Card.Description>
+                    <Card.Description>{findTextLang(playerLanguage,'airport_5')}</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <Button color="green" size="large">
                       <Button.Content size="large" onClick={this.handleOpen}>
-                        {findTextLang(TEXTS,playerLanguage,'airport_7')} {currentCity.food}
+                        {findTextLang(playerLanguage,'airport_7')} {currentCity.food}
                       </Button.Content>
                     </Button>
                   </Card.Content>
@@ -161,13 +160,13 @@ class Airport extends Component {
                     </Card.Header>
                     <Card.Meta />
                     <Card.Description>
-                      {findTextLang(TEXTS,playerLanguage,'airport_6')}
+                      {findTextLang(playerLanguage,'airport_6')}
                     </Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <Link to="/city">
                       <Button color="green" size="large">
-                        <Button.Content size="large" content={findTextLang(TEXTS,playerLanguage,'airport_8')} />
+                        <Button.Content size="large" content={findTextLang(playerLanguage,'airport_8')} />
                       </Button>
                     </Link>
                   </Card.Content>
@@ -179,25 +178,25 @@ class Airport extends Component {
 
         <Lightbox
           ref="lightboxCity"
-          header={this.state.found ? 'Correct' : 'Incorrect'}
+          header={this.state.found ? findTextLang(this.props.playerLanguage,'correct') : findTextLang(this.props.playerLanguage,'incorrect')}
           displayButton={false}
         >
           <div className="text-center">
             {this.state.found ? (
-              <p>{findTextLang(TEXTS,playerLanguage,'airport_12yes')} {currentCity.name} </p>
+              <p>{findTextLang(playerLanguage,'airport_12yes')} {findTextLang(this.props.playerLanguage,currentCity.name)} </p>
             ) : (
-              <p>{findTextLang(TEXTS,playerLanguage,'airport_12no')}</p>
+              <p>{findTextLang(playerLanguage,'airport_12no')}</p>
             )}
 
-            <p>{findTextLang(TEXTS,playerLanguage,'airport_13')} {moneyLeft} €.</p>
+            <p>{findTextLang(playerLanguage,'airport_13')} {moneyLeft} €.</p>
             {planeAnimation()}
           </div>
         </Lightbox>
-        <Lightbox ref="lightboxfound" header={selectedCities[this.props.currentCityID + 1].name}>
-          You found him!! He was hiding in {selectedCities[this.props.currentCityID + 1].name}
+        <Lightbox ref="lightboxfound" header={findTextLang(this.props.playerLanguage,selectedCities[this.props.currentCityID + 1].name)}>
+          {findTextLang(playerLanguage,'airport_found1')} {findTextLang(this.props.playerLanguage,selectedCities[this.props.currentCityID + 1].name)}
           <br />
           <br />
-          <strong>O Greeny is really happy to have his gold back!</strong>
+          <strong>{findTextLang(playerLanguage,'airport_found2')}</strong>
           <br />
           <br />
           <img src="./images/Minions.gif" alt="minions success" />

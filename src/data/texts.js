@@ -3,6 +3,42 @@ export const TEXTS = [
     language: 'en',
     texts: [
       {
+        label: 'Berlin',
+        text: 'Berlin',
+      },
+      {
+        label: 'Paris',
+        text: 'Paris',
+      },
+      {
+        label: 'Rome',
+        text: 'Rome',
+      },
+      {
+        label: 'Madrid',
+        text: 'Madrid',
+      },
+      {
+        label: 'Athens',
+        text: 'Athens',
+      },
+      {
+        label: 'Amsterdam',
+        text: 'Amsterdam',
+      },
+      {
+        label: 'Oslo',
+        text: 'Oslo',
+      },
+      {
+        label: 'Krakow',
+        text: 'Krakow',
+      },
+      {
+        label: 'Prague',
+        text: 'Prague',
+      },
+      {
         label: 'police_1',
         text: 'Welcome to the ',
       },
@@ -49,6 +85,18 @@ export const TEXTS = [
       {
         label: 'police_12',
         text: 'Corrupt Police Officer: This information is not free! You need 10 € and your account has ',
+      },
+      {
+        label: 'city_loading',
+        text: 'Loading data info ',
+      },
+      {
+        label: 'correct',
+        text: 'Correct ! ',
+      },
+      {
+        label: 'incorrect',
+        text: 'Incorrect !',
       },
       {
         label: 'city_1',
@@ -118,11 +166,155 @@ export const TEXTS = [
         label: 'airport_13',
         text: 'You spent 30 € on tickets. You now have ',
       },
+      {
+        label: 'airport_found1',
+        text: 'You found him!! He was hiding in ',
+      },
+      {
+        label: 'airport_found2',
+        text: 'O Greeny is really happy to have his gold back! ',
+      },
+      {
+        label: 'profile_hello',
+        text: 'Hello ',
+      },
+      {
+        label: 'profile_profile',
+        text: 'Your profile ',
+      },
+      {
+        label: 'profile_points',
+        text: 'Points ',
+      },
+      {
+        label: 'profile_points',
+        text: 'Points :',
+      },
+      {
+        label: 'profile_time',
+        text: 'Time remaining :',
+      },
+      {
+        label: 'profile_money',
+        text: 'Money :',
+      },
+      {
+        label: 'profile_items',
+        text: 'Items',
+      },
+      {
+        label: 'profile_earnMoney',
+        text: 'Earn Money ',
+      },
+      {
+        label: 'profile_rules',
+        text: 'Rules ',
+      },
+      {
+        label: 'profile_find',
+        text: 'Find him ',
+      },
+      {
+        label: 'rules_1',
+        text: 'You are now a detective and need to find clues on each city to find out the thief`s whereabouts. ',
+      },
+      {
+        label: 'rules_2',
+        text: 'Your task : ',
+      },
+      {
+        label: 'rules_3',
+        text: 'Capture the criminal and find the stolen gold. ',
+      },
+      {
+        label: 'rules_4',
+        text: 'Rules :  ',
+      },
+      {
+        label: 'rules_5a',
+        text: 'You start with ',
+      },
+      {
+        label: 'rules_5b',
+        text: '€. In each city there is a casino with different games where you can earn more money.',
+      },
+      {
+        label: 'memory_loading',
+        text: 'Loading cards',
+      },
+      {
+        label: 'memory_pairsfound',
+        text: 'Number of pairs found : ',
+      },
+      {
+        label: 'memory_timeleft',
+        text: 'Time left : ',
+      },
+      {
+        label: 'memory_timeup',
+        text: 'Your time is up !',
+      },
+      {
+        label: 'memory_allpairs',
+        text: 'Great! You found all the pairs !',
+      },
+      {
+        label: 'memory_end1',
+        text: 'Your time is up, your number of correct answers is ',
+      },
+      {
+        label: 'memory_end2a',
+        text: 'You earn ',
+      },
+      {
+        label: 'memory_end2b',
+        text: '€. You have now ',
+      },
+      {
+        label: 'memory_back',
+        text: 'Back to the profile',
+      },
     ],
   },
   {
     language: 'es',
     texts: [
+      {
+        label: 'Berlin',
+        text: 'Berlin',
+      },
+      {
+        label: 'Paris',
+        text: 'Paris',
+      },
+      {
+        label: 'Rome',
+        text: 'Roma',
+      },
+      {
+        label: 'Madrid',
+        text: 'Madrid',
+      },
+      {
+        label: 'Athens',
+        text: 'Atenas',
+      },
+      {
+        label: 'Amsterdam',
+        text: 'Amsterdam',
+      },
+      {
+        label: 'Oslo',
+        text: 'Oslo',
+      },
+      {
+        label: 'Krakow',
+        text: 'Cracovia',
+      },
+      {
+        label: 'Prague',
+        text: 'Praga',
+      },
       {
         label: 'police_1',
         text: 'Bienvenido a la  ',
@@ -170,6 +362,18 @@ export const TEXTS = [
       {
         label: 'police_12',
         text: 'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene ',
+      },
+      {
+        label: 'city_loading',
+        text: 'Cargando detalles de la ciudad ',
+      },
+      {
+        label: 'correct',
+        text: '¡ Correcto ! ',
+      },
+      {
+        label: 'incorrect',
+        text: '¡ Incorrecto !',
       },
       {
         label: 'city_1',
@@ -239,8 +443,110 @@ export const TEXTS = [
         label: 'airport_13',
         text: 'Pagas 30€ en los billetes. Te quedan ',
       },
-
-
+      {
+        label: 'airport_found1',
+        text: '¡¡ Lo encontraste!! Estaba escondido en ',
+      },
+      {
+        label: 'airport_found2',
+        text: '¡¡ O Greeny esta muy contento de recuperar su oro !! ',
+      },
+      {
+        label: 'profile_hello',
+        text: 'Hola ',
+      },
+      {
+        label: 'profile_profile',
+        text: 'Tu perfil ',
+      },
+      {
+        label: 'profile_points',
+        text: 'Puntos ',
+      },
+      {
+        label: 'profile_time',
+        text: 'Tiempo restante :',
+      },
+      {
+        label: 'profile_money',
+        text: 'Dinero :',
+      },
+      {
+        label: 'profile_items',
+        text: 'Objetos',
+      },
+      {
+        label: 'profile_earnMoney',
+        text: 'Ganar Dinero ',
+      },
+      {
+        label: 'profile_rules',
+        text: 'Reglas ',
+      },
+      {
+        label: 'profile_find',
+        text: 'Encuentralo ',
+      },
+      {
+        label: 'rules_1',
+        text: 'Eres un detective y tienes que conseguir pistas en cada ciudad para descubir el paradero del ladrón. ',
+      },
+      {
+        label: 'rules_2',
+        text: 'Tu tarea : ',
+      },
+      {
+        label: 'rules_3',
+        text: 'Captura al criminal y recupera el dinero robado. ',
+      },
+      {
+        label: 'rules_4',
+        text: 'Reglas : ',
+      },
+      {
+        label: 'rules_5a',
+        text: 'Empiezas con ',
+      },
+      {
+        label: 'rules_5b',
+        text: '€. En cada ciudad tienes un casino con diferentes juegos para poder ganar dinero.',
+      },
+      {
+        label: 'memory_loading',
+        text: 'Cargando cartas',
+      },
+      {
+        label: 'memory_pairsfound',
+        text: 'Numero de parejas encontradas : ',
+      },
+      {
+        label: 'memory_timeleft',
+        text: 'Tiempo restante : ',
+      },
+      {
+        label: 'memory_timeup',
+        text: '¡Se acabó el tiempo !',
+      },
+      {
+        label: 'memory_allpairs',
+        text: '¡Bien! ¡Has encontrado todas las parejas !',
+      },
+      {
+        label: 'memory_end1',
+        text: 'Se acabo el tiempo, el numero de parejas encontradas es  ',
+      },
+      {
+        label: 'memory_end2a',
+        text: 'Has ganado ',
+      },
+      {
+        label: 'memory_end2b',
+        text: '€. Ahora tienes ',
+      },
+      {
+        label: 'memory_back',
+        text: 'Volver al perfil',
+      },
         ],
   },
 ];

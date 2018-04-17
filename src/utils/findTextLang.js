@@ -1,3 +1,6 @@
+import { TEXTS } from '../data/texts.js';
+
+
   function findLanguage(array, language) {
     return array.find((element) => {
       return element.language === language;
@@ -9,8 +12,8 @@
     })
     }
 
-  function findTextLang(array, language, text) {
-    var temp = findLanguage(array,language);
+  function findTextLang(language, text) {
+    var temp = findLanguage(TEXTS,language);
     var result = findText(temp.texts,text);
     return result.text
   }
