@@ -3,6 +3,18 @@ export const TEXTS = [
     language: 'en',
     texts: [
       {
+        label: 'Fact1',
+        text: 'Did you know Berlin has more Döner Kebap shops than Istanbul ?',
+      },
+      {
+        label: 'Fact2',
+        text: 'Did you know the Berliner Fernsehturm is the tallest building in Germany with 368 meters ?',
+      },
+      {
+        label: 'Fact3',
+        text: 'Did you know Berlin has more museums (180) than rainy days (108) ?',
+      },
+      {
         label: 'Berlin',
         text: 'Berlin',
       },
@@ -136,7 +148,7 @@ export const TEXTS = [
       },
       {
         label: 'airport_9a',
-        text: 'It was delicious and you feel recovered. You have now',
+        text: 'It was delicious and you feel recovered. You have now ',
       },
       {
         label: 'airport_9b',
@@ -165,6 +177,14 @@ export const TEXTS = [
       {
         label: 'airport_13',
         text: 'You spent 30 € on tickets. You now have ',
+      },
+      {
+        label: 'airport_waiter',
+        text: 'What can I do for you? ',
+      },
+      {
+        label: 'airport_waiterhint',
+        text: 'A guy talking about some stolen gold took a flight with this flag on it ',
       },
       {
         label: 'airport_found1',
@@ -279,6 +299,18 @@ export const TEXTS = [
   {
     language: 'es',
     texts: [
+      {
+        label: 'Fact1',
+        text: ' ¿Sabias que Berlin tiene mas Döner Kebap que Estambul?',
+      },
+      {
+        label: 'Fact2',
+        text: '¿Sabias que la Fernsehturm de Berlin es el edificio mas alto de Alemania con 368 metros?',
+      },
+      {
+        label: 'Fact3',
+        text: '¿Sabias que Berlin tiene mas museos (180) que dias de lluvia (108) ?',
+      },
       {
         label: 'Berlin',
         text: 'Berlin',
@@ -450,6 +482,14 @@ export const TEXTS = [
       {
         label: 'airport_found2',
         text: '¡¡ O Greeny esta muy contento de recuperar su oro !! ',
+      },
+      {
+        label: 'airport_waiter',
+        text: '¿En que puedo ayudarte? ',
+      },
+      {
+        label: 'airport_waiterhint',
+        text: 'Alguien que hablaba sobre un oro robado se subio a un avion con esta bandera ',
       },
       {
         label: 'profile_hello',

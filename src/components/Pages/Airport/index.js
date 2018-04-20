@@ -18,7 +18,7 @@ class Airport extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.getNextCity = this.getNextCity.bind(this);
-    this.state = { found: false, messvisible: false, messcolor: 'blue' };
+    this.state = { found: false, messvisible: false, messcolor: 'blue', factID : 0};
   }
 
   async getNextCity() {
@@ -29,13 +29,15 @@ class Airport extends Component {
   handleOpen() {
     if (this.props.moneyLeft - 5 >= 0) {
       this.props.dispatch(substractMoney(5));
+	  this.setState({ factID: this.state.factID + 1});
       this.setState({ messvisible: !this.state.messvisible });
-      this.setState({
+	  this.setState({
         message:
           findTextLang(this.props.playerLanguage,'airport_9a')
           + (this.props.moneyLeft - 5) +
           findTextLang(this.props.playerLanguage,'airport_9b'),
       });
+
     } else {
       this.setState({ messvisible: !this.state.messvisible });
       this.setState({ messcolor: 'red' });
@@ -94,7 +96,8 @@ class Airport extends Component {
     if (isLoading) {
       return <Spinner text="Loading city info" />;
     }
-
+	var cityFacts = currentCity.facts.map((fact) => findTextLang(playerLanguage,fact))
+	var cityFactsTotal = [' '].concat(cityFacts).concat([findTextLang(playerLanguage,'airport_waiterhint')])
     return (
       <Fragment>
         <Header />
@@ -137,11 +140,16 @@ class Airport extends Component {
               <Grid.Column>
                 <Card centered>
                   <Card.Content textAlign="center">
-                    <Card.Header>
-                      <img src="./images/shop.png" alt="./images/shop.png" />
-                    </Card.Header>
+                     <img src="./images/waiter.png" alt="Waiter" />
                     <Card.Meta />
-                    <Card.Description>{findTextLang(playerLanguage,'airport_5')}</Card.Description>
+                    <Card.Description><b>{findTextLang(playerLanguage,'airport_waiter')}</b>
+					<br/><br/>
+					{cityFactsTotal[this.state.factID]}
+					<br/><br/>
+					<Transition visible={this.state.factID >=4} duration={500}>
+                      <img src={`./images/${nextCity.flag}`} alt="country flag" />
+                    </Transition>
+					</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <Button color="green" size="large">
@@ -155,9 +163,7 @@ class Airport extends Component {
               <Grid.Column>
                 <Card centered>
                   <Card.Content textAlign="center">
-                    <Card.Header>
-                      <img src={`./${currentCity.hints[0].img}`} alt="Ciudad" />
-                    </Card.Header>
+                    <img src={`./${currentCity.hints[0].img}`} alt="Ciudad" />
                     <Card.Meta />
                     <Card.Description>
                       {findTextLang(playerLanguage,'airport_6')}

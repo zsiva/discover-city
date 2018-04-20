@@ -4,6 +4,7 @@ export const CITIES = [
     police: 'POLIZEI',
     flag: 'countryFlags/GERM0001.GIF',
     food: 'Bratwurst',
+	facts: ['Fact1','Fact2','Fact3'],
     hints: [
       {
         label: 'Cathedral',
@@ -24,6 +25,7 @@ export const CITIES = [
     police: 'GENDARMERIE',
     flag: 'countryFlags/FRAN0001.GIF',
     food: 'Croissant',
+	facts: ['Fact1','Fact2','Fact3'],
     hints: [
       {
         label: 'Montmartre',
@@ -44,6 +46,7 @@ export const CITIES = [
     police: 'CARABINIERI',
     flag: 'countryFlags/ITAL0001.GIF',
     food: 'Pizza',
+	facts: ['Fact1','Fact2','Fact3'],
     hints: [
       {
         label: 'Colosseum',
@@ -64,7 +67,8 @@ export const CITIES = [
     police: 'GUARDIA CIVIL',
     flag: 'countryFlags/SPAN0001.GIF',
     food: 'Paella',
-    hints: [
+ 	facts: ['Fact1','Fact2','Fact3'],
+   hints: [
       {
         label: 'Retiro Park',
         img: 'images/cities/retiro.jpg',
@@ -84,7 +88,8 @@ export const CITIES = [
     police: 'Ελληνική Αστυνομία',
     flag: 'countryFlags/GREC0001.GIF',
     food: 'Ouzo',
-    hints: [
+ 	facts: ['Fact1','Fact2','Fact3'],
+   hints: [
       {
         label: 'Parthenon',
         img: 'images/cities/ath_part.jpg',
@@ -104,7 +109,8 @@ export const CITIES = [
     police: 'POLITIE',
     flag: 'countryFlags/NETH0001.GIF',
     food: 'Heineken',
-    hints: [
+ 	facts: ['Fact1','Fact2','Fact3'],
+   hints: [
       {
         label: 'Vondelpark',
         img: 'images/cities/ams_vondelpark.jpg',
@@ -124,6 +130,7 @@ export const CITIES = [
     police: 'POLITI',
     flag: 'countryFlags/NORW0001.GIF',
     food: 'Smoked Salmon',
+	facts: ['Fact1','Fact2','Fact3'],
     hints: [
       {
         label: 'Vigeland Park',
@@ -144,7 +151,8 @@ export const CITIES = [
     police: 'POLICJA',
     flag: 'countryFlags/POLA0001.GIF',
     food: 'Pierogi',
-    hints: [
+ 	facts: ['Fact1','Fact2','Fact3'],
+   hints: [
       {
         label: 'Old Towm',
         img: 'images/cities/kra_oldtown.jpg',
@@ -164,7 +172,8 @@ export const CITIES = [
     police: 'POLICIE',
     flag: 'countryFlags/CZEC0001.GIF',
     food: 'Trdelnik',
-    hints: [
+ 	facts: ['Fact1','Fact2','Fact3'],
+   hints: [
       {
         label: 'Old Square',
         img: 'images/cities/prg_oldsquare.jpg',
