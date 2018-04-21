@@ -96,9 +96,14 @@ class Airport extends Component {
     if (isLoading) {
       return <Spinner text="Loading city info" />;
     }
-	var cityFacts = currentCity.facts.map((fact) => findTextLang(playerLanguage,fact))
-	var cityFactsTotal = [' '].concat(cityFacts).concat([findTextLang(playerLanguage,'airport_waiterhint')])
-    return (
+	//console.log(this.props)
+	//console.log(this.props.cityFacts)
+	var cityFacts = this.props.cityFacts.map((fact) => findTextLang(playerLanguage,fact))
+	//console.log(cityFacts)
+	var cityFactsTotal = [' '].concat(cityFacts.splice(0,2)).concat([findTextLang(playerLanguage,'airport_waiterhint')])
+    //console.log(cityFactsTotal)
+	
+	return (
       <Fragment>
         <Header />
         <section className="ui container">
@@ -146,7 +151,7 @@ class Airport extends Component {
 					<br/><br/>
 					{cityFactsTotal[this.state.factID]}
 					<br/><br/>
-					<Transition visible={this.state.factID >=4} duration={500}>
+					<Transition visible={this.state.factID >=3} duration={500}>
                       <img src={`./images/${nextCity.flag}`} alt="country flag" />
                     </Transition>
 					</Card.Description>
@@ -220,6 +225,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     isLoading: state.gameState.isLoading,
     moneyLeft: state.player.money,
     nextCity: state.gameState.nextCity,
+	cityFacts: state.gameState.cityFacts,
     playerLanguage: state.player.language,
   };
 };

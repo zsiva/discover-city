@@ -4,7 +4,7 @@ export const CITIES = [
     police: 'POLIZEI',
     flag: 'countryFlags/GERM0001.GIF',
     food: 'Bratwurst',
-	facts: ['Fact1','Fact2','Fact3'],
+	facts: ['ber_fact1','ber_fact2','ber_fact3'],
     hints: [
       {
         label: 'Cathedral',
@@ -25,7 +25,7 @@ export const CITIES = [
     police: 'GENDARMERIE',
     flag: 'countryFlags/FRAN0001.GIF',
     food: 'Croissant',
-	facts: ['Fact1','Fact2','Fact3'],
+	facts: ['par_fact1','par_fact2','par_fact3'],
     hints: [
       {
         label: 'Montmartre',
@@ -46,7 +46,7 @@ export const CITIES = [
     police: 'CARABINIERI',
     flag: 'countryFlags/ITAL0001.GIF',
     food: 'Pizza',
-	facts: ['Fact1','Fact2','Fact3'],
+	facts: ['rom_fact1','rom_fact2','rom_fact3'],
     hints: [
       {
         label: 'Colosseum',

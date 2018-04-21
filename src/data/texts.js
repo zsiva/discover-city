@@ -4,15 +4,51 @@ export const TEXTS = [
     texts: [
       {
         label: 'Fact1',
-        text: 'Did you know Berlin has more Döner Kebap shops than Istanbul ?',
+        text: 'Fact 1 ?',
       },
       {
         label: 'Fact2',
-        text: 'Did you know the Berliner Fernsehturm is the tallest building in Germany with 368 meters ?',
+        text: 'Fact2',
       },
       {
         label: 'Fact3',
+        text: 'Fact3 ?',
+      },
+      {
+        label: 'ber_fact1',
+        text: 'Did you know Berlin has more Döner Kebap shops than Istanbul ?',
+      },
+      {
+        label: 'ber_fact2',
+        text: 'Did you know the Berliner Fernsehturm is the tallest building in Germany with 368 meters ?',
+      },
+      {
+        label: 'ber_fact3',
         text: 'Did you know Berlin has more museums (180) than rainy days (108) ?',
+      },
+      {
+        label: 'par_fact1',
+        text: 'Did you know Paris was originally a Roman City called Lutetia ?',
+      },
+      {
+        label: 'par_fact2',
+        text: 'Did you know that there are more than 1700 bakeries in Paris ?',
+      },
+      {
+        label: 'par_fact3',
+        text: 'Did you know that the Eiffel Tower was meant to be temporary ?',
+      },
+      {
+        label: 'rom_fact1',
+        text: 'Fact 1 Rome',
+      },
+      {
+        label: 'rom_fact2',
+        text: 'Fact2 Rome',
+      },
+      {
+        label: 'rom_fact3',
+        text: 'Fact3 Rome',
       },
       {
         label: 'Berlin',
