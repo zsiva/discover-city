@@ -5,7 +5,8 @@ import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import { findTextLang } from '../../../utils/findTextLang';
-import { substractMoney } from '../../../actions/player';
+import { substractMoney, addDateTime } from '../../../actions/player';
+import { calculateDay } from '../../../utils/calculateDay';
 import './styles.css';
 
 class Police extends Component {
@@ -18,6 +19,7 @@ class Police extends Component {
     messageColor: 'blue',
   };
   showHints = () => {
+  		this.props.dispatch(addDateTime(1))
     if (this.state.visible === false) {
       this.setState({ visible: true });
       this.setState({ messageVisible: !this.state.messageVisible });
@@ -32,7 +34,8 @@ class Police extends Component {
     if (this.state.visible2 === false) {
       if (this.props.moneyLeft - 10 >= 0) {
         this.setState({ visible2: true });
-        this.props.dispatch(substractMoney(10));
+		this.props.dispatch(addDateTime(2))
+		this.props.dispatch(substractMoney(10));
         this.setState({
           message:
             findTextLang(this.props.playerLanguage,'police_11') +
@@ -40,6 +43,7 @@ class Police extends Component {
             ' €',
         });
       } else {
+	  	this.props.dispatch(addDateTime(1))
         this.setState({ messageColor: 'red' });
         this.setState({
           message:
@@ -60,8 +64,8 @@ class Police extends Component {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">{findTextLang(playerLanguage,'police_1')} {currentCity.police}</h1>
-
+          <h1 className="text-center">{findTextLang(playerLanguage,'police_1')} {findTextLang(playerLanguage,currentCity.name)}</h1>
+		  <h2 className="text-center"> {calculateDay(this.props.dateTime)} </h2>
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>
               <Card centered color="green">
@@ -166,6 +170,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     isLoading: state.gameState.isLoading,
     nextCity: state.gameState.nextCity,
     playerLanguage: state.player.language,
+    dateTime: state.player.dateTime,
   };
 };
 

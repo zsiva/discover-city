@@ -4,6 +4,7 @@ import { Container, Grid, Responsive } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { withRouter } from 'react-router';
 import { findTextLang } from '../../../utils/findTextLang';
+import { calculateDay } from '../../../utils/calculateDay';
 
 import Header from '../../Header';
 import './styles.css';
@@ -39,6 +40,7 @@ class CityRoad extends Component {
             {findTextLang(this.props.playerLanguage,'city_1')} {findTextLang(this.props.playerLanguage,currentCity.name)}{' '}
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
           </h1>
+		  <h2 className="text-center"> {calculateDay(this.props.dateTime)} </h2>
           <div className="cityWrapper">
             <Grid centered textAlign="center" verticalAlign="bottom">
               <Grid.Column mobile={10} tablet={5} computer={5}>
@@ -87,6 +89,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     currentCity: state.gameState.currentCity,
     isLoading: state.gameState.isLoading,
     playerLanguage: state.player.language,
+	dateTime: state.player.dateTime
   };
 };
 

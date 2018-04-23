@@ -6,10 +6,11 @@ import { Button, Container, Grid, Card, Divider, Transition, Message } from 'sem
 import Spinner from '../../Spinner';
 import Header from '../../Header';
 import Lightbox from '../../Lightbox';
-import { substractMoney } from '../../../actions/player';
+import { substractMoney, addDateTime } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
 import { findTextLang } from '../../../utils/findTextLang';
+import { calculateDay } from '../../../utils/calculateDay';
 import './style.css';
 
 class Airport extends Component {
@@ -28,6 +29,7 @@ class Airport extends Component {
 
   handleOpen() {
     if (this.props.moneyLeft - 5 >= 0) {
+	  this.props.dispatch(addDateTime(2))
       this.props.dispatch(substractMoney(5));
 	  this.setState({ factID: this.state.factID + 1});
       this.setState({ messvisible: !this.state.messvisible });
@@ -58,6 +60,7 @@ class Airport extends Component {
           this.refs.lightboxfound.open();
         } else {
           this.props.dispatch(substractMoney(30));
+		  this.props.dispatch(addDateTime(6))
           this.setState({ found: false });
           this.refs.lightboxCity.open();
           setTimeout(() => {
@@ -67,6 +70,7 @@ class Airport extends Component {
         }
       } else {
         this.props.dispatch(substractMoney(30));
+		this.props.dispatch(addDateTime(6))
         if (e.target.innerText === findTextLang(this.props.playerLanguage,this.props.nextCity.name)) {
           this.getNextCity();
           this.setState({ found: true });
@@ -96,12 +100,10 @@ class Airport extends Component {
     if (isLoading) {
       return <Spinner text="Loading city info" />;
     }
-	//console.log(this.props)
+	//console.log(this.props.dateTime)
 	//console.log(this.props.cityFacts)
 	var cityFacts = this.props.cityFacts.map((fact) => findTextLang(playerLanguage,fact))
 	//console.log(cityFacts)
-	var cityFactsTotal = [' '].concat(cityFacts.splice(0,2)).concat([findTextLang(playerLanguage,'airport_waiterhint')])
-    //console.log(cityFactsTotal)
 	
 	return (
       <Fragment>
@@ -109,7 +111,8 @@ class Airport extends Component {
         <section className="ui container">
           <div className="airport">
             <h1>{findTextLang(playerLanguage,'airport_1')} {findTextLang(this.props.playerLanguage,currentCity.name)}</h1>
-            <h2>{findTextLang(playerLanguage,'airport_2')}</h2>
+            <h2> {calculateDay(this.props.dateTime)} </h2>
+			<h2>{findTextLang(playerLanguage,'airport_2')}</h2>
           </div>
         </section>
 
@@ -149,7 +152,7 @@ class Airport extends Component {
                     <Card.Meta />
                     <Card.Description><b>{findTextLang(playerLanguage,'airport_waiter')}</b>
 					<br/><br/>
-					{cityFactsTotal[this.state.factID]}
+					{cityFacts[this.state.factID]}
 					<br/><br/>
 					<Transition visible={this.state.factID >=3} duration={500}>
                       <img src={`./images/${nextCity.flag}`} alt="country flag" />
@@ -227,6 +230,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     nextCity: state.gameState.nextCity,
 	cityFacts: state.gameState.cityFacts,
     playerLanguage: state.player.language,
+    dateTime: state.player.dateTime,
   };
 };
 

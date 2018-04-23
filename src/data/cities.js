@@ -1,7 +1,6 @@
 export const CITIES = [
   {
     name: 'Berlin',
-    police: 'POLIZEI',
     flag: 'countryFlags/GERM0001.GIF',
     food: 'Bratwurst',
 	facts: ['ber_fact1','ber_fact2','ber_fact3'],
@@ -22,7 +21,6 @@ export const CITIES = [
   },
   {
     name: 'Paris',
-    police: 'GENDARMERIE',
     flag: 'countryFlags/FRAN0001.GIF',
     food: 'Croissant',
 	facts: ['par_fact1','par_fact2','par_fact3'],
@@ -43,7 +41,6 @@ export const CITIES = [
   },
   {
     name: 'Rome',
-    police: 'CARABINIERI',
     flag: 'countryFlags/ITAL0001.GIF',
     food: 'Pizza',
 	facts: ['rom_fact1','rom_fact2','rom_fact3'],
@@ -64,10 +61,9 @@ export const CITIES = [
   },
   {
     name: 'Madrid',
-    police: 'GUARDIA CIVIL',
     flag: 'countryFlags/SPAN0001.GIF',
     food: 'Paella',
- 	facts: ['Fact1','Fact2','Fact3'],
+ 	facts: ['mad_fact1','mad_fact2','mad_fact3'],
    hints: [
       {
         label: 'Retiro Park',
@@ -85,10 +81,9 @@ export const CITIES = [
   },
   {
     name: 'Athens',
-    police: 'Ελληνική Αστυνομία',
     flag: 'countryFlags/GREC0001.GIF',
-    food: 'Ouzo',
- 	facts: ['Fact1','Fact2','Fact3'],
+    food: 'Souvlaki',
+ 	facts: ['ath_fact1','ath_fact2','ath_fact3'],
    hints: [
       {
         label: 'Parthenon',
@@ -106,10 +101,9 @@ export const CITIES = [
   },
   {
     name: 'Amsterdam',
-    police: 'POLITIE',
     flag: 'countryFlags/NETH0001.GIF',
     food: 'Heineken',
- 	facts: ['Fact1','Fact2','Fact3'],
+ 	facts: ['ams_fact1','ams_fact2','ams_fact3'],
    hints: [
       {
         label: 'Vondelpark',
@@ -120,17 +114,16 @@ export const CITIES = [
         img: 'images/cities/ams_annefrank.jpg',
       },
       {
-        label: 'Coffee Shops',
+        label: 'Canals',
         img: 'images/cities/ams_canal.jpg',
       },
     ],
   },
   {
     name: 'Oslo',
-    police: 'POLITI',
     flag: 'countryFlags/NORW0001.GIF',
     food: 'Smoked Salmon',
-	facts: ['Fact1','Fact2','Fact3'],
+	facts: ['osl_fact1','osl_fact2','osl_fact3'],
     hints: [
       {
         label: 'Vigeland Park',
@@ -148,10 +141,9 @@ export const CITIES = [
   },
   {
     name: 'Krakow',
-    police: 'POLICJA',
     flag: 'countryFlags/POLA0001.GIF',
     food: 'Pierogi',
- 	facts: ['Fact1','Fact2','Fact3'],
+ 	facts: ['kra_fact1','kra_fact2','kra_fact3'],
    hints: [
       {
         label: 'Old Towm',
@@ -169,10 +161,9 @@ export const CITIES = [
   },
   {
     name: 'Prague',
-    police: 'POLICIE',
     flag: 'countryFlags/CZEC0001.GIF',
     food: 'Trdelnik',
- 	facts: ['Fact1','Fact2','Fact3'],
+ 	facts: ['prg_fact1','prg_fact2','prg_fact3'],
    hints: [
       {
         label: 'Old Square',

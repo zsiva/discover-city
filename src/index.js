@@ -23,6 +23,7 @@ const initialState = {
   player: {
     money: INITIAL_MONEY,
     name: '',
+    dateTime: 8,
     points: 0,
     language: 'en',
   },
