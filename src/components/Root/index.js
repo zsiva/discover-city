@@ -8,11 +8,11 @@ import { loadGameData } from '../../actions/game';
 import Intro from '../Pages/Intro';
 import Profile from '../Pages/Profile';
 import GetMoney from '../Pages/GetMoney';
-import City from '../Pages/City';
 import Airport from '../Pages/Airport';
 import Police from '../Pages/Police';
 import Rules from '../Pages/Rules';
 import CityRoad from '../Pages/CityRoad';
+import Ranking from '../Pages/Ranking';
 
 export type RootPropType = {
   currentCity: string,
@@ -33,11 +33,11 @@ class Root extends Component<RootPropType> {
           <Route exact path="/" component={Intro} />} />
           <Route path="/airport" component={Airport} />
           <Route path="/user" component={Profile} />
-          <Route path="/cityOLD" component={City} />
           <Route path="/city" component={CityRoad} />
           <Route path="/police" component={Police} />
           <Route path="/get-money" component={GetMoney} />
           <Route path="/rules" component={Rules} />
+          <Route path="/ranking" component={Ranking} />
         </Switch>
       </div>
     );

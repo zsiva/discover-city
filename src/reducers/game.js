@@ -1,5 +1,5 @@
 import { LOAD_CITY } from '../actions/cities';
-import { ITEMS_LOADING, CREATE_LIST } from '../actions/game';
+import { ITEMS_LOADING, CREATE_LIST, GET_USERS } from '../actions/game';
 import { shuffleArray } from '../utils/operations';
 
 import { CITIES } from '../data/cities.js';
@@ -31,7 +31,9 @@ const gameState = (state = [], action) => {
         currentCity: list[0],
         maxCities: action.num - 1,
         currentCityID: 0,
-		cityFacts : [' '].concat(shuffleArray(list[0].facts.map((fact) => fact)).splice(0,2)).concat('airport_waiterhint'),
+        cityFacts: [' ']
+          .concat(shuffleArray(list[0].facts.map(fact => fact)).splice(0, 2))
+          .concat('airport_waiterhint'),
         nextCity: list[1],
       };
     case LOAD_CITY:
@@ -42,11 +44,23 @@ const gameState = (state = [], action) => {
         ...state,
         currentCity: state.selectedCities[state.currentCityID],
         currentCityID: state.currentCityID,
-		cityFacts : [' '].concat(shuffleArray(state.selectedCities[state.currentCityID].facts.map((fact) => fact)).splice(0,2)).concat('airport_waiterhint'),
-		nextCity:
+        cityFacts: [' ']
+          .concat(
+            shuffleArray(state.selectedCities[state.currentCityID].facts.map(fact => fact)).splice(
+              0,
+              2,
+            ),
+          )
+          .concat('airport_waiterhint'),
+        nextCity:
           state.currentCityID < state.maxCities
             ? state.selectedCities[state.currentCityID + 1]
             : [],
+      };
+    case GET_USERS:
+      return {
+        ...state,
+        usersList: action.users,
       };
     default:
       return state;
