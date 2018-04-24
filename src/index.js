@@ -9,6 +9,21 @@ import './index.css';
 import { INITIAL_TIME, INITIAL_MONEY } from './data/constants';
 import configureStore from './configure-store';
 import registerServiceWorker from './registerServiceWorker';
+import { AUTH_DOMAIN, DB_URL, PROJECT_ID, FIREBASE_API_KEY } from './db-config';
+
+import firebase from 'firebase';
+import 'firebase/firestore';
+
+firebase.initializeApp({
+  apiKey: FIREBASE_API_KEY,
+  authDomain: AUTH_DOMAIN,
+  databaseURL: DB_URL,
+  projectId: PROJECT_ID,
+});
+
+const db = firebase.firestore();
+
+export const usersRef = db.collection('users');
 
 const initialState = {
   timer: {
@@ -19,6 +34,7 @@ const initialState = {
   gameState: {
     currentCityID: 0,
     gameEnded: false,
+    usersList: [],
   },
   player: {
     money: INITIAL_MONEY,

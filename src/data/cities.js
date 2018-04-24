@@ -3,7 +3,7 @@ export const CITIES = [
     name: 'Berlin',
     flag: 'countryFlags/GERM0001.GIF',
     food: 'Bratwurst',
-	facts: ['ber_fact1','ber_fact2','ber_fact3'],
+    facts: ['ber_fact1', 'ber_fact2', 'ber_fact3'],
     hints: [
       {
         label: 'Cathedral',
@@ -23,7 +23,7 @@ export const CITIES = [
     name: 'Paris',
     flag: 'countryFlags/FRAN0001.GIF',
     food: 'Croissant',
-	facts: ['par_fact1','par_fact2','par_fact3'],
+    facts: ['par_fact1', 'par_fact2', 'par_fact3'],
     hints: [
       {
         label: 'Montmartre',
@@ -43,7 +43,7 @@ export const CITIES = [
     name: 'Rome',
     flag: 'countryFlags/ITAL0001.GIF',
     food: 'Pizza',
-	facts: ['rom_fact1','rom_fact2','rom_fact3'],
+    facts: ['rom_fact1', 'rom_fact2', 'rom_fact3'],
     hints: [
       {
         label: 'Colosseum',
@@ -63,8 +63,8 @@ export const CITIES = [
     name: 'Madrid',
     flag: 'countryFlags/SPAN0001.GIF',
     food: 'Paella',
- 	facts: ['mad_fact1','mad_fact2','mad_fact3'],
-   hints: [
+    facts: ['mad_fact1', 'mad_fact2', 'mad_fact3'],
+    hints: [
       {
         label: 'Retiro Park',
         img: 'images/cities/retiro.jpg',
@@ -83,8 +83,8 @@ export const CITIES = [
     name: 'Athens',
     flag: 'countryFlags/GREC0001.GIF',
     food: 'Souvlaki',
- 	facts: ['ath_fact1','ath_fact2','ath_fact3'],
-   hints: [
+    facts: ['ath_fact1', 'ath_fact2', 'ath_fact3'],
+    hints: [
       {
         label: 'Parthenon',
         img: 'images/cities/ath_part.jpg',
@@ -103,8 +103,8 @@ export const CITIES = [
     name: 'Amsterdam',
     flag: 'countryFlags/NETH0001.GIF',
     food: 'Heineken',
- 	facts: ['ams_fact1','ams_fact2','ams_fact3'],
-   hints: [
+    facts: ['ams_fact1', 'ams_fact2', 'ams_fact3'],
+    hints: [
       {
         label: 'Vondelpark',
         img: 'images/cities/ams_vondelpark.jpg',
@@ -123,7 +123,7 @@ export const CITIES = [
     name: 'Oslo',
     flag: 'countryFlags/NORW0001.GIF',
     food: 'Smoked Salmon',
-	facts: ['osl_fact1','osl_fact2','osl_fact3'],
+    facts: ['osl_fact1', 'osl_fact2', 'osl_fact3'],
     hints: [
       {
         label: 'Vigeland Park',
@@ -143,8 +143,8 @@ export const CITIES = [
     name: 'Krakow',
     flag: 'countryFlags/POLA0001.GIF',
     food: 'Pierogi',
- 	facts: ['kra_fact1','kra_fact2','kra_fact3'],
-   hints: [
+    facts: ['kra_fact1', 'kra_fact2', 'kra_fact3'],
+    hints: [
       {
         label: 'Old Towm',
         img: 'images/cities/kra_oldtown.jpg',
@@ -163,8 +163,8 @@ export const CITIES = [
     name: 'Prague',
     flag: 'countryFlags/CZEC0001.GIF',
     food: 'Trdelnik',
- 	facts: ['prg_fact1','prg_fact2','prg_fact3'],
-   hints: [
+    facts: ['prg_fact1', 'prg_fact2', 'prg_fact3'],
+    hints: [
       {
         label: 'Old Square',
         img: 'images/cities/prg_oldsquare.jpg',
