@@ -31,8 +31,8 @@ const gameState = (state = [], action) => {
         currentCity: list[0],
         maxCities: action.num - 1,
         currentCityID: 0,
-        cityFacts: [' ']
-          .concat(shuffleArray(list[0].facts.map(fact => fact)).splice(0, 2))
+        cityFacts: shuffleArray(list[0].facts)
+          .splice(0, 2)
           .concat('airport_waiterhint'),
         nextCity: list[1],
       };
@@ -40,17 +40,13 @@ const gameState = (state = [], action) => {
       if (state.currentCityID < state.maxCities) {
         state.currentCityID++;
       }
+
       return {
         ...state,
         currentCity: state.selectedCities[state.currentCityID],
         currentCityID: state.currentCityID,
-        cityFacts: [' ']
-          .concat(
-            shuffleArray(state.selectedCities[state.currentCityID].facts.map(fact => fact)).splice(
-              0,
-              2,
-            ),
-          )
+        cityFacts: shuffleArray(state.selectedCities[state.currentCityID].facts)
+          .splice(0, 2)
           .concat('airport_waiterhint'),
         nextCity:
           state.currentCityID < state.maxCities
