@@ -1,0 +1,67 @@
+day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+facts:
+  berlin:
+    1: '¿Sabías que Berlin tiene más Döner Kebap que Estambul?'
+    2: '¿Sabías que la Fernsehturm de Berlin es el edificio más alto de Alemania con 368 metros?'
+    3: '¿Sabías que Berlin tiene más museos (180) que dias de lluvia (108)?'
+  paris:
+    1: '¿Sabías que Paris era originalmente una ciudad romana llamada Lutecia?'
+    2: '¿Sabías que hay más de 1700 panaderias en Paris?'
+    3: '¿Sabías que la Torre Eiffel iba a ser temporal?'
+  rome:
+    1: '¿Sabías que Roma tiene más de 280 fuentes y más de 900 iglesias?'
+    2: '¿Sabías que Roma tiene un museo dedicado unicamente a la pasta?'
+    3: '¿Sabías que la mascota de Roma es una loba que cuido a Romulo y Remo, legendarios fundadores de Roma?'
+  madrid:
+    1: '¿Sabías que Madrid es la capital más alta de Europa?'
+    2: '¿Sabías que el restaurante más antiguo del mundo (1752) esta situado en Madrid?'
+    3: '¿Sabías que el escudo de Madrid es un oso y un madroño?'
+  athens:
+    1: '¿Sabías que Atenas es la capital más antigua (3400 A.C.) de Europa?'
+    2: '¿Sabías que Atenas fue la primera Capital Europea de la Cultura?',
+    3: '¿Sabías que Atenas tiene 148 teatros?'
+  amsterdam:
+    1: '¿Sabías que hay aproximadamente 881.000 bicicletas en Amsterdam?'
+    2: '¿Sabías que hay más de 2500 casas barco en Amsterdam?',
+    3: '¿Sabías que Amsterdam esta bajo el nivel del mar?'
+  oslo:
+    1: '¿Sabías que el premio Nobel de la Paz es concedido en Oslo cada año?'
+    2: '¿Sabías que hay 40 islas y 343 lagos dentro del perímetro urbano de Oslo?'
+    3: '¿Sabías que Oslo dona cada año el árbol de Navidad de la plaza de Trafalgar en agradecimiento a su asistencia durante la segunda guerra mundial?'
+  prague:
+    1: '¿Sabías que el centro histórico de Praga fue incluido en la lista del Patrimonio Mundial de la UNESCO en 1992?'
+    2: '¿Sabías que el castillo de Praga es el conjunto palaciego más grande y antiguo del mundo?'
+    3: '¿Sabías que el reloj astronómico de Praga fue instalado en 1410 y todavía sigue funcionando?'
+  krakow:
+    1: '¿Sabías que la plaza del mercado de Cracovia es la plaza medieval comercial más grande de Europa?'
+    2: '¿Sabías que Cracovia fue la capital de Polonia durante más de 500 años?'
+    3: '¿Sabías que la universidad de Cracovia, establecida en el siglo 14, es la universidad más antigua de Polonia?'
+
+  police:
+    title: 'Bienvenido al Departamento de Policia de {city}'
+    desc1: 'Me han dicho que buscas al ladrón que robó el dinero de O`Greeny'
+    desc2: 'La Interpol nos ha enviado estas 3 fotos. Puede que sea su siguiente destino.'
+    desc3: 'Tengo información interesante si pagas por ella '
+    desc4: 'Pagar 10€ por la información'
+    desc5: 'Pagas 10€ y consigues las fotos en buena calidad junto a su titulo. Ahora tienes {money}'
+    desc6: 'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto!',
+    desc7: 'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene {money}'
+
+  show_hints: 'Mostrar pistas'
+  good_luck: 'Buena suerte'
+  go_city: 'Ir a la ciudad'
+  go_airport: 'Ir al aeropuerto'
+  city_loading: 'Cargando detalles de la ciudad'
+  correct: '¡Correcto!'
+  incorrect: '¡Incorrecto!',
+
+  city:
+    title: 'Bienvenido a {city}'
+
+ airport:
+   title: 'Bienvenido al aeropuerto de {city}'
+   to_do: '¿Qué quieres hacer?'
+   destinies: 'Destinos'
+   activities: 'Actividades'
+   shop: 'Visitar la tienda del aeropuerto '
