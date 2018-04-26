@@ -10,6 +10,7 @@ import Profile from '../Pages/Profile';
 import GetMoney from '../Pages/GetMoney';
 import Airport from '../Pages/Airport';
 import Police from '../Pages/Police';
+import Hotel from '../Pages/Hotel';
 import Rules from '../Pages/Rules';
 import CityRoad from '../Pages/CityRoad';
 import Ranking from '../Pages/Ranking';
@@ -34,6 +35,7 @@ class Root extends Component<RootPropType> {
           <Route path="/airport" component={Airport} />
           <Route path="/user" component={Profile} />
           <Route path="/city" component={CityRoad} />
+          <Route path="/hotel" component={Hotel} />
           <Route path="/police" component={Police} />
           <Route path="/get-money" component={GetMoney} />
           <Route path="/rules" component={Rules} />

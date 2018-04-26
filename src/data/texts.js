@@ -394,6 +394,34 @@ export const TEXTS = [
         label: 'memory_back',
         text: 'Back to the profile',
       },
+      {
+        label: 'hotel_welcome',
+        text: 'Welcome to the best hotel in ',
+      },
+      {
+        label: 'hotel_night',
+        text: 'You slept 7 hours and you are ready to keep working. You have now ',
+      },
+      {
+        label: 'hotel_nightb',
+        text: 'Welcome to the best hotel in ',
+      },
+      {
+        label: 'hotel_no',
+        text: 'Sorry, you can not afford a night here. Try earning some mone in the casino. Your account has ',
+      },
+      {
+        label: 'hotel_book',
+        text: 'Book a room',
+      },	  
+      {
+        label: 'hotel_hello',
+        text: 'Welcome',
+      },	  
+      {
+        label: 'hotel_help',
+        text: 'What can I do for you?',
+      },	  
     ],
   },
   {

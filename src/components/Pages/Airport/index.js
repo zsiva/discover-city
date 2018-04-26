@@ -11,7 +11,6 @@ import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
 import { findTextLang } from '../../../utils/findTextLang';
 import { calculateDay } from '../../../utils/calculateDay';
-import { shuffleArray } from '../../../utils/operations';
 import './style.css';
 
 class Airport extends Component {
@@ -101,11 +100,10 @@ class Airport extends Component {
     if (isLoading) {
       return <Spinner text="Loading city info" />;
     }
-	//console.log(this.props.dateTime)
+	//console.log(this.props)
 	//console.log(this.props.cityFacts)
 	var cityFacts = this.props.cityFacts.map((fact) => findTextLang(playerLanguage,fact))
 	//console.log(cityFacts)
-	var waiters =shuffleArray(['./images/waiter.png','./images/waiter_2.png']);
 	return (
       <Fragment>
         <Header />
@@ -149,7 +147,7 @@ class Airport extends Component {
               <Grid.Column>
                 <Card centered>
                   <Card.Content textAlign="center">
-                     <img src={waiters[0]} alt="Waiter" />
+                     <img src={this.props.waiter} alt="Waiter" />
                     <Card.Meta />
                     <Card.Description><b>{findTextLang(playerLanguage,'airport_waiter')}</b>
 					<br/><br/>
@@ -232,6 +230,7 @@ const mapStateToProps = (state, ownProps = {}) => {
 	cityFacts: state.gameState.cityFacts,
     playerLanguage: state.player.language,
     dateTime: state.player.dateTime,
+	waiter : state.gameState.waiter,
   };
 };
 

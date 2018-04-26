@@ -43,19 +43,24 @@ class CityRoad extends Component {
 		  <h2 className="text-center"> {calculateDay(this.props.dateTime)} </h2>
           <div className="cityWrapper">
             <Grid centered textAlign="center" verticalAlign="bottom">
-              <Grid.Column mobile={10} tablet={5} computer={5}>
+              <Grid.Column mobile={10} tablet={5} computer={4}>
                 <div data-to="/police" onClick={this.moveCar} className="text-center">
                   <img src="./images/police.png" alt="police department" />
+                </div>
+              </Grid.Column>
+              <Grid.Column mobile={10} tablet={5} computer={3}>
+                <div data-to="/get-money" onClick={this.moveCar} className="text-center">
+                  <img src="./images/casino.png" alt="casino" />
+                </div>
+              </Grid.Column>
+              <Grid.Column mobile={10} tablet={5} computer={4}>
+                <div data-to="/hotel" onClick={this.moveCar} className="text-center">
+                  <img src="./images/hotel.png" alt="hotel" />
                 </div>
               </Grid.Column>
               <Grid.Column mobile={10} tablet={5} computer={5}>
                 <div data-to="/airport" onClick={this.moveCar} className="text-center">
                   <img src="./images/airport.png" alt="Airport" />
-                </div>
-              </Grid.Column>
-              <Grid.Column mobile={10} tablet={5} computer={5}>
-                <div data-to="/get-money" onClick={this.moveCar} className="text-center">
-                  <img src="./images/casino.png" alt="casino" />
                 </div>
               </Grid.Column>
             </Grid>
