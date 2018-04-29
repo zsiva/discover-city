@@ -46,7 +46,7 @@ class Hotel extends Component {
         <Header />
         <Container>
           <h1 className="text-center">{findTextLang(playerLanguage,'hotel_welcome')} {findTextLang(playerLanguage,currentCity.name)}</h1>
-		  <h2 className="text-center"> {calculateDay(this.props.dateTime)} </h2>
+		        <h2 className="text-center"> {calculateDay(this.props.dateTime)[0]} </h2>
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>
               <Card centered color="green">

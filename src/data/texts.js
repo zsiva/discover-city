@@ -57,63 +57,63 @@ export const TEXTS = [
      {
         label: 'ath_fact1',
         text: 'Did you know Athens is Europe`s oldest capital (3400 B.C.) ?',
-      },	  
+      },
      {
         label: 'ath_fact2',
         text: 'Did you know Athens was the first ever European Cultural Capital ?',
-      },	  
+      },
      {
         label: 'ath_fact3',
         text: 'Did you know Athens has 148 theatrical stages ?',
-      },	  
+      },
      {
         label: 'ams_fact1',
         text: 'Did you know there are approximately 881.000 bicycles in Amsterdam ?',
-      },	  
+      },
      {
         label: 'ams_fact2',
         text: 'Did you know there are more than 2500 houseboats in Amsterdam ?',
-      },	  
+      },
      {
         label: 'ams_fact3',
         text: 'Did you know Amsterdam lies below sea level ?',
-      },	  
+      },
      {
         label: 'osl_fact1',
         text: 'Did you know the Nobel Peace Prize is awarded in Oslo every year?',
-      },	  
+      },
      {
         label: 'osl_fact2',
         text: 'Did you know there are 40 islands and 343 lakes within Oslo limits ?',
-      },	  
+      },
      {
         label: 'osl_fact3',
         text: 'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
-      },	  
+      },
      {
         label: 'prg_fact1',
         text: 'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
-      },	  
+      },
      {
         label: 'prg_fact2',
         text: 'Did you know Prague Castle is the largest ancient castle complex in the world ?',
-      },	  
+      },
      {
         label: 'prg_fact3',
         text: 'Did you know Prague astronomical clock was installed in 1410 and is still working ?',
-      },	  
+      },
      {
         label: 'kra_fact1',
         text: 'Did you know Kraków’s Market Square is the largest medieval commercial square in Europe ?',
-      },	  
+      },
      {
         label: 'kra_fact2',
         text: 'Did you know Krakow was the capital of Poland for over 500 years ?',
-      },	  
+      },
      {
         label: 'kra_fact3',
         text: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
-      },	  
+      },
       {
         label: 'Berlin',
         text: 'Berlin',
@@ -295,6 +295,10 @@ export const TEXTS = [
         text: 'O Greeny is really happy to have his gold back! ',
       },
       {
+        label: 'airport_closed',
+        text: 'Sorry, the airport is closed, come back after 7 A.M. ',
+      },
+      {
         label: 'profile_hello',
         text: 'Hello ',
       },
@@ -413,15 +417,15 @@ export const TEXTS = [
       {
         label: 'hotel_book',
         text: 'Book a room',
-      },	  
+      },
       {
         label: 'hotel_hello',
         text: 'Welcome',
-      },	  
+      },
       {
         label: 'hotel_help',
         text: 'What can I do for you?',
-      },	  
+      },
     ],
   },
   {
@@ -482,63 +486,63 @@ export const TEXTS = [
      {
         label: 'ath_fact1',
         text: '¿Sabias que Atenas es la capital mas antigua (3400 A.C.) de Europa?',
-      },	  
+      },
      {
         label: 'ath_fact2',
         text: '¿Sabias que Atenas fue la primera Capital Europea de la Cultura?',
-      },	  
+      },
      {
         label: 'ath_fact3',
         text: '¿Sabias que Atenas tiene 148 teatros?',
-      },	  
+      },
      {
         label: 'ams_fact1',
         text: '¿Sabias que hay aproximadamente 881.000 bicicletas en Amsterdam?',
-      },	  
+      },
      {
         label: 'ams_fact2',
         text: '¿Sabias que hay mas de 2500 casas barco en Amsterdam?',
-      },	  
+      },
      {
         label: 'ams_fact3',
         text: '¿Sabias que Amsterdam esta bajo el nivel del mar?',
-      },	  
+      },
      {
         label: 'osl_fact1',
         text: 'Did you know the Nobel Peace Prize is awarded in Oslo every year?',
-      },	  
+      },
      {
         label: 'osl_fact2',
         text: 'Did you know there are 40 islands and 343 lakes within Oslo limits ?',
-      },	  
+      },
      {
         label: 'osl_fact3',
         text: 'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
-      },	  
+      },
      {
         label: 'prg_fact1',
         text: 'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
-      },	  
+      },
      {
         label: 'prg_fact2',
         text: 'Did you know Prague Castle is the largest ancient castle complex in the world ?',
-      },	  
+      },
      {
         label: 'prg_fact3',
         text: 'Did you know Prague astronomical clock was installed in 1410 and is still working ?',
-      },	  
+      },
      {
         label: 'kra_fact1',
         text: 'Did you know Kraków’s Market Square is the largest medieval commercial square in Europe ?',
-      },	  
+      },
      {
         label: 'kra_fact2',
         text: 'Did you know Krakow was the capital of Poland for over 500 years ?',
-      },	  
+      },
      {
         label: 'kra_fact3',
         text: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
-      },	  
+      },
       {
         label: 'Berlin',
         text: 'Berlin',

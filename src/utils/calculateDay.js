@@ -1,7 +1,7 @@
 
 function getDay(text) {
 	//console.log(text);
-    switch(text) {	
+    switch(text) {
         case 0:
             return 'Monday ';
         case 1:
@@ -21,13 +21,19 @@ function getDay(text) {
     }
 }
 
+function AirportClosed(hours) {
+    var closed = calculateDay(hours)[1]< 7 ? 'closed' : 'open'
+    return  closed;
+}
+
 function calculateDay(hours) {
     hours = Number(hours);
     var d = Math.floor(hours / 24);
-	var h = Math.floor(hours % 24);
+	  var h = Math.floor(hours % 24);
+    var day = h>= 7 && h<21? 'day' : 'night'
     var dDisplay = getDay(d);
     var hDisplay = h >12? ( h +  ":00 ") : ( h +  ":00 AM");
-    return  dDisplay + hDisplay; 
+    return  [dDisplay + hDisplay,h,day];
 }
 
-export { calculateDay };
+export { calculateDay, AirportClosed };
