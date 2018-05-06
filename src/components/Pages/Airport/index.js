@@ -11,6 +11,7 @@ import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
 import { findTextLang } from '../../../utils/findTextLang';
 import { calculateDay, isAirportClosed } from '../../../utils/calculateDay';
+import { usersRef, db } from '../../../';
 import './style.css';
 
 class Airport extends Component {
@@ -20,6 +21,7 @@ class Airport extends Component {
     this.getFood = this.getFood.bind(this);
     this.getNextCity = this.getNextCity.bind(this);
     this.openCityLightBox = this.openCityLightBox.bind(this);
+    this.savePlayerData = this.savePlayerData.bind(this);
     this.state = { found: false, messageVisible: false, messageColor: 'blue', factID: 0 };
   }
 
@@ -61,6 +63,21 @@ class Airport extends Component {
     this.setState({ messageVisible: !this.state.messageVisible });
   }
 
+  savePlayerData() {
+    var playerRef = usersRef.doc(this.props.playerName);
+
+    if (playerRef) {
+      db.runTransaction(t => {
+        return t.get(playerRef).then(doc => {
+          const new_count = doc.data().num_games + 1;
+          t.update(playerRef, { num_games: new_count });
+        });
+      });
+    } else {
+      playerRef.set({ num_games: 1, points: 100 });
+    }
+  }
+
   chooseCity(e) {
     if (this.props.moneyLeft - 30 >= 0) {
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
@@ -68,6 +85,7 @@ class Airport extends Component {
           e.target.innerText === findTextLang(this.props.playerLanguage, this.props.nextCity.name)
         ) {
           this.refs.lightboxfound.open();
+          this.savePlayerData();
         } else {
           this.props.dispatch(substractMoney(30));
           this.props.dispatch(addDateTime(6));
@@ -269,6 +287,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     nextCity: state.gameState.nextCity,
     cityFacts: state.gameState.cityFacts,
     playerLanguage: state.player.language,
+    playerName: state.player.name,
     dateTime: state.player.dateTime,
     waiter: state.gameState.waiter,
   };

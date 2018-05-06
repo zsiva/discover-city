@@ -21,7 +21,7 @@ firebase.initializeApp({
   projectId: PROJECT_ID,
 });
 
-const db = firebase.firestore();
+export const db = firebase.firestore();
 
 export const usersRef = db.collection('users');
 
