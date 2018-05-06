@@ -12,26 +12,25 @@ class Hotel extends Component {
   constructor(props) {
     super(props);
     this.handleOpen = this.handleOpen.bind(this);
-    this.state = { messageVisible: false, messageColor: 'blue'}
-}
+    this.state = { messageVisible: false, messageColor: 'blue' };
+  }
 
-    handleOpen() {
+  handleOpen() {
     if (this.props.moneyLeft - 25 >= 0) {
-	  this.props.dispatch(addDateTime(7))
+      this.props.dispatch(addDateTime(7));
       this.props.dispatch(substractMoney(25));
       this.setState({ messageVisible: !this.state.messageVisible });
-	  this.setState({
+      this.setState({
         message:
-          findTextLang(this.props.playerLanguage,'hotel_night')
-          + (this.props.moneyLeft - 25) + '€'
+          findTextLang(this.props.playerLanguage, 'hotel_night') +
+          (this.props.moneyLeft - 25) +
+          '€',
       });
     } else {
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({ messageColor: 'red' });
       this.setState({
-        message:
-        findTextLang(this.props.playerLanguage,'hotel_no') +
-        + this.props.moneyLeft + '€'
+        message: findTextLang(this.props.playerLanguage, 'hotel_no') + +this.props.moneyLeft + '€',
       });
     }
   }
@@ -45,8 +44,11 @@ class Hotel extends Component {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">{findTextLang(playerLanguage,'hotel_welcome')} {findTextLang(playerLanguage,currentCity.name)}</h1>
-		        <h2 className="text-center"> {calculateDay(this.props.dateTime)[0]} </h2>
+          <h1 className="text-center">
+            {findTextLang(playerLanguage, 'hotel_welcome')}{' '}
+            {findTextLang(playerLanguage, currentCity.name)}
+          </h1>
+          <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>
               <Card centered color="green">
@@ -54,9 +56,9 @@ class Hotel extends Component {
                   <img src="./images/receptionist.png" alt="Receptionist" />
                   <Card.Description>
                     <b>
-                    {findTextLang(playerLanguage,'hotel_hello')}
+                      {findTextLang(playerLanguage, 'hotel_hello')}
                       <br />
-                    {findTextLang(playerLanguage,'hotel_help')}
+                      {findTextLang(playerLanguage, 'hotel_help')}
                     </b>
                   </Card.Description>
                 </Card.Content>
@@ -72,42 +74,43 @@ class Hotel extends Component {
         <h3 className="text-center">
           <img src={`./images/${currentCity.flag}`} alt="country flag" />
         </h3>
-          <Container textAlign="center">
-            <Grid columns={2}>
-              <Grid.Column>
-                <Card centered>
-                  <Card.Content textAlign="center">
-                    <img src="./images/hotelBed.png" alt="Bed" />
-                  </Card.Content>
-					<Card.Content extra>
+        <Container textAlign="center">
+          <Grid columns={2}>
+            <Grid.Column>
+              <Card centered>
+                <Card.Content textAlign="center">
+                  <img src="./images/hotelBed.png" alt="Bed" />
+                </Card.Content>
+                <Card.Content extra>
+                  <Button color="green" size="large">
+                    <Button.Content size="large" onClick={this.handleOpen}>
+                      {findTextLang(playerLanguage, 'hotel_book')}
+                    </Button.Content>
+                  </Button>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column>
+              <Card centered>
+                <Card.Content textAlign="center">
+                  <img src={`./${currentCity.hints[1].img}`} alt="Ciudad" />
+                  <Card.Meta />
+                  <Card.Description>{findTextLang(playerLanguage, 'airport_6')}</Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <Link to="/city">
                     <Button color="green" size="large">
-                      <Button.Content size="large" onClick={this.handleOpen}>
-                        {findTextLang(playerLanguage,'hotel_book')}
-                      </Button.Content>
+                      <Button.Content
+                        size="large"
+                        content={findTextLang(playerLanguage, 'airport_8')}
+                      />
                     </Button>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-              <Grid.Column>
-                <Card centered>
-                  <Card.Content textAlign="center">
-                    <img src={`./${currentCity.hints[1].img}`} alt="Ciudad" />
-                    <Card.Meta />
-                    <Card.Description>
-                      {findTextLang(playerLanguage,'airport_6')}
-                    </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Link to="/city">
-                      <Button color="green" size="large">
-                        <Button.Content size="large" content={findTextLang(playerLanguage,'airport_8')} />
-                      </Button>
-                    </Link>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-            </Grid>
-          </Container>
+                  </Link>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+          </Grid>
+        </Container>
       </Fragment>
     );
   }

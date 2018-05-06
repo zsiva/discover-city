@@ -63,18 +63,6 @@ class Airport extends Component {
 
   chooseCity(e) {
     if (this.props.moneyLeft - 30 >= 0) {
-      if (
-        e.target.innerText === findTextLang(this.props.playerLanguage, this.props.nextCity.name)
-      ) {
-        if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-          this.refs.lightboxfound.open();
-        } else {
-          this.getNextCity();
-          this.setState({ found: true });
-        }
-      } else {
-      }
-
       if (this.props.currentCityID === this.props.selectedCities.length - 2) {
         if (
           e.target.innerText === findTextLang(this.props.playerLanguage, this.props.nextCity.name)

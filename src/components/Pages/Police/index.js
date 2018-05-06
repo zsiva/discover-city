@@ -19,13 +19,12 @@ class Police extends Component {
     messageColor: 'blue',
   };
   showHints = () => {
-  		this.props.dispatch(addDateTime(1))
+    this.props.dispatch(addDateTime(1));
     if (this.state.visible === false) {
       this.setState({ visible: true });
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({
-        message:
-          findTextLang(this.props.playerLanguage,'police_10'),
+        message: findTextLang(this.props.playerLanguage, 'police_10'),
       });
     }
   };
@@ -34,22 +33,20 @@ class Police extends Component {
     if (this.state.visible2 === false) {
       if (this.props.moneyLeft - 10 >= 0) {
         this.setState({ visible2: true });
-		this.props.dispatch(addDateTime(2))
-		this.props.dispatch(substractMoney(10));
+        this.props.dispatch(addDateTime(2));
+        this.props.dispatch(substractMoney(10));
         this.setState({
           message:
-            findTextLang(this.props.playerLanguage,'police_11') +
+            findTextLang(this.props.playerLanguage, 'police_11') +
             (this.props.moneyLeft - 10) +
             ' €',
         });
       } else {
-	  	this.props.dispatch(addDateTime(1))
+        this.props.dispatch(addDateTime(1));
         this.setState({ messageColor: 'red' });
         this.setState({
           message:
-            findTextLang(this.props.playerLanguage,'police_12') +
-            this.props.moneyLeft +
-            ' €.',
+            findTextLang(this.props.playerLanguage, 'police_12') + this.props.moneyLeft + ' €.',
         });
       }
     }
@@ -64,8 +61,11 @@ class Police extends Component {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">{findTextLang(playerLanguage,'police_1')} {findTextLang(playerLanguage,currentCity.name)}</h1>
-		        <h2 className="text-center"> {calculateDay(this.props.dateTime)[0]} </h2>
+          <h1 className="text-center">
+            {findTextLang(playerLanguage, 'police_1')}{' '}
+            {findTextLang(playerLanguage, currentCity.name)}
+          </h1>
+          <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>
               <Card centered color="green">
@@ -74,9 +74,9 @@ class Police extends Component {
 
                   <Card.Description>
                     <b>
-                    {findTextLang(playerLanguage,'police_2')}
+                      {findTextLang(playerLanguage, 'police_2')}
                       <br />
-                    {findTextLang(playerLanguage,'police_3')}
+                      {findTextLang(playerLanguage, 'police_3')}
                     </b>
                   </Card.Description>
                 </Card.Content>
@@ -84,7 +84,11 @@ class Police extends Component {
                   <Button color="green" size="large" fluid onClick={this.showHints}>
                     <Button.Content
                       size="large"
-                      content={this.state.visible ? findTextLang(playerLanguage,'police_5') : findTextLang(playerLanguage,'police_4')}
+                      content={
+                        this.state.visible
+                          ? findTextLang(playerLanguage, 'police_5')
+                          : findTextLang(playerLanguage, 'police_4')
+                      }
                     />
                   </Button>
                 </Card.Content>
@@ -100,7 +104,7 @@ class Police extends Component {
                         <b>PSS PSS</b>
                       </p>
                       <p>
-                        <b>{findTextLang(playerLanguage,'police_6')}</b>
+                        <b>{findTextLang(playerLanguage, 'police_6')}</b>
                       </p>
                     </Card.Description>
                   </Card.Content>
@@ -108,7 +112,11 @@ class Police extends Component {
                     <Button color="green" size="large" fluid onClick={this.showHintsPlus}>
                       <Button.Content
                         size="large"
-                        content={this.state.visible2 ? findTextLang(playerLanguage,'police_5') : findTextLang(playerLanguage,'police_7')}
+                        content={
+                          this.state.visible2
+                            ? findTextLang(playerLanguage, 'police_5')
+                            : findTextLang(playerLanguage, 'police_7')
+                        }
                       />
                     </Button>
                   </Card.Content>
@@ -148,12 +156,12 @@ class Police extends Component {
         <Container textAlign="center">
           <Link to="/city">
             <Button color="green" size="large">
-              <Button.Content size="large" content= {findTextLang(playerLanguage,'police_8')} />
+              <Button.Content size="large" content={findTextLang(playerLanguage, 'police_8')} />
             </Button>
           </Link>
           <Link to="/airport">
             <Button color="green" size="large">
-              <Button.Content size="large" content= {findTextLang(playerLanguage,'police_9')} />
+              <Button.Content size="large" content={findTextLang(playerLanguage, 'police_9')} />
             </Button>
           </Link>
         </Container>

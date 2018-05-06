@@ -1,6 +1,6 @@
 //@flow
-import React, { Component, Fragment } from 'react';
-import { Button, List, Label, Segment, Grid, Form, Select } from 'semantic-ui-react';
+import React, { Fragment } from 'react';
+import { Button, List, Label, Segment, Grid } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { findTextLang } from '../../../utils/findTextLang';
