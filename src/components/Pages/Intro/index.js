@@ -125,6 +125,13 @@ class Intro extends Component<IntroPropType, IntroStateType> {
             >
               Leprechaun
             </a>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://br.freepik.com/vetores-gratis/paisagem-urbana-no-fundo-design-plano-com-estrada_893949.htm"
+            >
+              City
+            </a>
           </small>
         </footer>
       </Fragment>

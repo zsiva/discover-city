@@ -12,6 +12,7 @@ import Police from '../Pages/Police';
 import Hotel from '../Pages/Hotel';
 import Rules from '../Pages/Rules';
 import CityRoad from '../Pages/CityRoad';
+import CityCanvas from '../Pages/CityCanvas';
 import Ranking from '../Pages/Ranking';
 
 export type RootPropType = {
@@ -33,6 +34,7 @@ class Root extends Component<RootPropType> {
           <Route path="/airport" component={Airport} />
           <Route path="/user" component={Profile} />
           <Route path="/city" component={CityRoad} />
+          <Route path="/city-canvas" component={CityCanvas} />
           <Route path="/hotel" component={Hotel} />
           <Route path="/police" component={Police} />
           <Route path="/get-money" component={GetMoney} />
