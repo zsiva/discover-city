@@ -32,13 +32,10 @@ const initialState = {
     interval: null,
   },
   gameState: {
-    currentCityID: 0,
     gameEnded: false,
-    usersList: [],
   },
   player: {
     money: INITIAL_MONEY,
-    name: '',
     dateTime: 8,
     points: 0,
     language: 'en',

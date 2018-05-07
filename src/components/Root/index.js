@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect, Dispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import { startPlayer } from '../../actions/player';
 import { loadGameData } from '../../actions/game';
 
 import Intro from '../Pages/Intro';
@@ -24,7 +23,6 @@ class Root extends Component<RootPropType> {
   constructor(props: RootPropType) {
     super(props);
     this.props.dispatch(loadGameData());
-    this.props.dispatch(startPlayer());
   }
 
   render() {

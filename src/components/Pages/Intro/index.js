@@ -3,7 +3,7 @@ import React, { Fragment, Component } from 'react';
 import { connect, type Dispatch } from 'react-redux';
 import { Button, Responsive, Form } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { setName, setLanguage } from '../../../actions/player';
+import { createPlayer } from '../../../actions/player';
 import './style.css';
 
 export type IntroPropType = {
@@ -39,14 +39,13 @@ class Intro extends Component<IntroPropType, IntroStateType> {
     };
   }
 
-  saveName = (e, { value }) => {
-    this.props.dispatch(setName(this.state.name));
-    this.props.dispatch(setLanguage(this.state.language));
+  createPlayer = () => {
+    this.props.dispatch(createPlayer({ name: this.state.name, language: this.state.language }));
     this.setState({ displayIntro: true });
   };
 
-  handleChange = (e, { value }) => this.setState({ name: value });
-  handleChangeLanguage = (e, { value }) => this.setState({ language: value });
+  handleName = (e, { value }) => this.setState({ name: value });
+  handleLanguage = (e, { value }) => this.setState({ language: value });
 
   render() {
     return (
@@ -61,22 +60,29 @@ class Intro extends Component<IntroPropType, IntroStateType> {
               Help O&apos;Greeny
             </Responsive>
             {!this.state.displayIntro && (
-              <Form fluid onSubmit={this.saveName} className="nameForm">
+              <Form onSubmit={this.createPlayer} className="nameForm">
                 <Form.Input
                   type="text"
                   icon="user"
                   iconPosition="left"
                   placeholder="Your name"
                   value={this.state.name}
-                  onChange={this.handleChange}
+                  onChange={this.handleName}
                 />
                 <Form.Select
+                  fluid
                   placeholder="Select your language"
                   options={languageOptions}
-                  onChange={this.handleChangeLanguage}
+                  onChange={this.handleLanguage}
                   value={this.state.language}
                 />
-                <Form.Button content="Save" color="green" size="large" fluid />
+                <Form.Button
+                  disabled={this.state.name === ''}
+                  content="Save"
+                  color="green"
+                  size="large"
+                  fluid
+                />
               </Form>
             )}
             {this.state.displayIntro && (
