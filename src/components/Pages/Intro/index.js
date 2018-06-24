@@ -2,6 +2,7 @@
 import React, { Fragment, Component } from 'react';
 import { connect, type Dispatch } from 'react-redux';
 import { Button, Responsive, Form } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { createPlayer } from '../../../actions/player';
 import './style.css';
@@ -19,12 +20,12 @@ export type IntroStateType = {
 const languageOptions = [
   {
     text: 'English',
-    value: 'en',
+    value: 'en-US',
     image: { src: './images/countryFlags/UNKG0001.GIF' },
   },
   {
     text: 'Español',
-    value: 'es',
+    value: 'es-ES',
     image: { src: './images/countryFlags/SPAN0001.GIF' },
   },
 ];
@@ -53,22 +54,14 @@ class Intro extends Component<IntroPropType, IntroStateType> {
         <section className="ui container">
           <div className="intro">
             <Responsive as="h1" maxWidth={480}>
-              Help O&apos;Greeny
+              <FormattedMessage id="intro.title" />
             </Responsive>
             <img className="leprechaun" src="./images/ogreeny2.png" alt="ogreeny" />
             <Responsive as="h1" minWidth={481}>
-              Help O&apos;Greeny
+              <FormattedMessage id="intro.title" />
             </Responsive>
             {!this.state.displayIntro && (
               <Form onSubmit={this.createPlayer} className="nameForm">
-                <Form.Input
-                  type="text"
-                  icon="user"
-                  iconPosition="left"
-                  placeholder="Your name"
-                  value={this.state.name}
-                  onChange={this.handleName}
-                />
                 <Form.Select
                   fluid
                   placeholder="Select your language"
@@ -77,7 +70,7 @@ class Intro extends Component<IntroPropType, IntroStateType> {
                   value={this.state.language}
                 />
                 <Form.Button
-                  disabled={this.state.name === ''}
+                  disabled={this.state.language === ''}
                   content="Save"
                   color="green"
                   size="large"
@@ -88,22 +81,37 @@ class Intro extends Component<IntroPropType, IntroStateType> {
             {this.state.displayIntro && (
               <Fragment>
                 <p className="text-left">
-                  Our little lepprechaun O&apos;Greeny was chilling, having a cold Guiness while his
-                  money was stolen.
+                  <FormattedMessage id="intro.desc1" />
                 </p>
                 <p className="text-left">
-                  He has been looking all over the world for it but cannot find it. Help him!
+                  <FormattedMessage id="intro.desc2" />
                 </p>
+                <Form onSubmit={this.createPlayer} className="nameForm">
+                  <FormattedMessage id="intro.nameplaceholder">
+                    {placeholder => (
+                      <Form.Input
+                        type="text"
+                        icon="user"
+                        iconPosition="left"
+                        placeholder={placeholder}
+                        value={this.state.name}
+                        onChange={this.handleName}
+                      />
+                    )}
+                  </FormattedMessage>
+                </Form>
                 <br />
                 <Link to="/user">
-                  <Button content="Start game" color="green" />
+                  <Button color="green" disabled={this.state.name === ''}>
+                    <FormattedMessage id="intro.button" />
+                  </Button>
                 </Link>
               </Fragment>
             )}
           </div>
         </section>
 
-        <footer className="container">
+        <footer className="ui container">
           <small>
             Images by Freepik: &nbsp;
             <a
@@ -124,7 +132,7 @@ class Intro extends Component<IntroPropType, IntroStateType> {
               href="http://www.freepik.com/free-vector/st-patrick-s-background-design_1064485.htm"
             >
               Leprechaun
-            </a>
+            </a>&nbsp;
             <a
               rel="noopener noreferrer"
               target="_blank"
