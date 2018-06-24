@@ -8,6 +8,22 @@ export default {
       button: 'Start game',
       nameplaceholder: 'Your name',
     },
+    header: {
+      city: 'City',
+      casino: 'Casino',
+      airport: 'Airport',
+      police: 'Police',
+      profile: 'Profile',
+    },
+    rules: {
+      intro:
+        'You are now a detective and need to find clues on each city to find out the thief`s whereabouts.',
+      task: 'Your task:',
+      task1: 'Capture the criminal and find the stolen gold.',
+      rules: 'Rules',
+      money:
+        'You start with {money} €. In each city there is a casino with different games where you can earn more money.',
+    },
     profile: {
       header: 'Hello {name}',
       label: 'Your profile',
@@ -49,6 +65,22 @@ export default {
       desc2: 'Ha estado buscando por todo el mundo pero no lo encuentra. Ayúdalo!',
       button: 'Comenzar juego',
       nameplaceholder: 'Tu nombre',
+    },
+    header: {
+      city: 'Ciudad',
+      casino: 'Casino',
+      airport: 'Aeropuerto',
+      police: 'Policía',
+      profile: 'Perfíl',
+    },
+    rules: {
+      intro:
+        'Eres un detective y tienes que conseguir pistas en cada ciudad para descubir el paradero del ladrón.',
+      task: 'Tu tarea:',
+      task1: 'Captura al criminal y recupera el dinero robado.',
+      rules: 'Reglas',
+      money:
+        'Empiezas con {money} €. En cada ciudad tienes un casino con diferentes juegos para poder ganar dinero.',
     },
     profile: {
       header: 'Hola {name}',

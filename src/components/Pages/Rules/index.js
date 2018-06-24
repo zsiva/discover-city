@@ -2,25 +2,36 @@
 import React, { Fragment } from 'react';
 import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import Header from '../../Header';
 import { INITIAL_MONEY } from '../../../data/constants';
-import { findTextLang } from '../../../utils/findTextLang';
 
-function Rules(props) {
+type RulesPropType = {
+  playerName: string,
+};
+
+function Rules(props: RulesPropType) {
   return (
     <Fragment>
       <Header />
       <Container>
-        <h1>{findTextLang(props.playerLanguage,'profile_hello')} {props.playerName}</h1>
-        <p>{findTextLang(props.playerLanguage,'rules_1')}</p>
-
-        <h3>{findTextLang(props.playerLanguage,'rules_2')}</h3>
-        <p>{findTextLang(props.playerLanguage,'rules_3')}</p>
-
-        <h3>{findTextLang(props.playerLanguage,'rules_4')}</h3>
+        <h1>
+          <FormattedMessage id="profile.header" values={{ name: props.playerName }} />
+        </h1>
         <p>
-        {findTextLang(props.playerLanguage,'rules_5a')} {INITIAL_MONEY}
-        {findTextLang(props.playerLanguage,'rules_5b')}
+          <FormattedMessage id="rules.intro" />
+        </p>
+        <h3>
+          <FormattedMessage id="rules.task" />
+        </h3>
+        <p>
+          <FormattedMessage id="rules.task1" />
+        </p>
+        <h3>
+          <FormattedMessage id="rules.rules" />
+        </h3>
+        <p>
+          <FormattedMessage id="rules.money" values={{ money: INITIAL_MONEY }} />
         </p>
       </Container>
     </Fragment>
@@ -30,7 +41,6 @@ function Rules(props) {
 const mapStateToProps = (state, ownProps = {}) => {
   return {
     playerName: state.player.name,
-    playerLanguage: state.player.language,
   };
 };
 
