@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 import { Button, Container, Grid, Card, Divider, Transition, Message } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import Header from '../../Header';
@@ -12,6 +13,7 @@ import { planeAnimation } from '../../Transport/animations';
 import { findTextLang } from '../../../utils/findTextLang';
 import { calculateDay, isAirportClosed } from '../../../utils/calculateDay';
 import { usersRef, db } from '../../../';
+import AirportHeader from './AirportHeader';
 import './style.css';
 
 class Airport extends Component {
@@ -133,34 +135,50 @@ class Airport extends Component {
     const isClosed = isAirportClosed(this.props.dateTime);
     return (
       <Fragment>
-        <Header />
-        <section className="ui container">
-          <div className="airport">
-            <h1>
-              {findTextLang(playerLanguage, 'airport_1')}{' '}
-              {findTextLang(this.props.playerLanguage, currentCity.name)}
-            </h1>
-            <h2> {calculateDay(this.props.dateTime).time} </h2>
-            <h2>{findTextLang(playerLanguage, 'airport_2')}</h2>
-          </div>
-        </section>
+        <AirportHeader hours={this.props.dateTime} cityName={currentCity.name} />
 
         <Container>
           {isClosed && (
             <Message size="large" color="red">
-              <p>{findTextLang(this.props.playerLanguage, 'airport_closed')}</p>
+              <p>
+                <FormattedMessage id="airport.closed" />
+              </p>
             </Message>
           )}
-          <Divider horizontal>{findTextLang(playerLanguage, 'airport_3')}</Divider>
+
+          <Transition animation="pulse" visible={messageVisible} duration={500}>
+            <Message color={this.state.messageColor}>
+              <p>{this.state.message}</p>
+            </Message>
+          </Transition>
           <Grid centered>
-            {nextCity.cityOptions.map((cityOption, it) => (
-              <Grid.Column
-                key={it}
-                className="text-center destButton"
-                mobile={5}
-                tablet={5}
-                computer={4}
-              >
+            <Grid.Column computer={6} tablet={8} mobile={16}>
+              <Card centered>
+                <Card.Content textAlign="center">
+                  <img src={this.props.waiter} alt="Waiter" />
+                  <Card.Meta />
+                  <Card.Description>
+                    <b>{findTextLang(playerLanguage, 'airport_waiter')}</b>
+                    <br />
+                    {cityFacts[this.state.factID]}
+
+                    <Transition visible={this.state.factID >= 3} duration={500}>
+                      <img src={`./images/${nextCity.flag}`} alt="country flag" />
+                    </Transition>
+                  </Card.Description>
+                </Card.Content>
+                <Card.Content extra className="text-center">
+                  <Button color="green" size="large" disabled={isClosed} onClick={this.getFood}>
+                    {findTextLang(playerLanguage, 'airport_7')} {currentCity.food}
+                  </Button>
+                </Card.Content>
+              </Card>
+            </Grid.Column>
+            <Grid.Column computer={6} tablet={8} mobile={16}>
+              <Divider horizontal>
+                <FormattedMessage id="airport.destinations" />
+              </Divider>
+              {nextCity.cityOptions.map((cityOption, it) => (
                 <Button
                   color="green"
                   size="large"
@@ -168,64 +186,11 @@ class Airport extends Component {
                   content={findTextLang(this.props.playerLanguage, cityOption)}
                   fluid
                   disabled={isClosed}
+                  className="destButton"
                 />
-              </Grid.Column>
-            ))}
+              ))}
+            </Grid.Column>
           </Grid>
-          <Divider horizontal>{findTextLang(playerLanguage, 'airport_4')}</Divider>
-
-          <Transition animation="pulse" visible={messageVisible} duration={500}>
-            <Message size="large" color={this.state.messageColor}>
-              <p>{this.state.message}</p>
-            </Message>
-          </Transition>
-          <Container textAlign="center">
-            <Grid columns={2}>
-              <Grid.Column>
-                <Card centered>
-                  <Card.Content textAlign="center">
-                    <img src={this.props.waiter} alt="Waiter" />
-                    <Card.Meta />
-                    <Card.Description>
-                      <b>{findTextLang(playerLanguage, 'airport_waiter')}</b>
-                      <br />
-                      <br />
-                      {cityFacts[this.state.factID]}
-                      <br />
-                      <br />
-                      <Transition visible={this.state.factID >= 3} duration={500}>
-                        <img src={`./images/${nextCity.flag}`} alt="country flag" />
-                      </Transition>
-                    </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Button color="green" size="large" disabled={isClosed} onClick={this.getFood}>
-                      {findTextLang(playerLanguage, 'airport_7')} {currentCity.food}
-                    </Button>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-              <Grid.Column>
-                <Card centered>
-                  <Card.Content textAlign="center">
-                    <img src={`./${currentCity.hints[0].img}`} alt="Ciudad" />
-                    <Card.Meta />
-                    <Card.Description>{findTextLang(playerLanguage, 'airport_6')}</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Link to="/city">
-                      <Button color="green" size="large">
-                        <Button.Content
-                          size="large"
-                          content={findTextLang(playerLanguage, 'airport_8')}
-                        />
-                      </Button>
-                    </Link>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-            </Grid>
-          </Container>
         </Container>
 
         <Lightbox

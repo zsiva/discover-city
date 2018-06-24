@@ -45,6 +45,14 @@ export default {
       money: 'You`ve won {money} €. You now have {total} €',
       back_profile: 'Back to the profile',
     },
+    airport: {
+      title: 'Welcome to the airport of {city}',
+      choose: 'What do you want to do?',
+      closed: 'The airport is closed, come back after 7 A.M.',
+      destinations: 'Destinations',
+      activities: 'Activities',
+      waiter_intro: 'What can I do for you?',
+    },
     police: {
       title: 'Welcome to the Police Department of {city}',
       info: 'I heard you are looking for the thief who stole O`Greeny`s money',
@@ -112,6 +120,14 @@ export default {
       timeup_answer: 'Se acabó el tiempo, has encontrado {pairs} parejas.',
       money: 'Has conseguido {money} €. Ahora tienes {total} €',
       back_profile: 'Volver al perfil',
+    },
+    airport: {
+      title: 'Bienvenido al aeropuerto de {city}',
+      choose: '¿Qué quieres hacer?',
+      closed: 'El aeropuerto está cerrado, vuelve a las 7 de la mañana.',
+      destinations: 'Destinos',
+      activities: 'Actividades',
+      waiter_intro: '¿En qué puedo ayudarte?',
     },
     police: {
       title: 'Bienvenido al Departamento de Policia de {city}',
