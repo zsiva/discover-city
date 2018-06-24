@@ -70,7 +70,7 @@ class Intro extends Component<IntroPropType, IntroStateType> {
                   value={this.state.language}
                 />
                 <Form.Button
-                  disabled={this.state.language === ''}
+                  disabled={!this.state.language}
                   content="Save"
                   color="green"
                   size="large"
@@ -86,26 +86,30 @@ class Intro extends Component<IntroPropType, IntroStateType> {
                 <p className="text-left">
                   <FormattedMessage id="intro.desc2" />
                 </p>
-                <Form onSubmit={this.createPlayer} className="nameForm">
-                  <FormattedMessage id="intro.nameplaceholder">
-                    {placeholder => (
-                      <Form.Input
-                        type="text"
-                        icon="user"
-                        iconPosition="left"
-                        placeholder={placeholder}
-                        value={this.state.name}
-                        onChange={this.handleName}
-                      />
-                    )}
-                  </FormattedMessage>
-                </Form>
+                <FormattedMessage id="intro.nameplaceholder">
+                  {placeholder => (
+                    <Form.Input
+                      type="text"
+                      icon="user"
+                      iconPosition="left"
+                      placeholder={placeholder}
+                      value={this.state.name}
+                      onChange={this.handleName}
+                    />
+                  )}
+                </FormattedMessage>
                 <br />
-                <Link to="/user">
-                  <Button color="green" disabled={this.state.name === ''}>
+                {this.state.name ? (
+                  <Link to="/user" onClick={this.createPlayer}>
+                    <Button color="green">
+                      <FormattedMessage id="intro.button" />
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button color="green" disabled>
                     <FormattedMessage id="intro.button" />
                   </Button>
-                </Link>
+                )}
               </Fragment>
             )}
           </div>

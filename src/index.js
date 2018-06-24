@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import firebase from 'firebase';
 import 'firebase/firestore';
-import { addLocaleData, IntlProvider } from 'react-intl';
+import { addLocaleData } from 'react-intl';
 
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
