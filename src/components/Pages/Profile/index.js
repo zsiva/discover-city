@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Button, List, Label, Segment, Grid } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { findTextLang } from '../../../utils/findTextLang';
+import { FormattedMessage } from 'react-intl';
 import Header from '../../Header';
 import './style.css';
 
@@ -12,11 +12,10 @@ export type ProfilePropType = {
   timeRemaining: number,
   moneyLeft: number,
   playerName: string,
-  playerLanguage: string,
 };
 
 function Profile(props: ProfilePropType) {
-  let { timeRemaining, moneyLeft, playerName, playerLanguage } = props;
+  let { timeRemaining, moneyLeft, playerName } = props;
   timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
 
   return (
@@ -24,29 +23,31 @@ function Profile(props: ProfilePropType) {
       <Header />
       <section className="ui container">
         <h1>
-          {findTextLang(playerLanguage, 'profile_hello')} {playerName}
+          <FormattedMessage id="profile.header" values={{ name: playerName }} />
         </h1>
         <Grid>
           <Grid.Column mobile={16} tablet={8} computer={8}>
             <Segment raised>
               <Label color="green" ribbon>
-                {findTextLang(playerLanguage, 'profile_profile')}
+                <FormattedMessage id="profile.label" />
               </Label>
               <List>
                 <List.Item>
                   <List.Icon name="star" color="green" />
-                  <List.Content>{findTextLang(playerLanguage, 'profile_points')} 0</List.Content>
+                  <List.Content>
+                    <FormattedMessage id="profile.points" /> 0
+                  </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Icon color="green" name="clock" />
                   <List.Content>
-                    {findTextLang(playerLanguage, 'profile_time')} {timeRemaining}
+                    <FormattedMessage id="profile.time" values={{ seconds: timeRemaining }} />
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Icon color="green" name="money" />
                   <List.Content>
-                    {findTextLang(playerLanguage, 'profile_money')} {moneyLeft}
+                    <FormattedMessage id="profile.money" /> {moneyLeft}
                   </List.Content>
                 </List.Item>
               </List>
@@ -56,7 +57,7 @@ function Profile(props: ProfilePropType) {
           <Grid.Column mobile={16} tablet={8} computer={8}>
             <Segment>
               <Label color="green" ribbon>
-                {findTextLang(playerLanguage, 'profile_items')}
+                <FormattedMessage id="profile.items" />
               </Label>
             </Segment>
           </Grid.Column>
@@ -65,21 +66,23 @@ function Profile(props: ProfilePropType) {
         <Grid className="actions">
           <Grid.Column mobile={8} tablet={4} computer={4}>
             <Link to="/get-money">
-              <Button
-                color="green"
-                content={findTextLang(playerLanguage, 'profile_earnMoney')}
-                fluid
-              />
+              <Button color="green" fluid>
+                <FormattedMessage id="profile.earn_money" />
+              </Button>
             </Link>
           </Grid.Column>
           <Grid.Column mobile={8} tablet={4} computer={4}>
             <Link to="/rules">
-              <Button color="green" content={findTextLang(playerLanguage, 'profile_rules')} fluid />
+              <Button color="green" fluid>
+                <FormattedMessage id="profile.rules" />
+              </Button>
             </Link>
           </Grid.Column>
           <Grid.Column mobile={8} tablet={4} computer={4}>
             <Link to="/city">
-              <Button content={findTextLang(playerLanguage, 'profile_find')} color="green" fluid />
+              <Button color="green" fluid>
+                <FormattedMessage id="profile.find" />
+              </Button>
             </Link>
           </Grid.Column>
         </Grid>
@@ -93,7 +96,6 @@ const mapStateToProps = (state, ownProps = {}) => {
     timeRemaining: state.timer.time,
     moneyLeft: state.player.money,
     playerName: state.player.name,
-    playerLanguage: state.player.language,
   };
 };
 
