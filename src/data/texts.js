@@ -1,6 +1,6 @@
 export const TEXTS = [
   {
-    language: 'en',
+    language: 'en-US',
     texts: [
       {
         label: ' ',
@@ -12,7 +12,8 @@ export const TEXTS = [
       },
       {
         label: 'ber_fact2',
-        text: 'Did you know the Berliner Fernsehturm is the tallest building in Germany with 368 meters ?',
+        text:
+          'Did you know the Berliner Fernsehturm is the tallest building in Germany with 368 meters ?',
       },
       {
         label: 'ber_fact3',
@@ -40,7 +41,8 @@ export const TEXTS = [
       },
       {
         label: 'rom_fact3',
-        text: 'Did you know Rome’s mascot is a wolf that cared for the brothers Romulus and Remus, the legendary founders of Rome ?',
+        text:
+          'Did you know Rome’s mascot is a wolf that cared for the brothers Romulus and Remus, the legendary founders of Rome ?',
       },
       {
         label: 'mad_fact1',
@@ -54,65 +56,69 @@ export const TEXTS = [
         label: 'mad_fact3',
         text: 'Did you know Madrid coat of arms is a bear and a tree ?',
       },
-     {
+      {
         label: 'ath_fact1',
         text: 'Did you know Athens is Europe`s oldest capital (3400 B.C.) ?',
       },
-     {
+      {
         label: 'ath_fact2',
         text: 'Did you know Athens was the first ever European Cultural Capital ?',
       },
-     {
+      {
         label: 'ath_fact3',
         text: 'Did you know Athens has 148 theatrical stages ?',
       },
-     {
+      {
         label: 'ams_fact1',
         text: 'Did you know there are approximately 881.000 bicycles in Amsterdam ?',
       },
-     {
+      {
         label: 'ams_fact2',
         text: 'Did you know there are more than 2500 houseboats in Amsterdam ?',
       },
-     {
+      {
         label: 'ams_fact3',
         text: 'Did you know Amsterdam lies below sea level ?',
       },
-     {
+      {
         label: 'osl_fact1',
         text: 'Did you know the Nobel Peace Prize is awarded in Oslo every year?',
       },
-     {
+      {
         label: 'osl_fact2',
         text: 'Did you know there are 40 islands and 343 lakes within Oslo limits ?',
       },
-     {
+      {
         label: 'osl_fact3',
-        text: 'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
+        text:
+          'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
       },
-     {
+      {
         label: 'prg_fact1',
-        text: 'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
+        text:
+          'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
       },
-     {
+      {
         label: 'prg_fact2',
         text: 'Did you know Prague Castle is the largest ancient castle complex in the world ?',
       },
-     {
+      {
         label: 'prg_fact3',
         text: 'Did you know Prague astronomical clock was installed in 1410 and is still working ?',
       },
-     {
+      {
         label: 'kra_fact1',
-        text: 'Did you know Kraków’s Market Square is the largest medieval commercial square in Europe ?',
+        text:
+          'Did you know Kraków’s Market Square is the largest medieval commercial square in Europe ?',
       },
-     {
+      {
         label: 'kra_fact2',
         text: 'Did you know Krakow was the capital of Poland for over 500 years ?',
       },
-     {
+      {
         label: 'kra_fact3',
-        text: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
+        text:
+          'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
       },
       {
         label: 'Berlin',
@@ -188,15 +194,18 @@ export const TEXTS = [
       },
       {
         label: 'police_10',
-        text: 'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
+        text:
+          'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
       },
       {
         label: 'police_11',
-        text: 'You paid 10 € and you got the name of the pictures. It should help you You have now ',
+        text:
+          'You paid 10 € and you got the name of the pictures. It should help you You have now ',
       },
       {
         label: 'police_12',
-        text: 'Corrupt Police Officer: This information is not free! You need 10 € and your account has ',
+        text:
+          'Corrupt Police Officer: This information is not free! You need 10 € and your account has ',
       },
       {
         label: 'city_loading',
@@ -340,7 +349,8 @@ export const TEXTS = [
       },
       {
         label: 'rules_1',
-        text: 'You are now a detective and need to find clues on each city to find out the thief`s whereabouts. ',
+        text:
+          'You are now a detective and need to find clues on each city to find out the thief`s whereabouts. ',
       },
       {
         label: 'rules_2',
@@ -360,7 +370,8 @@ export const TEXTS = [
       },
       {
         label: 'rules_5b',
-        text: '€. In each city there is a casino with different games where you can earn more money.',
+        text:
+          '€. In each city there is a casino with different games where you can earn more money.',
       },
       {
         label: 'memory_loading',
@@ -412,7 +423,8 @@ export const TEXTS = [
       },
       {
         label: 'hotel_no',
-        text: 'Sorry, you can not afford a night here. Try earning some mone in the casino. Your account has ',
+        text:
+          'Sorry, you can not afford a night here. Try earning some mone in the casino. Your account has ',
       },
       {
         label: 'hotel_book',
@@ -429,7 +441,7 @@ export const TEXTS = [
     ],
   },
   {
-    language: 'es',
+    language: 'es-ES',
     texts: [
       {
         label: ' ',
@@ -441,7 +453,8 @@ export const TEXTS = [
       },
       {
         label: 'ber_fact2',
-        text: '¿Sabias que la Fernsehturm de Berlin es el edificio mas alto de Alemania con 368 metros?',
+        text:
+          '¿Sabias que la Fernsehturm de Berlin es el edificio mas alto de Alemania con 368 metros?',
       },
       {
         label: 'ber_fact3',
@@ -469,7 +482,8 @@ export const TEXTS = [
       },
       {
         label: 'rom_fact3',
-        text: '¿Sabias que la mascota de Roma es una loba que cuido a Romulo y Remo, legendarios fundadores de Roma?',
+        text:
+          '¿Sabias que la mascota de Roma es una loba que cuido a Romulo y Remo, legendarios fundadores de Roma?',
       },
       {
         label: 'mad_fact1',
@@ -483,65 +497,69 @@ export const TEXTS = [
         label: 'mad_fact3',
         text: '¿Sabias que el escudo de Madrid es un oso y un madroño?',
       },
-     {
+      {
         label: 'ath_fact1',
         text: '¿Sabias que Atenas es la capital mas antigua (3400 A.C.) de Europa?',
       },
-     {
+      {
         label: 'ath_fact2',
         text: '¿Sabias que Atenas fue la primera Capital Europea de la Cultura?',
       },
-     {
+      {
         label: 'ath_fact3',
         text: '¿Sabias que Atenas tiene 148 teatros?',
       },
-     {
+      {
         label: 'ams_fact1',
         text: '¿Sabias que hay aproximadamente 881.000 bicicletas en Amsterdam?',
       },
-     {
+      {
         label: 'ams_fact2',
         text: '¿Sabias que hay mas de 2500 casas barco en Amsterdam?',
       },
-     {
+      {
         label: 'ams_fact3',
         text: '¿Sabias que Amsterdam esta bajo el nivel del mar?',
       },
-     {
+      {
         label: 'osl_fact1',
         text: 'Did you know the Nobel Peace Prize is awarded in Oslo every year?',
       },
-     {
+      {
         label: 'osl_fact2',
         text: 'Did you know there are 40 islands and 343 lakes within Oslo limits ?',
       },
-     {
+      {
         label: 'osl_fact3',
-        text: 'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
+        text:
+          'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
       },
-     {
+      {
         label: 'prg_fact1',
-        text: 'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
+        text:
+          'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
       },
-     {
+      {
         label: 'prg_fact2',
         text: 'Did you know Prague Castle is the largest ancient castle complex in the world ?',
       },
-     {
+      {
         label: 'prg_fact3',
         text: 'Did you know Prague astronomical clock was installed in 1410 and is still working ?',
       },
-     {
+      {
         label: 'kra_fact1',
-        text: 'Did you know Kraków’s Market Square is the largest medieval commercial square in Europe ?',
+        text:
+          'Did you know Kraków’s Market Square is the largest medieval commercial square in Europe ?',
       },
-     {
+      {
         label: 'kra_fact2',
         text: 'Did you know Krakow was the capital of Poland for over 500 years ?',
       },
-     {
+      {
         label: 'kra_fact3',
-        text: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
+        text:
+          'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
       },
       {
         label: 'Berlin',
@@ -617,7 +635,8 @@ export const TEXTS = [
       },
       {
         label: 'police_10',
-        text: 'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto !',
+        text:
+          'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto !',
       },
       {
         label: 'police_11',
@@ -625,7 +644,8 @@ export const TEXTS = [
       },
       {
         label: 'police_12',
-        text: 'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene ',
+        text:
+          'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene ',
       },
       {
         label: 'city_loading',
@@ -761,7 +781,8 @@ export const TEXTS = [
       },
       {
         label: 'rules_1',
-        text: 'Eres un detective y tienes que conseguir pistas en cada ciudad para descubir el paradero del ladrón. ',
+        text:
+          'Eres un detective y tienes que conseguir pistas en cada ciudad para descubir el paradero del ladrón. ',
       },
       {
         label: 'rules_2',
@@ -819,6 +840,6 @@ export const TEXTS = [
         label: 'memory_back',
         text: 'Volver al perfil',
       },
-        ],
+    ],
   },
 ];
