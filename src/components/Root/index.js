@@ -6,7 +6,7 @@ import { loadGameData } from '../../actions/game';
 
 import Intro from '../Pages/Intro';
 import Profile from '../Pages/Profile';
-import GetMoney from '../Pages/GetMoney';
+import Casino from '../Pages/Casino';
 import Airport from '../Pages/Airport';
 import Police from '../Pages/Police';
 import Hotel from '../Pages/Hotel';
@@ -37,7 +37,7 @@ class Root extends Component<RootPropType> {
           <Route path="/city-canvas" component={CityCanvas} />
           <Route path="/hotel" component={Hotel} />
           <Route path="/police" component={Police} />
-          <Route path="/get-money" component={GetMoney} />
+          <Route path="/get-money" component={Casino} />
           <Route path="/rules" component={Rules} />
           <Route path="/ranking" component={Ranking} />
         </Switch>

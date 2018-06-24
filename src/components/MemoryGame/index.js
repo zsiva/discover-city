@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Grid, Button, Modal } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import { addMoney } from '../../actions/player';
-import { findTextLang } from '../../utils/findTextLang';
 
 import Card from './Card';
 import { shuffleArray } from '../../utils/operations';
@@ -120,18 +120,24 @@ class MemoryGame extends Component {
 
   render() {
     if (this.state.counter === 21) {
-      return <Spinner text={findTextLang(this.props.playerLanguage,'memory_loading')} />;
+      return <Spinner text={<FormattedMessage id="casino.loading" />} />;
     }
     return (
       <Fragment>
         <h5>
-          {findTextLang(this.props.playerLanguage,'memory_pairsfound')} {this.state.matches}
-          <div className="pull-right">{findTextLang(this.props.playerLanguage,'memory_timeleft')} {this.state.counter}</div>
+          <FormattedMessage id="casino.pairs_found" /> {this.state.matches}
+          <div className="pull-right">
+            <FormattedMessage id="casino.time" values={{ seconds: this.state.counter }} />
+          </div>
         </h5>
         <Grid>{this.renderCards(this.state.cards)}</Grid>
         <Modal open={this.state.openModal} size="small">
           <Modal.Header>
-            {this.state.counter === 0 ? findTextLang(this.props.playerLanguage,'memory_timeup') : findTextLang(this.props.playerLanguage,'memory_allpairs') }
+            {this.state.counter === 0 ? (
+              <FormattedMessage id="casino.timeup" />
+            ) : (
+              <FormattedMessage id="casino.all_found" />
+            )}
           </Modal.Header>
           <Modal.Content>
             <Grid>
@@ -139,12 +145,21 @@ class MemoryGame extends Component {
                 <img src="./images/timeup.jpg" alt="time up" />
               </Grid.Column>
               <Grid.Column width={8}>
-                <p>{findTextLang(this.props.playerLanguage,'memory_end1')} {this.state.matches}</p>
-                <p>{findTextLang(this.props.playerLanguage,'memory_end2a')} {this.state.matches * 10} {findTextLang(this.props.playerLanguage,'memory_end2b')} {this.props.moneyLeft} €.
+                <p>
+                  <FormattedMessage
+                    id="casino.timeup_answer"
+                    values={{ pairs: this.state.matches }}
+                  />
+                </p>
+                <p>
+                  <FormattedMessage
+                    id="casino.money"
+                    values={{ money: this.state.matches * 10, total: this.props.moneyLeft }}
+                  />
                 </p>
                 <Link to="/user">
                   <Button color="green">
-                    <Button.Content content={findTextLang(this.props.playerLanguage,'memory_back')} />
+                    <FormattedMessage id="casino.back_profile" />
                   </Button>
                 </Link>
               </Grid.Column>
@@ -159,7 +174,7 @@ class MemoryGame extends Component {
 const mapStateToProps = (state, ownProps = {}) => {
   return {
     moneyLeft: state.player.money,
-    playerLanguage: state.player.language,
   };
 };
+
 export default connect(mapStateToProps)(MemoryGame);

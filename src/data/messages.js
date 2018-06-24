@@ -35,6 +35,16 @@ export default {
       find: 'Find him',
       items: 'Items',
     },
+    casino: {
+      loading: 'Loading cards',
+      pairs_found: 'Pairs found:',
+      time: 'Time: {seconds} seconds',
+      timeup: 'Your time is up!',
+      all_found: 'Great! You found all the pairs!',
+      timeup_answer: 'Your time is up, you`ve found {pairs} pairs.',
+      money: 'You`ve won {money} €. You now have {total} €',
+      back_profile: 'Back to the profile',
+    },
     police: {
       title: 'Welcome to the Police Department of {city}',
       info: 'I heard you are looking for the thief who stole O`Greeny`s money',
@@ -71,7 +81,7 @@ export default {
       casino: 'Casino',
       airport: 'Aeropuerto',
       police: 'Policía',
-      profile: 'Perfíl',
+      profile: 'Perfil',
     },
     rules: {
       intro:
@@ -92,6 +102,16 @@ export default {
       rules: 'Reglas',
       find: 'Encuéntralo',
       items: 'Objectos',
+    },
+    casino: {
+      loading: 'Cargando cartas',
+      pairs_found: 'Parejas encontradas:',
+      time: 'Tiempo: {seconds} segundos',
+      timeup: '¡Se acabó el tiempo !',
+      all_found: '¡Bien! ¡Has encontrado todas las parejas!',
+      timeup_answer: 'Se acabó el tiempo, has encontrado {pairs} parejas.',
+      money: 'Has conseguido {money} €. Ahora tienes {total} €',
+      back_profile: 'Volver al perfil',
     },
     police: {
       title: 'Bienvenido al Departamento de Policia de {city}',

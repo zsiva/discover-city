@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 import MemoryGame from '../../MemoryGame';
 import Header from '../../Header';
 
-export default function GetMoney() {
+export default function Casino() {
   return (
     <Fragment>
       <Header />
