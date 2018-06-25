@@ -8,7 +8,6 @@ import Lightbox from '../../Lightbox';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
-import { findTextLang } from '../../../utils/findTextLang';
 import { isAirportClosed } from '../../../utils/calculateDay';
 import { usersRef, db } from '../../../';
 import AirportHeader from './AirportHeader';
