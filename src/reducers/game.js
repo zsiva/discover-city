@@ -31,11 +31,17 @@ const gameState = (state = [], action) => {
         currentCity: list[0],
         maxCities: action.num - 1,
         currentCityID: 0,
-        cityFacts: [' '].concat(shuffleArray(list[0].facts)
-          .splice(0, 2)
-          .concat('airport_waiterhint')),
+        cityFacts: [' '].concat(
+          shuffleArray(list[0].facts)
+            .splice(0, 2)
+            .concat('airport_waiterhint'),
+        ),
         nextCity: list[1],
-		waiter: shuffleArray(['./images/waiter.png','./images/waiter_2.png','./images/waiter_3.png'])[0],
+        waiter: shuffleArray([
+          './images/waiter.png',
+          './images/waiter_2.png',
+          './images/waiter_3.png',
+        ])[0],
       };
     case LOAD_CITY:
       if (state.currentCityID < state.maxCities) {
@@ -46,10 +52,16 @@ const gameState = (state = [], action) => {
         ...state,
         currentCity: state.selectedCities[state.currentCityID],
         currentCityID: state.currentCityID,
-		waiter: shuffleArray(['./images/waiter.png','./images/waiter_2.png','./images/waiter_3.png'])[0],
-        cityFacts: [' '].concat(shuffleArray(state.selectedCities[state.currentCityID].facts)
-          .splice(0, 2)
-          .concat('airport_waiterhint')),
+        waiter: shuffleArray([
+          './images/waiter.png',
+          './images/waiter_2.png',
+          './images/waiter_3.png',
+        ])[0],
+        cityFacts: [' '].concat(
+          shuffleArray(state.selectedCities[state.currentCityID].facts)
+            .splice(0, 2)
+            .concat('airport_waiterhint'),
+        ),
         nextCity:
           state.currentCityID < state.maxCities
             ? state.selectedCities[state.currentCityID + 1]

@@ -55,6 +55,15 @@ export default {
       buy_food:
         'It was delicious and you feel recovered. You have now {money} €. Now, get back to work! You are a detective, not a tourist!',
       no_money: 'I am afraid you have no money to pay for it',
+      plane_no_money:
+        'I am afraid you do not have money to pay for that flight. Your account has {money} €',
+      found_gold: 'O`Greeny is really happy to have his gold back!',
+      found_city: 'You found him! He was hiding in {city}',
+      found_lightbox: 'Yes, he was here but he already left.',
+      not_found_lightbox: 'No sorry, he was not here.',
+      tickets: 'You`ve spent 30 € on the tickets and have {money} € left. ',
+      lightbox_correct: 'Correct!',
+      lightbox_incorrect: 'Incorrect!',
     },
     police: {
       title: 'Welcome to the Police Department of {city}',
@@ -199,7 +208,17 @@ export default {
       activities: 'Actividades',
       waiter_intro: '¿En qué puedo ayudarte?',
       buy_food:
-        'It was delicious and you feel recovered. You have now {money} €. Now, get back to work! You are a detective, not a tourist!',
+        'Estaba delicioso y te sientes mejor. Te quedan {money} €. Pero ahora, ¡vuelve al trabajo! ¡Eres un detective, no un turista!',
+      plane_no_money:
+        'Me temo que no tienes dinero para pagar ese vuelo. En la cuenta te quedan {money} €',
+      no_money: 'Me temo que no tienes dinero para pagar.',
+      found_gold: '¡O Greeny está muy contento de recuperar su oro!',
+      found_city: '¡Lo encontraste! Estaba escondido en {city}',
+      found_lightbox: 'Sí, ha estado aquí pero se ha ido a otra ciudad.',
+      not_found_lightbox: 'No, lo siento, no ha estado aquí.',
+      tickets: 'Has pagado 30 € por los billetes, te quedan {money} €',
+      lightbox_correct: '¡Correcto!',
+      lightbox_incorrect: '¡Incorrecto!',
     },
 
     cities: {

@@ -37,8 +37,8 @@ class AirportWaiter extends Component<AirportWaiterPropType, AirportWaiterStateT
   getFood() {
     const { dispatch, moneyLeft } = this.props;
     if (moneyLeft - 5 >= 0) {
-      this.props.dispatch(addDateTime(2));
-      this.props.dispatch(substractMoney(5));
+      dispatch(addDateTime(2));
+      dispatch(substractMoney(5));
       this.setState({
         factID: this.state.factID + 1,
         message: 'airport.buy_food',

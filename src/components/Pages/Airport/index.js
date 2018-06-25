@@ -1,30 +1,31 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import { Button, Container, Grid, Card, Divider, Transition, Message } from 'semantic-ui-react';
+import { Button, Container, Grid, Divider, Transition, Message } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
-import Header from '../../Header';
 import Lightbox from '../../Lightbox';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
 import { findTextLang } from '../../../utils/findTextLang';
-import { calculateDay, isAirportClosed } from '../../../utils/calculateDay';
+import { isAirportClosed } from '../../../utils/calculateDay';
 import { usersRef, db } from '../../../';
 import AirportHeader from './AirportHeader';
+import AirportWaiter from './AirportWaiter';
 import './style.css';
 
 class Airport extends Component {
   constructor(props) {
     super(props);
     this.chooseCity = this.chooseCity.bind(this);
-    this.getFood = this.getFood.bind(this);
     this.getNextCity = this.getNextCity.bind(this);
     this.openCityLightBox = this.openCityLightBox.bind(this);
     this.savePlayerData = this.savePlayerData.bind(this);
-    this.state = { found: false, messageVisible: false, messageColor: 'blue', factID: 0 };
+    this.state = {
+      found: false,
+      messageVisible: false,
+    };
   }
 
   async getNextCity() {
@@ -38,31 +39,6 @@ class Airport extends Component {
       this.refs.lightboxCity.close();
       this.props.history.push('/city');
     }, 4000);
-  }
-
-  getFood() {
-    if (this.props.moneyLeft - 5 >= 0) {
-      this.props.dispatch(addDateTime(2));
-      this.props.dispatch(substractMoney(5));
-      this.setState({
-        factID: this.state.factID + 1,
-        message:
-          findTextLang(this.props.playerLanguage, 'airport_9a') +
-          (this.props.moneyLeft - 5) +
-          findTextLang(this.props.playerLanguage, 'airport_9b'),
-      });
-    } else {
-      this.setState({
-        messageColor: 'red',
-        message:
-          findTextLang(this.props.playerLanguage, 'airport_10a') +
-          this.props.currentCity.food +
-          findTextLang(this.props.playerLanguage, 'airport_10b') +
-          this.props.moneyLeft +
-          '€',
-      });
-    }
-    this.setState({ messageVisible: !this.state.messageVisible });
   }
 
   savePlayerData() {
@@ -81,11 +57,10 @@ class Airport extends Component {
   }
 
   chooseCity(e) {
-    if (this.props.moneyLeft - 30 >= 0) {
-      if (this.props.currentCityID === this.props.selectedCities.length - 2) {
-        if (
-          e.target.innerText === findTextLang(this.props.playerLanguage, this.props.nextCity.name)
-        ) {
+    const { moneyLeft, selectedCities, nextCity, currentCityID } = this.props;
+    if (moneyLeft - 30 >= 0) {
+      if (currentCityID === selectedCities.length - 2) {
+        if (e.target.innerText.toLowerCase() === nextCity.name) {
           this.refs.lightboxfound.open();
           this.savePlayerData();
         } else {
@@ -97,9 +72,7 @@ class Airport extends Component {
       } else {
         this.props.dispatch(substractMoney(30));
         this.props.dispatch(addDateTime(6));
-        if (
-          e.target.innerText === findTextLang(this.props.playerLanguage, this.props.nextCity.name)
-        ) {
+        if (e.target.innerText.toLowerCase() === nextCity.name) {
           this.getNextCity();
           this.setState({ found: true });
         } else {
@@ -108,30 +81,20 @@ class Airport extends Component {
         this.openCityLightBox();
       }
     } else {
-      this.setState({ messageVisible: !this.state.messageVisible });
-      this.setState({ messageColor: 'red' });
       this.setState({
-        message: findTextLang(this.props.playerLanguage, 'airport_11') + this.props.moneyLeft + '€',
+        messageVisible: !this.state.messageVisible,
       });
     }
   }
 
   render() {
-    const {
-      currentCity,
-      selectedCities,
-      isLoading,
-      moneyLeft,
-      nextCity,
-      playerLanguage,
-    } = this.props;
+    const { currentCity, selectedCities, isLoading, moneyLeft, nextCity } = this.props;
     const { messageVisible } = this.state;
 
     if (isLoading) {
       return <Spinner text="Loading city info" />;
     }
 
-    var cityFacts = this.props.cityFacts.map(fact => findTextLang(playerLanguage, fact));
     const isClosed = isAirportClosed(this.props.dateTime);
     return (
       <Fragment>
@@ -147,32 +110,13 @@ class Airport extends Component {
           )}
 
           <Transition animation="pulse" visible={messageVisible} duration={500}>
-            <Message color={this.state.messageColor}>
-              <p>{this.state.message}</p>
+            <Message color="red">
+              <FormattedMessage id="airport.plane_no_money" values={{ money: moneyLeft }} />
             </Message>
           </Transition>
           <Grid centered>
             <Grid.Column computer={6} tablet={8} mobile={16}>
-              <Card centered>
-                <Card.Content textAlign="center">
-                  <img src={this.props.waiter} alt="Waiter" />
-                  <Card.Meta />
-                  <Card.Description>
-                    <b>{findTextLang(playerLanguage, 'airport_waiter')}</b>
-                    <br />
-                    {cityFacts[this.state.factID]}
-
-                    <Transition visible={this.state.factID >= 3} duration={500}>
-                      <img src={`./images/${nextCity.flag}`} alt="country flag" />
-                    </Transition>
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra className="text-center">
-                  <Button color="green" size="large" disabled={isClosed} onClick={this.getFood}>
-                    {findTextLang(playerLanguage, 'airport_7')} {currentCity.food}
-                  </Button>
-                </Card.Content>
-              </Card>
+              <AirportWaiter isClosed={isClosed} />
             </Grid.Column>
             <Grid.Column computer={6} tablet={8} mobile={16}>
               <Divider horizontal>
@@ -180,10 +124,11 @@ class Airport extends Component {
               </Divider>
               {nextCity.cityOptions.map((cityOption, it) => (
                 <Button
+                  key={it}
                   color="green"
                   size="large"
                   onClick={this.chooseCity}
-                  content={findTextLang(this.props.playerLanguage, cityOption)}
+                  content={cityOption}
                   fluid
                   disabled={isClosed}
                   className="destButton"
@@ -196,44 +141,47 @@ class Airport extends Component {
         <Lightbox
           ref="lightboxCity"
           header={
-            this.state.found
-              ? findTextLang(this.props.playerLanguage, 'correct')
-              : findTextLang(this.props.playerLanguage, 'incorrect')
+            this.state.found ? (
+              <FormattedMessage id="airport.lightbox_correct" />
+            ) : (
+              <FormattedMessage id="airport.lightbox_incorrect" />
+            )
           }
           displayButton={false}
         >
           <div className="text-center">
             {this.state.found ? (
               <p>
-                {findTextLang(playerLanguage, 'airport_12yes')}{' '}
-                {findTextLang(this.props.playerLanguage, currentCity.name)}{' '}
+                <FormattedMessage id="airport.found_lightbox" />
               </p>
             ) : (
-              <p>{findTextLang(playerLanguage, 'airport_12no')}</p>
+              <p>
+                <FormattedMessage id="airport.not_found_lightbox" />
+              </p>
             )}
 
             <p>
-              {findTextLang(playerLanguage, 'airport_13')} {moneyLeft} €.
+              <FormattedMessage id="airport.tickets" values={{ money: moneyLeft }} />
             </p>
             {planeAnimation()}
           </div>
         </Lightbox>
         <Lightbox
           ref="lightboxfound"
-          header={findTextLang(
-            this.props.playerLanguage,
-            selectedCities[this.props.currentCityID + 1].name,
-          )}
+          header={
+            <FormattedMessage
+              id={`cities.${selectedCities[this.props.currentCityID + 1].name}.name`}
+            />
+          }
         >
-          {findTextLang(playerLanguage, 'airport_found1')}{' '}
-          {findTextLang(
-            this.props.playerLanguage,
-            selectedCities[this.props.currentCityID + 1].name,
-          )}
+          <FormattedMessage
+            id="airport.found_city"
+            values={{ city: selectedCities[this.props.currentCityID + 1].name }}
+          />
           <br />
-          <br />
-          <strong>{findTextLang(playerLanguage, 'airport_found2')}</strong>
-          <br />
+          <strong>
+            <FormattedMessage id="airport.found_gold" />
+          </strong>
           <br />
           <img src="./images/Minions.gif" alt="minions success" />
         </Lightbox>
@@ -250,8 +198,6 @@ const mapStateToProps = (state, ownProps = {}) => {
     isLoading: state.gameState.isLoading,
     moneyLeft: state.player.money,
     nextCity: state.gameState.nextCity,
-    cityFacts: state.gameState.cityFacts,
-    playerLanguage: state.player.language,
     playerName: state.player.name,
     dateTime: state.player.dateTime,
     waiter: state.gameState.waiter,
