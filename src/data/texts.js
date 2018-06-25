@@ -121,39 +121,39 @@ export const TEXTS = [
           'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
       },
       {
-        label: 'Berlin',
+        label: 'berlin',
         text: 'Berlin',
       },
       {
-        label: 'Paris',
+        label: 'paris',
         text: 'Paris',
       },
       {
-        label: 'Rome',
+        label: 'rome',
         text: 'Rome',
       },
       {
-        label: 'Madrid',
+        label: 'madrid',
         text: 'Madrid',
       },
       {
-        label: 'Athens',
+        label: 'athens',
         text: 'Athens',
       },
       {
-        label: 'Amsterdam',
+        label: 'amsterdam',
         text: 'Amsterdam',
       },
       {
-        label: 'Oslo',
+        label: 'oslo',
         text: 'Oslo',
       },
       {
-        label: 'Krakow',
+        label: 'krakow',
         text: 'Krakow',
       },
       {
-        label: 'Prague',
+        label: 'prague',
         text: 'Prague',
       },
       {
