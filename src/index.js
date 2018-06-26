@@ -22,8 +22,7 @@ import flattenMessages from './utils/flattenMessages';
 import messages from './data/messages';
 
 addLocaleData([...en, ...es]);
-let locale =
-  (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage;
+let locale = 'en-US';
 
 firebase.initializeApp({
   apiKey: FIREBASE_API_KEY,
