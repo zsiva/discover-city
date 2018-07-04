@@ -140,7 +140,11 @@ export const TEXTS = [
         label: 'athens',
         text: 'Athens',
       },
-      {
+       {
+        label: 'zakynthos',
+        text: 'Zakynthos',
+      },
+     {
         label: 'amsterdam',
         text: 'Amsterdam',
       },
@@ -562,39 +566,43 @@ export const TEXTS = [
           'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
       },
       {
-        label: 'Berlin',
+        label: 'berlin',
         text: 'Berlin',
       },
       {
-        label: 'Paris',
+        label: 'paris',
         text: 'Paris',
       },
       {
-        label: 'Rome',
+        label: 'rome',
         text: 'Roma',
       },
       {
-        label: 'Madrid',
+        label: 'madrid',
         text: 'Madrid',
       },
       {
-        label: 'Athens',
+        label: 'athens',
         text: 'Atenas',
       },
       {
-        label: 'Amsterdam',
+        label: 'zakynthos',
+        text: 'Zakynthos',
+      },
+      {
+        label: 'amsterdam',
         text: 'Amsterdam',
       },
       {
-        label: 'Oslo',
+        label: 'oslo',
         text: 'Oslo',
       },
       {
-        label: 'Krakow',
+        label: 'krakow',
         text: 'Cracovia',
       },
       {
-        label: 'Prague',
+        label: 'prague',
         text: 'Praga',
       },
       {
@@ -741,7 +749,7 @@ export const TEXTS = [
       },
       {
         label: 'airport_waiterhint',
-        text: 'Alguien que hablaba sobre un oro robado se subio a un avion con esta bandera ',
+        text: 'Alguien que hablaba sobre un oro robado se subió a un avion con esta bandera ',
       },
       {
         label: 'profile_hello',

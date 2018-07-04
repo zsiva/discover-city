@@ -100,6 +100,26 @@ export const CITIES = [
     ],
   },
   {
+    name: 'zakynthos',
+    flag: 'countryFlags/GREC0001.GIF',
+    food: 'Souvlaki',
+    facts: ['ath_fact1', 'ath_fact2', 'ath_fact3'],
+    hints: [
+      {
+        label: 'Shipwreck',
+        img: 'images/cities/zak_shipwreck.jpg',
+      },
+      {
+        label: 'Porto Limnionas',
+        img: 'images/cities/zak_porto.jpg',
+      },
+      {
+        label: 'Olive Trees',
+        img: 'images/cities/zak_olives.jpg',
+      },
+    ],
+  },
+  {
     name: 'amsterdam',
     flag: 'countryFlags/NETH0001.GIF',
     food: 'Heineken',

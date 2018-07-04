@@ -59,7 +59,7 @@ class AirportWaiter extends Component<AirportWaiterPropType, AirportWaiterStateT
         <Card.Content textAlign="center">
           <Transition animation="pulse" visible={this.state.messageVisible} duration={500}>
             <Message color={this.state.messageColor}>
-              <FormattedMessage id={this.state.message} values={{ money: moneyLeft - 5 }} />
+              <FormattedMessage id={this.state.message} values={{ money: moneyLeft }} />
             </Message>
           </Transition>
           <img src={waiter} alt="Waiter" />
@@ -69,11 +69,14 @@ class AirportWaiter extends Component<AirportWaiterPropType, AirportWaiterStateT
               <FormattedMessage id="airport.waiter_intro" />
             </b>
             <br />
-            {this.state.factID > 0 && (
+            {this.state.factID > 0 && this.state.factID < 4 && (
               <FormattedMessage id={`cities.${currentCity.name}.${this.state.factID}`} />
             )}
-            <Transition visible={this.state.factID >= 3} duration={500}>
-              <img src={`./images/${nextCity.flag}`} alt="country flag" />
+            {this.state.factID >= 4 && (
+            <FormattedMessage id="airport.waiter_flag"/>
+            )}
+            <Transition visible={this.state.factID >= 4} duration={500}>
+				<img src={`./images/${nextCity.flag}`} alt="country flag" />
             </Transition>
           </Card.Description>
         </Card.Content>

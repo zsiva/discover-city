@@ -52,6 +52,7 @@ export default {
       destinations: 'Destinations',
       activities: 'Activities',
       waiter_intro: 'What can I do for you?',
+	  waiter_flag: 'A guy talking about some stolen gold took a flight with this flag on it.',
       buy_food:
         'It was delicious and you feel recovered. You have now {money} €. Now, get back to work! You are a detective, not a tourist!',
       no_money: 'I am afraid you have no money to pay for it',
@@ -115,6 +116,13 @@ export default {
         '1': 'Did you know Athens is Europe`s oldest capital (3400 B.C.) ?',
         '2': 'Did you know Athens was the first ever European Cultural Capital ?',
         '3': 'Did you know Athens has 148 theatrical stages ?',
+      },
+      zakynthos: {
+        name: 'Zakynthos',
+        food: 'Have a moussaka',
+        '1': 'Did you know Zakynthos escaped Ottoman domination but was subject of the Republic of Venice for centuries ?',
+        '2': 'Did you know Zakynthos touristic development begun in 1965 ?',
+        '3': 'Did you know Homer was the first to mention Zakynthos in his Odyssey and Iliad masterpieces ?',
       },
       amsterdam: {
         name: 'Ansterdam',
@@ -207,6 +215,7 @@ export default {
       destinations: 'Destinos',
       activities: 'Actividades',
       waiter_intro: '¿En qué puedo ayudarte?',
+	  waiter_flag: 'Alguien que hablaba sobre un oro robado se subió a un avion con esta bandera.',
       buy_food:
         'Estaba delicioso y te sientes mejor. Te quedan {money} €. Pero ahora, ¡vuelve al trabajo! ¡Eres un detective, no un turista!',
       plane_no_money:
@@ -258,6 +267,13 @@ export default {
         1: '¿Sabías que Atenas es la capital más antigua (3400 A.C.) de Europa?',
         2: '¿Sabías que Atenas fue la primera Capital Europea de la Cultura?',
         3: '¿Sabías que Atenas tiene 148 teatros?',
+      },
+      zakynthos: {
+        name: 'Zakynthos',
+        food: 'Tómate una moussaka',
+        '1': '¿Sabías que Zakynthos escapó a la dominación otomana pero fue parte del reino de Venecia durante siglos?',
+        '2': '¿Sabías que el desarrollo turistico de Zakynthos empezó en 1965 ?',
+        '3': '¿Sabías que Homero fue el primero en mencionar Zakynthos en la Odisea y la Iliada?',
       },
       amsterdam: {
         name: 'Amsterdam',
