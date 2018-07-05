@@ -13,6 +13,7 @@ export default {
       casino: 'Casino',
       airport: 'Airport',
       police: 'Police',
+      hotel: 'Hotel',
       profile: 'Profile',
     },
     rules: {
@@ -36,6 +37,9 @@ export default {
       items: 'Items',
     },
     casino: {
+      title: 'Welcome to the casino of {city}',
+      welcome: 'What can I do for you?',
+      cards: 'Play Cards',
       loading: 'Loading cards',
       pairs_found: 'Pairs found:',
       time: 'Time: {seconds} seconds',
@@ -44,6 +48,8 @@ export default {
       timeup_answer: 'Your time is up, you`ve found {pairs} pairs.',
       money: 'You`ve won {money} €. You now have {total} €',
       back_profile: 'Back to the profile',
+      back_city: 'Back to the city',
+      forget: 'Did you forget something?',
     },
     airport: {
       title: 'Welcome to the airport of {city}',
@@ -176,6 +182,7 @@ export default {
       casino: 'Casino',
       airport: 'Aeropuerto',
       police: 'Policía',
+      hotel: 'Hotel',
       profile: 'Perfil',
     },
     rules: {
@@ -199,6 +206,9 @@ export default {
       items: 'Objectos',
     },
     casino: {
+      title: 'Bienvenido al casino de {city}',
+      welcome: '¿En qué puedo ayudarte?',
+      cards: 'Jugar a las cartas',
       loading: 'Cargando cartas',
       pairs_found: 'Parejas encontradas:',
       time: 'Tiempo: {seconds} segundos',
@@ -207,6 +217,8 @@ export default {
       timeup_answer: 'Se acabó el tiempo, has encontrado {pairs} parejas.',
       money: 'Has conseguido {money} €. Ahora tienes {total} €',
       back_profile: 'Volver al perfil',
+      forget: '¿Has olvidado algo?',
+      back_city: 'Volver a la ciudad',
     },
     airport: {
       title: 'Bienvenido al aeropuerto de {city}',
@@ -241,7 +253,7 @@ export default {
       },
       paris: {
         name: 'París',
-        food: 'Tómate un croisant',
+        food: 'Tómate un croissant',
         '1': '¿Sabías que París era originalmente una ciudad romana llamada Lutecia?',
         '2': '¿Sabías que hay más de 1700 panaderias en París?',
         '3': '¿Sabías que la Torre Eiffel iba a ser temporal?',

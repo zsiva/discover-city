@@ -17,7 +17,7 @@ export default function AirportHeader({ cityName, hours }: AirportHeaderPropType
       <section className="ui container">
         <div className="airport">
           <h1>
-            <FormattedMessage id="airport.title" values={{ city: cityName }} />
+            <FormattedMessage id="airport.title" values={{ city: <FormattedMessage id={`cities.${cityName}.name`}/> }} />
           </h1>
           <h2> {calculateDay(hours).time} </h2>
         </div>

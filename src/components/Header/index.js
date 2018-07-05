@@ -34,6 +34,12 @@ export default function Header() {
             <FormattedMessage id="header.casino" />
           </Menu.Item>
         </Link>
+        <Link to="/hotel">
+          <Menu.Item active={window.location.pathname === '/hotel'}>
+            <Icon name="building" />
+            <FormattedMessage id="header.hotel" />
+          </Menu.Item>
+        </Link>
         <Menu.Menu position="right">
           <Link to="/user">
             <Menu.Item active={window.location.pathname === '/user'}>

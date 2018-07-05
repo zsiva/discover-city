@@ -442,7 +442,10 @@ export const TEXTS = [
         label: 'hotel_help',
         text: 'What can I do for you?',
       },
-    ],
+      {
+        label: 'casino_welcome',
+        text: 'Welcome to the best casino in ',
+      },    ],
   },
   {
     language: 'es-ES',
