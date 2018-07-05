@@ -131,7 +131,7 @@ export default {
         '3': 'Did you know Homer was the first to mention Zakynthos in his Odyssey and Iliad masterpieces ?',
       },
       amsterdam: {
-        name: 'Ansterdam',
+        name: 'Amsterdam',
         food: 'Have a heineken',
         '1': 'Did you know there are approximately 881.000 bicycles in Amsterdam ?',
         '2': 'Did you know there are more than 2500 houseboats in Amsterdam ?',
