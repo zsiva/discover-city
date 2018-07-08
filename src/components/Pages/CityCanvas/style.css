@@ -1,3 +1,40 @@
-.cityImg {
-  max-height: 500px;
+.cityWrapper {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+}
+.casino,
+.police,
+.hotel {
+  position: absolute;
+  bottom: 24%;
+  width: 180px;
+}
+.casino {
+  right: 0;
+}
+.police {
+  right: 33%;
+}
+.hotel {
+  left: 0;
+}
+#taxiCanvas {
+  position: absolute;
+  left: 0;
+  bottom: 15%;
+  z-index: 2;
+  width: 70px;
+  transition: transform 2s ease-out;
+}
+
+@media (max-width: 480px) {
+  .casino,
+  .police,
+  .hotel {
+    max-width: 100px;
+  }
+  #taxiCanvas {
+    width: 50px;
+  }
 }
