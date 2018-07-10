@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { loadGameData } from '../../actions/game';
 
 import Intro from '../Pages/Intro';
@@ -17,8 +17,9 @@ import CityCanvas from '../Pages/CityCanvas';
 import Ranking from '../Pages/Ranking';
 
 export type RootPropType = {
-  currentCity: string,
+  playerName: string,
   dispatch: Dispatch,
+  location: { pathname: string },
 };
 
 class Root extends Component<RootPropType> {
@@ -31,6 +32,8 @@ class Root extends Component<RootPropType> {
     return (
       <div className="app">
         <Switch>
+          {this.props.location.pathname !== '/' &&
+            !this.props.playerName && <Redirect to={{ pathname: '/' }} />}
           <Route exact path="/" component={Intro} />} />
           <Route path="/airport" component={Airport} />
           <Route path="/user" component={Profile} />
@@ -50,7 +53,7 @@ class Root extends Component<RootPropType> {
 
 const mapStateToProps = state => {
   return {
-    currentCity: state.gameState.currentCity,
+    playerName: state.player.name,
   };
 };
 
