@@ -11,7 +11,10 @@ import { calculateDay } from '../../../utils/calculateDay';
 class CityCanvas extends Component {
   moveCar = e => {
     const location = e.currentTarget.dataset.to;
-    document.getElementById('taxiCanvas').style.transform = `translateX(${e.clientX - 100}px)`;
+    const rect = document.getElementById('cityWrapper').getBoundingClientRect();
+    var x = e.clientX - rect.left;
+
+    document.getElementById('taxiCanvas').style.transform = `translateX(${x - 50}px)`;
 
     setTimeout(() => {
       this.props.history.push(location);
@@ -29,7 +32,7 @@ class CityCanvas extends Component {
         <Header />
         <Container className="text-center">
           <Divider horizontal>Welcome to {currentCity.name}</Divider>
-          <div className="cityWrapper">
+          <div id="cityWrapper">
             <img src="./images/cityLayout-no-build.png" />
             <div data-to="/hotel" onClick={this.moveCar} className="hotel">
               <img src={isNightTime ? './images/hotel_n.png' : './images/hotel.png'} alt="hotel" />
