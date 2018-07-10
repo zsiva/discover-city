@@ -28,7 +28,7 @@ class Ranking extends Component<RankingPropType> {
       });
   }
   render() {
-    if (this.props.usersList.length < 1) {
+    if (!this.props.usersList) {
       return <Spinner text="Loading ranking" />;
     }
     return (
@@ -40,7 +40,6 @@ class Ranking extends Component<RankingPropType> {
               <Table.Row>
                 <Table.HeaderCell>P.</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Games played</Table.HeaderCell>
                 <Table.HeaderCell>Points</Table.HeaderCell>
               </Table.Row>
             </Table.Header>

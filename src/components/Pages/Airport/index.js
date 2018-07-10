@@ -41,17 +41,9 @@ class Airport extends Component {
   }
 
   savePlayerData() {
-    var playerRef = usersRef.doc(this.props.playerName);
-
-    if (playerRef) {
-      db.runTransaction(t => {
-        return t.get(playerRef).then(doc => {
-          const new_count = doc.data().num_games + 1;
-          t.update(playerRef, { num_games: new_count });
-        });
-      });
-    } else {
-      playerRef.set({ num_games: 1, points: 100 });
+    if (this.props.playerName) {
+      let playerRef = usersRef.doc();
+      playerRef.set({ name: this.props.playerName, points: 100 });
     }
   }
 
@@ -62,6 +54,9 @@ class Airport extends Component {
         if (e.target.innerText.toLowerCase() === nextCity.name) {
           this.refs.lightboxfound.open();
           this.savePlayerData();
+          setTimeout(() => {
+            this.props.history.push('/ranking');
+          }, 4000);
         } else {
           this.props.dispatch(substractMoney(30));
           this.props.dispatch(addDateTime(6));
@@ -149,15 +144,13 @@ class Airport extends Component {
           displayButton={false}
         >
           <div className="text-center">
-            {this.state.found ? (
-              <p>
+            <p>
+              {this.state.found ? (
                 <FormattedMessage id="airport.found_lightbox" />
-              </p>
-            ) : (
-              <p>
+              ) : (
                 <FormattedMessage id="airport.not_found_lightbox" />
-              </p>
-            )}
+              )}
+            </p>
 
             <p>
               <FormattedMessage id="airport.tickets" values={{ money: moneyLeft }} />
