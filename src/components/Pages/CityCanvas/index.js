@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { Container, Divider } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import Header from '../../Header';
@@ -24,14 +24,14 @@ class CityCanvas extends Component {
     const { currentCity, isLoading } = this.props;
 
     if (isLoading) {
-      return <Spinner text="Loading city info" />;
+      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
     }
     const isNightTime = calculateDay(this.props.dateTime).day === 'night';
     return (
       <Fragment>
         <Header />
         <Container className="text-center">
-          <Divider horizontal>Welcome to {currentCity.name}</Divider>
+          <Divider horizontal><FormattedMessage id="city.title" values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }} /></Divider>
           <div id="cityWrapper">
             <img src="./images/cityLayout-no-build.png" />
             <div data-to="/hotel" onClick={this.moveCar} className="hotel">

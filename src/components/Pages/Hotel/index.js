@@ -4,7 +4,7 @@ import { Button, Container, Grid, Card, Transition, Message } from 'semantic-ui-
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
-import { findTextLang } from '../../../utils/findTextLang';
+import { FormattedMessage } from 'react-intl';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { calculateDay } from '../../../utils/calculateDay';
 
@@ -22,31 +22,32 @@ class Hotel extends Component {
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({
         message:
-          findTextLang(this.props.playerLanguage, 'hotel_night') +
-          (this.props.moneyLeft - 25) +
-          '€',
+        <FormattedMessage id="hotel.sleep" values={{ money: this.props.moneyLeft - 25}} />
       });
     } else {
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({ messageColor: 'red' });
       this.setState({
-        message: findTextLang(this.props.playerLanguage, 'hotel_no') + +this.props.moneyLeft + '€',
+        message:
+        <FormattedMessage id="hotel.no_money" values={{ money: this.props.moneyLeft}} />
       });
     }
   }
   render() {
-    const { currentCity, isLoading, playerLanguage } = this.props;
+    const { currentCity, isLoading } = this.props;
     const { messageVisible } = this.state;
     if (isLoading) {
-      return <Spinner text="Loading city info" />;
+      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
     }
     return (
       <Fragment>
         <Header />
         <Container>
           <h1 className="text-center">
-            {findTextLang(playerLanguage, 'hotel_welcome')}{' '}
-            {findTextLang(playerLanguage, currentCity.name)}
+          <FormattedMessage
+            id="hotel.title"
+            values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }}
+          />
           </h1>
           <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
           <Grid centered>
@@ -56,9 +57,7 @@ class Hotel extends Component {
                   <img src="./images/receptionist.png" alt="Receptionist" />
                   <Card.Description>
                     <b>
-                      {findTextLang(playerLanguage, 'hotel_hello')}
-                      <br />
-                      {findTextLang(playerLanguage, 'hotel_help')}
+                      <FormattedMessage id="hotel.welcome" />
                     </b>
                   </Card.Description>
                 </Card.Content>
@@ -84,7 +83,7 @@ class Hotel extends Component {
                 <Card.Content extra>
                   <Button color="green" size="large">
                     <Button.Content size="large" onClick={this.handleOpen}>
-                      {findTextLang(playerLanguage, 'hotel_book')}
+                      <FormattedMessage id="hotel.book" />
                     </Button.Content>
                   </Button>
                 </Card.Content>
@@ -95,14 +94,14 @@ class Hotel extends Component {
                 <Card.Content textAlign="center">
                   <img src={`./${currentCity.hints[1].img}`} alt="Ciudad" />
                   <Card.Meta />
-                  <Card.Description>{findTextLang(playerLanguage, 'airport_6')}</Card.Description>
+                  <Card.Description><FormattedMessage id="hotel.forget" /></Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Link to="/city">
+                  <Link to="/city-canvas">
                     <Button color="green" size="large">
                       <Button.Content
                         size="large"
-                        content={findTextLang(playerLanguage, 'airport_8')}
+                        content={<FormattedMessage id="common.back_city" />}
                       />
                     </Button>
                   </Link>

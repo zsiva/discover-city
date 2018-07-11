@@ -8,6 +8,11 @@ export default {
       button: 'Start game',
       nameplaceholder: 'Your name',
     },
+    common: {
+      loading: 'Loading city info',
+      back_city: 'Go to the city',
+      back_airport: 'Go to the airport',
+},
     header: {
       city: 'City',
       casino: 'Casino',
@@ -36,6 +41,9 @@ export default {
       find: 'Find him',
       items: 'Items',
     },
+    city: {
+      title: 'Welcome to {city}',
+    },
     casino: {
       title: 'Welcome to the casino of {city}',
       welcome: 'What can I do for you?',
@@ -48,8 +56,15 @@ export default {
       timeup_answer: 'Your time is up, you`ve found {pairs} pairs.',
       money: 'You`ve won {money} €. You now have {total} €',
       back_profile: 'Back to the profile',
-      back_city: 'Back to the city',
       forget: 'Did you forget something?',
+    },
+    hotel: {
+      title: 'Welcome to the best hotel in {city}',
+      welcome: 'What can I do for you?',
+      book: 'Book a room',
+      forget: 'Did you forget something?',
+      sleep: 'You slept 7 hours and you are ready to keep working. You have now {money} €',
+      no_money: 'Sorry, you can not afford a night here. Try earning some mone in the casino. Your account has {money} €',
     },
     airport: {
       title: 'Welcome to the airport of {city}',
@@ -58,7 +73,7 @@ export default {
       destinations: 'Destinations',
       activities: 'Activities',
       waiter_intro: 'What can I do for you?',
-	  waiter_flag: 'A guy talking about some stolen gold took a flight with this flag on it.',
+      waiter_flag: 'A guy talking about some stolen gold took a flight with this flag on it.',
       buy_food:
         'It was delicious and you feel recovered. You have now {money} €. Now, get back to work! You are a detective, not a tourist!',
       no_money: 'I am afraid you have no money to pay for it',
@@ -76,14 +91,13 @@ export default {
       title: 'Welcome to the Police Department of {city}',
       info: 'I heard you are looking for the thief who stole O`Greeny`s money',
       interpol: 'Interpol sent us these 3 pictures. It might be his next destination.',
-      info_desc: 'Tengo información interesante si pagas por ella ',
-      info_money: 'Pagar 10€ por la información',
-      photo_info:
-        'Pagas 10€ y consigues las fotos en buena calidad junto a su titulo. Ahora tienes {money}',
-      airport_info:
-        'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto!',
-      corrupt_cop:
-        'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene {money}',
+      luck: 'GOOD LUCK',
+      show_hints: 'REVEAL HINTS',
+      info_desc: 'I might have some information for you if you pay for it ',
+      info_money: 'PAY 10€ FOR THE INFO',
+      photo_info: 'You paid 10 € and you got the name of the pictures. It should help you You have now {money} €',
+      airport_info: 'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
+      corrupt_cop: 'Corrupt Police Officer: This information is not free! You need 10 € and your account has {money} €',
     },
     cities: {
       berlin: {
@@ -159,14 +173,6 @@ export default {
         3: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
       },
     },
-    facts: {
-      berlin: {
-        '1': 'Did you know Berlin has more Döner Kebap shops than Istanbul?',
-        '2':
-          'Did you know the Berliner Fernsehturm is the tallest building in Germany with 368 meters?',
-        '3': 'Did you know Berlin has more museums (180) than rainy days (108)?',
-      },
-    },
   },
   'es-ES': {
     intro: {
@@ -177,6 +183,11 @@ export default {
       button: 'Comenzar juego',
       nameplaceholder: 'Tu nombre',
     },
+    common: {
+      loading: 'Cargando información de la ciudad',
+      back_city: 'Ir a la ciudad',
+      back_airport: 'Ir al aeropuerto',
+},
     header: {
       city: 'Ciudad',
       casino: 'Casino',
@@ -205,6 +216,9 @@ export default {
       find: 'Encuéntralo',
       items: 'Objectos',
     },
+    city: {
+      title: 'Bienvenido a {city}',
+    },
     casino: {
       title: 'Bienvenido al casino de {city}',
       welcome: '¿En qué puedo ayudarte?',
@@ -218,7 +232,14 @@ export default {
       money: 'Has conseguido {money} €. Ahora tienes {total} €',
       back_profile: 'Volver al perfil',
       forget: '¿Has olvidado algo?',
-      back_city: 'Volver a la ciudad',
+    },
+    hotel: {
+      title: 'Bienvenido al mejor hotel de {city}',
+      welcome: '¿En qué puedo ayudarte?',
+      book: 'Reservar una habitación',
+      forget: '¿Has olvidado algo?',
+      sleep: 'Has dormido 7 horas y estás listo para volver a trabajar. Te quedan {money} €',
+      no_money: 'Me temo que no tienes dinero suficiente. Prueba a ganar dinero en el casino. Te quedan {money} €',
     },
     airport: {
       title: 'Bienvenido al aeropuerto de {city}',
@@ -227,7 +248,7 @@ export default {
       destinations: 'Destinos',
       activities: 'Actividades',
       waiter_intro: '¿En qué puedo ayudarte?',
-	  waiter_flag: 'Alguien que hablaba sobre un oro robado se subió a un avion con esta bandera.',
+      waiter_flag: 'Alguien que hablaba sobre un oro robado se subió a un avion con esta bandera.',
       buy_food:
         'Estaba delicioso y te sientes mejor. Te quedan {money} €. Pero ahora, ¡vuelve al trabajo! ¡Eres un detective, no un turista!',
       plane_no_money:
@@ -316,27 +337,17 @@ export default {
         3: '¿Sabías que la universidad de Cracovia, establecida en el siglo 14, es la universidad más antigua de Polonia?',
       },
     },
-
     police: {
       title: 'Bienvenido al Departamento de Policia de {city}',
       info: 'Me han dicho que buscas al ladrón que robó el dinero de O`Greeny',
       interpol: 'La Interpol nos ha enviado estas 3 fotos. Puede que sea su siguiente destino.',
+      luck: 'BUENA SUERTE',
+      show_hints: 'MOSTRAR PISTAS',
       info_desc: 'Tengo información interesante si pagas por ella',
       info_money: 'Pagar 10€ por la información',
-      photo_info:
-        'Pagas 10€ y consigues las fotos en buena calidad junto a su titulo. Ahora tienes {money}',
-      airport_info:
-        'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto!',
-      corrupt_cop:
-        'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene {money}',
-    },
-    facts: {
-      berlin: {
-        '1': '¿Sabías que Berlin tiene más Döner Kebap que Estambul?',
-        '2':
-          '¿Sabías que la Fernsehturm de Berlin es el edificio más alto de Alemania con 368 metros?',
-        '3': '¿Sabías que Berlin tiene más museos (180) que dias de lluvia (108)?',
-      },
+      photo_info: 'Pagas 10€ y consigues las fotos en buena calidad junto a su titulo. Ahora tienes {money}',
+      airport_info: 'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto!',
+      corrupt_cop: 'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene {money}',
     },
   },
 };

@@ -4,7 +4,7 @@ import { Button, Container, Grid, Card, Transition, Message } from 'semantic-ui-
 import Spinner from '../../Spinner';
 import { Link } from 'react-router-dom';
 import Header from '../../Header';
-import { findTextLang } from '../../../utils/findTextLang';
+import { FormattedMessage } from 'react-intl';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { calculateDay } from '../../../utils/calculateDay';
 import './styles.css';
@@ -24,7 +24,8 @@ class Police extends Component {
       this.setState({ visible: true });
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({
-        message: findTextLang(this.props.playerLanguage, 'police_10'),
+        message:
+        <FormattedMessage id="police.airport_info"/>
       });
     }
   };
@@ -37,33 +38,33 @@ class Police extends Component {
         this.props.dispatch(substractMoney(10));
         this.setState({
           message:
-            findTextLang(this.props.playerLanguage, 'police_11') +
-            (this.props.moneyLeft - 10) +
-            ' €',
+            <FormattedMessage id="police.photo_info" values={{ money: this.props.moneyLeft - 10}} />
         });
       } else {
         this.props.dispatch(addDateTime(1));
         this.setState({ messageColor: 'red' });
         this.setState({
           message:
-            findTextLang(this.props.playerLanguage, 'police_12') + this.props.moneyLeft + ' €.',
+            <FormattedMessage id="police.corrupt_cop" values={{ money: this.props.moneyLeft}} />
         });
       }
     }
   };
   render() {
-    const { currentCity, isLoading, nextCity, playerLanguage } = this.props;
+    const { currentCity, isLoading, nextCity } = this.props;
     const { visible, visible2, messageVisible } = this.state;
     if (isLoading) {
-      return <Spinner text="Loading city info" />;
+      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
     }
     return (
       <Fragment>
         <Header />
         <Container>
           <h1 className="text-center">
-            {findTextLang(playerLanguage, 'police_1')}{' '}
-            {findTextLang(playerLanguage, currentCity.name)}
+          <FormattedMessage
+            id="police.title"
+            values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }}
+          />
           </h1>
           <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
           <Grid centered>
@@ -74,9 +75,9 @@ class Police extends Component {
 
                   <Card.Description>
                     <b>
-                      {findTextLang(playerLanguage, 'police_2')}
+                      {<FormattedMessage id={'police.info'} />}
                       <br />
-                      {findTextLang(playerLanguage, 'police_3')}
+                      {<FormattedMessage id={'police.interpol'} />}
                     </b>
                   </Card.Description>
                 </Card.Content>
@@ -86,8 +87,8 @@ class Police extends Component {
                       size="large"
                       content={
                         this.state.visible
-                          ? findTextLang(playerLanguage, 'police_5')
-                          : findTextLang(playerLanguage, 'police_4')
+                          ? <FormattedMessage id={'police.luck'} />
+                          : <FormattedMessage id={'police.show_hints'} />
                       }
                     />
                   </Button>
@@ -104,7 +105,7 @@ class Police extends Component {
                         <b>PSS PSS</b>
                       </p>
                       <p>
-                        <b>{findTextLang(playerLanguage, 'police_6')}</b>
+                        <b><FormattedMessage id={'police.info_desc'} /></b>
                       </p>
                     </Card.Description>
                   </Card.Content>
@@ -114,8 +115,8 @@ class Police extends Component {
                         size="large"
                         content={
                           this.state.visible2
-                            ? findTextLang(playerLanguage, 'police_5')
-                            : findTextLang(playerLanguage, 'police_7')
+                            ? <FormattedMessage id={'police.luck'} />
+                            : <FormattedMessage id={'police.info_money'} />
                         }
                       />
                     </Button>
@@ -154,14 +155,14 @@ class Police extends Component {
           <img src={`./images/${currentCity.flag}`} alt="country flag" />
         </h3>
         <Container textAlign="center">
-          <Link to="/city">
+          <Link to="/city-canvas">
             <Button color="green" size="large">
-              <Button.Content size="large" content={findTextLang(playerLanguage, 'police_8')} />
+              <Button.Content size="large" content={<FormattedMessage id={'common.back_city'} />} />
             </Button>
           </Link>
           <Link to="/airport">
             <Button color="green" size="large">
-              <Button.Content size="large" content={findTextLang(playerLanguage, 'police_9')} />
+              <Button.Content size="large" content={<FormattedMessage id={'common.back_airport'} />} />
             </Button>
           </Link>
         </Container>

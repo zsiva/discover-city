@@ -36,7 +36,7 @@ class Airport extends Component {
     this.refs.lightboxCity.open();
     setTimeout(() => {
       this.refs.lightboxCity.close();
-      this.props.history.push('/city');
+      this.props.history.push('/city-canvas');
     }, 4000);
   }
 

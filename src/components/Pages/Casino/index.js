@@ -19,7 +19,7 @@ class Casino extends Component<CasinoPropType> {
     const { currentCity, isLoading } = this.props;
 
     if (isLoading) {
-      return <Spinner text="Loading city info" />;
+      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
     }
 
     return (
@@ -79,11 +79,11 @@ class Casino extends Component<CasinoPropType> {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Link to="/city">
+                  <Link to="/city-canvas">
                     <Button color="green" size="large">
                       <Button.Content
                         size="large"
-                        content={<FormattedMessage id="casino.back_city" />}
+                        content={<FormattedMessage id="common.back_city" />}
                       />
                     </Button>
                   </Link>

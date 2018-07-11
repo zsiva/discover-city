@@ -10,8 +10,8 @@ export default function Header() {
   return (
     <Menu inverted icon="labeled">
       <Container>
-        <Link to="/city">
-          <Menu.Item active={window.location.pathname === '/city'}>
+        <Link to="/city-canvas">
+          <Menu.Item active={window.location.pathname === '/city-canvas'}>
             <Icon name="home" size="small" />
             <FormattedMessage id="header.city" />
           </Menu.Item>

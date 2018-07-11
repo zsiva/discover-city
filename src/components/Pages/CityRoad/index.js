@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import { Container, Grid, Responsive } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { withRouter } from 'react-router';
-import { findTextLang } from '../../../utils/findTextLang';
 import { calculateDay } from '../../../utils/calculateDay';
 
 import Header from '../../Header';
@@ -28,7 +28,7 @@ class CityRoad extends Component {
   render() {
     const { currentCity, isLoading } = this.props;
     if (isLoading) {
-      return <Spinner text={findTextLang(this.props.playerLanguage, 'city_loading')} />;
+      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
     }
     return (
       <Fragment>
@@ -36,8 +36,7 @@ class CityRoad extends Component {
         <Container>
           <h1 className="text-center">
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
-            {findTextLang(this.props.playerLanguage, 'city_1')}{' '}
-            {findTextLang(this.props.playerLanguage, currentCity.name)}{' '}
+            <FormattedMessage id="city.title" values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }} />
             <img src={`./images/${currentCity.flag}`} alt="country flag" className="headerFlag" />
           </h1>
           <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
