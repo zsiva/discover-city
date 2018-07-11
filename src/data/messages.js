@@ -33,9 +33,9 @@ export default {
     profile: {
       header: 'Hello {name}',
       label: 'Your profile',
-      points: 'Points',
+      points: 'Points : ',
       time: 'Time remaining: {seconds} seconds',
-      money: 'Money',
+      money: 'Money : ',
       earn_money: 'Earn money',
       rules: 'Rules',
       find: 'Find him',
@@ -208,13 +208,13 @@ export default {
     profile: {
       header: 'Hola {name}',
       label: 'Tu perfil',
-      points: 'Puntos',
+      points: 'Puntos : ',
       time: 'Tiempo restante: {seconds} segundos',
-      money: 'Dinero',
+      money: 'Dinero : ',
       earn_money: 'Gana dinero',
       rules: 'Reglas',
       find: 'Encuéntralo',
-      items: 'Objectos',
+      items: 'Objetos',
     },
     city: {
       title: 'Bienvenido a {city}',

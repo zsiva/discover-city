@@ -15,7 +15,7 @@ export type ProfilePropType = {
 };
 
 function Profile(props: ProfilePropType) {
-  let { timeRemaining, moneyLeft, playerName } = props;
+  let { timeRemaining, moneyLeft, playerName, dateTime } = props;
   timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
 
   return (
@@ -35,7 +35,7 @@ function Profile(props: ProfilePropType) {
                 <List.Item>
                   <List.Icon name="star" color="green" />
                   <List.Content>
-                    <FormattedMessage id="profile.points" /> 0
+                    <FormattedMessage id="profile.points" /> {168 - dateTime}
                   </List.Content>
                 </List.Item>
                 <List.Item>
@@ -79,7 +79,7 @@ function Profile(props: ProfilePropType) {
             </Link>
           </Grid.Column>
           <Grid.Column mobile={8} tablet={4} computer={4}>
-            <Link to="/city">
+            <Link to="/city-canvas">
               <Button color="green" fluid>
                 <FormattedMessage id="profile.find" />
               </Button>
@@ -96,6 +96,7 @@ const mapStateToProps = (state, ownProps = {}) => {
     timeRemaining: state.timer.time,
     moneyLeft: state.player.money,
     playerName: state.player.name,
+    dateTime: state.player.dateTime,
   };
 };
 
