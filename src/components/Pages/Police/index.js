@@ -19,8 +19,8 @@ class Police extends Component {
     messageColor: 'blue',
   };
   showHints = () => {
-    this.props.dispatch(addDateTime(1));
     if (this.state.visible === false) {
+      this.props.dispatch(addDateTime(1));
       this.setState({ visible: true });
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({

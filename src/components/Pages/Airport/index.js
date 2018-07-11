@@ -9,7 +9,7 @@ import { substractMoney, addDateTime } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import { planeAnimation } from '../../Transport/animations';
 import { isAirportClosed } from '../../../utils/calculateDay';
-import { usersRef, db } from '../../../';
+import { usersRef } from '../../../';
 import AirportHeader from './AirportHeader';
 import AirportWaiter from './AirportWaiter';
 import './style.css';
@@ -43,7 +43,7 @@ class Airport extends Component {
   savePlayerData() {
     if (this.props.playerName) {
       let playerRef = usersRef.doc();
-      playerRef.set({ name: this.props.playerName, points: 100 });
+      playerRef.set({ name: this.props.playerName, points: 168 - this.props.dateTime });
     }
   }
 

@@ -33,7 +33,7 @@ class CityCanvas extends Component {
         <Container className="text-center">
           <Divider horizontal><FormattedMessage id="city.title" values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }} /></Divider>
           <div id="cityWrapper">
-            <img src="./images/cityLayout-no-build.png" />
+            <img src="./images/cityLayout-no-build.png" alt="city" />
             <div data-to="/hotel" onClick={this.moveCar} className="hotel">
               <img src={isNightTime ? './images/hotel_n.png' : './images/hotel.png'} alt="hotel" />
             </div>
