@@ -4,14 +4,14 @@ import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import { Button, Container, Grid, Divider, Transition, Message } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
-import Lightbox from '../../Lightbox';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
-import { planeAnimation } from '../../Transport/animations';
 import { isAirportClosed } from '../../../utils/calculateDay';
 import { usersRef } from '../../../';
 import AirportHeader from './AirportHeader';
 import AirportWaiter from './AirportWaiter';
+import LightboxFound from './LightboxFound';
+import LightboxCity from './LightboxCity';
 import './style.css';
 
 class Airport extends Component {
@@ -24,6 +24,8 @@ class Airport extends Component {
     this.state = {
       found: false,
       messageVisible: false,
+      showFoundLightbox: false,
+      showLightboxCity: false,
     };
   }
 
@@ -33,9 +35,9 @@ class Airport extends Component {
   }
 
   openCityLightBox() {
-    this.refs.lightboxCity.open();
+    this.setState({ showLightboxCity: true });
     setTimeout(() => {
-      this.refs.lightboxCity.close();
+      this.setState({ showLightboxCity: false });
       this.props.history.push('/city-canvas');
     }, 4000);
   }
@@ -52,7 +54,7 @@ class Airport extends Component {
     if (moneyLeft - 30 >= 0) {
       if (currentCityID === selectedCities.length - 2) {
         if (e.target.innerText.toLowerCase() === nextCity.name) {
-          this.refs.lightboxfound.open();
+          this.setState({ showFoundLightbox: true });
           this.savePlayerData();
           setTimeout(() => {
             this.props.history.push('/ranking');
@@ -82,7 +84,7 @@ class Airport extends Component {
   }
 
   render() {
-    const { currentCity, selectedCities, isLoading, moneyLeft, nextCity } = this.props;
+    const { currentCity, isLoading, moneyLeft, nextCity } = this.props;
     const { messageVisible } = this.state;
 
     if (isLoading) {
@@ -93,7 +95,6 @@ class Airport extends Component {
     return (
       <Fragment>
         <AirportHeader hours={this.props.dateTime} cityName={currentCity.name} />
-
         <Container>
           {isClosed && (
             <Message size="large" color="red">
@@ -132,51 +133,12 @@ class Airport extends Component {
           </Grid>
         </Container>
 
-        <Lightbox
-          ref="lightboxCity"
-          header={
-            this.state.found ? (
-              <FormattedMessage id="airport.lightbox_correct" />
-            ) : (
-              <FormattedMessage id="airport.lightbox_incorrect" />
-            )
-          }
-          displayButton={false}
-        >
-          <div className="text-center">
-            <p>
-              {this.state.found ? (
-                <FormattedMessage id="airport.found_lightbox" />
-              ) : (
-                <FormattedMessage id="airport.not_found_lightbox" />
-              )}
-            </p>
-
-            <p>
-              <FormattedMessage id="airport.tickets" values={{ money: moneyLeft }} />
-            </p>
-            {planeAnimation()}
-          </div>
-        </Lightbox>
-        <Lightbox
-          ref="lightboxfound"
-          header={
-            <FormattedMessage
-              id={`cities.${selectedCities[this.props.currentCityID + 1].name}.name`}
-            />
-          }
-        >
-          <FormattedMessage
-            id="airport.found_city"
-            values={{ city: selectedCities[this.props.currentCityID + 1].name }}
-          />
-          <br />
-          <strong>
-            <FormattedMessage id="airport.found_gold" />
-          </strong>
-          <br />
-          <img src="./images/Minions.gif" alt="minions success" />
-        </Lightbox>
+        {this.state.showLightboxCity && (
+          <LightboxCity found={this.state.found} moneyLeft={moneyLeft} />
+        )}
+        {this.state.showFoundLightbox && (
+          <LightboxFound cityName={nextCity.name} onClose={this.hideModals} />
+        )}
       </Fragment>
     );
   }
@@ -192,7 +154,6 @@ const mapStateToProps = (state, ownProps = {}) => {
     nextCity: state.gameState.nextCity,
     playerName: state.player.name,
     dateTime: state.player.dateTime,
-    waiter: state.gameState.waiter,
   };
 };
 

@@ -1,9 +1,10 @@
 // @flow
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect, type Dispatch } from 'react-redux';
-import { Card, Transition, Button, Message } from 'semantic-ui-react';
+import { Transition, Button, Message } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { substractMoney, addDateTime } from '../../../actions/player';
+import AvatarMessage from '../../AvatarMessage';
 import './style.css';
 
 export type AirportWaiterPropType = {
@@ -55,37 +56,29 @@ class AirportWaiter extends Component<AirportWaiterPropType, AirportWaiterStateT
     const { waiter, nextCity, currentCity, isClosed, moneyLeft } = this.props;
 
     return (
-      <Card centered>
-        <Card.Content textAlign="center">
-          <Transition animation="pulse" visible={this.state.messageVisible} duration={500}>
-            <Message color={this.state.messageColor}>
-              <FormattedMessage id={this.state.message} values={{ money: moneyLeft }} />
-            </Message>
+      <Fragment>
+        <Transition animation="pulse" visible={this.state.messageVisible} duration={500}>
+          <Message color={this.state.messageColor}>
+            <FormattedMessage id={this.state.message} values={{ money: moneyLeft }} />
+          </Message>
+        </Transition>
+        <AvatarMessage imgSrc={waiter} introText="airport.waiter_intro">
+          {this.state.factID > 0 &&
+            this.state.factID < 4 && (
+              <p>
+                <FormattedMessage id={`cities.${currentCity.name}.${this.state.factID}`} />
+              </p>
+            )}
+          {this.state.factID >= 4 && <FormattedMessage id="airport.waiter_flag" />}
+          <Transition visible={this.state.factID >= 4} duration={500}>
+            <img src={`./images/${nextCity.flag}`} alt="country flag" />
           </Transition>
-          <img src={waiter} alt="Waiter" />
-          <Card.Meta />
-          <Card.Description>
-            <b>
-              <FormattedMessage id="airport.waiter_intro" />
-            </b>
-            <br />
-            {this.state.factID > 0 && this.state.factID < 4 && (
-              <FormattedMessage id={`cities.${currentCity.name}.${this.state.factID}`} />
-            )}
-            {this.state.factID >= 4 && (
-            <FormattedMessage id="airport.waiter_flag"/>
-            )}
-            <Transition visible={this.state.factID >= 4} duration={500}>
-				<img src={`./images/${nextCity.flag}`} alt="country flag" />
-            </Transition>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra className="text-center">
-          <Button color="green" size="large" disabled={isClosed} onClick={this.getFood}>
+          <br />
+          <Button color="green" disabled={isClosed} onClick={this.getFood}>
             <FormattedMessage id={`cities.${currentCity.name}.food`} />
           </Button>
-        </Card.Content>
-      </Card>
+        </AvatarMessage>
+      </Fragment>
     );
   }
 }
