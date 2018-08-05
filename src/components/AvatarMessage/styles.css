@@ -1,3 +1,7 @@
+.avatarWrapper {
+  overflow: hidden;
+  margin: 1rem auto;
+}
 .avatarImage {
   float: left;
 }

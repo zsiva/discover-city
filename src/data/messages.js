@@ -12,7 +12,7 @@ export default {
       loading: 'Loading city info',
       back_city: 'Go to the city',
       back_airport: 'Go to the airport',
-},
+    },
     header: {
       city: 'City',
       casino: 'Casino',
@@ -23,7 +23,7 @@ export default {
     },
     rules: {
       intro:
-        'You are now a detective and need to find clues on each city to find out the thief`s whereabouts.',
+        'You are a detective and need to find clues on each city to find out the thief`s whereabouts.',
       task: 'Your task:',
       task1: 'Capture the criminal and find the stolen gold.',
       rules: 'Rules',
@@ -35,11 +35,12 @@ export default {
       label: 'Your profile',
       points: 'Points : ',
       time: 'Time remaining: {seconds} seconds',
-      money: 'Money : ',
+      money: 'Money : {money} euros',
       earn_money: 'Earn money',
       rules: 'Rules',
       find: 'Find him',
       items: 'Items',
+      no_items: 'You still do not have any objects.',
     },
     city: {
       title: 'Welcome to {city}',
@@ -64,7 +65,8 @@ export default {
       book: 'Book a room',
       forget: 'Did you forget something?',
       sleep: 'You slept 7 hours and you are ready to keep working. You have now {money} €',
-      no_money: 'Sorry, you can not afford a night here. Try earning some mone in the casino. Your account has {money} €',
+      no_money:
+        'Sorry, you can not afford a night here. Try earning some mone in the casino. Your account has {money} €',
     },
     airport: {
       title: 'Welcome to the airport of {city}',
@@ -95,9 +97,12 @@ export default {
       show_hints: 'REVEAL HINTS',
       info_desc: 'I might have some information for you if you pay for it ',
       info_money: 'PAY 10€ FOR THE INFO',
-      photo_info: 'You paid 10 € and you got the name of the pictures. It should help you You have now {money} €',
-      airport_info: 'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
-      corrupt_cop: 'Corrupt Police Officer: This information is not free! You need 10 € and your account has {money} €',
+      photo_info:
+        'You paid 10 € and you got the name of the pictures. It should help you You have now {money} €',
+      airport_info:
+        'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
+      corrupt_cop:
+        'Corrupt Police Officer: This information is not free! You need 10 € and your account has {money} €',
     },
     cities: {
       berlin: {
@@ -140,9 +145,11 @@ export default {
       zakynthos: {
         name: 'Zakynthos',
         food: 'Have a moussaka',
-        '1': 'Did you know Zakynthos escaped Ottoman domination but was subject of the Republic of Venice for centuries ?',
+        '1':
+          'Did you know Zakynthos escaped Ottoman domination but was subject of the Republic of Venice for centuries ?',
         '2': 'Did you know Zakynthos touristic development begun in 1965 ?',
-        '3': 'Did you know Homer was the first to mention Zakynthos in his Odyssey and Iliad masterpieces ?',
+        '3':
+          'Did you know Homer was the first to mention Zakynthos in his Odyssey and Iliad masterpieces ?',
       },
       amsterdam: {
         name: 'Amsterdam',
@@ -187,7 +194,7 @@ export default {
       loading: 'Cargando información de la ciudad',
       back_city: 'Ir a la ciudad',
       back_airport: 'Ir al aeropuerto',
-},
+    },
     header: {
       city: 'Ciudad',
       casino: 'Casino',
@@ -210,11 +217,12 @@ export default {
       label: 'Tu perfil',
       points: 'Puntos : ',
       time: 'Tiempo restante: {seconds} segundos',
-      money: 'Dinero : ',
+      money: 'Dinero : {money} euros',
       earn_money: 'Gana dinero',
       rules: 'Reglas',
       find: 'Encuéntralo',
       items: 'Objetos',
+      no_items: 'Todavía no tienes ningún objeto.',
     },
     city: {
       title: 'Bienvenido a {city}',
@@ -239,7 +247,8 @@ export default {
       book: 'Reservar una habitación',
       forget: '¿Has olvidado algo?',
       sleep: 'Has dormido 7 horas y estás listo para volver a trabajar. Te quedan {money} €',
-      no_money: 'Me temo que no tienes dinero suficiente. Prueba a ganar dinero en el casino. Te quedan {money} €',
+      no_money:
+        'Me temo que no tienes dinero suficiente. Prueba a ganar dinero en el casino. Te quedan {money} €',
     },
     airport: {
       title: 'Bienvenido al aeropuerto de {city}',
@@ -304,7 +313,8 @@ export default {
       zakynthos: {
         name: 'Zakynthos',
         food: 'Tómate una moussaka',
-        '1': '¿Sabías que Zakynthos escapó a la dominación otomana pero fue parte del reino de Venecia durante siglos?',
+        '1':
+          '¿Sabías que Zakynthos escapó a la dominación otomana pero fue parte del reino de Venecia durante siglos?',
         '2': '¿Sabías que el desarrollo turistico de Zakynthos empezó en 1965 ?',
         '3': '¿Sabías que Homero fue el primero en mencionar Zakynthos en la Odisea y la Iliada?',
       },
@@ -345,9 +355,12 @@ export default {
       show_hints: 'MOSTRAR PISTAS',
       info_desc: 'Tengo información interesante si pagas por ella',
       info_money: 'Pagar 10€ por la información',
-      photo_info: 'Pagas 10€ y consigues las fotos en buena calidad junto a su titulo. Ahora tienes {money}',
-      airport_info: 'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto!',
-      corrupt_cop: 'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene {money}',
+      photo_info:
+        'Pagas 10€ y consigues las fotos en buena calidad junto a su titulo. Ahora tienes {money}',
+      airport_info:
+        'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto!',
+      corrupt_cop:
+        'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene {money}',
     },
   },
 };

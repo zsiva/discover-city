@@ -1,6 +1,16 @@
-import React, { Component } from 'react';
+//@flow
+import React, { type Node } from 'react';
 
 import { Modal, Button } from 'semantic-ui-react';
+
+export type LightboxPropType = {
+  onClose: () => void,
+  buttonLabel: string,
+  displayButton: boolean,
+  size: string,
+  header: string,
+  children: Node,
+};
 
 const defaultProps = {
   buttonLabel: 'Close',
@@ -8,33 +18,21 @@ const defaultProps = {
   size: 'small',
 };
 
-class Lightbox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
+const Lightbox = (props: LightboxPropType) => {
+  const { header, buttonLabel, children, displayButton, size, onClose } = props;
 
-  open = () => this.setState({ isOpen: true });
-  close = () => this.setState({ isOpen: false });
-
-  render() {
-    const { header, buttonLabel, trigger, children, displayButton, size } = this.props;
-
-    return (
-      <Modal trigger={trigger} size={size} open={this.state.isOpen} onClose={this.close}>
-        <Modal.Header>{header}</Modal.Header>
-        <Modal.Content>{children}</Modal.Content>
-        {displayButton && (
-          <Modal.Actions>
-            <Button content={buttonLabel} color="green" onClick={this.close} />
-          </Modal.Actions>
-        )}
-      </Modal>
-    );
-  }
-}
+  return (
+    <Modal size={size} open onClose={onClose}>
+      <Modal.Header>{header}</Modal.Header>
+      <Modal.Content>{children}</Modal.Content>
+      {displayButton && (
+        <Modal.Actions>
+          <Button content={buttonLabel} color="green" onClick={onClose} />
+        </Modal.Actions>
+      )}
+    </Modal>
+  );
+};
 
 Lightbox.defaultProps = defaultProps;
 

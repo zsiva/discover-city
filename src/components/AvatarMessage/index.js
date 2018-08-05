@@ -1,5 +1,5 @@
 //@flow
-import React, { type Node, Fragment } from 'react';
+import React, { type Node } from 'react';
 import { Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import './styles.css';
@@ -14,17 +14,20 @@ const AvatarMessage = (props: AvatarMessagePropType) => {
   const { imgSrc, introText } = props;
 
   return (
-    <Fragment>
+    <div className="avatarWrapper">
       <Image circular size="tiny" src={imgSrc} className="avatarImage" />
       <div className="avatarMessage">
-        <p>
-          <b>
-            <FormattedMessage id={introText} />
-          </b>
-        </p>
+        <FormattedMessage id={introText}>
+          {txt => (
+            <p>
+              <b>{txt}</b>
+            </p>
+          )}
+        </FormattedMessage>
+
         {props.children}
       </div>
-    </Fragment>
+    </div>
   );
 };
 

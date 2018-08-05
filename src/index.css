@@ -14,7 +14,7 @@ body {
 }
 /* FIXME: Overwrite modal, it displays offscreen */
 .modal {
-  margin-top: 0 !important;
+  margin: 2rem auto !important;
 }
 
 .pull-right {
@@ -43,6 +43,9 @@ body {
   button {
     padding: 0.8rem 0.5rem !important;
     font-size: 13px !important;
+  }
+  .ui.labeled.icon.menu .item {
+    font-size: 0.7rem;
   }
 }
 

@@ -63,7 +63,7 @@
 
 @keyframes cloudDrift {
   from {
-    transform: translateX(540px);
+    transform: translateX(340px);
   }
   to {
     transform: translateX(0px);
@@ -72,7 +72,7 @@
 
 @keyframes planeDrift {
   from {
-    transform: translate(0px, 30px);
+    transform: translate(-140px, 30px);
   }
 
   to {
@@ -91,7 +91,7 @@
 
 @keyframes mountain {
   from {
-    transform: translateX(540px);
+    transform: translateX(140px);
   }
   to {
     transform: translateX(0px);
@@ -106,7 +106,7 @@
   border-bottom: 180px solid saddlebrown;
   z-index: 1;
   animation: mountain linear infinite;
-  animation-duration: 10s;
+  animation-duration: 8s;
 }
 
 .mountain-two {
