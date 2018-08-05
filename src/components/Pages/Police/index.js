@@ -8,51 +8,57 @@ import { FormattedMessage } from 'react-intl';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { calculateDay } from '../../../utils/calculateDay';
 import './styles.css';
+import TimeHeader from '../../TimeHeader';
+import AvatarMessage from '../../AvatarMessage';
 
 class Police extends Component {
   handleOpen = () => this.refs.lightbox.open();
   state = {
-    visible: false,
-    visible2: false,
+    copVisible: false,
+    corruptCopVisible: false,
     message: '',
     messageVisible: false,
     messageColor: 'blue',
   };
   showHints = () => {
-    if (this.state.visible === false) {
+    if (this.state.copVisible === false) {
       this.props.dispatch(addDateTime(1));
-      this.setState({ visible: true });
+      this.setState({ copVisible: true });
       this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({
-        message:
-        <FormattedMessage id="police.airport_info"/>
+        message: <FormattedMessage id="police.airport_info" />,
       });
     }
   };
   showHintsPlus = () => {
     this.setState({ messageVisible: !this.state.messageVisible });
-    if (this.state.visible2 === false) {
+    if (this.state.corruptCopVisible === false) {
       if (this.props.moneyLeft - 10 >= 0) {
-        this.setState({ visible2: true });
+        this.setState({ corruptCopVisible: true });
         this.props.dispatch(addDateTime(2));
         this.props.dispatch(substractMoney(10));
         this.setState({
-          message:
-            <FormattedMessage id="police.photo_info" values={{ money: this.props.moneyLeft - 10}} />
+          message: (
+            <FormattedMessage
+              id="police.photo_info"
+              values={{ money: this.props.moneyLeft - 10 }}
+            />
+          ),
         });
       } else {
         this.props.dispatch(addDateTime(1));
         this.setState({ messageColor: 'red' });
         this.setState({
-          message:
-            <FormattedMessage id="police.corrupt_cop" values={{ money: this.props.moneyLeft}} />
+          message: (
+            <FormattedMessage id="police.corrupt_cop" values={{ money: this.props.moneyLeft }} />
+          ),
         });
       }
     }
   };
   render() {
     const { currentCity, isLoading, nextCity } = this.props;
-    const { visible, visible2, messageVisible } = this.state;
+    const { copVisible, corruptCopVisible, messageVisible } = this.state;
     if (isLoading) {
       return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
     }
@@ -60,71 +66,40 @@ class Police extends Component {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">
-          <FormattedMessage
-            id="police.title"
-            values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }}
-          />
-          </h1>
-          <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
+          <TimeHeader messageId="police.title" />
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={5}>
-              <Card centered color="green">
-                <Card.Content textAlign="center">
-                  <img src="./images/policeoff.png" alt="Police Officer" />
-
-                  <Card.Description>
-                    <b>
-                      {<FormattedMessage id={'police.info'} />}
-                      <br />
-                      {<FormattedMessage id={'police.interpol'} />}
-                    </b>
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button color="green" size="large" fluid onClick={this.showHints}>
-                    <Button.Content
-                      size="large"
-                      content={
-                        this.state.visible
-                          ? <FormattedMessage id={'police.luck'} />
-                          : <FormattedMessage id={'police.show_hints'} />
-                      }
-                    />
-                  </Button>
-                </Card.Content>
-              </Card>
+              <AvatarMessage imgSrc="./images/policeoff.png" introText="police.info">
+                <FormattedMessage id={'police.interpol'}>{txt => <p>{txt}</p>}</FormattedMessage>
+                <Button
+                  color="green"
+                  fluid
+                  onClick={this.showHints}
+                  content={
+                    <FormattedMessage id={copVisible ? 'police.luck' : 'police.show_hints'} />
+                  }
+                />
+              </AvatarMessage>
             </Grid.Column>
             <Grid.Column mobile={16} tablet={8} computer={5}>
-              <Transition visible={visible} duration={500}>
-                <Card centered color="green">
-                  <Card.Content textAlign="center">
-                    <img src="./images/policecorr.png" alt="Police Officer" />
-                    <Card.Description>
-                      <p>
-                        <b>PSS PSS</b>
-                      </p>
-                      <p>
-                        <b><FormattedMessage id={'police.info_desc'} /></b>
-                      </p>
-                    </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Button color="green" size="large" fluid onClick={this.showHintsPlus}>
-                      <Button.Content
-                        size="large"
-                        content={
-                          this.state.visible2
-                            ? <FormattedMessage id={'police.luck'} />
-                            : <FormattedMessage id={'police.info_money'} />
-                        }
+              <Transition visible={copVisible} duration={500}>
+                <AvatarMessage imgSrc="./images/policecorr.png" introText="police.corrupt_info">
+                  <FormattedMessage id={'police.info_desc'}>{txt => <p>{txt}</p>}</FormattedMessage>
+                  <Button
+                    color="green"
+                    fluid
+                    onClick={this.showHintsPlus}
+                    content={
+                      <FormattedMessage
+                        id={corruptCopVisible ? 'police.luck' : 'police.info_money'}
                       />
-                    </Button>
-                  </Card.Content>
-                </Card>
+                    }
+                  />
+                </AvatarMessage>
               </Transition>
             </Grid.Column>
           </Grid>
+
           <Transition animation="pulse" visible={messageVisible} duration={500}>
             <Message size="large" color={this.state.messageColor}>
               <p className="text-center">{this.state.message}</p>
@@ -135,14 +110,14 @@ class Police extends Component {
               <Grid.Column mobile={16} tablet={5} computer={4} key={hint.label}>
                 <Card centered color="green">
                   <Card.Content textAlign="center">
-                    <Transition visible={visible} duration={500}>
+                    <Transition visible={copVisible} duration={500}>
                       <img
-                        className={visible2 ? 'hintImage' : 'blurImage'}
+                        className={corruptCopVisible ? 'hintImage' : 'blurImage'}
                         src={`./${hint.img}`}
                         alt="city hints"
                       />
                     </Transition>
-                    <Transition visible={visible2} animation="jiggle" duration={500}>
+                    <Transition visible={corruptCopVisible} animation="jiggle" duration={500}>
                       <p>{hint.label}</p>
                     </Transition>
                   </Card.Content>
@@ -150,21 +125,24 @@ class Police extends Component {
               </Grid.Column>
             ))}
           </Grid>
-        </Container>
-        <h3 className="text-center">
-          <img src={`./images/${currentCity.flag}`} alt="country flag" />
-        </h3>
-        <Container textAlign="center">
-          <Link to="/city-canvas">
-            <Button color="green" size="large">
-              <Button.Content size="large" content={<FormattedMessage id={'common.back_city'} />} />
-            </Button>
-          </Link>
-          <Link to="/airport">
-            <Button color="green" size="large">
-              <Button.Content size="large" content={<FormattedMessage id={'common.back_airport'} />} />
-            </Button>
-          </Link>
+          <div className="footerButtons">
+            <Link to="/city-canvas">
+              <Button color="green" size="large">
+                <Button.Content
+                  size="large"
+                  content={<FormattedMessage id={'common.back_city'} />}
+                />
+              </Button>
+            </Link>
+            <Link to="/airport">
+              <Button color="green" size="large">
+                <Button.Content
+                  size="large"
+                  content={<FormattedMessage id={'common.back_airport'} />}
+                />
+              </Button>
+            </Link>
+          </div>
         </Container>
       </Fragment>
     );

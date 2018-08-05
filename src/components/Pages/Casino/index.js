@@ -2,11 +2,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Container, Grid, Card, Button } from 'semantic-ui-react';
+import { Container, Grid, Card, Button, Icon } from 'semantic-ui-react';
 import Header from '../../Header';
 import { Link } from 'react-router-dom';
 import Spinner from '../../Spinner';
-import { calculateDay } from '../../../utils/calculateDay';
+import AvatarMessage from '../../AvatarMessage';
+import TimeHeader from '../../TimeHeader';
 
 export type CasinoPropType = {
   currentCity: any,
@@ -26,32 +27,9 @@ class Casino extends Component<CasinoPropType> {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">
-            <FormattedMessage
-              id="casino.title"
-              values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }}
-            />
-          </h1>
-          <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
-          <Grid centered>
-            <Grid.Column mobile={16} tablet={8} computer={5}>
-              <Card centered color="green">
-                <Card.Content textAlign="center">
-                  <img src="./images/receptionist.png" alt="Receptionist" />
-                  <Card.Description>
-                    <b>
-                      <FormattedMessage id="casino.welcome" />
-                    </b>
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          </Grid>
-        </Container>
-        <h3 className="text-center">
-          <img src={`./images/${currentCity.flag}`} alt="country flag" />
-        </h3>
-        <Container textAlign="center">
+          <TimeHeader messageId="casino.title" />
+          <AvatarMessage imgSrc="./images/receptionist.png" introText="casino.welcome" />
+
           <Grid columns={2}>
             <Grid.Column>
               <Card centered>

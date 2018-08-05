@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import { FormattedMessage } from 'react-intl';
 import { substractMoney, addDateTime } from '../../../actions/player';
-import { calculateDay } from '../../../utils/calculateDay';
+import TimeHeader from '../../TimeHeader';
+import AvatarMessage from '../../AvatarMessage';
 
 class Hotel extends Component {
   constructor(props) {
@@ -16,20 +17,19 @@ class Hotel extends Component {
   }
 
   handleOpen() {
+    this.setState({ messageVisible: !this.state.messageVisible });
     if (this.props.moneyLeft - 25 >= 0) {
       this.props.dispatch(addDateTime(7));
       this.props.dispatch(substractMoney(25));
-      this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({
-        message:
-        <FormattedMessage id="hotel.sleep" values={{ money: this.props.moneyLeft - 25}} />
+        message: (
+          <FormattedMessage id="hotel.sleep" values={{ money: this.props.moneyLeft - 25 }} />
+        ),
       });
     } else {
-      this.setState({ messageVisible: !this.state.messageVisible });
       this.setState({ messageColor: 'red' });
       this.setState({
-        message:
-        <FormattedMessage id="hotel.no_money" values={{ money: this.props.moneyLeft}} />
+        message: <FormattedMessage id="hotel.no_money" values={{ money: this.props.moneyLeft }} />,
       });
     }
   }
@@ -43,36 +43,16 @@ class Hotel extends Component {
       <Fragment>
         <Header />
         <Container>
-          <h1 className="text-center">
-          <FormattedMessage
-            id="hotel.title"
-            values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }}
-          />
-          </h1>
-          <h2 className="text-center"> {calculateDay(this.props.dateTime).time} </h2>
-          <Grid centered>
-            <Grid.Column mobile={16} tablet={8} computer={5}>
-              <Card centered color="green">
-                <Card.Content textAlign="center">
-                  <img src="./images/receptionist.png" alt="Receptionist" />
-                  <Card.Description>
-                    <b>
-                      <FormattedMessage id="hotel.welcome" />
-                    </b>
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          </Grid>
+          <TimeHeader messageId="hotel.title" />
+          <AvatarMessage imgSrc="./images/receptionist.png" introText="hotel.welcome" />
+
           <Transition animation="pulse" visible={messageVisible} duration={500}>
             <Message size="large" color={this.state.messageColor}>
               <p className="text-center">{this.state.message}</p>
             </Message>
           </Transition>
         </Container>
-        <h3 className="text-center">
-          <img src={`./images/${currentCity.flag}`} alt="country flag" />
-        </h3>
+
         <Container textAlign="center">
           <Grid columns={2}>
             <Grid.Column>
@@ -94,7 +74,9 @@ class Hotel extends Component {
                 <Card.Content textAlign="center">
                   <img src={`./${currentCity.hints[1].img}`} alt="Ciudad" />
                   <Card.Meta />
-                  <Card.Description><FormattedMessage id="hotel.forget" /></Card.Description>
+                  <Card.Description>
+                    <FormattedMessage id="hotel.forget" />
+                  </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Link to="/city-canvas">

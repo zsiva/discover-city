@@ -1,3 +1,18 @@
+.imageWrapper img {
+  width: 25px;
+  margin-right: 1rem;
+}
+.imageWrapper,
 .timeWrapper {
-  float: right;
+  text-align: center;
+  display: block;
+  font-size: 1.2rem;
+}
+@media only screen and (min-width: 481px) {
+  .timeWrapper {
+    float: right;
+  }
+  .imageWrapper {
+    float: left;
+  }
 }

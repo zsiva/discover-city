@@ -46,7 +46,7 @@ export default {
       title: 'Welcome to {city}',
     },
     casino: {
-      title: 'Welcome to the casino of {city}',
+      title: 'Welcome to the casino',
       welcome: 'What can I do for you?',
       cards: 'Play Cards',
       loading: 'Loading cards',
@@ -60,7 +60,7 @@ export default {
       forget: 'Did you forget something?',
     },
     hotel: {
-      title: 'Welcome to the best hotel in {city}',
+      title: 'Welcome to the best hotel in town',
       welcome: 'What can I do for you?',
       book: 'Book a room',
       forget: 'Did you forget something?',
@@ -69,7 +69,7 @@ export default {
         'Sorry, you can not afford a night here. Try earning some mone in the casino. Your account has {money} €',
     },
     airport: {
-      title: 'Welcome to the airport of {city}',
+      title: 'Welcome to the airport',
       choose: 'What do you want to do?',
       closed: 'The airport is closed, come back after 7 A.M.',
       destinations: 'Destinations',
@@ -90,15 +90,16 @@ export default {
       lightbox_incorrect: 'Incorrect!',
     },
     police: {
-      title: 'Welcome to the Police Department of {city}',
+      title: 'Welcome to the Police Department',
       info: 'I heard you are looking for the thief who stole O`Greeny`s money',
+      corrupt_info: 'Pss Pss!',
       interpol: 'Interpol sent us these 3 pictures. It might be his next destination.',
-      luck: 'GOOD LUCK',
-      show_hints: 'REVEAL HINTS',
+      luck: 'Good luck',
+      show_hints: 'Reveal hints',
       info_desc: 'I might have some information for you if you pay for it ',
-      info_money: 'PAY 10€ FOR THE INFO',
+      info_money: 'Pay 10€ for the info',
       photo_info:
-        'You paid 10 € and you got the name of the pictures. It should help you You have now {money} €',
+        'You paid 10 € and you got the name of the pictures. It should help you guess the city. You have now {money} €',
       airport_info:
         'The officer shows you the 3 pictures. Can you guess the next city already? Go to the airport!',
       corrupt_cop:
@@ -228,7 +229,7 @@ export default {
       title: 'Bienvenido a {city}',
     },
     casino: {
-      title: 'Bienvenido al casino de {city}',
+      title: 'Bienvenido al casino',
       welcome: '¿En qué puedo ayudarte?',
       cards: 'Jugar a las cartas',
       loading: 'Cargando cartas',
@@ -242,7 +243,7 @@ export default {
       forget: '¿Has olvidado algo?',
     },
     hotel: {
-      title: 'Bienvenido al mejor hotel de {city}',
+      title: 'Bienvenido al mejor hotel de la ciudad',
       welcome: '¿En qué puedo ayudarte?',
       book: 'Reservar una habitación',
       forget: '¿Has olvidado algo?',
@@ -251,7 +252,7 @@ export default {
         'Me temo que no tienes dinero suficiente. Prueba a ganar dinero en el casino. Te quedan {money} €',
     },
     airport: {
-      title: 'Bienvenido al aeropuerto de {city}',
+      title: 'Bienvenido al aeropuerto',
       choose: '¿Qué quieres hacer?',
       closed: 'El aeropuerto está cerrado, vuelve a las 7 de la mañana.',
       destinations: 'Destinos',
@@ -350,9 +351,10 @@ export default {
     police: {
       title: 'Bienvenido al Departamento de Policia de {city}',
       info: 'Me han dicho que buscas al ladrón que robó el dinero de O`Greeny',
+      corrupt_info: 'Oye oye!',
       interpol: 'La Interpol nos ha enviado estas 3 fotos. Puede que sea su siguiente destino.',
-      luck: 'BUENA SUERTE',
-      show_hints: 'MOSTRAR PISTAS',
+      luck: 'Buena suerte',
+      show_hints: 'Mostrar pistas',
       info_desc: 'Tengo información interesante si pagas por ella',
       info_money: 'Pagar 10€ por la información',
       photo_info:

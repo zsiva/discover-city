@@ -5,3 +5,7 @@
 .hintImage {
   margin-bottom: 1rem !important;
 }
+.footerButtons {
+  margin: 2rem auto;
+  text-align: center;
+}

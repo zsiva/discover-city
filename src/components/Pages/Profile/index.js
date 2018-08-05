@@ -47,7 +47,7 @@ function Profile(props: ProfilePropType) {
                 <List.Item>
                   <List.Icon color="green" name="money" />
                   <List.Content>
-                    <FormattedMessage id="profile.money" /> {moneyLeft}
+                    <FormattedMessage id="profile.money" values={{ money: moneyLeft }} /> {}
                   </List.Content>
                 </List.Item>
               </List>
@@ -59,6 +59,13 @@ function Profile(props: ProfilePropType) {
               <Label color="green" ribbon>
                 <FormattedMessage id="profile.items" />
               </Label>
+              <List>
+                <List.Item>
+                  <List.Content>
+                    <FormattedMessage id="profile.no_items" />
+                  </List.Content>
+                </List.Item>
+              </List>
             </Segment>
           </Grid.Column>
         </Grid>

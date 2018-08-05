@@ -8,15 +8,16 @@ import './style.css';
 const TimeHeader = props => {
   return (
     <Fragment>
-      <h3 className="timeWrapper">
+      <div className="imageWrapper">
+        <img src={`./images/${props.currentCity.flag}`} alt="country flag" />
+        <FormattedMessage id={`cities.${props.currentCity.name}.name`} />
+      </div>
+      <div className="timeWrapper">
         <Icon name="clock" /> {calculateDay(props.dateTime).time}
-      </h3>
+      </div>
       <br />
       <h1 className="text-center">
-        <FormattedMessage
-          id={props.messageId}
-          values={{ city: <FormattedMessage id={`cities.${props.currentCity.name}.name`} /> }}
-        />
+        <FormattedMessage id={props.messageId} />
       </h1>
     </Fragment>
   );
