@@ -131,7 +131,7 @@ export default {
       },
       madrid: {
         name: 'Madrid',
-        food: 'Have a cocido',
+        food: 'Have a tortilla pincho',
         '1': 'Did you know that Madrid is the highest capital in Europe ?',
         '2': 'Did you know the oldest restaurant in the world (1752) is located in Madrid ?',
         '3': 'Did you know Madrid coat of arms is a bear and a tree ?',
@@ -180,6 +180,15 @@ export default {
         2: 'Did you know Krakow was the capital of Poland for over 500 years ?',
         3: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
       },
+    },
+    week_days: {
+      0: 'Monday',
+      1: 'Tuesday',
+      2: 'Wednesday',
+      3: 'Thursday',
+      4: 'Friday',
+      5: 'Saturday',
+      6: 'Sunday',
     },
   },
   'es-ES': {
@@ -295,11 +304,11 @@ export default {
         '1': '¿Sabías que Roma tiene más de 280 fuentes y más de 900 iglesias?',
         '2': '¿Sabías que Roma tiene un museo dedicado unicamente a la pasta?',
         '3':
-          '¿Sabías que la mascota de Roma es una loba que cuido a Romulo y Remo, legendarios fundadores de Roma?',
+          '¿Sabías que la mascota de Roma es una loba que cuidó a Romulo y Remo, legendarios fundadores de Roma?',
       },
       madrid: {
         name: 'Madrid',
-        food: 'Tómate un cocido',
+        food: 'Tómate un pincho de tortilla',
         1: '¿Sabías que Madrid es la capital más alta de Europa?',
         2: '¿Sabías que el restaurante más antiguo del mundo (1752) esta situado en Madrid?',
         3: '¿Sabías que el escudo de Madrid es un oso y un madroño?',
@@ -316,7 +325,7 @@ export default {
         food: 'Tómate una moussaka',
         '1':
           '¿Sabías que Zakynthos escapó a la dominación otomana pero fue parte del reino de Venecia durante siglos?',
-        '2': '¿Sabías que el desarrollo turistico de Zakynthos empezó en 1965 ?',
+        '2': '¿Sabías que el desarrollo turístico de Zakynthos empezó en 1965?',
         '3': '¿Sabías que Homero fue el primero en mencionar Zakynthos en la Odisea y la Iliada?',
       },
       amsterdam: {
@@ -324,7 +333,7 @@ export default {
         food: 'Bébete una Heineken',
         1: '¿Sabías que hay aproximadamente 881.000 bicicletas en Amsterdam?',
         2: '¿Sabías que hay más de 2500 casas barco en Amsterdam?',
-        3: '¿Sabías que Amsterdam esta bajo el nivel del mar?',
+        3: '¿Sabías que Amsterdam está bajo el nivel del mar?',
       },
       oslo: {
         name: 'Oslo',
@@ -336,7 +345,7 @@ export default {
       prague: {
         name: 'Praga',
         food: 'Tómate un trdelnik',
-        1: '¿Sabías que el centro histórico de Praga fue incluido en la lista del Patrimonio Mundial de la UNESCO en 1992?',
+        1: '¿Sabías que el centro histórico de Praga fue incluído en la lista del Patrimonio Mundial de la UNESCO en 1992?',
         2: '¿Sabías que el castillo de Praga es el conjunto palaciego más grande y antiguo del mundo?',
         3: '¿Sabías que el reloj astronómico de Praga fue instalado en 1410 y todavía sigue funcionando?',
       },
@@ -349,7 +358,7 @@ export default {
       },
     },
     police: {
-      title: 'Bienvenido al Departamento de Policia de {city}',
+      title: 'Bienvenido al Departamento de Policia',
       info: 'Me han dicho que buscas al ladrón que robó el dinero de O`Greeny',
       corrupt_info: 'Oye oye!',
       interpol: 'La Interpol nos ha enviado estas 3 fotos. Puede que sea su siguiente destino.',
@@ -363,6 +372,15 @@ export default {
         'El agente te muestra las 3 fotos. ¿Ya sabes la siguiente ciudad? ¡Ve al aeropuerto!',
       corrupt_cop:
         'Agente de Policia Corrupto: ¡Esta información no es gratis! Cuesta 10 € y tu cuenta tiene {money}',
+    },
+    week_days: {
+      0: 'Lunes',
+      1: 'Martes',
+      2: 'Miércoles',
+      3: 'Jueves',
+      4: 'Viernes',
+      5: 'Sábado',
+      6: 'Domingo',
     },
   },
 };
