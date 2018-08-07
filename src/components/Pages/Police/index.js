@@ -67,33 +67,35 @@ class Police extends Component {
         <Container>
           <TimeHeader messageId="police.title" />
           <Grid centered>
-            <Grid.Column mobile={16} tablet={8} computer={5}>
+            <Grid.Column mobile={16} tablet={8} computer={7}>
               <AvatarMessage imgSrc="./images/policeoff.png" introText="police.info">
                 <FormattedMessage id={'police.interpol'}>{txt => <p>{txt}</p>}</FormattedMessage>
-                <Button
-                  color="green"
-                  fluid
-                  onClick={this.showHints}
-                  content={
-                    <FormattedMessage id={copVisible ? 'police.luck' : 'police.show_hints'} />
-                  }
-                />
-              </AvatarMessage>
-            </Grid.Column>
-            <Grid.Column mobile={16} tablet={8} computer={5}>
-              <Transition visible={copVisible} duration={500}>
-                <AvatarMessage imgSrc="./images/policecorr.png" introText="police.corrupt_info">
-                  <FormattedMessage id={'police.info_desc'}>{txt => <p>{txt}</p>}</FormattedMessage>
+                {!copVisible ? (
                   <Button
                     color="green"
                     fluid
-                    onClick={this.showHintsPlus}
-                    content={
-                      <FormattedMessage
-                        id={corruptCopVisible ? 'police.luck' : 'police.info_money'}
-                      />
-                    }
+                    onClick={this.showHints}
+                    content={<FormattedMessage id="police.show_hints" />}
                   />
+                ) : (
+                  <FormattedMessage id="police.luck">{text => <p>{text}</p>}</FormattedMessage>
+                )}
+              </AvatarMessage>
+            </Grid.Column>
+            <Grid.Column mobile={16} tablet={8} computer={7}>
+              <Transition visible={copVisible} duration={500}>
+                <AvatarMessage imgSrc="./images/policecorr.png" introText="police.corrupt_info">
+                  <FormattedMessage id={'police.info_desc'}>{txt => <p>{txt}</p>}</FormattedMessage>
+                  {!corruptCopVisible ? (
+                    <Button
+                      color="green"
+                      fluid
+                      onClick={this.showHintsPlus}
+                      content={<FormattedMessage id="police.info_money" />}
+                    />
+                  ) : (
+                    <FormattedMessage id="police.luck">{text => <p>{text}</p>}</FormattedMessage>
+                  )}
                 </AvatarMessage>
               </Transition>
             </Grid.Column>
@@ -125,7 +127,7 @@ class Police extends Component {
             ))}
           </Grid>
           <div className="footerButtons">
-            <Link to="/city-canvas">
+            <Link to="/city">
               <Button color="green" size="large">
                 <Button.Content
                   size="large"

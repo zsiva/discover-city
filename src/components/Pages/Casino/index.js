@@ -57,7 +57,7 @@ class Casino extends Component<CasinoPropType> {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra className="text-center">
-                  <Link to="/city-canvas">
+                  <Link to="/city">
                     <Button color="green">
                       <Button.Content content={<FormattedMessage id="common.back_city" />} />
                     </Button>

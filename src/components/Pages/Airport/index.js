@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import { Button, Container, Grid, Divider, Transition, Message } from 'semantic-ui-react';
+import { Button, Grid, Divider, Transition, Message } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
@@ -38,7 +38,7 @@ class Airport extends Component {
     this.setState({ showLightboxCity: true });
     setTimeout(() => {
       this.setState({ showLightboxCity: false });
-      this.props.history.push('/city-canvas');
+      this.props.history.push('/city');
     }, 4000);
   }
 
@@ -95,7 +95,7 @@ class Airport extends Component {
     return (
       <Fragment>
         <AirportHeader hours={this.props.dateTime} cityName={currentCity.name} />
-        <Container>
+        <section className="ui container">
           {isClosed && (
             <Message size="large" color="red">
               <p>
@@ -131,7 +131,7 @@ class Airport extends Component {
               ))}
             </Grid.Column>
           </Grid>
-        </Container>
+        </section>
 
         {this.state.showLightboxCity && (
           <LightboxCity found={this.state.found} moneyLeft={moneyLeft} />

@@ -86,7 +86,7 @@ function Profile(props: ProfilePropType) {
             </Link>
           </Grid.Column>
           <Grid.Column mobile={8} tablet={4} computer={4}>
-            <Link to="/city-canvas">
+            <Link to="/city">
               <Button color="green" fluid>
                 <FormattedMessage id="profile.find" />
               </Button>

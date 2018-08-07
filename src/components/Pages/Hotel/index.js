@@ -79,7 +79,7 @@ class Hotel extends Component {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Link to="/city-canvas">
+                  <Link to="/city">
                     <Button color="green">
                       <Button.Content content={<FormattedMessage id="common.back_city" />} />
                     </Button>
