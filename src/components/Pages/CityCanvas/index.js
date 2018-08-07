@@ -2,9 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import { Container, Divider } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import Spinner from '../../Spinner';
 import Header from '../../Header';
+import TimeHeader from '../../TimeHeader';
 import './style.css';
 import { calculateDay } from '../../../utils/calculateDay';
 
@@ -31,9 +32,20 @@ class CityCanvas extends Component {
       <Fragment>
         <Header />
         <Container className="text-center">
-          <Divider horizontal><FormattedMessage id="city.title" values={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }} /></Divider>
+          <TimeHeader
+            messageId="city.title"
+            messageValues={{ city: <FormattedMessage id={`cities.${currentCity.name}.name`} /> }}
+          />
+
           <div id="cityWrapper">
-            <img src={isNightTime ? './images/cityLayout-no-build_n.png' : './images/cityLayout-no-build.png'} alt="city" />
+            <img
+              src={
+                isNightTime
+                  ? './images/cityLayout-no-build_n.png'
+                  : './images/cityLayout-no-build.png'
+              }
+              alt="city"
+            />
             <div data-to="/hotel" onClick={this.moveCar} className="hotel">
               <img src={isNightTime ? './images/hotel_n.png' : './images/hotel.png'} alt="hotel" />
             </div>

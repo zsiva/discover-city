@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import Header from '../../Header';
 import { FormattedMessage } from 'react-intl';
 import { substractMoney, addDateTime } from '../../../actions/player';
-import { calculateDay } from '../../../utils/calculateDay';
 import './styles.css';
 import TimeHeader from '../../TimeHeader';
 import AvatarMessage from '../../AvatarMessage';
@@ -57,7 +56,7 @@ class Police extends Component {
     }
   };
   render() {
-    const { currentCity, isLoading, nextCity } = this.props;
+    const { isLoading, nextCity } = this.props;
     const { copVisible, corruptCopVisible, messageVisible } = this.state;
     if (isLoading) {
       return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
@@ -151,7 +150,6 @@ class Police extends Component {
 
 const mapStateToProps = (state, ownProps = {}) => {
   return {
-    currentCity: state.gameState.currentCity,
     selectedCities: state.gameState.selectedCities,
     moneyLeft: state.player.money,
     isLoading: state.gameState.isLoading,

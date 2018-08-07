@@ -1,8 +1,7 @@
 // @flow
 import React, { Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { calculateDay } from '../../../utils/calculateDay';
 import Header from '../../Header';
+import TimeHeader from '../../TimeHeader';
 import './style.css';
 
 export type AirportHeaderPropType = {
@@ -14,14 +13,10 @@ export default function AirportHeader({ cityName, hours }: AirportHeaderPropType
   return (
     <Fragment>
       <Header />
-      <section className="ui container">
-        <div className="airport">
-          <h1>
-            <FormattedMessage id="airport.title" values={{ city: <FormattedMessage id={`cities.${cityName}.name`}/> }} />
-          </h1>
-          <h2> {calculateDay(hours).time} </h2>
-        </div>
-      </section>
+      <div className="ui container">
+        <TimeHeader messageId="airport.title" />
+        <div className="airport" />
+      </div>
     </Fragment>
   );
 }

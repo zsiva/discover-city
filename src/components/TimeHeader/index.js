@@ -6,6 +6,7 @@ import { calculateDay } from '../../utils/calculateDay';
 import './style.css';
 
 const TimeHeader = props => {
+  const time = calculateDay(props.dateTime);
   return (
     <Fragment>
       <div className="imageWrapper">
@@ -13,11 +14,12 @@ const TimeHeader = props => {
         <FormattedMessage id={`cities.${props.currentCity.name}.name`} />
       </div>
       <div className="timeWrapper">
-        <Icon name="clock" /> {calculateDay(props.dateTime).time}
+        <Icon name="clock" />
+        <FormattedMessage id={`week_days.${time.weekDay}`} />, {time.hDisplay}
       </div>
       <br />
       <h1 className="text-center">
-        <FormattedMessage id={props.messageId} />
+        <FormattedMessage id={props.messageId} values={props.messageValues} />
       </h1>
     </Fragment>
   );

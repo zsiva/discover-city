@@ -61,8 +61,8 @@ class Hotel extends Component {
                   <img src="./images/hotelBed.png" alt="Bed" />
                 </Card.Content>
                 <Card.Content extra>
-                  <Button color="green" size="large">
-                    <Button.Content size="large" onClick={this.handleOpen}>
+                  <Button color="green">
+                    <Button.Content onClick={this.handleOpen}>
                       <FormattedMessage id="hotel.book" />
                     </Button.Content>
                   </Button>
@@ -80,11 +80,8 @@ class Hotel extends Component {
                 </Card.Content>
                 <Card.Content extra>
                   <Link to="/city-canvas">
-                    <Button color="green" size="large">
-                      <Button.Content
-                        size="large"
-                        content={<FormattedMessage id="common.back_city" />}
-                      />
+                    <Button color="green">
+                      <Button.Content content={<FormattedMessage id="common.back_city" />} />
                     </Button>
                   </Link>
                 </Card.Content>

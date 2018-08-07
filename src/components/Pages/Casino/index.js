@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Container, Grid, Card, Button, Icon } from 'semantic-ui-react';
+import { Container, Grid, Card, Button } from 'semantic-ui-react';
 import Header from '../../Header';
 import { Link } from 'react-router-dom';
 import Spinner from '../../Spinner';
@@ -36,10 +36,10 @@ class Casino extends Component<CasinoPropType> {
                 <Card.Content textAlign="center">
                   <img src="./images/cities/bg-card.jpg" alt="Card" />
                 </Card.Content>
-                <Card.Content extra>
+                <Card.Content extra className="text-center">
                   <Link to="/cards">
-                    <Button color="green" size="large">
-                      <Button.Content size="large">
+                    <Button color="green">
+                      <Button.Content>
                         <FormattedMessage id="casino.cards" />
                       </Button.Content>
                     </Button>
@@ -56,13 +56,10 @@ class Casino extends Component<CasinoPropType> {
                     <FormattedMessage id="casino.forget" />
                   </Card.Description>
                 </Card.Content>
-                <Card.Content extra>
+                <Card.Content extra className="text-center">
                   <Link to="/city-canvas">
-                    <Button color="green" size="large">
-                      <Button.Content
-                        size="large"
-                        content={<FormattedMessage id="common.back_city" />}
-                      />
+                    <Button color="green">
+                      <Button.Content content={<FormattedMessage id="common.back_city" />} />
                     </Button>
                   </Link>
                 </Card.Content>
