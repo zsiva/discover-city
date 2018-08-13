@@ -25,7 +25,7 @@ class CityCanvas extends Component {
     const { currentCity, isLoading } = this.props;
 
     if (isLoading) {
-      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
+      return <Spinner text={<FormattedMessage id="common.loading" />} />;
     }
     const isNightTime = calculateDay(this.props.dateTime).day === 'night';
     return (
@@ -61,7 +61,7 @@ class CityCanvas extends Component {
                 alt="casino"
               />
             </div>
-            <img id="taxiCanvas" src="./images/transport/car.png" alt="car" />
+            <img id="taxiCanvas" src="./images/transport/bus.png" alt="car" />
           </div>
         </Container>
       </Fragment>

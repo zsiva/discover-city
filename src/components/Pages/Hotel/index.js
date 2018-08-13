@@ -37,20 +37,19 @@ class Hotel extends Component {
     const { currentCity, isLoading } = this.props;
     const { messageVisible } = this.state;
     if (isLoading) {
-      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
+      return <Spinner text={<FormattedMessage id="common.loading" />} />;
     }
     return (
       <Fragment>
         <Header />
         <Container>
           <TimeHeader messageId="hotel.title" />
-          <AvatarMessage imgSrc="./images/receptionist.png" introText="hotel.welcome" />
-
           <Transition animation="pulse" visible={messageVisible} duration={500}>
             <Message size="large" color={this.state.messageColor}>
               <p className="text-center">{this.state.message}</p>
             </Message>
           </Transition>
+          <AvatarMessage imgSrc="./images/receptionist.png" introText="hotel.welcome" />
         </Container>
 
         <Container textAlign="center">
@@ -63,7 +62,7 @@ class Hotel extends Component {
                 <Card.Content extra>
                   <Button color="green">
                     <Button.Content onClick={this.handleOpen}>
-                      <FormattedMessage id="hotel.book" />
+                      <FormattedMessage id="hotel.book" values={{ money: 25 }} />
                     </Button.Content>
                   </Button>
                 </Card.Content>

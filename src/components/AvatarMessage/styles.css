@@ -2,6 +2,9 @@
   overflow: hidden;
   margin: 1rem auto;
 }
+.avatarWrapper .tiny.image {
+  width: 60px;
+}
 .avatarImage {
   float: left;
 }
@@ -11,12 +14,12 @@
   background: white;
   padding: 1rem;
   border-radius: 5px;
-  width: 195px;
+  width: 210px;
   margin-left: 1rem;
 }
 
 @media only screen and (min-width: 481px) {
   .avatarMessage {
-    width: 240px;
+    width: 260px;
   }
 }

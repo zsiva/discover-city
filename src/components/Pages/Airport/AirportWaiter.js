@@ -69,13 +69,17 @@ class AirportWaiter extends Component<AirportWaiterPropType, AirportWaiterStateT
                 <FormattedMessage id={`cities.${currentCity.name}.${this.state.factID}`} />
               </p>
             )}
-          {this.state.factID >= 4 && <FormattedMessage id="airport.waiter_flag" />}
-          <Transition visible={this.state.factID >= 4} duration={500}>
-            <img src={`./images/${nextCity.flag}`} alt="country flag" />
-          </Transition>
+          {this.state.factID >= 4 && (
+            <Fragment>
+              <FormattedMessage id="airport.waiter_flag" />
+              <Transition visible duration={500}>
+                <img src={`./images/${nextCity.flag}`} alt="country flag" />
+              </Transition>
+            </Fragment>
+          )}
           <br />
           <Button color="green" disabled={isClosed} onClick={this.getFood}>
-            <FormattedMessage id={`cities.${currentCity.name}.food`} />
+            <FormattedMessage id={`cities.${currentCity.name}.food`} values={{ money: 5 }} />
           </Button>
         </AvatarMessage>
       </Fragment>
