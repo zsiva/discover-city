@@ -1,6 +1,6 @@
 //@flow
 import React, { Fragment } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, List } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import Header from '../../Header';
@@ -30,9 +30,17 @@ function Rules(props: RulesPropType) {
         <h3>
           <FormattedMessage id="rules.rules" />
         </h3>
-        <p>
-          <FormattedMessage id="rules.money" values={{ money: INITIAL_MONEY }} />
-        </p>
+        <List>
+          <List.Item>
+            <FormattedMessage id="rules.1" values={{ money: INITIAL_MONEY }} />
+          </List.Item>
+          <List.Item>
+            <FormattedMessage id="rules.2" />
+          </List.Item>
+          <List.Item>
+            <FormattedMessage id="rules.3" />
+          </List.Item>
+        </List>
       </Container>
     </Fragment>
   );
