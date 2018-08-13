@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Spinner from '../../Spinner';
 import AvatarMessage from '../../AvatarMessage';
 import TimeHeader from '../../TimeHeader';
+import { addDateTime } from '../../../actions/player';
 
 export type CasinoPropType = {
   currentCity: any,
@@ -17,7 +18,7 @@ export type CasinoPropType = {
 
 class Casino extends Component<CasinoPropType> {
   render() {
-    const { currentCity, isLoading } = this.props;
+    const { currentCity, isLoading, dispatch } = this.props;
 
     if (isLoading) {
       return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
@@ -37,7 +38,7 @@ class Casino extends Component<CasinoPropType> {
                   <img src="./images/cities/bg-card.jpg" alt="Card" />
                 </Card.Content>
                 <Card.Content extra className="text-center">
-                  <Link to="/cards">
+                  <Link to="/cards" onClick={() => dispatch(addDateTime(2))}>
                     <Button color="green">
                       <Button.Content>
                         <FormattedMessage id="casino.cards" />

@@ -4,12 +4,12 @@ import { connect, type Dispatch } from 'react-redux';
 import { Transition, Button, Message } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import { substractMoney, addDateTime } from '../../../actions/player';
+import { AIRPORT_FOOD } from '../../../data/constants';
 import AvatarMessage from '../../AvatarMessage';
 import './style.css';
 
 export type AirportWaiterPropType = {
   nextCity: { flag: string },
-  waiter: string,
   currentCity: { name: string, food: string },
   isClosed: boolean,
   moneyLeft: number,
@@ -18,8 +18,6 @@ export type AirportWaiterPropType = {
 
 export type AirportWaiterStateType = {
   factID: number,
-  message: string,
-  messageColor: string,
   messageVisible: boolean,
 };
 
@@ -29,57 +27,58 @@ class AirportWaiter extends Component<AirportWaiterPropType, AirportWaiterStateT
     (this: any).getFood = this.getFood.bind(this);
     this.state = {
       factID: 0,
-      message: 'airport.buy_food',
-      messageColor: 'blue',
       messageVisible: false,
     };
   }
 
   getFood() {
     const { dispatch, moneyLeft } = this.props;
-    if (moneyLeft - 5 >= 0) {
+    if (moneyLeft >= AIRPORT_FOOD) {
       dispatch(addDateTime(2));
-      dispatch(substractMoney(5));
+      dispatch(substractMoney(AIRPORT_FOOD));
       this.setState({
         factID: this.state.factID + 1,
-        message: 'airport.buy_food',
-      });
-    } else {
-      this.setState({
-        messageColor: 'red',
-        message: 'airport.no_money',
       });
     }
     this.setState({ messageVisible: !this.state.messageVisible });
   }
   render() {
-    const { waiter, nextCity, currentCity, isClosed, moneyLeft } = this.props;
+    const { nextCity, currentCity, isClosed, moneyLeft } = this.props;
 
     return (
       <Fragment>
         <Transition animation="pulse" visible={this.state.messageVisible} duration={500}>
-          <Message color={this.state.messageColor}>
-            <FormattedMessage id={this.state.message} values={{ money: moneyLeft }} />
-          </Message>
+          {moneyLeft >= AIRPORT_FOOD ? (
+            <Message color="blue">
+              <FormattedMessage id="airport.buy_food" values={{ money: moneyLeft }} />
+            </Message>
+          ) : (
+            <Message color="red">
+              <FormattedMessage id="airport.no_money" />
+            </Message>
+          )}
         </Transition>
-        <AvatarMessage imgSrc={waiter} introText="airport.waiter_intro">
+        <AvatarMessage
+          imgSrc={`./images/waiter_${this.state.factID % 3}.png`}
+          introText="airport.waiter_intro"
+        >
           {this.state.factID > 0 &&
             this.state.factID < 4 && (
-              <p>
-                <FormattedMessage id={`cities.${currentCity.name}.${this.state.factID}`} />
-              </p>
+              <FormattedMessage id={`cities.${currentCity.name}.${this.state.factID}`}>
+                {txt => <p>{txt}</p>}
+              </FormattedMessage>
             )}
           {this.state.factID >= 4 && (
             <Fragment>
               <FormattedMessage id="airport.waiter_flag" />
-              <Transition visible duration={500}>
-                <img src={`./images/${nextCity.flag}`} alt="country flag" />
-              </Transition>
+              <img src={`./images/${nextCity.flag}`} alt="country flag" />
             </Fragment>
           )}
-          <br />
           <Button color="green" disabled={isClosed} onClick={this.getFood}>
-            <FormattedMessage id={`cities.${currentCity.name}.food`} values={{ money: 5 }} />
+            <FormattedMessage
+              id={`cities.${currentCity.name}.food`}
+              values={{ money: AIRPORT_FOOD }}
+            />
           </Button>
         </AvatarMessage>
       </Fragment>
@@ -91,7 +90,6 @@ const mapStateToProps = (state, ownProps = {}) => {
   return {
     currentCity: state.gameState.currentCity,
     nextCity: state.gameState.nextCity,
-    waiter: state.gameState.waiter,
     moneyLeft: state.player.money,
   };
 };
