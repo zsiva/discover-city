@@ -31,11 +31,6 @@ const gameState = (state = [], action) => {
         currentCity: list[0],
         maxCities: action.num - 1,
         currentCityID: 0,
-        cityFacts: [' '].concat(
-          shuffleArray(list[0].facts)
-            .splice(0, 2)
-            .concat('airport_waiterhint'),
-        ),
         nextCity: list[1],
       };
     case LOAD_CITY:
@@ -46,13 +41,7 @@ const gameState = (state = [], action) => {
       return {
         ...state,
         currentCity: state.selectedCities[state.currentCityID],
-        currentCityID: state.currentCityID,
-        cityFacts: [' '].concat(
-          shuffleArray(state.selectedCities[state.currentCityID].facts)
-            .splice(0, 2)
-            .concat('airport_waiterhint'),
-        ),
-        nextCity:
+        currentCityID: state.currentCityID,     nextCity:
           state.currentCityID < state.maxCities
             ? state.selectedCities[state.currentCityID + 1]
             : [],
