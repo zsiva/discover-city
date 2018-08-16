@@ -2,18 +2,17 @@
   width: 25px;
   margin-right: 1rem;
 }
-.imageWrapper,
+
 .timeWrapper {
-  text-align: center;
-  display: block;
-  font-size: 1.2rem;
+  float: right;
+}
+.imageWrapper {
+  float: left;
 }
 @media only screen and (min-width: 481px) {
+  .imageWrapper,
   .timeWrapper {
-    float: right;
-  }
-  .imageWrapper {
-    float: left;
+    font-size: 1.4rem;
   }
 }
 .topWrapper {

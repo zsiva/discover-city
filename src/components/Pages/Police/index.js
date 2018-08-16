@@ -59,13 +59,18 @@ class Police extends Component {
     const { isLoading, nextCity } = this.props;
     const { copVisible, corruptCopVisible, messageVisible } = this.state;
     if (isLoading) {
-      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
+      return <Spinner text={<FormattedMessage id="common.loading" />} />;
     }
     return (
       <Fragment>
         <Header />
         <Container>
           <TimeHeader messageId="police.title" />
+          <Transition animation="pulse" visible={messageVisible} duration={500}>
+            <Message size="large" color={this.state.messageColor}>
+              <p className="text-center">{this.state.message}</p>
+            </Message>
+          </Transition>
           <Grid centered>
             <Grid.Column mobile={16} tablet={8} computer={7}>
               <AvatarMessage imgSrc="./images/policeoff.png" introText="police.info">
@@ -101,11 +106,6 @@ class Police extends Component {
             </Grid.Column>
           </Grid>
 
-          <Transition animation="pulse" visible={messageVisible} duration={500}>
-            <Message size="large" color={this.state.messageColor}>
-              <p className="text-center">{this.state.message}</p>
-            </Message>
-          </Transition>
           <Grid centered>
             {nextCity.hints.map(hint => (
               <Grid.Column mobile={16} tablet={5} computer={4} key={hint.label}>
