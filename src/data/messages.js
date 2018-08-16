@@ -27,7 +27,7 @@ export default {
       task: 'Your task:',
       task1: 'Capture the criminal and find the stolen gold.',
       rules: 'Rules',
-      1: 'You start with {money} €. In the police station you can get hints of the whereabouts, there is a corrupt police cop that might give you some extra hints.',
+      1: 'You start with {money} €. In the police station you can get hints of the whereabouts, there is a corrupt cop that might give you some extra hints.',
       2: 'If you run out of money you can go to the casino, there are different games where you can earn more money.',
       3: 'In the hotel you can get some rest to recover your energy.',
     },
@@ -107,6 +107,20 @@ export default {
         'Corrupt Police Officer: This information is not free! You need 10 € and your account has {money} €',
     },
     cities: {
+      amsterdam: {
+        name: 'Amsterdam',
+        food: 'Buy a heineken for {money}€',
+        '1': 'Did you know there are approximately 881.000 bicycles in Amsterdam ?',
+        '2': 'Did you know there are more than 2500 houseboats in Amsterdam ?',
+        '3': 'Did you know Amsterdam lies below sea level ?',
+      },
+      athens: {
+        name: 'Athens',
+        food: 'Buy a souvlaki for {money}€',
+        '1': 'Did you know Athens is Europe`s oldest capital (3400 B.C.) ?',
+        '2': 'Did you know Athens was the first ever European Cultural Capital ?',
+        '3': 'Did you know Athens has 148 theatrical stages ?',
+      },
       berlin: {
         name: 'Berlin',
         food: 'Buy a bratwurst for {money}€',
@@ -115,12 +129,47 @@ export default {
           'Did you know the Berliner Fernsehturm is the tallest building in Germany with 368 meters?',
         '3': 'Did you know Berlin has more museums (180) than rainy days (108)?',
       },
+      cullera: {
+        name: 'Cullera',
+        food: 'Buy some horchata for {money}€',
+        1: '¿Sabías que...?',
+        2: '¿Sabías que...?',
+        3: '¿Sabías que ...?',
+      },
+      krakow: {
+        name: 'Krakow',
+        food: 'Buy a pierogi for {money}€',
+        1: 'Did you know Krak0w’s Market Square is the largest medieval commercial square in Europe ?',
+        2: 'Did you know Krakow was the capital of Poland for over 500 years ?',
+        3: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
+      },
+      madrid: {
+        name: 'Madrid',
+        food: 'Buy a tortilla for {money}€',
+        '1': 'Did you know that Madrid is the highest capital in Europe ?',
+        '2': 'Did you know the oldest restaurant in the world (1752) is located in Madrid ?',
+        '3': 'Did you know Madrid coat of arms is a bear and a tree ?',
+      },
+      oslo: {
+        name: 'Oslo',
+        food: 'Buy a salmon for {money}€',
+        1: 'Did you know the Nobel Peace Prize is awarded in Oslo every year?',
+        2: 'Did you know there are 40 islands and 343 lakes within Oslo limits ?',
+        3: 'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
+      },
       paris: {
         name: 'Paris',
         food: 'Buy a croissant for {money}€',
         '1': 'Did you know Paris was originally a Roman City called Lutetia ?',
         '2': 'Did you know that there are more than 1700 bakeries in Paris ?',
         '3': 'Did you know that the Eiffel Tower was meant to be temporary ?',
+      },
+      prague: {
+        name: 'Prague',
+        food: 'Buy a trdelnik for {money}€',
+        1: 'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
+        2: 'Did you know Prague Castle is the largest ancient castle complex in the world ?',
+        3: 'Did you know Prague astronomical clock was installed in 1410 and is still working ?',
       },
       rome: {
         name: 'Rome',
@@ -130,20 +179,6 @@ export default {
         '3':
           'Did you know Rome’s mascot is a wolf that cared for the brothers Romulus and Remus, the legendary founders of Rome ?',
       },
-      madrid: {
-        name: 'Madrid',
-        food: 'Buy a tortilla for {money}€',
-        '1': 'Did you know that Madrid is the highest capital in Europe ?',
-        '2': 'Did you know the oldest restaurant in the world (1752) is located in Madrid ?',
-        '3': 'Did you know Madrid coat of arms is a bear and a tree ?',
-      },
-      athens: {
-        name: 'Athens',
-        food: 'Buy a souvlaki for {money}€',
-        '1': 'Did you know Athens is Europe`s oldest capital (3400 B.C.) ?',
-        '2': 'Did you know Athens was the first ever European Cultural Capital ?',
-        '3': 'Did you know Athens has 148 theatrical stages ?',
-      },
       zakynthos: {
         name: 'Zakynthos',
         food: 'Buy a moussaka for {money}€',
@@ -152,34 +187,6 @@ export default {
         '2': 'Did you know Zakynthos touristic development begun in 1965 ?',
         '3':
           'Did you know Homer was the first to mention Zakynthos in his Odyssey and Iliad masterpieces ?',
-      },
-      amsterdam: {
-        name: 'Amsterdam',
-        food: 'Buy a heineken for {money}€',
-        '1': 'Did you know there are approximately 881.000 bicycles in Amsterdam ?',
-        '2': 'Did you know there are more than 2500 houseboats in Amsterdam ?',
-        '3': 'Did you know Amsterdam lies below sea level ?',
-      },
-      oslo: {
-        name: 'Oslo',
-        food: 'Buy a salmon for {money}€',
-        1: 'Did you know the Nobel Peace Prize is awarded in Oslo every year?',
-        2: 'Did you know there are 40 islands and 343 lakes within Oslo limits ?',
-        3: 'Did you know Oslo donates the Trafalgar Square Christmas tree in London every year in gratitude to the people of London for their assistance during WWII ?',
-      },
-      prague: {
-        name: 'Prague',
-        food: 'Buy a trdelnik for {money}€',
-        1: 'Did you know the historic centre of Prague was added to Unesco’s World Heritage list in 1992 ?',
-        2: 'Did you know Prague Castle is the largest ancient castle complex in the world ?',
-        3: 'Did you know Prague astronomical clock was installed in 1410 and is still working ?',
-      },
-      krakow: {
-        name: 'Krakow',
-        food: 'Buy a pierogi for {money}€',
-        1: 'Did you know Krak0w’s Market Square is the largest medieval commercial square in Europe ?',
-        2: 'Did you know Krakow was the capital of Poland for over 500 years ?',
-        3: 'Did you know Kraków University, established in the 14th century, is the oldest university in Poland ?',
       },
     },
     week_days: {
@@ -285,6 +292,20 @@ export default {
     },
 
     cities: {
+      amsterdam: {
+        name: 'Amsterdam',
+        food: 'Compra una Heineken por {money}€',
+        1: '¿Sabías que hay aproximadamente 881.000 bicicletas en Amsterdam?',
+        2: '¿Sabías que hay más de 2500 casas barco en Amsterdam?',
+        3: '¿Sabías que Amsterdam está bajo el nivel del mar?',
+      },
+      athens: {
+        name: 'Atenas',
+        food: 'Compra un souvlaki por {money}€',
+        1: '¿Sabías que Atenas es la capital más antigua (3400 A.C.) de Europa?',
+        2: '¿Sabías que Atenas fue la primera Capital Europea de la Cultura?',
+        3: '¿Sabías que Atenas tiene 148 teatros?',
+      },
       berlin: {
         name: 'Berlin',
         food: 'Compra un bratwurst por {money}€',
@@ -293,12 +314,47 @@ export default {
           '¿Sabías que la Fernsehturm de Berlin es el edificio más alto de Alemania con 368 metros?',
         '3': '¿Sabías que Berlin tiene más museos (180) que dias de lluvia (108)?',
       },
+      cullera: {
+        name: 'Cullera',
+        food: 'Compra una horchata por {money}€',
+        1: '¿Sabías que...?',
+        2: '¿Sabías que...?',
+        3: '¿Sabías que ...?',
+      },
+      madrid: {
+        name: 'Madrid',
+        food: 'Compra una tortilla por {money}€',
+        1: '¿Sabías que Madrid es la capital más alta de Europa?',
+        2: '¿Sabías que el restaurante más antiguo del mundo (1752) esta situado en Madrid?',
+        3: '¿Sabías que el escudo de Madrid es un oso y un madroño?',
+      },
+      krakow: {
+        name: 'Cracovia',
+        food: 'Compra un pierogi por {money}€',
+        1: '¿Sabías que la plaza del mercado de Cracovia es la plaza medieval comercial más grande de Europa?',
+        2: '¿Sabías que Cracovia fue la capital de Polonia durante más de 500 años?',
+        3: '¿Sabías que la universidad de Cracovia, establecida en el siglo 14, es la universidad más antigua de Polonia?',
+      },
+      oslo: {
+        name: 'Oslo',
+        food: 'Compra un salmón por {money}€',
+        1: '¿Sabías que el premio Nobel de la Paz es concedido en Oslo cada año?',
+        2: '¿Sabías que hay 40 islas y 343 lagos dentro del perímetro urbano de Oslo?',
+        3: '¿Sabías que Oslo dona cada año el árbol de Navidad de la plaza de Trafalgar en agradecimiento a su asistencia durante la segunda guerra mundial?',
+      },
       paris: {
         name: 'París',
         food: 'Compra un croissant por {money}€',
         '1': '¿Sabías que París era originalmente una ciudad romana llamada Lutecia?',
         '2': '¿Sabías que hay más de 1700 panaderias en París?',
         '3': '¿Sabías que la Torre Eiffel iba a ser temporal?',
+      },
+      prague: {
+        name: 'Praga',
+        food: 'Compra un trdelnik por {money}€',
+        1: '¿Sabías que el centro histórico de Praga fue incluído en la lista del Patrimonio Mundial de la UNESCO en 1992?',
+        2: '¿Sabías que el castillo de Praga es el conjunto palaciego más grande y antiguo del mundo?',
+        3: '¿Sabías que el reloj astronómico de Praga fue instalado en 1410 y todavía sigue funcionando?',
       },
       rome: {
         name: 'Roma',
@@ -308,20 +364,6 @@ export default {
         '3':
           '¿Sabías que la mascota de Roma es una loba que cuidó a Romulo y Remo, legendarios fundadores de Roma?',
       },
-      madrid: {
-        name: 'Madrid',
-        food: 'Compra una tortilla por {money}€',
-        1: '¿Sabías que Madrid es la capital más alta de Europa?',
-        2: '¿Sabías que el restaurante más antiguo del mundo (1752) esta situado en Madrid?',
-        3: '¿Sabías que el escudo de Madrid es un oso y un madroño?',
-      },
-      athens: {
-        name: 'Atenas',
-        food: 'Compra un souvlaki por {money}€',
-        1: '¿Sabías que Atenas es la capital más antigua (3400 A.C.) de Europa?',
-        2: '¿Sabías que Atenas fue la primera Capital Europea de la Cultura?',
-        3: '¿Sabías que Atenas tiene 148 teatros?',
-      },
       zakynthos: {
         name: 'Zakynthos',
         food: 'Compra una moussaka por {money}€',
@@ -329,34 +371,6 @@ export default {
           '¿Sabías que Zakynthos escapó a la dominación otomana pero fue parte del reino de Venecia durante siglos?',
         '2': '¿Sabías que el desarrollo turístico de Zakynthos empezó en 1965?',
         '3': '¿Sabías que Homero fue el primero en mencionar Zakynthos en la Odisea y la Iliada?',
-      },
-      amsterdam: {
-        name: 'Amsterdam',
-        food: 'Bébete una Heineken por {money}€',
-        1: '¿Sabías que hay aproximadamente 881.000 bicicletas en Amsterdam?',
-        2: '¿Sabías que hay más de 2500 casas barco en Amsterdam?',
-        3: '¿Sabías que Amsterdam está bajo el nivel del mar?',
-      },
-      oslo: {
-        name: 'Oslo',
-        food: 'Compra un salmón por {money}€',
-        1: '¿Sabías que el premio Nobel de la Paz es concedido en Oslo cada año?',
-        2: '¿Sabías que hay 40 islas y 343 lagos dentro del perímetro urbano de Oslo?',
-        3: '¿Sabías que Oslo dona cada año el árbol de Navidad de la plaza de Trafalgar en agradecimiento a su asistencia durante la segunda guerra mundial?',
-      },
-      prague: {
-        name: 'Praga',
-        food: 'Compra un trdelnik por {money}€',
-        1: '¿Sabías que el centro histórico de Praga fue incluído en la lista del Patrimonio Mundial de la UNESCO en 1992?',
-        2: '¿Sabías que el castillo de Praga es el conjunto palaciego más grande y antiguo del mundo?',
-        3: '¿Sabías que el reloj astronómico de Praga fue instalado en 1410 y todavía sigue funcionando?',
-      },
-      krakow: {
-        name: 'Cracovia',
-        food: 'Compra un pierogi por {money}€',
-        1: '¿Sabías que la plaza del mercado de Cracovia es la plaza medieval comercial más grande de Europa?',
-        2: '¿Sabías que Cracovia fue la capital de Polonia durante más de 500 años?',
-        3: '¿Sabías que la universidad de Cracovia, establecida en el siglo 14, es la universidad más antigua de Polonia?',
       },
     },
     police: {
