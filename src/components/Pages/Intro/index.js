@@ -100,7 +100,7 @@ class Intro extends Component<IntroPropType, IntroStateType> {
                 </FormattedMessage>
                 <br />
                 {this.state.name ? (
-                  <Link to="/user" onClick={this.createPlayer}>
+                  <Link to="/rules" onClick={this.createPlayer}>
                     <Button color="green">
                       <FormattedMessage id="intro.button" />
                     </Button>

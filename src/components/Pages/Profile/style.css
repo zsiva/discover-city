@@ -5,3 +5,123 @@
   max-width: 150px;
   float: left;
 }
+.roundClock {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  border: 2px solid green;
+  float: right;
+  margin-top: -50px;
+}
+.roundClock .center {
+  background-color: #000;
+  position: absolute;
+  left: calc(50% - 5px);
+  top: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 20;
+}
+.roundClock .hourHand {
+  width: 6px;
+  height: 25px;
+  background-color: #000;
+  transform-origin: bottom center;
+  border-radius: 4px;
+  position: absolute;
+  top: 23px;
+  left: 45px;
+  z-index: 10;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  transform: rotate(360deg);
+}
+.roundClock .minuteHand {
+  width: 3px;
+  height: 30px;
+  background-color: #000;
+  transform-origin: bottom center;
+  border-radius: 4px;
+  position: absolute;
+  top: 20px;
+  left: 47px;
+  z-index: 9;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  transform: rotate(360deg);
+}
+
+.roundClock ul {
+  list-style: none;
+  padding: 0;
+}
+.roundClock ul li {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 10px;
+  color: green;
+}
+.roundClock ul li:nth-child(1) {
+  right: 20%;
+  top: 6.5%;
+}
+.roundClock ul li:nth-child(2) {
+  right: 8%;
+  top: 22%;
+}
+.roundClock ul li:nth-child(3) {
+  right: 1%;
+  top: calc(50% - 10px);
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+}
+.roundClock ul li:nth-child(4) {
+  right: 8%;
+  top: 61%;
+}
+.roundClock ul li:nth-child(5) {
+  right: 20%;
+  top: 75%;
+}
+.roundClock ul li:nth-child(6) {
+  right: calc(50% - 10px);
+  top: calc(99% - 20px);
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+}
+.roundClock ul li:nth-child(7) {
+  left: 17%;
+  top: 75%;
+}
+.roundClock ul li:nth-child(8) {
+  left: 6%;
+  top: 61%;
+}
+.roundClock ul li:nth-child(9) {
+  left: 1%;
+  top: calc(50% - 10px);
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+}
+.roundClock ul li:nth-child(10) {
+  left: 6%;
+  top: 22%;
+}
+.roundClock ul li:nth-child(11) {
+  left: 17%;
+  top: 6.5%;
+}
+.roundClock ul li:nth-child(12) {
+  right: calc(50% - 10px);
+  top: 1%;
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+}

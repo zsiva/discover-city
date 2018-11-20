@@ -5,6 +5,7 @@ import { connect, type Dispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Header from '../../Header';
+import Clock from './Clock';
 import './style.css';
 
 export type ProfilePropType = {
@@ -25,6 +26,7 @@ function Profile(props: ProfilePropType) {
         <h1>
           <FormattedMessage id="profile.header" values={{ name: playerName }} />
         </h1>
+        <Clock />
         <Grid>
           <Grid.Column mobile={16} tablet={8} computer={8}>
             <Segment raised>
@@ -53,23 +55,7 @@ function Profile(props: ProfilePropType) {
               </List>
             </Segment>
           </Grid.Column>
-
-          <Grid.Column mobile={16} tablet={8} computer={8}>
-            <Segment>
-              <Label color="green" ribbon>
-                <FormattedMessage id="profile.items" />
-              </Label>
-              <List>
-                <List.Item>
-                  <List.Content>
-                    <FormattedMessage id="profile.no_items" />
-                  </List.Content>
-                </List.Item>
-              </List>
-            </Segment>
-          </Grid.Column>
         </Grid>
-
         <Grid className="actions">
           <Grid.Column mobile={8} tablet={4} computer={4}>
             <Link to="/get-money">
