@@ -35,17 +35,16 @@ const gameState = (state = [], action) => {
       };
     case LOAD_CITY:
       if (state.currentCityID < state.maxCities) {
-        state.currentCityID++;
-      }
+        const currentID = state.currentCityID + 1;
 
-      return {
-        ...state,
-        currentCity: state.selectedCities[state.currentCityID],
-        currentCityID: state.currentCityID,     nextCity:
-          state.currentCityID < state.maxCities
-            ? state.selectedCities[state.currentCityID + 1]
-            : [],
-      };
+        return {
+          ...state,
+          currentCity: state.selectedCities[currentID],
+          currentCityID: currentID,
+          nextCity: state.selectedCities[currentID + 1],
+        };
+      }
+      return state;
     case GET_USERS:
       return {
         ...state,

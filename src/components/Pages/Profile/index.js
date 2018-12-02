@@ -13,6 +13,7 @@ export type ProfilePropType = {
   timeRemaining: number,
   moneyLeft: number,
   playerName: string,
+  dateTime: number,
 };
 
 function Profile(props: ProfilePropType) {

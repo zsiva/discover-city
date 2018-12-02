@@ -1,6 +1,6 @@
 //@flow
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import { connect, type Dispatch } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Container, Grid, Card, Button } from 'semantic-ui-react';
 import Header from '../../Header';
@@ -14,6 +14,7 @@ export type CasinoPropType = {
   currentCity: any,
   isLoading: boolean,
   dateTime: number,
+  dispatch: Dispatch,
 };
 
 class Casino extends Component<CasinoPropType> {
@@ -21,7 +22,7 @@ class Casino extends Component<CasinoPropType> {
     const { currentCity, isLoading, dispatch } = this.props;
 
     if (isLoading) {
-      return <Spinner text={<FormattedMessage id={'common.loading'} />} />;
+      return <Spinner text={<FormattedMessage id="common.loading" />} />;
     }
 
     return (
