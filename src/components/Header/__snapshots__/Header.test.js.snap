@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match snapshot, English 1`] = `
+<div
+  className="ui inverted labeled icon menu"
+>
+  <div
+    className="ui container"
+  >
+    <a
+      href="/city"
+      onClick={[Function]}
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="home small icon"
+        />
+        <span>
+          City
+        </span>
+      </div>
+    </a>
+    <a
+      href="/airport"
+      onClick={[Function]}
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="plane icon"
+        />
+        <span>
+          Airport
+        </span>
+      </div>
+    </a>
+    <a
+      href="/police"
+      onClick={[Function]}
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="building outline icon"
+        />
+        <span>
+          Police
+        </span>
+      </div>
+    </a>
+    <a
+      href="/get-money"
+      onClick={[Function]}
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="money icon"
+        />
+        <span>
+          Casino
+        </span>
+      </div>
+    </a>
+    <a
+      href="/hotel"
+      onClick={[Function]}
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="building icon"
+        />
+        <span>
+          Hotel
+        </span>
+      </div>
+    </a>
+    <div
+      className="right menu"
+    >
+      <a
+        href="/user"
+        onClick={[Function]}
+      >
+        <div
+          className="item"
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="user icon"
+          />
+          <span>
+            Profile
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;

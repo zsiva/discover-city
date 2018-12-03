@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarMessage should match snapshot 1`] = `
+<div
+  className="avatarWrapper"
+>
+  <img
+    className="ui tiny circular image avatarImage"
+    src="./images/receptionist.png"
+  />
+  <div
+    className="avatarMessage"
+  >
+    <p>
+      <b>
+        What can I do for you?
+      </b>
+    </p>
+  </div>
+</div>
+`;
