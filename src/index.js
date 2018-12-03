@@ -3,37 +3,24 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import firebase from 'firebase';
-import 'firebase/firestore';
-import { addLocaleData } from 'react-intl';
 
+import { addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
-
-import Root from './components/Root';
 import ConnectedIntlProvider from './ConnectedIntlProvider';
 
-import './index.css';
+import Root from './components/Root';
+
 import { INITIAL_TIME, INITIAL_MONEY } from './data/constants';
 import configureStore from './configure-store';
 import registerServiceWorker from './registerServiceWorker';
-import { AUTH_DOMAIN, DB_URL, PROJECT_ID, FIREBASE_API_KEY } from './db-config';
 import flattenMessages from './utils/flattenMessages';
 import messages from './data/messages';
 
+import './index.css';
+
 addLocaleData([...en, ...es]);
 let locale = 'en-US';
-
-firebase.initializeApp({
-  apiKey: FIREBASE_API_KEY,
-  authDomain: AUTH_DOMAIN,
-  databaseURL: DB_URL,
-  projectId: PROJECT_ID,
-});
-
-export const db = firebase.firestore();
-
-export const usersRef = db.collection('users');
 
 const initialState = {
   timer: {
