@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner should match snapshot 1`] = `
+<div
+  className="text-center spinner"
+>
+  <p />
+  <div
+    className="loaderBar"
+  />
+</div>
+`;

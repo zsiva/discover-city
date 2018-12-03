@@ -5,6 +5,10 @@ import createComponentWithIntl from '../../utils/createComponentWithIntl';
 import Header from './';
 
 describe('Header', () => {
+  it('should be defined', () => {
+    expect(Header).toBeDefined();
+  });
+
   it('should match snapshot, English', () => {
     const component = createComponentWithIntl(
       <MemoryRouter>
@@ -14,7 +18,6 @@ describe('Header', () => {
     );
 
     let tree = component.toJSON();
-
     expect(tree).toMatchSnapshot();
   });
 });

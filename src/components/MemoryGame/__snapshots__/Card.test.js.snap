@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match snapshot of a card 1`] = `
+<div
+  className="cardContainer"
+  onMouseDown={[Function]}
+>
+  <div
+    className=" card"
+  >
+    <div
+      className="front"
+    />
+    <div
+      className="back"
+    >
+      <i
+        aria-hidden="true"
+        className="green bug huge icon"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card should match snapshot of a flipped card 1`] = `
+<div
+  className="cardContainer"
+  onMouseDown={[Function]}
+>
+  <div
+    className=" flipped card"
+  >
+    <div
+      className="front"
+    />
+    <div
+      className="back"
+    >
+      <i
+        aria-hidden="true"
+        className="green bug huge icon"
+      />
+    </div>
+  </div>
+</div>
+`;
