@@ -7,7 +7,7 @@ import Spinner from '../../Spinner';
 import { substractMoney, addDateTime } from '../../../actions/player';
 import { loadNextCity } from '../../../actions/cities';
 import { isAirportClosed } from '../../../utils/calculateDay';
-import { usersRef } from '../../../';
+import { usersRef } from '../../../configure-firebase';
 import AirportHeader from './AirportHeader';
 import AirportWaiter from './AirportWaiter';
 import LightboxFound from './LightboxFound';

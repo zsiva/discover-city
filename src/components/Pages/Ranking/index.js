@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Table } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
-import { usersRef } from '../../..';
+import { usersRef } from '../../../configure-firebase';
 import { getUsers } from '../../../actions/game';
 import Spinner from '../../Spinner';
 import Header from '../../Header';

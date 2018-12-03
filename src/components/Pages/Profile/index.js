@@ -1,4 +1,4 @@
-//@flow
+// @flow
 import React, { Fragment } from 'react';
 import { Button, List, Label, Segment, Grid } from 'semantic-ui-react';
 import { connect, type Dispatch } from 'react-redux';
@@ -6,7 +6,25 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Header from '../../Header';
 import Clock from './Clock';
+import ListItem from './ListItem';
 import './style.css';
+
+export type ActionButtonPropType = {
+  to: string,
+  messageID: string,
+};
+
+const ActionButton = (props: ActionButtonPropType) => (
+  <Grid.Column mobile={8} tablet={4} computer={4}>
+    <Link to={props.to}>
+      <Button color="green" fluid>
+        <FormattedMessage id={props.messageID} />
+      </Button>
+    </Link>
+  </Grid.Column>
+);
+
+const weekHours = 168;
 
 export type ProfilePropType = {
   dispatch: Dispatch,
@@ -17,8 +35,7 @@ export type ProfilePropType = {
 };
 
 function Profile(props: ProfilePropType) {
-  let { timeRemaining, moneyLeft, playerName, dateTime } = props;
-  timeRemaining = timeRemaining < 0 ? 0 : timeRemaining;
+  const { timeRemaining, moneyLeft, playerName, dateTime } = props;
 
   return (
     <Fragment>
@@ -35,50 +52,26 @@ function Profile(props: ProfilePropType) {
                 <FormattedMessage id="profile.label" />
               </Label>
               <List>
-                <List.Item>
-                  <List.Icon name="star" color="green" />
-                  <List.Content>
-                    <FormattedMessage id="profile.points" /> {168 - dateTime}
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Icon color="green" name="clock" />
-                  <List.Content>
-                    <FormattedMessage id="profile.time" values={{ seconds: timeRemaining }} />
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Icon color="green" name="money" />
-                  <List.Content>
-                    <FormattedMessage id="profile.money" values={{ money: moneyLeft }} /> {}
-                  </List.Content>
-                </List.Item>
+                <ListItem iconName="star">
+                  <FormattedMessage id="profile.points" /> {weekHours - dateTime}
+                </ListItem>
+                <ListItem iconName="clock">
+                  <FormattedMessage
+                    id="profile.time"
+                    values={{ seconds: timeRemaining < 0 ? 0 : timeRemaining }}
+                  />
+                </ListItem>
+                <ListItem iconName="money">
+                  <FormattedMessage id="profile.money" values={{ money: moneyLeft }} />
+                </ListItem>
               </List>
             </Segment>
           </Grid.Column>
         </Grid>
         <Grid className="actions">
-          <Grid.Column mobile={8} tablet={4} computer={4}>
-            <Link to="/get-money">
-              <Button color="green" fluid>
-                <FormattedMessage id="profile.earn_money" />
-              </Button>
-            </Link>
-          </Grid.Column>
-          <Grid.Column mobile={8} tablet={4} computer={4}>
-            <Link to="/rules">
-              <Button color="green" fluid>
-                <FormattedMessage id="profile.rules" />
-              </Button>
-            </Link>
-          </Grid.Column>
-          <Grid.Column mobile={8} tablet={4} computer={4}>
-            <Link to="/city">
-              <Button color="green" fluid>
-                <FormattedMessage id="profile.find" />
-              </Button>
-            </Link>
-          </Grid.Column>
+          <ActionButton to="/get-money" messageID="profile.earn_money" />
+          <ActionButton to="/rules" messageID="profile.rules" />
+          <ActionButton to="/city" messageID="profile.find" />
         </Grid>
       </section>
     </Fragment>
